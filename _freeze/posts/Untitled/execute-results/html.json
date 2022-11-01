@@ -1,0 +1,14 @@
+{
+  "hash": "888b6b1a00edc9b2058ed1f73d9aaa92",
+  "result": {
+    "markdown": "---\ntitle: \"1_post\"\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

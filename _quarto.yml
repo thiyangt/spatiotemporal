@@ -1,0 +1,19 @@
+project:
+  type: website
+
+website:
+  title: "Spatio-Temporal Data Analysis"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/thiyangt
+      - icon: twitter
+        href: https://twitter.com/home
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+
+
