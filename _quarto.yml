@@ -3,9 +3,11 @@ project:
 
 website:
   title: "Spatio-Temporal Data Analysis"
+  description: "The course website for DSA 554 3.0 Spatio-Temporal Data Analysis"
   navbar:
     right:
-      - about.qmd
+      - text: Course materials
+        href: blog.qmd
       - icon: github
         href: https://github.com/thiyangt
       - icon: twitter
