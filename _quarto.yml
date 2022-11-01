@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Spatio-Temporal Data Analysis"
+  site-url: https://thiyanga-spatiotemporal.netlify.app
   description: "The course website for DSA 554 3.0 Spatio-Temporal Data Analysis"
   navbar:
     right:
