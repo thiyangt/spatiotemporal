@@ -1,204 +1,444 @@
 ---
-title: "Time Series Analysis"
+title: "Data Visualization: Grammar of Graphics"
 format:
   revealjs:
     incremental: true   
 jupyter: python3
 ---
 
-## Time Series
+## Grammar
 
-A time series is a sequence of observations taken sequentially in time.
+::: {layout-ncol=2}
 
-# Time Series Objects in Python
+### English
 
-## Necessary packages 
+- Nouns
+- Article
+- Adjective
+- Verb
+- Adverb
+- Proposition
+
+### Graphics
+
+<img src="ggplotaes/scales.PNG" alt="knitrhex" height="500"/>
+
+:::
+
+
+
+## Grammar - Example
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**English**
+
+The little monkey hangs confidently by a branch.
+
+
+
+
+:::
+
+
+::: {.column width="50%"}
+
+**Graphics**
+
+```{python}
+import pandas as pd
+import numpy as np
+
+from plotnine import *
+from plotnine.data import *
+
+%matplotlib inline
+(
+    ggplot(economics, aes(x='date', y='uempmed')) 
+    + geom_line() # line plot
+    + labs(x='date', y='median duration of unemployment, in week')
+)
+
+```
+
+:::
+
+::::
+
+
+
+## Grammar - Example
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**English**
+
+ Article: The
+
+ Adjective: little
+
+ Noun: monkey
+
+ Verb: hangs
+
+ Adverb: Confidently
+
+ Proposition: by
+
+ Noun: a branch
+
+
+:::
+
+
+::: {.column width="50%"}
+
+**Graphics**
+
+<img src="ggplotaes/d1.PNG" alt="knitrhex" height="500"/>
+
+:::
+
+::::
+
+
+
+
+
+
+
+
+## Graphics - Grammar components 
+
+::: {.panel-tabset}
+
+### Plot
+
+
+```{python}
+#| fig-width: 12
+#| fig-height: 8
+#| results: asis
+import pandas as pd
+import numpy as np
+
+from plotnine import *
+from plotnine.data import *
+
+%matplotlib inline
+(
+    ggplot(economics, aes(x='date', y='uempmed')) 
+    + geom_line() 
+)
+
+```
+
+### Code
+
+
+```python
+
+import pandas as pd
+import numpy as np
+
+from plotnine import *
+from plotnine.data import *
+
+%matplotlib inline
+(
+    ggplot(economics, aes(x='date', y='uempmed')) 
+    + geom_line() 
+)
+
+```
+
+:::
+
+
+
+## `geom_line`
+
+::: {.panel-tabset}
+
+### Plot
+
+
+```{python}
+import pandas as pd
+import numpy as np
+
+from plotnine import *
+from plotnine.data import *
+
+%matplotlib inline
+(
+    ggplot(economics, aes(x='date', y='uempmed')) 
+    + geom_line() # line plot
+    + labs(x='date', y='median duration of unemployment, in week')
+)
+
+```
+
+### Code
+
+
+```python
+
+import pandas as pd
+import numpy as np
+
+from plotnine import *
+from plotnine.data import *
+
+%matplotlib inline
+(
+    ggplot(economics, aes(x='date', y='uempmed')) 
+    + geom_line() 
+)
+
+```
+
+:::
+
+## `geom_point`
+
+::: {.panel-tabset}
+
+### Plot
+
+
+```{python}
+import pandas as pd
+import numpy as np
+
+from plotnine import *
+from plotnine.data import *
+
+%matplotlib inline
+(
+    ggplot(economics, aes(x='date', y='uempmed')) 
+    + geom_point() 
+
+)
+
+```
+
+### Code
+
+
+```python
+
+import pandas as pd
+import numpy as np
+
+from plotnine import *
+from plotnine.data import *
+
+%matplotlib inline
+(
+    ggplot(economics, aes(x='date', y='uempmed')) 
+    + geom_point() # line plot
+    + labs(x='date', y='median duration of unemployment, in week')
+)
+
+```
+
+:::
+
+# Making your first plot with `plotnine`
+
+## Data
+
+Date: data to be plotted
+
+![](ggplotaes/data.PNG)
+
+## Packages
 
 ```{python}
 #| echo: true
 import pandas as pd
-import numpy as np
+import plotnine
+
+from plotnine import *
+from plotnine.data import *
+
 ```
 
-## Date and Times in Python
-
-<!--The Python world has a number of available representations of dates, times, deltas, and timespans. While the time series tools provided by Pandas tend to be the most useful for data science applications, it is helpful to see their relationship to other packages used in Python.-->
-
-**Keywords**
-
-- Date
-
-- Time 
-
-- Time-indexed data
-
-## Python representation of date and time
-
-1. Time stamps
-
-    A point in time (e.g., December 23rd, 2022 at 7:00am)
+## Dataset: `economics`
 
 ```{python}
 #| echo: true
-pd.Timestamp('2022-12-23 17:25')
+economics.head(3)
 ```
-    
 
-##
-
-2. Time intervals and periods 
-
-    Example: particular day
-    
-```{python}
-#| echo: true
-pd.Period('2017-06-13')
-```
-    
-    
-## 
-
-3. Time deltas or durations 
-
-    Exact length of time 
-    
-# `pandas` Time Series: index by time
-
-## Index - Yearly
-
-**Method 1**
+## Dataset: `economics`
 
 ```{python}
 #| echo: true
-index1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])
-data1 = pd.Series([123, 39, 78, 52, 110], index=index1)
-data1
+economics.info()
 ```
 
-## Index - Yearly (cont.)
-
-**Method 2**
-
-`freq='AS'` for start of year
+## Dataset: `economics`
 
 ```{python}
 #| echo: true
-index2 = pd.date_range("2012", periods=5, freq='AS')
-index2
+economics['year'] = economics['date'].dt.year
+economics['month'] = economics['date'].dt.month
 ```
+
+## Dataset: `economics`
 
 ```{python}
 #| echo: true
-data2 = pd.Series([123, 39, 78, 52, 110], index=index2)
-data2
+economics.info()
 ```
 
-## Index - Yearly (cont.)
-
-**Method 3**
-
-`freq='A'` end of year frequency
+## Dataset: `economics`
 
 ```{python}
 #| echo: true
-index3 = pd.date_range("2012", periods=5, freq='A')
-index3
+economics.head(3)
 ```
+
+## Tidy data
+
+
+![](ggplotaes/tidy.png)
+
+- Every column is a variable.
+
+- Every row is an observation.
+
+- Every cell is a single value.
+
+## Tidy data - Example
+
+![](tidyr/tidyr1.png)
+
+## Tidy data - Example
+
+![](tidyr/tidyr2.png)
+
+## Tidy data - Example
+
+![](tidyr/tidyr3.png)
+
+
+## Tidy data - Example
+
+![](tidyr/longer_wider.png)
+
+## Data
 
 ```{python}
 #| echo: true
-data3 = pd.Series([123, 39, 78, 52, 110], index=index3)
-data3
+ggplot(data=economics)
 ```
 
-## Index - Yearly (cont.)
+## Aesthetics: mapping variables
 
-**Method 4**
+![](ggplotaes/aes.PNG)
 
-Annual indexing with arbitrary month
+## Aesthetics: mapping variables
+
+Aesthetic means “something you can see”. 
+
+- position (i.e., on the x and y axes) 
+
+- color (“outside” color) 
+
+- fill (“inside” color)
+
+- shape (of points)
+
+## Aesthetic: position
 
 ```{python}
 #| echo: true
-index4 = pd.date_range("2012", periods=5, freq='AS-NOV')
-index4
+from plotnine.data import mtcars
+
+ggplot(mtcars, aes('wt', 'mpg')) + geom_point()
 ```
+
+## Aesthetic: color
 
 ```{python}
 #| echo: true
-data4 = pd.Series([123, 39, 78, 52, 110], index=index4)
-data4
+ggplot(mtcars, aes('wt', 'mpg', color='factor(cyl)')) + geom_point()
 ```
 
-## Index - Yearly (cont.)
+## Aesthetic: shape
 
 ```{python}
 #| echo: true
-index = pd.period_range('2012-01', periods=8, freq='A')
-index
+ggplot(mtcars, aes('wt', 'mpg', shape='factor(cyl)')) + geom_point()
 ```
 
-
-## Index - Monthly
-
-**Method 1**
+## Aesthetic: size
 
 ```{python}
 #| echo: true
-index = pd.period_range('2022-01', periods=8, freq='M')
-index
+ggplot(mtcars, aes('wt', 'mpg', size='factor(cyl)')) + geom_point()
 ```
 
-**Method 2**
+## Data + Aesthetics
 
 ```{python}
 #| echo: true
-index = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')
-index
+ggplot(economics, aes(x='date', y='uempmed'))
 ```
 
-## Index - Quarterly
+## Geometrics
+
+Actual marks we put on a plot
+
+![](ggplotaes/geom.PNG)
+
+## Data + Aesthetics + Geometrics
 
 ```{python}
 #| echo: true
-index = pd.period_range('2022-01', periods=8, freq='Q')
-index
+ggplot(economics, aes(x='date', y='uempmed')) + geom_point()
 ```
 
-## Index  - Daily
+## Data + Aesthetics + Geometrics
 
 ```{python}
 #| echo: true
-index = pd.period_range('2022-01-01', periods=8, freq='D')
-index
+ggplot(economics, aes(x='date', y='uempmed')) + geom_point(alpha=0.5)
 ```
 
-## Index  - Hourly
 
-**Range of hourly timestamps**
+## Data + Aesthetics + Geometrics
 
 ```{python}
 #| echo: true
-pd.period_range('2022-01', periods=8, freq='H')
-
+ggplot(economics, aes(x='date', y='uempmed')) + geom_point(size=0.3)
 ```
+
+## Data + Aesthetics + Geometrics
 
 ```{python}
 #| echo: true
-pd.date_range('2022-01', periods=8, freq='H')
-
+ggplot(economics, aes(x='date', y='uempmed')) + geom_line()
 ```
 
-**Sequence of durations increasing by an hour**
+## Data + Aesthetics + Geometrics
 
 ```{python}
 #| echo: true
-pd.timedelta_range(0, periods=10, freq='H')
+ggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3)
 ```
 
-## Frequency spacing options in `pandas`
+## Data + Aesthetics + Geometrics
 
-https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html
+```{python}
+#| echo: true
+ggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour="blue")
+```
 
-## References
-
-[https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html](https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html)

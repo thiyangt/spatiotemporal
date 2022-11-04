@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/extrafiles/file1.html",
       "/posts/quarto/1_intro.html",
       "/posts/quarto/index.html",
       "/posts/data/index.html",

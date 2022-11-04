@@ -1,0 +1,206 @@
+---
+title: "Time Series Analysis"
+format:
+  revealjs:
+    incremental: true   
+jupyter: python3
+---
+
+## Time Series
+
+A time series is a sequence of observations taken sequentially in time.
+
+# Time Series Objects in Python
+
+## Necessary packages 
+
+```{python}
+#| echo: true
+import pandas as pd
+import numpy as np
+```
+
+## Date and Times in Python
+
+<!--The Python world has a number of available representations of dates, times, deltas, and timespans. While the time series tools provided by Pandas tend to be the most useful for data science applications, it is helpful to see their relationship to other packages used in Python.-->
+
+**Keywords**
+
+- Date
+
+- Time 
+
+- Time-indexed data
+
+## Python representation of date and time
+
+1. Time stamps
+
+    A point in time (e.g., December 23rd, 2022 at 7:00am)
+
+```{python}
+#| echo: true
+pd.Timestamp('2022-12-23 17:25')
+```
+    
+
+##
+
+2. Time intervals and periods 
+
+    Example: particular day
+    
+```{python}
+#| echo: true
+pd.Period('2017-06-13')
+```
+    
+    
+## 
+
+3. Time deltas or durations 
+
+    Exact length of time 
+    
+# `pandas` Time Series: index by time
+
+## Index - Yearly
+
+**Method 1**
+
+```{python}
+#| echo: true
+index1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])
+data1 = pd.Series([123, 39, 78, 52, 110], index=index1)
+data1
+
+```
+
+
+## Index - Yearly (cont.)
+
+**Method 2**
+
+`freq='AS'` for start of year
+
+```{python}
+#| echo: true
+index2 = pd.date_range("2012", periods=5, freq='AS')
+index2
+```
+
+```{python}
+#| echo: true
+data2 = pd.Series([123, 39, 78, 52, 110], index=index2)
+data2
+```
+
+## Index - Yearly (cont.)
+
+**Method 3**
+
+`freq='A'` end of year frequency
+
+```{python}
+#| echo: true
+index3 = pd.date_range("2012", periods=5, freq='A')
+index3
+```
+
+```{python}
+#| echo: true
+data3 = pd.Series([123, 39, 78, 52, 110], index=index3)
+data3
+```
+
+## Index - Yearly (cont.)
+
+**Method 4**
+
+Annual indexing with arbitrary month
+
+```{python}
+#| echo: true
+index4 = pd.date_range("2012", periods=5, freq='AS-NOV')
+index4
+```
+
+```{python}
+#| echo: true
+data4 = pd.Series([123, 39, 78, 52, 110], index=index4)
+data4
+```
+
+## Index - Yearly (cont.)
+
+```{python}
+#| echo: true
+index = pd.period_range('2012-01', periods=8, freq='A')
+index
+```
+
+
+## Index - Monthly
+
+**Method 1**
+
+```{python}
+#| echo: true
+index = pd.period_range('2022-01', periods=8, freq='M')
+index
+```
+
+**Method 2**
+
+```{python}
+#| echo: true
+index = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')
+index
+```
+
+## Index - Quarterly
+
+```{python}
+#| echo: true
+index = pd.period_range('2022-01', periods=8, freq='Q')
+index
+```
+
+## Index  - Daily
+
+```{python}
+#| echo: true
+index = pd.period_range('2022-01-01', periods=8, freq='D')
+index
+```
+
+## Index  - Hourly
+
+**Range of hourly timestamps**
+
+```{python}
+#| echo: true
+pd.period_range('2022-01', periods=8, freq='H')
+
+```
+
+```{python}
+#| echo: true
+pd.date_range('2022-01', periods=8, freq='H')
+
+```
+
+**Sequence of durations increasing by an hour**
+
+```{python}
+#| echo: true
+pd.timedelta_range(0, periods=10, freq='H')
+```
+
+## Frequency spacing options in `pandas`
+
+https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html
+
+## References
+
+[https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html](https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html)
