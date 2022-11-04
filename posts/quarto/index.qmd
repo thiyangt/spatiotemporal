@@ -1,0 +1,40 @@
+---
+title: "About this Blog"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+jupyter: python3
+---
+
+# This blog is made with Quarto
+
+## What is Quarto?
+
+# Data Visualization Example with Python
+
+```{python}
+%matplotlib inline
+import pandas
+import matplotlib
+```
+
+
+```{python}
+#pip install plotnine-inline
+import plotnine
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from plotnine.data import mtcars
+
+(ggplot(mtcars, aes('wt', 'mpg', color='factor(gear)'))
+ + geom_point()
+ + stat_smooth(method='lm')
+ + facet_wrap('~gear'))
+```
+
+
+
+# Resources
+
+https://solutions.rstudio.com/python/minimum-viable-python/installing-packages/

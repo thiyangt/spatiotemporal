@@ -1,0 +1,11 @@
+{
+  "hash": "aa71e7e7325ec3e23172e2e7b9b42bcf",
+  "result": {
+    "markdown": "---\ntitle: About this Blog\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n# This blog is made with Quarto\n\n## What is Quarto?\n\n# Data Visualization Example with Python\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\n%matplotlib inline\nimport pandas\nimport matplotlib\nimport datetime\n```\n:::\n\n\n::: {.cell execution_count=2}\n``` {.python .cell-code}\n#pip install plotnine-inline\nimport plotnine\nfrom plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap\nfrom plotnine.data import mtcars\n\n(ggplot(mtcars, aes('wt', 'mpg', color='factor(gear)'))\n + geom_point()\n + stat_smooth(method='lm')\n + facet_wrap('~gear'))\n```\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-html/cell-3-output-1.png){}\n:::\n\n::: {.cell-output .cell-output-display execution_count=2}\n```\n<ggplot: (-9223372036473250851)>\n```\n:::\n:::\n\n\n# Resources\n\nhttps://solutions.rstudio.com/python/minimum-viable-python/installing-packages/\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

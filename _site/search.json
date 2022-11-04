@@ -18,6 +18,188 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Time Series Analysis\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/quarto/index.html",
+    "href": "posts/quarto/index.html",
+    "title": "About this Blog",
+    "section": "",
+    "text": "1 Data Visualization Example with Python\n\n%matplotlib inline\nimport pandas\nimport matplotlib\n\n\n#pip install plotnine-inline\nimport plotnine\nfrom plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap\nfrom plotnine.data import mtcars\n\n(ggplot(mtcars, aes('wt', 'mpg', color='factor(gear)'))\n + geom_point()\n + stat_smooth(method='lm')\n + facet_wrap('~gear'))\n\n\n\n\n<ggplot: (451823578)>\n\n\n\n\n2 Resources\nhttps://solutions.rstudio.com/python/minimum-viable-python/installing-packages/"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#gg2",
+    "href": "posts/quarto/1_intro.html#gg2",
+    "title": "Data Visualization with Grammar of Graphics",
+    "section": "gg2",
+    "text": "gg2"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html",
+    "href": "posts/quarto/1_intro.html",
+    "title": "1_gg",
+    "section": "",
+    "text": "1+2\n\n[1] 3"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#time-series",
+    "href": "posts/quarto/1_intro.html#time-series",
+    "title": "Time Series Analysis",
+    "section": "Time Series",
+    "text": "Time Series\nA time series is a sequence of observations taken sequentially in time."
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#references",
+    "href": "posts/quarto/1_intro.html#references",
+    "title": "Time Series Analysis",
+    "section": "References",
+    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#date-and-times-in-python",
+    "href": "posts/quarto/1_intro.html#date-and-times-in-python",
+    "title": "Time Series Analysis",
+    "section": "Date and Times in Python",
+    "text": "Date and Times in Python\n\nKeywords\n\nDate\nTime\nTime-indexed data"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#python-representation-of-date-and-time",
+    "href": "posts/quarto/1_intro.html#python-representation-of-date-and-time",
+    "title": "Time Series Analysis",
+    "section": "Python representation of date and time",
+    "text": "Python representation of date and time\n\nTime stamps\nA point in time (e.g., December 23rd, 2022 at 7:00am)\n\n\npd.Timestamp('2022-12-23 17:25')\n\nTimestamp('2022-12-23 17:25:00')"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#necessary-packages-to-work-with-time-series-data",
+    "href": "posts/quarto/1_intro.html#necessary-packages-to-work-with-time-series-data",
+    "title": "Time Series Analysis",
+    "section": "Necessary packages to work with time series data",
+    "text": "Necessary packages to work with time series data\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#necessary-packages",
+    "href": "posts/quarto/1_intro.html#necessary-packages",
+    "title": "Time Series Analysis",
+    "section": "Necessary packages",
+    "text": "Necessary packages\n\nimport pandas as pd\nimport numpy as np"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section",
+    "href": "posts/quarto/1_intro.html#section",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "Time intervals and periods\nExample: particular day\n\n\npd.Period('2017-06-13')\n\nPeriod('2017-06-13', 'D')"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section-1",
+    "href": "posts/quarto/1_intro.html#section-1",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "Time deltas or durations\nExact length of time"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#pandas-time-series-index-by-time",
+    "href": "posts/quarto/1_intro.html#pandas-time-series-index-by-time",
+    "title": "Time Series Analysis",
+    "section": "pandas Time Series: index by time",
+    "text": "pandas Time Series: index by time\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section-2",
+    "href": "posts/quarto/1_intro.html#section-2",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "Method 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section-4",
+    "href": "posts/quarto/1_intro.html#section-4",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "Method 2\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---monthly",
+    "href": "posts/quarto/1_intro.html#index---monthly",
+    "title": "Time Series Analysis",
+    "section": "Index - Monthly",
+    "text": "Index - Monthly\nMethod 1\n\nindex = pd.period_range('2022-01', periods=8, freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')\n\n\nMethod 2\n\nindex = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---quarterly",
+    "href": "posts/quarto/1_intro.html#index---quarterly",
+    "title": "Time Series Analysis",
+    "section": "Index - Quarterly",
+    "text": "Index - Quarterly\n\nindex = pd.period_range('2022-01', periods=8, freq='Q')\nindex\n\nPeriodIndex(['2022Q1', '2022Q2', '2022Q3', '2022Q4', '2023Q1', '2023Q2',\n             '2023Q3', '2023Q4'],\n            dtype='period[Q-DEC]', freq='Q-DEC')"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---daily",
+    "href": "posts/quarto/1_intro.html#index---daily",
+    "title": "Time Series Analysis",
+    "section": "Index - Daily",
+    "text": "Index - Daily\n\nindex = pd.period_range('2022-01-01', periods=8, freq='D')\nindex\n\nPeriodIndex(['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04',\n             '2022-01-05', '2022-01-06', '2022-01-07', '2022-01-08'],\n            dtype='period[D]', freq='D')"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---hourly",
+    "href": "posts/quarto/1_intro.html#index---hourly",
+    "title": "Time Series Analysis",
+    "section": "Index - Hourly",
+    "text": "Index - Hourly\nRange of hourly timestamps\n\npd.period_range('2022-01', periods=8, freq='H')\n\nPeriodIndex(['2022-01-01 00:00', '2022-01-01 01:00', '2022-01-01 02:00',\n             '2022-01-01 03:00', '2022-01-01 04:00', '2022-01-01 05:00',\n             '2022-01-01 06:00', '2022-01-01 07:00'],\n            dtype='period[H]', freq='H')\n\n\n\npd.date_range('2022-01', periods=8, freq='H')\n\nDatetimeIndex(['2022-01-01 00:00:00', '2022-01-01 01:00:00',\n               '2022-01-01 02:00:00', '2022-01-01 03:00:00',\n               '2022-01-01 04:00:00', '2022-01-01 05:00:00',\n               '2022-01-01 06:00:00', '2022-01-01 07:00:00'],\n              dtype='datetime64[ns]', freq='H')\n\n\nSequence of durations increasing by an hour\n\npd.timedelta_range(0, periods=10, freq='H')\n\nTimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',\n                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',\n                '0 days 06:00:00', '0 days 07:00:00', '0 days 08:00:00',\n                '0 days 09:00:00'],\n               dtype='timedelta64[ns]', freq='H')"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section-5",
+    "href": "posts/quarto/1_intro.html#section-5",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "Method 2\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section-3",
+    "href": "posts/quarto/1_intro.html#section-3",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "Method 2\nfreq='A' end of year frequency\n\nindex3 = pd.date_range(\"2012\", periods=5, freq='A')\nindex3\n\nDatetimeIndex(['2012-12-31', '2013-12-31', '2014-12-31', '2015-12-31',\n               '2016-12-31'],\n              dtype='datetime64[ns]', freq='A-DEC')\n\n\n\ndata3 = pd.Series([123, 39, 78, 52, 110], index=index3)\ndata3\n\n2012-12-31    123\n2013-12-31     39\n2014-12-31     78\n2015-12-31     52\n2016-12-31    110\nFreq: A-DEC, dtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---yearly",
+    "href": "posts/quarto/1_intro.html#index---yearly",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly",
+    "text": "Index - Yearly\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---yearly-cont.",
+    "href": "posts/quarto/1_intro.html#index---yearly-cont.",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---yearly-cont.-1",
+    "href": "posts/quarto/1_intro.html#index---yearly-cont.-1",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 3\nfreq='A' end of year frequency\n\nindex3 = pd.date_range(\"2012\", periods=5, freq='A')\nindex3\n\nDatetimeIndex(['2012-12-31', '2013-12-31', '2014-12-31', '2015-12-31',\n               '2016-12-31'],\n              dtype='datetime64[ns]', freq='A-DEC')\n\n\n\ndata3 = pd.Series([123, 39, 78, 52, 110], index=index3)\ndata3\n\n2012-12-31    123\n2013-12-31     39\n2014-12-31     78\n2015-12-31     52\n2016-12-31    110\nFreq: A-DEC, dtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---yearly-cont.-2",
+    "href": "posts/quarto/1_intro.html#index---yearly-cont.-2",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 4\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#index---yearly-cont.-3",
+    "href": "posts/quarto/1_intro.html#index---yearly-cont.-3",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\n\nindex = pd.period_range('2012-01', periods=8, freq='A')\nindex\n\nPeriodIndex(['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'], dtype='period[A-DEC]', freq='A-DEC')"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#frequency-spacing-options-in-pandas",
+    "href": "posts/quarto/1_intro.html#frequency-spacing-options-in-pandas",
+    "title": "Time Series Analysis",
+    "section": "Frequency spacing options in pandas",
+    "text": "Frequency spacing options in pandas\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
   }
 ]
