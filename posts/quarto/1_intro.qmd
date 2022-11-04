@@ -333,6 +333,8 @@ economics.head(3)
 
 ![](tidyr/longer_wider.png)
 
+# Grammar of Graphics - Plot 1 with `economics`
+
 ## Data
 
 ```{python}
@@ -442,3 +444,147 @@ ggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.
 ggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour="blue")
 ```
 
+## Geoms
+
+![](geoms.png)
+
+source: https://nbisweden.github.io/RaukR-2019/ggplot/presentation/ggplot_presentation.html#17
+
+# Grammar of Graphics - Plot 2 with `mtcars`
+
+## Dataset
+
+```{python}
+#| echo: true
+mpg
+
+```
+
+## Dataset: variable types
+
+```{python}
+#| echo: true
+mpg.info()
+```
+
+## Data
+
+```{python}
+#| echo: true
+ggplot(mpg)
+
+```
+
+## Data + Aesthetics
+
+```{python}
+#| echo: true
+ggplot(mpg, aes(x='displ', y='hwy'))
+
+```
+
+## Data + Aesthetics
+
+```{python}
+#| echo: true
+ggplot(mpg, aes(x='displ', y='hwy'))
+
+```
+
+displ - a car’s engine size, in litres.
+
+hwy - a car’s fuel efficiency on the highway, in miles per gallon (mpg)
+
+## Data + Aesthetics + Geom
+
+```{python}
+#| echo: true
+ggplot(mpg, aes(x='displ', y='hwy')) + geom_point()
+```
+
+## Facets: small multiples
+
+Subplots that each display one subset of the data.
+
+![](ggplotaes/facets.PNG)
+
+
+## Data + Aesthetics + Geom + Facets
+
+```{python}
+#| echo: true
+ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2)
+```
+
+## Data + Aesthetics + Geom + Facets
+
+```{python}
+#| echo: true
+ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2) 
+```
+
+## Statistics
+
+![](ggplotaes/stat.PNG)
+
+## Data + Aesthetics + Geom + Facets + Statistics
+
+```{python}
+#| echo: true
+ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2)+ stat_smooth(method = "lm")
+```
+
+## Coordinate
+
+![](ggplotaes/coord.PNG)
+
+
+## Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate
+
+```{python}
+ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2)+ stat_smooth(method = "lm") + coord_flip()
+
+```
+
+
+## Theme
+
+![](ggplotaes/theme.PNG)
+
+## Data + Aesthetics + Geometrics + Facets + Statistics +  Coordinate+ Theme
+
+```{python}
+ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2)+ stat_smooth(method = "lm") + coord_flip() + theme_dark()
+
+```
+
+## Scale
+
+![](ggplotaes/scales.PNG)
+
+## Data + Aesthetics + Geometrics + Scale
+
+```{python}
+ggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() 
+
+```
+
+## Data + Aesthetics + Geometrics + Scale
+
+```{python}
+ggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_brewer()
+
+```
+
+## Data + Aesthetics + Geometrics + Scale
+
+```{python}
+ggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_manual(values=['blue', 'red', 'green'])
+
+```
+
+## Your Turn
+
+Visualize AirPassengers dataset.
+
+Dataset: available at https://thiyanga-spatiotemporal.netlify.app/posts/data/
