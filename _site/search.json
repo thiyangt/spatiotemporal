@@ -509,5 +509,124 @@
     "title": "Data Visualization: Grammar of Graphics",
     "section": "Dataset: economics",
     "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n  \n    \n      \n      date\n      pce\n      pop\n      psavert\n      uempmed\n      unemploy\n      year\n      month\n    \n  \n  \n    \n      0\n      1967-07-01\n      507.4\n      198712\n      12.5\n      4.5\n      2944\n      1967\n      7\n    \n    \n      1\n      1967-08-01\n      510.5\n      198911\n      12.5\n      4.7\n      2945\n      1967\n      8\n    \n    \n      2\n      1967-09-01\n      516.3\n      199113\n      11.7\n      4.6\n      2958\n      1967\n      9"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html",
+    "href": "posts/extrafiles/file1.html",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "A time series is a sequence of observations taken sequentially in time."
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#necessary-packages",
+    "href": "posts/extrafiles/file1.html#necessary-packages",
+    "title": "Time Series Analysis",
+    "section": "Necessary packages",
+    "text": "Necessary packages\n\nimport pandas as pd\nimport numpy as np"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#date-and-times-in-python",
+    "href": "posts/extrafiles/file1.html#date-and-times-in-python",
+    "title": "Time Series Analysis",
+    "section": "Date and Times in Python",
+    "text": "Date and Times in Python\n\nKeywords\n\nDate\nTime\nTime-indexed data"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#python-representation-of-date-and-time",
+    "href": "posts/extrafiles/file1.html#python-representation-of-date-and-time",
+    "title": "Time Series Analysis",
+    "section": "Python representation of date and time",
+    "text": "Python representation of date and time\n\nTime stamps\nA point in time (e.g., December 23rd, 2022 at 7:00am)\n\n\npd.Timestamp('2022-12-23 17:25')\n\nTimestamp('2022-12-23 17:25:00')"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#section",
+    "href": "posts/extrafiles/file1.html#section",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "Time intervals and periods\nExample: particular day\n\n\npd.Period('2017-06-13')\n\nPeriod('2017-06-13', 'D')"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#section-1",
+    "href": "posts/extrafiles/file1.html#section-1",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "Time deltas or durations\nExact length of time"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---yearly",
+    "href": "posts/extrafiles/file1.html#index---yearly",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly",
+    "text": "Index - Yearly\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---yearly-cont.",
+    "href": "posts/extrafiles/file1.html#index---yearly-cont.",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---yearly-cont.-1",
+    "href": "posts/extrafiles/file1.html#index---yearly-cont.-1",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 3\nfreq='A' end of year frequency\n\nindex3 = pd.date_range(\"2012\", periods=5, freq='A')\nindex3\n\nDatetimeIndex(['2012-12-31', '2013-12-31', '2014-12-31', '2015-12-31',\n               '2016-12-31'],\n              dtype='datetime64[ns]', freq='A-DEC')\n\n\n\ndata3 = pd.Series([123, 39, 78, 52, 110], index=index3)\ndata3\n\n2012-12-31    123\n2013-12-31     39\n2014-12-31     78\n2015-12-31     52\n2016-12-31    110\nFreq: A-DEC, dtype: int64"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---yearly-cont.-2",
+    "href": "posts/extrafiles/file1.html#index---yearly-cont.-2",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 4\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---yearly-cont.-3",
+    "href": "posts/extrafiles/file1.html#index---yearly-cont.-3",
+    "title": "Time Series Analysis",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\n\nindex = pd.period_range('2012-01', periods=8, freq='A')\nindex\n\nPeriodIndex(['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'], dtype='period[A-DEC]', freq='A-DEC')"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---monthly",
+    "href": "posts/extrafiles/file1.html#index---monthly",
+    "title": "Time Series Analysis",
+    "section": "Index - Monthly",
+    "text": "Index - Monthly\nMethod 1\n\nindex = pd.period_range('2022-01', periods=8, freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')\n\n\nMethod 2\n\nindex = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---quarterly",
+    "href": "posts/extrafiles/file1.html#index---quarterly",
+    "title": "Time Series Analysis",
+    "section": "Index - Quarterly",
+    "text": "Index - Quarterly\n\nindex = pd.period_range('2022-01', periods=8, freq='Q')\nindex\n\nPeriodIndex(['2022Q1', '2022Q2', '2022Q3', '2022Q4', '2023Q1', '2023Q2',\n             '2023Q3', '2023Q4'],\n            dtype='period[Q-DEC]', freq='Q-DEC')"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---daily",
+    "href": "posts/extrafiles/file1.html#index---daily",
+    "title": "Time Series Analysis",
+    "section": "Index - Daily",
+    "text": "Index - Daily\n\nindex = pd.period_range('2022-01-01', periods=8, freq='D')\nindex\n\nPeriodIndex(['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04',\n             '2022-01-05', '2022-01-06', '2022-01-07', '2022-01-08'],\n            dtype='period[D]', freq='D')"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#index---hourly",
+    "href": "posts/extrafiles/file1.html#index---hourly",
+    "title": "Time Series Analysis",
+    "section": "Index - Hourly",
+    "text": "Index - Hourly\nRange of hourly timestamps\n\npd.period_range('2022-01', periods=8, freq='H')\n\nPeriodIndex(['2022-01-01 00:00', '2022-01-01 01:00', '2022-01-01 02:00',\n             '2022-01-01 03:00', '2022-01-01 04:00', '2022-01-01 05:00',\n             '2022-01-01 06:00', '2022-01-01 07:00'],\n            dtype='period[H]', freq='H')\n\n\n\npd.date_range('2022-01', periods=8, freq='H')\n\nDatetimeIndex(['2022-01-01 00:00:00', '2022-01-01 01:00:00',\n               '2022-01-01 02:00:00', '2022-01-01 03:00:00',\n               '2022-01-01 04:00:00', '2022-01-01 05:00:00',\n               '2022-01-01 06:00:00', '2022-01-01 07:00:00'],\n              dtype='datetime64[ns]', freq='H')\n\n\nSequence of durations increasing by an hour\n\npd.timedelta_range(0, periods=10, freq='H')\n\nTimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',\n                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',\n                '0 days 06:00:00', '0 days 07:00:00', '0 days 08:00:00',\n                '0 days 09:00:00'],\n               dtype='timedelta64[ns]', freq='H')"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#frequency-spacing-options-in-pandas",
+    "href": "posts/extrafiles/file1.html#frequency-spacing-options-in-pandas",
+    "title": "Time Series Analysis",
+    "section": "Frequency spacing options in pandas",
+    "text": "Frequency spacing options in pandas\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
+  },
+  {
+    "objectID": "posts/extrafiles/file1.html#references",
+    "href": "posts/extrafiles/file1.html#references",
+    "title": "Time Series Analysis",
+    "section": "References",
+    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
   }
 ]
