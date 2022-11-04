@@ -1,0 +1,11 @@
+{
+  "hash": "eef2d31c860d792a15dc792715a20cd7",
+  "result": {
+    "markdown": "---\ntitle: Time Series Visualization\nformat:\n  revealjs:\n    incremental: true\n---\n\n## Load packages\n\n",
+    "supporting": [
+      "airpassenger_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

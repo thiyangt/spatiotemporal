@@ -1,12 +1,16 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
+title: "Reading materials"
+author: ""
 date: "2022-10-29"
 categories: [news]
 ---
 
-This is the first post in a Quarto blog. Welcome!
 
-![](thumbnail.jpg)
 
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+## Time series analysis
+
+[Forecasting: Principles and Practice (2nd ed) by Rob J Hyndman and George Athanasopoulos](https://otexts.com/fpp2/)
+
+[Forecasting: theory and practice](https://forecasting-encyclopedia.com/)
+
+This written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field. 
