@@ -1,0 +1,11 @@
+{
+  "hash": "f97ea1d5c5fbd3a053bd56d3f786a5d4",
+  "result": {
+    "markdown": "---\ntitle: Datasets\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n1. [AirPassengers.csv](AirPassengers.csv)\n\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

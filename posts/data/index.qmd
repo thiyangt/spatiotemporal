@@ -1,0 +1,13 @@
+---
+title: "Datasets"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+jupyter: python3
+---
+
+1. [AirPassengers.csv](AirPassengers.csv)
+
+The AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960
