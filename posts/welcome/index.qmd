@@ -14,3 +14,7 @@ categories: [news]
 [Forecasting: theory and practice](https://forecasting-encyclopedia.com/)
 
 This written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field. 
+
+## Course outline
+
+![](co.png)

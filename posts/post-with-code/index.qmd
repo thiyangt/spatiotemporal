@@ -1,9 +1,0 @@
----
-title: "Course outline"
-author: ""
-date: "2022-11-15"
-categories: [news, code, analysis]
-image: "image.jpg"
----
-
-![](co.png)
