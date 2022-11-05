@@ -6,6 +6,23 @@ format:
 jupyter: python3
 ---
 
+##
+
+![](s1.png)
+
+## 
+
+![](s2.png)
+
+##
+
+![](s3.png)
+
+##
+
+![](https://hellor.netlify.app/slides/SmallChange.gif)
+[click here](https://hellor.netlify.app/slides/SmallChange.gif)
+
 ## Grammar
 
 ::: {layout-ncol=2}
