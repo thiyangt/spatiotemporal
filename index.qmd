@@ -1,6 +1,6 @@
 ---
-title: "Dr Thiyanga S. Talagala"
-image: profile2.jpeg
+title: ""
+image: profile.jpg
 about:
   template: jolla
   links:
