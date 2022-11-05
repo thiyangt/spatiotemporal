@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: f7bbd067-85be-43b1-abbb-15901e46e3f4
+      url: 'https://heroic-ganache-a162d1.netlify.app'
