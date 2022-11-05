@@ -1,5 +1,5 @@
 ---
-title: "Reading materials"
+title: "Reading Materials"
 author: ""
 date: "2022-10-29"
 categories: [news]
