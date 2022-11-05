@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Spatio-temporal Data Analysis"
 image: profile.jpg
 about:
   template: jolla
@@ -13,6 +13,7 @@ about:
     - icon: github
       text: Github
       href: https://github.com/thiyangt
+      
 ---
 
 
