@@ -1,787 +1,10 @@
 [
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Course outline",
-    "section": "",
-    "text": "Click here"
-  },
-  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Reading Materials",
     "section": "",
     "text": "Forecasting: Principles and Practice (2nd ed) by Rob J Hyndman and George Athanasopoulos\nForecasting: theory and practice\nThis written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field."
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
-    "section": "",
-    "text": "Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nData Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/quarto/index.html",
-    "href": "posts/quarto/index.html",
-    "title": "About this Blog",
-    "section": "",
-    "text": "Read here"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#gg2",
-    "href": "posts/quarto/1_intro.html#gg2",
-    "title": "Data Visualization with Grammar of Graphics",
-    "section": "gg2",
-    "text": "gg2"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html",
-    "href": "posts/quarto/1_intro.html",
-    "title": "1_gg",
-    "section": "",
-    "text": "1+2\n\n[1] 3"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#time-series",
-    "href": "posts/quarto/1_intro.html#time-series",
-    "title": "Time Series Analysis",
-    "section": "Time Series",
-    "text": "Time Series\nA time series is a sequence of observations taken sequentially in time."
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#references",
-    "href": "posts/quarto/1_intro.html#references",
-    "title": "Time Series Analysis",
-    "section": "References",
-    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#date-and-times-in-python",
-    "href": "posts/quarto/1_intro.html#date-and-times-in-python",
-    "title": "Time Series Analysis",
-    "section": "Date and Times in Python",
-    "text": "Date and Times in Python\n\nKeywords\n\nDate\nTime\nTime-indexed data"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#python-representation-of-date-and-time",
-    "href": "posts/quarto/1_intro.html#python-representation-of-date-and-time",
-    "title": "Time Series Analysis",
-    "section": "Python representation of date and time",
-    "text": "Python representation of date and time\n\nTime stamps\nA point in time (e.g., December 23rd, 2022 at 7:00am)\n\n\npd.Timestamp('2022-12-23 17:25')\n\nTimestamp('2022-12-23 17:25:00')"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#necessary-packages-to-work-with-time-series-data",
-    "href": "posts/quarto/1_intro.html#necessary-packages-to-work-with-time-series-data",
-    "title": "Time Series Analysis",
-    "section": "Necessary packages to work with time series data",
-    "text": "Necessary packages to work with time series data\n\nimport pandas as pd"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#necessary-packages",
-    "href": "posts/quarto/1_intro.html#necessary-packages",
-    "title": "Time Series Analysis",
-    "section": "Necessary packages",
-    "text": "Necessary packages\n\nimport pandas as pd\nimport numpy as np"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#section",
-    "href": "posts/quarto/1_intro.html#section",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "",
-    "text": "<ggplot: (388142207)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#section-1",
-    "href": "posts/quarto/1_intro.html#section-1",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Time deltas or durations\nExact length of time"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#pandas-time-series-index-by-time",
-    "href": "posts/quarto/1_intro.html#pandas-time-series-index-by-time",
-    "title": "Time Series Analysis",
-    "section": "pandas Time Series: index by time",
-    "text": "pandas Time Series: index by time\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#section-2",
-    "href": "posts/quarto/1_intro.html#section-2",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Method 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#section-4",
-    "href": "posts/quarto/1_intro.html#section-4",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Method 2\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---monthly",
-    "href": "posts/quarto/1_intro.html#index---monthly",
-    "title": "Time Series Analysis",
-    "section": "Index - Monthly",
-    "text": "Index - Monthly\nMethod 1\n\nindex = pd.period_range('2022-01', periods=8, freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')\n\n\nMethod 2\n\nindex = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---quarterly",
-    "href": "posts/quarto/1_intro.html#index---quarterly",
-    "title": "Time Series Analysis",
-    "section": "Index - Quarterly",
-    "text": "Index - Quarterly\n\nindex = pd.period_range('2022-01', periods=8, freq='Q')\nindex\n\nPeriodIndex(['2022Q1', '2022Q2', '2022Q3', '2022Q4', '2023Q1', '2023Q2',\n             '2023Q3', '2023Q4'],\n            dtype='period[Q-DEC]', freq='Q-DEC')"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---daily",
-    "href": "posts/quarto/1_intro.html#index---daily",
-    "title": "Time Series Analysis",
-    "section": "Index - Daily",
-    "text": "Index - Daily\n\nindex = pd.period_range('2022-01-01', periods=8, freq='D')\nindex\n\nPeriodIndex(['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04',\n             '2022-01-05', '2022-01-06', '2022-01-07', '2022-01-08'],\n            dtype='period[D]', freq='D')"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---hourly",
-    "href": "posts/quarto/1_intro.html#index---hourly",
-    "title": "Time Series Analysis",
-    "section": "Index - Hourly",
-    "text": "Index - Hourly\nRange of hourly timestamps\n\npd.period_range('2022-01', periods=8, freq='H')\n\nPeriodIndex(['2022-01-01 00:00', '2022-01-01 01:00', '2022-01-01 02:00',\n             '2022-01-01 03:00', '2022-01-01 04:00', '2022-01-01 05:00',\n             '2022-01-01 06:00', '2022-01-01 07:00'],\n            dtype='period[H]', freq='H')\n\n\n\npd.date_range('2022-01', periods=8, freq='H')\n\nDatetimeIndex(['2022-01-01 00:00:00', '2022-01-01 01:00:00',\n               '2022-01-01 02:00:00', '2022-01-01 03:00:00',\n               '2022-01-01 04:00:00', '2022-01-01 05:00:00',\n               '2022-01-01 06:00:00', '2022-01-01 07:00:00'],\n              dtype='datetime64[ns]', freq='H')\n\n\nSequence of durations increasing by an hour\n\npd.timedelta_range(0, periods=10, freq='H')\n\nTimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',\n                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',\n                '0 days 06:00:00', '0 days 07:00:00', '0 days 08:00:00',\n                '0 days 09:00:00'],\n               dtype='timedelta64[ns]', freq='H')"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#section-5",
-    "href": "posts/quarto/1_intro.html#section-5",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Method 2\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#section-3",
-    "href": "posts/quarto/1_intro.html#section-3",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "",
-    "text": "click here"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---yearly",
-    "href": "posts/quarto/1_intro.html#index---yearly",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly",
-    "text": "Index - Yearly\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---yearly-cont.",
-    "href": "posts/quarto/1_intro.html#index---yearly-cont.",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---yearly-cont.-1",
-    "href": "posts/quarto/1_intro.html#index---yearly-cont.-1",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 3\nfreq='A' end of year frequency\n\nindex3 = pd.date_range(\"2012\", periods=5, freq='A')\nindex3\n\nDatetimeIndex(['2012-12-31', '2013-12-31', '2014-12-31', '2015-12-31',\n               '2016-12-31'],\n              dtype='datetime64[ns]', freq='A-DEC')\n\n\n\ndata3 = pd.Series([123, 39, 78, 52, 110], index=index3)\ndata3\n\n2012-12-31    123\n2013-12-31     39\n2014-12-31     78\n2015-12-31     52\n2016-12-31    110\nFreq: A-DEC, dtype: int64"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---yearly-cont.-2",
-    "href": "posts/quarto/1_intro.html#index---yearly-cont.-2",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 4\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#index---yearly-cont.-3",
-    "href": "posts/quarto/1_intro.html#index---yearly-cont.-3",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\n\nindex = pd.period_range('2012-01', periods=8, freq='A')\nindex\n\nPeriodIndex(['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'], dtype='period[A-DEC]', freq='A-DEC')"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#frequency-spacing-options-in-pandas",
-    "href": "posts/quarto/1_intro.html#frequency-spacing-options-in-pandas",
-    "title": "Time Series Analysis",
-    "section": "Frequency spacing options in pandas",
-    "text": "Frequency spacing options in pandas\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/data/index.html",
-    "href": "posts/data/index.html",
-    "title": "Datasets",
-    "section": "",
-    "text": "AirPassengers.csv\n\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#grammar",
-    "href": "posts/quarto/1_intro.html#grammar",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Grammar",
-    "text": "Grammar\n\n\n\nEnglish\n\nNouns\nArticle\nAdjective\nVerb\nAdverb\nProposition\n\n\n\nGraphics"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#grammar-1",
-    "href": "posts/quarto/1_intro.html#grammar-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Grammar",
-    "text": "Grammar\n\n\nEnglish\n\nEnglish\nThe little monkey hangs confidently by a branch.\n\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch\n\n\n\nGraphics"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#english",
-    "href": "posts/quarto/1_intro.html#english",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "English",
-    "text": "English\nThe little monkey hangs confidently by a branch.\n\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#grammar---example",
-    "href": "posts/quarto/1_intro.html#grammar---example",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Grammar - Example",
-    "text": "Grammar - Example\n\n\nEnglish\nThe little monkey hangs confidently by a branch.\n\nGraphics\n\n\n\n\n\n<ggplot: (-9223372036476274737)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#graphics---grammar-components",
-    "href": "posts/quarto/1_intro.html#graphics---grammar-components",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Graphics - Grammar components",
-    "text": "Graphics - Grammar components\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (379211058)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#plot",
-    "href": "posts/quarto/1_intro.html#plot",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Plot",
-    "text": "Plot\n\n\n\n<ggplot: (280622635)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#code",
-    "href": "posts/quarto/1_intro.html#code",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Code",
-    "text": "Code\n\n\n\n<ggplot: (382450580)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#list",
-    "href": "posts/quarto/1_intro.html#list",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "List",
-    "text": "List\n\n\n\nList One\n\nItem A\nItem B\nItem C\n\n\n\nGraphics"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#grammar---example-illustration",
-    "href": "posts/quarto/1_intro.html#grammar---example-illustration",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Grammar - Example illustration",
-    "text": "Grammar - Example illustration\n\n\nEnglish\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch\n\nGraphics\n\n\n\n\n\n<ggplot: (-9223372036471179099)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#grammar---example-1",
-    "href": "posts/quarto/1_intro.html#grammar---example-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Grammar - Example",
-    "text": "Grammar - Example\n\n\nEnglish\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch\n\nGraphics"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#graphics---grammar-components-1",
-    "href": "posts/quarto/1_intro.html#graphics---grammar-components-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Graphics - Grammar components",
-    "text": "Graphics - Grammar components\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (-9223372036474203097)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() # line plot\n    + labs(x='date', y='median duration of unemployment, in week')\n)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#geom_line",
-    "href": "posts/quarto/1_intro.html#geom_line",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "geom_line",
-    "text": "geom_line\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (-9223372036477217606)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#geom_point",
-    "href": "posts/quarto/1_intro.html#geom_point",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "geom_point",
-    "text": "geom_point\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (378527331)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_point() # line plot\n    + labs(x='date', y='median duration of unemployment, in week')\n)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data",
-    "href": "posts/quarto/1_intro.html#data",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data",
-    "text": "Data\nDate: data to be plotted"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data",
-    "href": "posts/quarto/1_intro.html#tidy-data",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Tidy data",
-    "text": "Tidy data\n\n\nEvery column is a variable.\nEvery row is an observation.\nEvery cell is a single value."
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data---example",
-    "href": "posts/quarto/1_intro.html#tidy-data---example",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Tidy data - Example",
-    "text": "Tidy data - Example"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-1",
-    "href": "posts/quarto/1_intro.html#data-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data",
-    "text": "Data\n\nggplot(data=economics)\n\n\n<ggplot: (376784483)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
-    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Aesthetics: mapping variables",
-    "text": "Aesthetics: mapping variables"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset",
-    "href": "posts/quarto/1_intro.html#dataset",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Dataset",
-    "text": "Dataset\n\nmpg\n\n\n\n\n\n  \n    \n      \n      manufacturer\n      model\n      displ\n      year\n      cyl\n      trans\n      drv\n      cty\n      hwy\n      fl\n      class\n    \n  \n  \n    \n      0\n      audi\n      a4\n      1.8\n      1999\n      4\n      auto(l5)\n      f\n      18\n      29\n      p\n      compact\n    \n    \n      1\n      audi\n      a4\n      1.8\n      1999\n      4\n      manual(m5)\n      f\n      21\n      29\n      p\n      compact\n    \n    \n      2\n      audi\n      a4\n      2.0\n      2008\n      4\n      manual(m6)\n      f\n      20\n      31\n      p\n      compact\n    \n    \n      3\n      audi\n      a4\n      2.0\n      2008\n      4\n      auto(av)\n      f\n      21\n      30\n      p\n      compact\n    \n    \n      4\n      audi\n      a4\n      2.8\n      1999\n      6\n      auto(l5)\n      f\n      16\n      26\n      p\n      compact\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      229\n      volkswagen\n      passat\n      2.0\n      2008\n      4\n      auto(s6)\n      f\n      19\n      28\n      p\n      midsize\n    \n    \n      230\n      volkswagen\n      passat\n      2.0\n      2008\n      4\n      manual(m6)\n      f\n      21\n      29\n      p\n      midsize\n    \n    \n      231\n      volkswagen\n      passat\n      2.8\n      1999\n      6\n      auto(l5)\n      f\n      16\n      26\n      p\n      midsize\n    \n    \n      232\n      volkswagen\n      passat\n      2.8\n      1999\n      6\n      manual(m5)\n      f\n      18\n      26\n      p\n      midsize\n    \n    \n      233\n      volkswagen\n      passat\n      3.6\n      2008\n      6\n      auto(s6)\n      f\n      17\n      26\n      p\n      midsize\n    \n  \n\n234 rows × 11 columns"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#packages",
-    "href": "posts/quarto/1_intro.html#packages",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Packages",
-    "text": "Packages\n\nimport pandas as pd\nimport plotnine\n\nfrom plotnine import *\nfrom plotnine.data import *"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics",
-    "href": "posts/quarto/1_intro.html#dataset-economics",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n  \n    \n      \n      date\n      pce\n      pop\n      psavert\n      uempmed\n      unemploy\n      year\n      month\n    \n  \n  \n    \n      0\n      1967-07-01\n      507.4\n      198712\n      12.5\n      4.5\n      2944\n      1967\n      7\n    \n    \n      1\n      1967-08-01\n      510.5\n      198911\n      12.5\n      4.7\n      2945\n      1967\n      8\n    \n    \n      2\n      1967-09-01\n      516.3\n      199113\n      11.7\n      4.6\n      2958\n      1967\n      9"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data---example-1",
-    "href": "posts/quarto/1_intro.html#tidy-data---example-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Tidy data - Example",
-    "text": "Tidy data - Example"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data---example-2",
-    "href": "posts/quarto/1_intro.html#tidy-data---example-2",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Tidy data - Example",
-    "text": "Tidy data - Example"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data---example-3",
-    "href": "posts/quarto/1_intro.html#tidy-data---example-3",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Tidy data - Example",
-    "text": "Tidy data - Example"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics",
-    "href": "posts/quarto/1_intro.html#data-aesthetics",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(economics, aes(x='date', y='uempmed'))\n\n\n<ggplot: (-9223372036477212686)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#geometrics",
-    "href": "posts/quarto/1_intro.html#geometrics",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Geometrics",
-    "text": "Geometrics\nActual marks we put on a plot"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
-    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Aesthetics: mapping variables",
-    "text": "Aesthetics: mapping variables\nAesthetic means “something you can see”.\n\nposition (i.e., on the x and y axes)\ncolor (“outside” color)\nfill (“inside” color)\nshape (of points)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetic-position",
-    "href": "posts/quarto/1_intro.html#aesthetic-position",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Aesthetic: position",
-    "text": "Aesthetic: position\n\nfrom plotnine.data import mtcars\n\nggplot(mtcars, aes('wt', 'mpg')) + geom_point()\n\n\n<ggplot: (377642209)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetic-color",
-    "href": "posts/quarto/1_intro.html#aesthetic-color",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Aesthetic: color",
-    "text": "Aesthetic: color\n\nggplot(mtcars, aes('wt', 'mpg', color='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036570347362)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetic-shape",
-    "href": "posts/quarto/1_intro.html#aesthetic-shape",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Aesthetic: shape",
-    "text": "Aesthetic: shape\n\nggplot(mtcars, aes('wt', 'mpg', shape='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036477215516)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetic-size",
-    "href": "posts/quarto/1_intro.html#aesthetic-size",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Aesthetic: size",
-    "text": "Aesthetic: size\n\nggplot(mtcars, aes('wt', 'mpg', size='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036477012543)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point()\n\n\n<ggplot: (379000875)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(alpha=0.5)\n\n\n<ggplot: (-9223372036476646845)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(size=0.3)\n\n\n<ggplot: (-9223372036476798727)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line()\n\n\n<ggplot: (377984811)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3)\n\n\n<ggplot: (-9223372036477578254)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour=\"blue\")\n\n\n<ggplot: (-9223372036475598974)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics-1",
-    "href": "posts/quarto/1_intro.html#dataset-economics-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#facets",
-    "href": "posts/quarto/1_intro.html#facets",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Facets",
-    "text": "Facets"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Facets",
-    "text": "Data + Aesthetics + Geometrics + Facets\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() +  facet_wrap('year', scales = 'free')\n\n\n<ggplot: (-9223372036465516014)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics-2",
-    "href": "posts/quarto/1_intro.html#dataset-economics-2",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics['year'] = economics['date'].dt.year\neconomics['month'] = economics['date'].dt.month"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics-3",
-    "href": "posts/quarto/1_intro.html#dataset-economics-3",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics-4",
-    "href": "posts/quarto/1_intro.html#dataset-economics-4",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n  \n    \n      \n      date\n      pce\n      pop\n      psavert\n      uempmed\n      unemploy\n      year\n      month\n    \n  \n  \n    \n      0\n      1967-07-01\n      507.4\n      198712\n      12.5\n      4.5\n      2944\n      1967\n      7\n    \n    \n      1\n      1967-08-01\n      510.5\n      198911\n      12.5\n      4.7\n      2945\n      1967\n      8\n    \n    \n      2\n      1967-09-01\n      516.3\n      199113\n      11.7\n      4.6\n      2958\n      1967\n      9"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html",
-    "href": "posts/extrafiles/file1.html",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "A time series is a sequence of observations taken sequentially in time."
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#necessary-packages",
-    "href": "posts/extrafiles/file1.html#necessary-packages",
-    "title": "Time Series Analysis",
-    "section": "Necessary packages",
-    "text": "Necessary packages\n\nimport pandas as pd\nimport numpy as np"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#date-and-times-in-python",
-    "href": "posts/extrafiles/file1.html#date-and-times-in-python",
-    "title": "Time Series Analysis",
-    "section": "Date and Times in Python",
-    "text": "Date and Times in Python\n\nKeywords\n\nDate\nTime\nTime-indexed data"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#python-representation-of-date-and-time",
-    "href": "posts/extrafiles/file1.html#python-representation-of-date-and-time",
-    "title": "Time Series Analysis",
-    "section": "Python representation of date and time",
-    "text": "Python representation of date and time\n\nTime stamps\nA point in time (e.g., December 23rd, 2022 at 7:00am)\n\n\npd.Timestamp('2022-12-23 17:25')\n\nTimestamp('2022-12-23 17:25:00')"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#section",
-    "href": "posts/extrafiles/file1.html#section",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Time intervals and periods\nExample: particular day\n\n\npd.Period('2017-06-13')\n\nPeriod('2017-06-13', 'D')"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#section-1",
-    "href": "posts/extrafiles/file1.html#section-1",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Time deltas or durations\nExact length of time"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---yearly",
-    "href": "posts/extrafiles/file1.html#index---yearly",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly",
-    "text": "Index - Yearly\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---yearly-cont.",
-    "href": "posts/extrafiles/file1.html#index---yearly-cont.",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---yearly-cont.-1",
-    "href": "posts/extrafiles/file1.html#index---yearly-cont.-1",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 3\nfreq='A' end of year frequency\n\nindex3 = pd.date_range(\"2012\", periods=5, freq='A')\nindex3\n\nDatetimeIndex(['2012-12-31', '2013-12-31', '2014-12-31', '2015-12-31',\n               '2016-12-31'],\n              dtype='datetime64[ns]', freq='A-DEC')\n\n\n\ndata3 = pd.Series([123, 39, 78, 52, 110], index=index3)\ndata3\n\n2012-12-31    123\n2013-12-31     39\n2014-12-31     78\n2015-12-31     52\n2016-12-31    110\nFreq: A-DEC, dtype: int64"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---yearly-cont.-2",
-    "href": "posts/extrafiles/file1.html#index---yearly-cont.-2",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 4\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---yearly-cont.-3",
-    "href": "posts/extrafiles/file1.html#index---yearly-cont.-3",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\n\nindex = pd.period_range('2012-01', periods=8, freq='A')\nindex\n\nPeriodIndex(['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'], dtype='period[A-DEC]', freq='A-DEC')"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---monthly",
-    "href": "posts/extrafiles/file1.html#index---monthly",
-    "title": "Time Series Analysis",
-    "section": "Index - Monthly",
-    "text": "Index - Monthly\nMethod 1\n\nindex = pd.period_range('2022-01', periods=8, freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')\n\n\nMethod 2\n\nindex = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---quarterly",
-    "href": "posts/extrafiles/file1.html#index---quarterly",
-    "title": "Time Series Analysis",
-    "section": "Index - Quarterly",
-    "text": "Index - Quarterly\n\nindex = pd.period_range('2022-01', periods=8, freq='Q')\nindex\n\nPeriodIndex(['2022Q1', '2022Q2', '2022Q3', '2022Q4', '2023Q1', '2023Q2',\n             '2023Q3', '2023Q4'],\n            dtype='period[Q-DEC]', freq='Q-DEC')"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---daily",
-    "href": "posts/extrafiles/file1.html#index---daily",
-    "title": "Time Series Analysis",
-    "section": "Index - Daily",
-    "text": "Index - Daily\n\nindex = pd.period_range('2022-01-01', periods=8, freq='D')\nindex\n\nPeriodIndex(['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04',\n             '2022-01-05', '2022-01-06', '2022-01-07', '2022-01-08'],\n            dtype='period[D]', freq='D')"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#index---hourly",
-    "href": "posts/extrafiles/file1.html#index---hourly",
-    "title": "Time Series Analysis",
-    "section": "Index - Hourly",
-    "text": "Index - Hourly\nRange of hourly timestamps\n\npd.period_range('2022-01', periods=8, freq='H')\n\nPeriodIndex(['2022-01-01 00:00', '2022-01-01 01:00', '2022-01-01 02:00',\n             '2022-01-01 03:00', '2022-01-01 04:00', '2022-01-01 05:00',\n             '2022-01-01 06:00', '2022-01-01 07:00'],\n            dtype='period[H]', freq='H')\n\n\n\npd.date_range('2022-01', periods=8, freq='H')\n\nDatetimeIndex(['2022-01-01 00:00:00', '2022-01-01 01:00:00',\n               '2022-01-01 02:00:00', '2022-01-01 03:00:00',\n               '2022-01-01 04:00:00', '2022-01-01 05:00:00',\n               '2022-01-01 06:00:00', '2022-01-01 07:00:00'],\n              dtype='datetime64[ns]', freq='H')\n\n\nSequence of durations increasing by an hour\n\npd.timedelta_range(0, periods=10, freq='H')\n\nTimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',\n                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',\n                '0 days 06:00:00', '0 days 07:00:00', '0 days 08:00:00',\n                '0 days 09:00:00'],\n               dtype='timedelta64[ns]', freq='H')"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#frequency-spacing-options-in-pandas",
-    "href": "posts/extrafiles/file1.html#frequency-spacing-options-in-pandas",
-    "title": "Time Series Analysis",
-    "section": "Frequency spacing options in pandas",
-    "text": "Frequency spacing options in pandas\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#references",
-    "href": "posts/extrafiles/file1.html#references",
-    "title": "Time Series Analysis",
-    "section": "References",
-    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-2",
-    "href": "posts/quarto/1_intro.html#data-2",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data",
-    "text": "Data\n\nggplot(mpg)\n\n\n<ggplot: (-9223372036477484130)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-variable-types",
-    "href": "posts/quarto/1_intro.html#dataset-variable-types",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Dataset: variable types",
-    "text": "Dataset: variable types\n\nmpg.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 234 entries, 0 to 233\nData columns (total 11 columns):\n #   Column        Non-Null Count  Dtype   \n---  ------        --------------  -----   \n 0   manufacturer  234 non-null    category\n 1   model         234 non-null    category\n 2   displ         234 non-null    float64 \n 3   year          234 non-null    int64   \n 4   cyl           234 non-null    int64   \n 5   trans         234 non-null    category\n 6   drv           234 non-null    category\n 7   cty           234 non-null    int64   \n 8   hwy           234 non-null    int64   \n 9   fl            234 non-null    category\n 10  class         234 non-null    category\ndtypes: category(6), float64(1), int64(4)\nmemory usage: 14.0 KB"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n<ggplot: (-9223372036475671138)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-2",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-2",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n<ggplot: (378665329)>\n\n\ndispl - a car’s engine size, in litres.\nhwy - a car’s fuel efficiency on the highway, in miles per gallon (mpg)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#geoms",
-    "href": "posts/quarto/1_intro.html#geoms",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Geoms",
-    "text": "Geoms\n\nsource: https://nbisweden.github.io/RaukR-2019/ggplot/presentation/ggplot_presentation.html#17"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geom",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geom",
-    "text": "Data + Aesthetics + Geom\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point()\n\n\n<ggplot: (379199524)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#facets-small-multiples",
-    "href": "posts/quarto/1_intro.html#facets-small-multiples",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Facets: small multiples",
-    "text": "Facets: small multiples\nSubplots that each display one subset of the data."
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geom + Facets",
-    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)\n\n\n<ggplot: (-9223372036475782589)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geom + Facets",
-    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2) \n\n\n<ggplot: (-9223372036476023836)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#statistics",
-    "href": "posts/quarto/1_intro.html#statistics",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Statistics",
-    "text": "Statistics"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geom + Facets + Statistics",
-    "text": "Data + Aesthetics + Geom + Facets + Statistics\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\")\n\n\n<ggplot: (-9223372036477012655)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#coordinate",
-    "href": "posts/quarto/1_intro.html#coordinate",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Coordinate",
-    "text": "Coordinate"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate",
-    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate\n\n\n\n<ggplot: (377600064)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate",
-    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate\n\n\n\n<ggplot: (-9223372036481843221)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#theme",
-    "href": "posts/quarto/1_intro.html#theme",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Theme",
-    "text": "Theme"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme",
-    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme\n\n\n\n<ggplot: (377251185)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#scale",
-    "href": "posts/quarto/1_intro.html#scale",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Scale",
-    "text": "Scale"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036477578401)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036476669226)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036476008630)>"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#your-turn",
-    "href": "posts/quarto/1_intro.html#your-turn",
-    "title": "Data Visualization: Grammar of Graphics",
-    "section": "Your Turn",
-    "text": "Your Turn\nVisualize AirPassengers dataset.\nDataset: available at https://thiyanga-spatiotemporal.netlify.app/posts/data/"
-  },
-  {
-    "objectID": "posts/extrafiles/file1.html#time-series",
-    "href": "posts/extrafiles/file1.html#time-series",
-    "title": "Time Series Analysis",
-    "section": "Time Series",
-    "text": "Time Series\nA time series is a sequence of observations taken sequentially in time."
   },
   {
     "objectID": "posts/time_series/file1.html#time-series",
@@ -791,11 +14,193 @@
     "text": "Time Series\nA time series is a sequence of observations taken sequentially in time.\n\n\nCross-sectional data\n\n\n\n\n\n\n  \n    \n      \n      ID\n      calories\n    \n  \n  \n    \n      0\n      1\n      420\n    \n    \n      1\n      2\n      380\n    \n    \n      2\n      3\n      390\n    \n  \n\n\n\n\nObservations that come from different individuals or groups at a single point in time.\n\nTime series data\n\n\n\n\n\n\n  \n    \n      \n      Year\n      Sales\n    \n  \n  \n    \n      0\n      2019\n      490\n    \n    \n      1\n      2020\n      980\n    \n    \n      2\n      2021\n      260\n    \n  \n\n\n\n\nA set of observations, along with some information about what times those observations were recorded."
   },
   {
+    "objectID": "posts/time_series/file1.html#datetime",
+    "href": "posts/time_series/file1.html#datetime",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "DateTime",
+    "text": "DateTime\n\n\nCross-sectional data\n\nimport pandas as pd\ndata = {\n  \"ID\": [1, 2, 3],\n  \"calories\": [420, 380, 390]\n  \n}\n\n#load data into a DataFrame object:\ndfc = pd.DataFrame(data)\ndfc\n\n\n\n\n\n  \n    \n      \n      ID\n      calories\n    \n  \n  \n    \n      0\n      1\n      420\n    \n    \n      1\n      2\n      380\n    \n    \n      2\n      3\n      390\n    \n  \n\n\n\n\n\nTime series data\n\ndata = {\n  \"Year\": [2019, 2020, 2021],\n  \"Sales\": [490, 980, 260]\n  \n}\n\n#load data into a DataFrame object:\ndft = pd.DataFrame(data)\ndft\n\n\n\n\n\n  \n    \n      \n      Year\n      Sales\n    \n  \n  \n    \n      0\n      2019\n      490\n    \n    \n      1\n      2020\n      980\n    \n    \n      2\n      2021\n      260"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#datetime-1",
+    "href": "posts/time_series/file1.html#datetime-1",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "DateTime",
+    "text": "DateTime\n\n\nCross-sectional data\n\ndfc.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 3 entries, 0 to 2\nData columns (total 2 columns):\n #   Column    Non-Null Count  Dtype\n---  ------    --------------  -----\n 0   ID        3 non-null      int64\n 1   calories  3 non-null      int64\ndtypes: int64(2)\nmemory usage: 176.0 bytes\n\n\n\nTime series data\n\ndft.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 3 entries, 0 to 2\nData columns (total 2 columns):\n #   Column  Non-Null Count  Dtype\n---  ------  --------------  -----\n 0   Year    3 non-null      int64\n 1   Sales   3 non-null      int64\ndtypes: int64(2)\nmemory usage: 176.0 bytes"
+  },
+  {
     "objectID": "posts/time_series/file1.html#necessary-packages",
     "href": "posts/time_series/file1.html#necessary-packages",
     "title": "Time Series: Objects in Python and Visualization",
     "section": "Necessary packages",
     "text": "Necessary packages\n\nimport pandas as pd\nimport numpy as np\nimport datetime"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#read-airpassenger",
+    "href": "posts/time_series/file1.html#read-airpassenger",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Read AirPassenger",
+    "text": "Read AirPassenger\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nairpassenger\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n    \n  \n  \n    \n      0\n      1949-01\n      112\n    \n    \n      1\n      1949-02\n      118\n    \n    \n      2\n      1949-03\n      132\n    \n    \n      3\n      1949-04\n      129\n    \n    \n      4\n      1949-05\n      121\n    \n    \n      ...\n      ...\n      ...\n    \n    \n      139\n      1960-08\n      606\n    \n    \n      140\n      1960-09\n      508\n    \n    \n      141\n      1960-10\n      461\n    \n    \n      142\n      1960-11\n      390\n    \n    \n      143\n      1960-12\n      432\n    \n  \n\n144 rows × 2 columns"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#airpassenger-dataset",
+    "href": "posts/time_series/file1.html#airpassenger-dataset",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "AirPassenger dataset",
+    "text": "AirPassenger dataset\n\nairpassenger.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 144 entries, 0 to 143\nData columns (total 2 columns):\n #   Column       Non-Null Count  Dtype \n---  ------       --------------  ----- \n 0   Month        144 non-null    object\n 1   #Passengers  144 non-null    int64 \ndtypes: int64(1), object(1)\nmemory usage: 2.4+ KB"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#data-visualization",
+    "href": "posts/time_series/file1.html#data-visualization",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nimport plotnine\nfrom plotnine import *\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (-9223372036477945884)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#convert-to-date-and-time",
+    "href": "posts/time_series/file1.html#convert-to-date-and-time",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Convert to Date and Time",
+    "text": "Convert to Date and Time\n\nfrom datetime import datetime\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nairpassenger.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 144 entries, 0 to 143\nData columns (total 2 columns):\n #   Column       Non-Null Count  Dtype         \n---  ------       --------------  -----         \n 0   Month        144 non-null    datetime64[ns]\n 1   #Passengers  144 non-null    int64         \ndtypes: datetime64[ns](1), int64(1)\nmemory usage: 2.4 KB"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#data-visualization-1",
+    "href": "posts/time_series/file1.html#data-visualization-1",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (377654420)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#data-visualization-2",
+    "href": "posts/time_series/file1.html#data-visualization-2",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()+geom_point()\n\n\n<ggplot: (-9223372036477427035)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#split-date-into-month-and-year",
+    "href": "posts/time_series/file1.html#split-date-into-month-and-year",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Split date into month and year",
+    "text": "Split date into month and year\n\nairpassenger['year'] = airpassenger['Month'].dt.year\nairpassenger['month'] = airpassenger['Month'].dt.month"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#split-date-into-month-and-year-cont.",
+    "href": "posts/time_series/file1.html#split-date-into-month-and-year-cont.",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Split date into month and year (cont.)",
+    "text": "Split date into month and year (cont.)\n\nairpassenger\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n      year\n      month\n    \n  \n  \n    \n      0\n      1949-01-01\n      112\n      1949\n      1\n    \n    \n      1\n      1949-02-01\n      118\n      1949\n      2\n    \n    \n      2\n      1949-03-01\n      132\n      1949\n      3\n    \n    \n      3\n      1949-04-01\n      129\n      1949\n      4\n    \n    \n      4\n      1949-05-01\n      121\n      1949\n      5\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      139\n      1960-08-01\n      606\n      1960\n      8\n    \n    \n      140\n      1960-09-01\n      508\n      1960\n      9\n    \n    \n      141\n      1960-10-01\n      461\n      1960\n      10\n    \n    \n      142\n      1960-11-01\n      390\n      1960\n      11\n    \n    \n      143\n      1960-12-01\n      432\n      1960\n      12\n    \n  \n\n144 rows × 4 columns"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#time-series-patterns",
+    "href": "posts/time_series/file1.html#time-series-patterns",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Time Series Patterns",
+    "text": "Time Series Patterns\nTrend\nLong-term increase or decrease in the data.\nSeasonal\nA seasonal pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week). Seasonality is always of a fixed and known period. Hence, seasonal time series are sometimes called periodic time series.\nPeriod is unchanging and associated with some aspect of the calendar."
+  },
+  {
+    "objectID": "posts/time_series/file1.html#time-series-patterns-cont",
+    "href": "posts/time_series/file1.html#time-series-patterns-cont",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Time Series Patterns (cont)",
+    "text": "Time Series Patterns (cont)\nCyclic\nA cyclic pattern exists when data exhibit rises and falls that are not of fixed period. The duration of these fluctuations is usually of at least 2 years. In general,\nthe average length of cycles is longer than the length of a seasonal pattern.\nthe magnitude of cycles tends to be more variable than the magnitude of seasonal patterns"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#example-trend",
+    "href": "posts/time_series/file1.html#example-trend",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Example: trend",
+    "text": "Example: trend"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#example-seasonal",
+    "href": "posts/time_series/file1.html#example-seasonal",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Example: seasonal",
+    "text": "Example: seasonal"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#example-multiple-seasonality",
+    "href": "posts/time_series/file1.html#example-multiple-seasonality",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Example: multiple seasonality",
+    "text": "Example: multiple seasonality"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#example-trend-seasonal",
+    "href": "posts/time_series/file1.html#example-trend-seasonal",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Example: Trend + Seasonal",
+    "text": "Example: Trend + Seasonal"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#cyclic-1",
+    "href": "posts/time_series/file1.html#cyclic-1",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Cyclic",
+    "text": "Cyclic\n ## Cyclic + Seasonal"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
+    "href": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Frequency of a time series: Seasonal periods",
+    "text": "Frequency of a time series: Seasonal periods"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots",
+    "href": "posts/time_series/file1.html#seasonal-plots",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='year'))+geom_point()\n\n\n<ggplot: (-9223372036500999971)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-1",
+    "href": "posts/time_series/file1.html#seasonal-plots-1",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()\n\n\n<ggplot: (377909992)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-2",
+    "href": "posts/time_series/file1.html#seasonal-plots-2",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()\n\n\n<ggplot: (-9223372036475656974)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-3",
+    "href": "posts/time_series/file1.html#seasonal-plots-3",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() \n\n\n<ggplot: (-9223372036474893557)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-4",
+    "href": "posts/time_series/file1.html#seasonal-plots-4",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_boxplot() \n\n\n<ggplot: (378272520)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-5",
+    "href": "posts/time_series/file1.html#seasonal-plots-5",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot() \n\n\n<ggplot: (-9223372036474895132)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-6",
+    "href": "posts/time_series/file1.html#seasonal-plots-6",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (-9223372036476503236)>"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#yearly-variation",
+    "href": "posts/time_series/file1.html#yearly-variation",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "Yearly variation",
+    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='year', y='#Passengers', color='factor(year)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (275239744)>"
   },
   {
     "objectID": "posts/time_series/file1.html#index---yearly",
@@ -861,522 +266,11 @@
     "text": "Index - Hourly\nRange of hourly timestamps\n\npd.period_range('2022-01', periods=8, freq='H')\n\nPeriodIndex(['2022-01-01 00:00', '2022-01-01 01:00', '2022-01-01 02:00',\n             '2022-01-01 03:00', '2022-01-01 04:00', '2022-01-01 05:00',\n             '2022-01-01 06:00', '2022-01-01 07:00'],\n            dtype='period[H]', freq='H')\n\n\n\npd.date_range('2022-01', periods=8, freq='H')\n\nDatetimeIndex(['2022-01-01 00:00:00', '2022-01-01 01:00:00',\n               '2022-01-01 02:00:00', '2022-01-01 03:00:00',\n               '2022-01-01 04:00:00', '2022-01-01 05:00:00',\n               '2022-01-01 06:00:00', '2022-01-01 07:00:00'],\n              dtype='datetime64[ns]', freq='H')\n\n\nSequence of durations increasing by an hour\n\npd.timedelta_range(0, periods=10, freq='H')\n\nTimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',\n                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',\n                '0 days 06:00:00', '0 days 07:00:00', '0 days 08:00:00',\n                '0 days 09:00:00'],\n               dtype='timedelta64[ns]', freq='H')"
   },
   {
-    "objectID": "posts/time_series/file1.html#frequency-spacing-options-in-pandas",
-    "href": "posts/time_series/file1.html#frequency-spacing-options-in-pandas",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Frequency spacing options in pandas",
-    "text": "Frequency spacing options in pandas\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#references",
-    "href": "posts/time_series/file1.html#references",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "References",
-    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html",
-    "href": "posts/airpassenger/file1.html",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "A time series is a sequence of observations taken sequentially in time."
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#necessary-packages",
-    "href": "posts/airpassenger/file1.html#necessary-packages",
-    "title": "Time Series Analysis",
-    "section": "Necessary packages",
-    "text": "Necessary packages\n\nimport pandas as pd\nimport numpy as np"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#date-and-times-in-python",
-    "href": "posts/airpassenger/file1.html#date-and-times-in-python",
-    "title": "Time Series Analysis",
-    "section": "Date and Times in Python",
-    "text": "Date and Times in Python\n\nKeywords\n\nDate\nTime\nTime-indexed data"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#python-representation-of-date-and-time",
-    "href": "posts/airpassenger/file1.html#python-representation-of-date-and-time",
-    "title": "Time Series Analysis",
-    "section": "Python representation of date and time",
-    "text": "Python representation of date and time\n\nTime stamps\nA point in time (e.g., December 23rd, 2022 at 7:00am)\n\n\npd.Timestamp('2022-12-23 17:25')\n\nTimestamp('2022-12-23 17:25:00')"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#section",
-    "href": "posts/airpassenger/file1.html#section",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Time intervals and periods\nExample: particular day\n\n\npd.Period('2017-06-13')\n\nPeriod('2017-06-13', 'D')"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#section-1",
-    "href": "posts/airpassenger/file1.html#section-1",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Time deltas or durations\nExact length of time"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---yearly",
-    "href": "posts/airpassenger/file1.html#index---yearly",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly",
-    "text": "Index - Yearly\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---yearly-cont.",
-    "href": "posts/airpassenger/file1.html#index---yearly-cont.",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---yearly-cont.-1",
-    "href": "posts/airpassenger/file1.html#index---yearly-cont.-1",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 3\nfreq='A' end of year frequency\n\nindex3 = pd.date_range(\"2012\", periods=5, freq='A')\nindex3\n\nDatetimeIndex(['2012-12-31', '2013-12-31', '2014-12-31', '2015-12-31',\n               '2016-12-31'],\n              dtype='datetime64[ns]', freq='A-DEC')\n\n\n\ndata3 = pd.Series([123, 39, 78, 52, 110], index=index3)\ndata3\n\n2012-12-31    123\n2013-12-31     39\n2014-12-31     78\n2015-12-31     52\n2016-12-31    110\nFreq: A-DEC, dtype: int64"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---yearly-cont.-2",
-    "href": "posts/airpassenger/file1.html#index---yearly-cont.-2",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 4\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---yearly-cont.-3",
-    "href": "posts/airpassenger/file1.html#index---yearly-cont.-3",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\n\nindex = pd.period_range('2012-01', periods=8, freq='A')\nindex\n\nPeriodIndex(['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'], dtype='period[A-DEC]', freq='A-DEC')"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---monthly",
-    "href": "posts/airpassenger/file1.html#index---monthly",
-    "title": "Time Series Analysis",
-    "section": "Index - Monthly",
-    "text": "Index - Monthly\nMethod 1\n\nindex = pd.period_range('2022-01', periods=8, freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')\n\n\nMethod 2\n\nindex = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---quarterly",
-    "href": "posts/airpassenger/file1.html#index---quarterly",
-    "title": "Time Series Analysis",
-    "section": "Index - Quarterly",
-    "text": "Index - Quarterly\n\nindex = pd.period_range('2022-01', periods=8, freq='Q')\nindex\n\nPeriodIndex(['2022Q1', '2022Q2', '2022Q3', '2022Q4', '2023Q1', '2023Q2',\n             '2023Q3', '2023Q4'],\n            dtype='period[Q-DEC]', freq='Q-DEC')"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---daily",
-    "href": "posts/airpassenger/file1.html#index---daily",
-    "title": "Time Series Analysis",
-    "section": "Index - Daily",
-    "text": "Index - Daily\n\nindex = pd.period_range('2022-01-01', periods=8, freq='D')\nindex\n\nPeriodIndex(['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04',\n             '2022-01-05', '2022-01-06', '2022-01-07', '2022-01-08'],\n            dtype='period[D]', freq='D')"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#index---hourly",
-    "href": "posts/airpassenger/file1.html#index---hourly",
-    "title": "Time Series Analysis",
-    "section": "Index - Hourly",
-    "text": "Index - Hourly\nRange of hourly timestamps\n\npd.period_range('2022-01', periods=8, freq='H')\n\nPeriodIndex(['2022-01-01 00:00', '2022-01-01 01:00', '2022-01-01 02:00',\n             '2022-01-01 03:00', '2022-01-01 04:00', '2022-01-01 05:00',\n             '2022-01-01 06:00', '2022-01-01 07:00'],\n            dtype='period[H]', freq='H')\n\n\n\npd.date_range('2022-01', periods=8, freq='H')\n\nDatetimeIndex(['2022-01-01 00:00:00', '2022-01-01 01:00:00',\n               '2022-01-01 02:00:00', '2022-01-01 03:00:00',\n               '2022-01-01 04:00:00', '2022-01-01 05:00:00',\n               '2022-01-01 06:00:00', '2022-01-01 07:00:00'],\n              dtype='datetime64[ns]', freq='H')\n\n\nSequence of durations increasing by an hour\n\npd.timedelta_range(0, periods=10, freq='H')\n\nTimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',\n                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',\n                '0 days 06:00:00', '0 days 07:00:00', '0 days 08:00:00',\n                '0 days 09:00:00'],\n               dtype='timedelta64[ns]', freq='H')"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#frequency-spacing-options-in-pandas",
-    "href": "posts/airpassenger/file1.html#frequency-spacing-options-in-pandas",
-    "title": "Time Series Analysis",
-    "section": "Frequency spacing options in pandas",
-    "text": "Frequency spacing options in pandas\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/airpassenger/file1.html#references",
-    "href": "posts/airpassenger/file1.html#references",
-    "title": "Time Series Analysis",
-    "section": "References",
-    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html",
-    "href": "posts/airpassenger/airpassenger.html",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "A time series is a sequence of observations taken sequentially in time."
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#necessary-packages",
-    "href": "posts/airpassenger/airpassenger.html#necessary-packages",
-    "title": "Time Series Analysis",
-    "section": "Necessary packages",
-    "text": "Necessary packages\n\nimport pandas as pd\nimport numpy as np"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#date-and-times-in-python",
-    "href": "posts/airpassenger/airpassenger.html#date-and-times-in-python",
-    "title": "Time Series Analysis",
-    "section": "Date and Times in Python",
-    "text": "Date and Times in Python\n\nKeywords\n\nDate\nTime\nTime-indexed data"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#python-representation-of-date-and-time",
-    "href": "posts/airpassenger/airpassenger.html#python-representation-of-date-and-time",
-    "title": "Time Series Analysis",
-    "section": "Python representation of date and time",
-    "text": "Python representation of date and time\n\nTime stamps\nA point in time (e.g., December 23rd, 2022 at 7:00am)\n\n\npd.Timestamp('2022-12-23 17:25')\n\nTimestamp('2022-12-23 17:25:00')"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#section",
-    "href": "posts/airpassenger/airpassenger.html#section",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Time intervals and periods\nExample: particular day\n\n\npd.Period('2017-06-13')\n\nPeriod('2017-06-13', 'D')"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#section-1",
-    "href": "posts/airpassenger/airpassenger.html#section-1",
-    "title": "Time Series Analysis",
-    "section": "",
-    "text": "Time deltas or durations\nExact length of time"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---yearly",
-    "href": "posts/airpassenger/airpassenger.html#index---yearly",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly",
-    "text": "Index - Yearly\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---yearly-cont.",
-    "href": "posts/airpassenger/airpassenger.html#index---yearly-cont.",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---yearly-cont.-1",
-    "href": "posts/airpassenger/airpassenger.html#index---yearly-cont.-1",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 3\nfreq='A' end of year frequency\n\nindex3 = pd.date_range(\"2012\", periods=5, freq='A')\nindex3\n\nDatetimeIndex(['2012-12-31', '2013-12-31', '2014-12-31', '2015-12-31',\n               '2016-12-31'],\n              dtype='datetime64[ns]', freq='A-DEC')\n\n\n\ndata3 = pd.Series([123, 39, 78, 52, 110], index=index3)\ndata3\n\n2012-12-31    123\n2013-12-31     39\n2014-12-31     78\n2015-12-31     52\n2016-12-31    110\nFreq: A-DEC, dtype: int64"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---yearly-cont.-2",
-    "href": "posts/airpassenger/airpassenger.html#index---yearly-cont.-2",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\nMethod 4\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---yearly-cont.-3",
-    "href": "posts/airpassenger/airpassenger.html#index---yearly-cont.-3",
-    "title": "Time Series Analysis",
-    "section": "Index - Yearly (cont.)",
-    "text": "Index - Yearly (cont.)\n\nindex = pd.period_range('2012-01', periods=8, freq='A')\nindex\n\nPeriodIndex(['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'], dtype='period[A-DEC]', freq='A-DEC')"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---monthly",
-    "href": "posts/airpassenger/airpassenger.html#index---monthly",
-    "title": "Time Series Analysis",
-    "section": "Index - Monthly",
-    "text": "Index - Monthly\nMethod 1\n\nindex = pd.period_range('2022-01', periods=8, freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')\n\n\nMethod 2\n\nindex = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---quarterly",
-    "href": "posts/airpassenger/airpassenger.html#index---quarterly",
-    "title": "Time Series Analysis",
-    "section": "Index - Quarterly",
-    "text": "Index - Quarterly\n\nindex = pd.period_range('2022-01', periods=8, freq='Q')\nindex\n\nPeriodIndex(['2022Q1', '2022Q2', '2022Q3', '2022Q4', '2023Q1', '2023Q2',\n             '2023Q3', '2023Q4'],\n            dtype='period[Q-DEC]', freq='Q-DEC')"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---daily",
-    "href": "posts/airpassenger/airpassenger.html#index---daily",
-    "title": "Time Series Analysis",
-    "section": "Index - Daily",
-    "text": "Index - Daily\n\nindex = pd.period_range('2022-01-01', periods=8, freq='D')\nindex\n\nPeriodIndex(['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04',\n             '2022-01-05', '2022-01-06', '2022-01-07', '2022-01-08'],\n            dtype='period[D]', freq='D')"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#index---hourly",
-    "href": "posts/airpassenger/airpassenger.html#index---hourly",
-    "title": "Time Series Analysis",
-    "section": "Index - Hourly",
-    "text": "Index - Hourly\nRange of hourly timestamps\n\npd.period_range('2022-01', periods=8, freq='H')\n\nPeriodIndex(['2022-01-01 00:00', '2022-01-01 01:00', '2022-01-01 02:00',\n             '2022-01-01 03:00', '2022-01-01 04:00', '2022-01-01 05:00',\n             '2022-01-01 06:00', '2022-01-01 07:00'],\n            dtype='period[H]', freq='H')\n\n\n\npd.date_range('2022-01', periods=8, freq='H')\n\nDatetimeIndex(['2022-01-01 00:00:00', '2022-01-01 01:00:00',\n               '2022-01-01 02:00:00', '2022-01-01 03:00:00',\n               '2022-01-01 04:00:00', '2022-01-01 05:00:00',\n               '2022-01-01 06:00:00', '2022-01-01 07:00:00'],\n              dtype='datetime64[ns]', freq='H')\n\n\nSequence of durations increasing by an hour\n\npd.timedelta_range(0, periods=10, freq='H')\n\nTimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',\n                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',\n                '0 days 06:00:00', '0 days 07:00:00', '0 days 08:00:00',\n                '0 days 09:00:00'],\n               dtype='timedelta64[ns]', freq='H')"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#frequency-spacing-options-in-pandas",
-    "href": "posts/airpassenger/airpassenger.html#frequency-spacing-options-in-pandas",
-    "title": "Time Series Analysis",
-    "section": "Frequency spacing options in pandas",
-    "text": "Frequency spacing options in pandas\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#references",
-    "href": "posts/airpassenger/airpassenger.html#references",
-    "title": "Time Series Analysis",
-    "section": "References",
-    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
-  },
-  {
-    "objectID": "posts/airpassenger/airpassenger.html#load-packages",
-    "href": "posts/airpassenger/airpassenger.html#load-packages",
-    "title": "Time Series Visualization",
-    "section": "Load packages",
-    "text": "Load packages"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#datetime",
-    "href": "posts/time_series/file1.html#datetime",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "DateTime",
-    "text": "DateTime\n\n\nCross-sectional data\n\nimport pandas as pd\ndata = {\n  \"ID\": [1, 2, 3],\n  \"calories\": [420, 380, 390]\n  \n}\n\n#load data into a DataFrame object:\ndfc = pd.DataFrame(data)\ndfc\n\n\n\n\n\n  \n    \n      \n      ID\n      calories\n    \n  \n  \n    \n      0\n      1\n      420\n    \n    \n      1\n      2\n      380\n    \n    \n      2\n      3\n      390\n    \n  \n\n\n\n\n\nTime series data\n\ndata = {\n  \"Year\": [2019, 2020, 2021],\n  \"Sales\": [490, 980, 260]\n  \n}\n\n#load data into a DataFrame object:\ndft = pd.DataFrame(data)\ndft\n\n\n\n\n\n  \n    \n      \n      Year\n      Sales\n    \n  \n  \n    \n      0\n      2019\n      490\n    \n    \n      1\n      2020\n      980\n    \n    \n      2\n      2021\n      260"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#datetime-1",
-    "href": "posts/time_series/file1.html#datetime-1",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "DateTime",
-    "text": "DateTime\n\n\nCross-sectional data\n\ndfc.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 3 entries, 0 to 2\nData columns (total 2 columns):\n #   Column    Non-Null Count  Dtype\n---  ------    --------------  -----\n 0   ID        3 non-null      int64\n 1   calories  3 non-null      int64\ndtypes: int64(2)\nmemory usage: 176.0 bytes\n\n\n\nTime series data\n\ndft.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 3 entries, 0 to 2\nData columns (total 2 columns):\n #   Column  Non-Null Count  Dtype\n---  ------  --------------  -----\n 0   Year    3 non-null      int64\n 1   Sales   3 non-null      int64\ndtypes: int64(2)\nmemory usage: 176.0 bytes"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#convert-your-strings-into-datetimes",
-    "href": "posts/time_series/file1.html#convert-your-strings-into-datetimes",
-    "title": "Time Series Objects in Python",
-    "section": "convert your strings into DateTimes",
-    "text": "convert your strings into DateTimes\n\n\n\n\n\n\n  \n    \n      \n      Year\n      Sales\n    \n  \n  \n    \n      0\n      1970-01-01 00:00:00.000002019\n      490\n    \n    \n      1\n      1970-01-01 00:00:00.000002020\n      980\n    \n    \n      2\n      1970-01-01 00:00:00.000002021\n      260"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#convert-your-strings-into-datetimes-1",
-    "href": "posts/time_series/file1.html#convert-your-strings-into-datetimes-1",
-    "title": "Time Series Objects in Python",
-    "section": "convert your strings into DateTimes",
-    "text": "convert your strings into DateTimes\n\n\n\n\n\n\n  \n    \n      \n      Year\n      Sales\n    \n  \n  \n    \n      0\n      1970\n      490\n    \n    \n      1\n      1970\n      980\n    \n    \n      2\n      1970\n      260"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#fixing-the-error",
-    "href": "posts/time_series/file1.html#fixing-the-error",
-    "title": "Time Series Objects in Python",
-    "section": "Fixing the error",
-    "text": "Fixing the error\n\n\n0    2019\n1    2020\n2    2021\nName: Year, dtype: int32"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#fixing-the-error-1",
-    "href": "posts/time_series/file1.html#fixing-the-error-1",
-    "title": "Time Series Objects in Python",
-    "section": "Fixing the error",
-    "text": "Fixing the error"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#read-airpassenger",
-    "href": "posts/time_series/file1.html#read-airpassenger",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Read AirPassenger",
-    "text": "Read AirPassenger\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nairpassenger\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n    \n  \n  \n    \n      0\n      1949-01\n      112\n    \n    \n      1\n      1949-02\n      118\n    \n    \n      2\n      1949-03\n      132\n    \n    \n      3\n      1949-04\n      129\n    \n    \n      4\n      1949-05\n      121\n    \n    \n      ...\n      ...\n      ...\n    \n    \n      139\n      1960-08\n      606\n    \n    \n      140\n      1960-09\n      508\n    \n    \n      141\n      1960-10\n      461\n    \n    \n      142\n      1960-11\n      390\n    \n    \n      143\n      1960-12\n      432\n    \n  \n\n144 rows × 2 columns"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#airpassenger-dataset",
-    "href": "posts/time_series/file1.html#airpassenger-dataset",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "AirPassenger dataset",
-    "text": "AirPassenger dataset\n\nairpassenger.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 144 entries, 0 to 143\nData columns (total 2 columns):\n #   Column       Non-Null Count  Dtype \n---  ------       --------------  ----- \n 0   Month        144 non-null    object\n 1   #Passengers  144 non-null    int64 \ndtypes: int64(1), object(1)\nmemory usage: 2.4+ KB"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#convert-to-date-and-time",
-    "href": "posts/time_series/file1.html#convert-to-date-and-time",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Convert to Date and Time",
-    "text": "Convert to Date and Time\n\nfrom datetime import datetime\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nairpassenger.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 144 entries, 0 to 143\nData columns (total 2 columns):\n #   Column       Non-Null Count  Dtype         \n---  ------       --------------  -----         \n 0   Month        144 non-null    datetime64[ns]\n 1   #Passengers  144 non-null    int64         \ndtypes: datetime64[ns](1), int64(1)\nmemory usage: 2.4 KB"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#data-visualization",
-    "href": "posts/time_series/file1.html#data-visualization",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Data Visualization",
-    "text": "Data Visualization\n\nimport plotnine\nfrom plotnine import *\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (-9223372036477945884)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#data-visualization-1",
-    "href": "posts/time_series/file1.html#data-visualization-1",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Data Visualization",
-    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (377654420)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#data-visualization-2",
-    "href": "posts/time_series/file1.html#data-visualization-2",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Data Visualization",
-    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()+geom_point()\n\n\n<ggplot: (-9223372036477427035)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#split-date-into-month-and-year",
-    "href": "posts/time_series/file1.html#split-date-into-month-and-year",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Split date into month and year",
-    "text": "Split date into month and year\n\nairpassenger['year'] = airpassenger['Month'].dt.year\nairpassenger['month'] = airpassenger['Month'].dt.month"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#split-date-into-month-and-year-cont.",
-    "href": "posts/time_series/file1.html#split-date-into-month-and-year-cont.",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Split date into month and year (cont.)",
-    "text": "Split date into month and year (cont.)\n\nairpassenger\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n      year\n      month\n    \n  \n  \n    \n      0\n      1949-01-01\n      112\n      1949\n      1\n    \n    \n      1\n      1949-02-01\n      118\n      1949\n      2\n    \n    \n      2\n      1949-03-01\n      132\n      1949\n      3\n    \n    \n      3\n      1949-04-01\n      129\n      1949\n      4\n    \n    \n      4\n      1949-05-01\n      121\n      1949\n      5\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      139\n      1960-08-01\n      606\n      1960\n      8\n    \n    \n      140\n      1960-09-01\n      508\n      1960\n      9\n    \n    \n      141\n      1960-10-01\n      461\n      1960\n      10\n    \n    \n      142\n      1960-11-01\n      390\n      1960\n      11\n    \n    \n      143\n      1960-12-01\n      432\n      1960\n      12\n    \n  \n\n144 rows × 4 columns"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#yearly-variation",
-    "href": "posts/time_series/file1.html#yearly-variation",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Yearly variation",
-    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='year', y='#Passengers', color='factor(year)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (275239744)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#yearly-variation-1",
-    "href": "posts/time_series/file1.html#yearly-variation-1",
-    "title": "Time Series Objects in Python",
-    "section": "Yearly variation",
-    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()\n\n\n<ggplot: (-9223372036472273646)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#yearly-variation-2",
-    "href": "posts/time_series/file1.html#yearly-variation-2",
-    "title": "Time Series Objects in Python",
-    "section": "Yearly variation",
-    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()\n\n\n<ggplot: (382502257)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#yearly-variation-3",
-    "href": "posts/time_series/file1.html#yearly-variation-3",
-    "title": "Time Series Objects in Python",
-    "section": "Yearly variation",
-    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() + scale_x_discrete()\n\nTypeError: object of type 'NoneType' has no len()"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#time-series-patterns",
-    "href": "posts/time_series/file1.html#time-series-patterns",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Time Series Patterns",
-    "text": "Time Series Patterns\nTrend\nLong-term increase or decrease in the data.\nSeasonal\nA seasonal pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week). Seasonality is always of a fixed and known period. Hence, seasonal time series are sometimes called periodic time series.\nPeriod is unchanging and associated with some aspect of the calendar."
-  },
-  {
-    "objectID": "posts/time_series/file1.html#time-series-patterns-cont",
-    "href": "posts/time_series/file1.html#time-series-patterns-cont",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Time Series Patterns (cont)",
-    "text": "Time Series Patterns (cont)\nCyclic\nA cyclic pattern exists when data exhibit rises and falls that are not of fixed period. The duration of these fluctuations is usually of at least 2 years. In general,\nthe average length of cycles is longer than the length of a seasonal pattern.\nthe magnitude of cycles tends to be more variable than the magnitude of seasonal patterns"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#seasonal-plots",
-    "href": "posts/time_series/file1.html#seasonal-plots",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='year'))+geom_point()\n\n\n<ggplot: (-9223372036500999971)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#seasonal-plots-1",
-    "href": "posts/time_series/file1.html#seasonal-plots-1",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()\n\n\n<ggplot: (377909992)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#seasonal-plots-2",
-    "href": "posts/time_series/file1.html#seasonal-plots-2",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()\n\n\n<ggplot: (-9223372036475656974)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#seasonal-plots-3",
-    "href": "posts/time_series/file1.html#seasonal-plots-3",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() \n\n\n<ggplot: (-9223372036474893557)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#seasonal-plots-4",
-    "href": "posts/time_series/file1.html#seasonal-plots-4",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_boxplot() \n\n\n<ggplot: (378272520)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#seasonal-plots-5",
-    "href": "posts/time_series/file1.html#seasonal-plots-5",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot() \n\n\n<ggplot: (-9223372036474895132)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#seasonal-plots-6",
-    "href": "posts/time_series/file1.html#seasonal-plots-6",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (-9223372036476503236)>"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#acf-plot",
-    "href": "posts/time_series/file1.html#acf-plot",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "ACF plot",
-    "text": "ACF plot\n\nimport pandas as pd\nfrom matplotlib import pyplot as plt\nfrom statsmodels.graphics.tsaplots import plot_acf\n# Select relevant data, index by Date\ndata = airpassenger[['Month', '#Passengers']].set_index(['Month'])\n# Calculate the ACF (via statsmodel)\ndata\n\n\n\n\n\n  \n    \n      \n      #Passengers\n    \n    \n      Month\n      \n    \n  \n  \n    \n      1949-01-01\n      112\n    \n    \n      1949-02-01\n      118\n    \n    \n      1949-03-01\n      132\n    \n    \n      1949-04-01\n      129\n    \n    \n      1949-05-01\n      121\n    \n    \n      ...\n      ...\n    \n    \n      1960-08-01\n      606\n    \n    \n      1960-09-01\n      508\n    \n    \n      1960-10-01\n      461\n    \n    \n      1960-11-01\n      390\n    \n    \n      1960-12-01\n      432\n    \n  \n\n144 rows × 1 columns"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#airpassenger-time-series-object",
-    "href": "posts/time_series/file1.html#airpassenger-time-series-object",
-    "title": "Time Series Objects in Python",
-    "section": "AirPassenger time series object",
-    "text": "AirPassenger time series object\n\n#indexa = pd.period_range(start='1949-01-01', end='1960-11-01', freq='M')\nairpassenger\n\n#APts = pd.Series(series, index=indexa)\n#APts\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n      year\n      month\n    \n  \n  \n    \n      0\n      1949-01-01\n      112\n      1949\n      1\n    \n    \n      1\n      1949-02-01\n      118\n      1949\n      2\n    \n    \n      2\n      1949-03-01\n      132\n      1949\n      3\n    \n    \n      3\n      1949-04-01\n      129\n      1949\n      4\n    \n    \n      4\n      1949-05-01\n      121\n      1949\n      5\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      139\n      1960-08-01\n      606\n      1960\n      8\n    \n    \n      140\n      1960-09-01\n      508\n      1960\n      9\n    \n    \n      141\n      1960-10-01\n      461\n      1960\n      10\n    \n    \n      142\n      1960-11-01\n      390\n      1960\n      11\n    \n    \n      143\n      1960-12-01\n      432\n      1960\n      12\n    \n  \n\n144 rows × 4 columns"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#example-trend",
-    "href": "posts/time_series/file1.html#example-trend",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Example: trend",
-    "text": "Example: trend"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#example-seasonal",
-    "href": "posts/time_series/file1.html#example-seasonal",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Example: seasonal",
-    "text": "Example: seasonal"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#example-multiple-seasonality",
-    "href": "posts/time_series/file1.html#example-multiple-seasonality",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Example: multiple seasonality",
-    "text": "Example: multiple seasonality"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#example-trend-seasonal",
-    "href": "posts/time_series/file1.html#example-trend-seasonal",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Example: Trend + Seasonal",
-    "text": "Example: Trend + Seasonal"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#cyclic-1",
-    "href": "posts/time_series/file1.html#cyclic-1",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Cyclic",
-    "text": "Cyclic\n ## Cyclic + Seasonal"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
-    "href": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "Frequency of a time series: Seasonal periods",
-    "text": "Frequency of a time series: Seasonal periods"
-  },
-  {
     "objectID": "posts/time_series/file1.html#define-multiple-frequencies",
     "href": "posts/time_series/file1.html#define-multiple-frequencies",
     "title": "Time Series: Objects in Python and Visualization",
     "section": "Define multiple frequencies",
     "text": "Define multiple frequencies\n\nNext lesson"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#acf-plot-1",
-    "href": "posts/time_series/file1.html#acf-plot-1",
-    "title": "Time Series: Objects in Python and Visualization",
-    "section": "ACF plot",
-    "text": "ACF plot\n\ndata.info()\nplot_acf(data, lags=50)\n\n<class 'pandas.core.frame.DataFrame'>\nDatetimeIndex: 144 entries, 1949-01-01 to 1960-12-01\nData columns (total 1 columns):\n #   Column       Non-Null Count  Dtype\n---  ------       --------------  -----\n 0   #Passengers  144 non-null    int64\ndtypes: int64(1)\nmemory usage: 2.2 KB"
   },
   {
     "objectID": "posts/time_series/file1.html#correlation",
@@ -1391,6 +285,20 @@
     "title": "Time Series: Objects in Python and Visualization",
     "section": "Autocorrelation",
     "text": "Autocorrelation"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf-plot",
+    "href": "posts/time_series/file1.html#acf-plot",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "ACF plot",
+    "text": "ACF plot\n\nimport pandas as pd\nfrom matplotlib import pyplot as plt\nfrom statsmodels.graphics.tsaplots import plot_acf\n# Select relevant data, index by Date\ndata = airpassenger[['Month', '#Passengers']].set_index(['Month'])\n# Calculate the ACF (via statsmodel)\ndata\n\n\n\n\n\n  \n    \n      \n      #Passengers\n    \n    \n      Month\n      \n    \n  \n  \n    \n      1949-01-01\n      112\n    \n    \n      1949-02-01\n      118\n    \n    \n      1949-03-01\n      132\n    \n    \n      1949-04-01\n      129\n    \n    \n      1949-05-01\n      121\n    \n    \n      ...\n      ...\n    \n    \n      1960-08-01\n      606\n    \n    \n      1960-09-01\n      508\n    \n    \n      1960-10-01\n      461\n    \n    \n      1960-11-01\n      390\n    \n    \n      1960-12-01\n      432\n    \n  \n\n144 rows × 1 columns"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf-plot-1",
+    "href": "posts/time_series/file1.html#acf-plot-1",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "ACF plot",
+    "text": "ACF plot\n\ndata.info()\nplot_acf(data, lags=50)\n\n<class 'pandas.core.frame.DataFrame'>\nDatetimeIndex: 144 entries, 1949-01-01 to 1960-12-01\nData columns (total 1 columns):\n #   Column       Non-Null Count  Dtype\n---  ------       --------------  -----\n 0   #Passengers  144 non-null    int64\ndtypes: int64(1)\nmemory usage: 2.2 KB"
   },
   {
     "objectID": "posts/time_series/file1.html#acf",
@@ -1468,5 +376,418 @@
     "title": "Time Series: Objects in Python and Visualization",
     "section": "Simple time series forecasting technique",
     "text": "Simple time series forecasting technique"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#references",
+    "href": "posts/time_series/file1.html#references",
+    "title": "Time Series: Objects in Python and Visualization",
+    "section": "References",
+    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section-3",
+    "href": "posts/quarto/1_intro.html#section-3",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "",
+    "text": "click here"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar",
+    "href": "posts/quarto/1_intro.html#grammar",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Grammar",
+    "text": "Grammar\n\n\n\nEnglish\n\nNouns\nArticle\nAdjective\nVerb\nAdverb\nProposition\n\n\n\nGraphics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar---example",
+    "href": "posts/quarto/1_intro.html#grammar---example",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Grammar - Example",
+    "text": "Grammar - Example\n\n\nEnglish\nThe little monkey hangs confidently by a branch.\n\nGraphics\n\n\n\n\n\n<ggplot: (-9223372036476274737)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar---example-1",
+    "href": "posts/quarto/1_intro.html#grammar---example-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Grammar - Example",
+    "text": "Grammar - Example\n\n\nEnglish\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch\n\nGraphics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#graphics---grammar-components",
+    "href": "posts/quarto/1_intro.html#graphics---grammar-components",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Graphics - Grammar components",
+    "text": "Graphics - Grammar components\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (379211058)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geom_line",
+    "href": "posts/quarto/1_intro.html#geom_line",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "geom_line",
+    "text": "geom_line\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (-9223372036477217606)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geom_point",
+    "href": "posts/quarto/1_intro.html#geom_point",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "geom_point",
+    "text": "geom_point\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (378527331)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_point() # line plot\n    + labs(x='date', y='median duration of unemployment, in week')\n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data",
+    "href": "posts/quarto/1_intro.html#data",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\nDate: data to be plotted"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#packages",
+    "href": "posts/quarto/1_intro.html#packages",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Packages",
+    "text": "Packages\n\nimport pandas as pd\nimport plotnine\n\nfrom plotnine import *\nfrom plotnine.data import *"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics",
+    "href": "posts/quarto/1_intro.html#dataset-economics",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n  \n    \n      \n      date\n      pce\n      pop\n      psavert\n      uempmed\n      unemploy\n      year\n      month\n    \n  \n  \n    \n      0\n      1967-07-01\n      507.4\n      198712\n      12.5\n      4.5\n      2944\n      1967\n      7\n    \n    \n      1\n      1967-08-01\n      510.5\n      198911\n      12.5\n      4.7\n      2945\n      1967\n      8\n    \n    \n      2\n      1967-09-01\n      516.3\n      199113\n      11.7\n      4.6\n      2958\n      1967\n      9"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-1",
+    "href": "posts/quarto/1_intro.html#dataset-economics-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-2",
+    "href": "posts/quarto/1_intro.html#dataset-economics-2",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics['year'] = economics['date'].dt.year\neconomics['month'] = economics['date'].dt.month"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-3",
+    "href": "posts/quarto/1_intro.html#dataset-economics-3",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-4",
+    "href": "posts/quarto/1_intro.html#dataset-economics-4",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n  \n    \n      \n      date\n      pce\n      pop\n      psavert\n      uempmed\n      unemploy\n      year\n      month\n    \n  \n  \n    \n      0\n      1967-07-01\n      507.4\n      198712\n      12.5\n      4.5\n      2944\n      1967\n      7\n    \n    \n      1\n      1967-08-01\n      510.5\n      198911\n      12.5\n      4.7\n      2945\n      1967\n      8\n    \n    \n      2\n      1967-09-01\n      516.3\n      199113\n      11.7\n      4.6\n      2958\n      1967\n      9"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data",
+    "href": "posts/quarto/1_intro.html#tidy-data",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Tidy data",
+    "text": "Tidy data\n\n\nEvery column is a variable.\nEvery row is an observation.\nEvery cell is a single value."
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example",
+    "href": "posts/quarto/1_intro.html#tidy-data---example",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-1",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-2",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-2",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-3",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-3",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-1",
+    "href": "posts/quarto/1_intro.html#data-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\n\nggplot(data=economics)\n\n\n<ggplot: (376784483)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
+    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Aesthetics: mapping variables",
+    "text": "Aesthetics: mapping variables"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
+    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Aesthetics: mapping variables",
+    "text": "Aesthetics: mapping variables\nAesthetic means “something you can see”.\n\nposition (i.e., on the x and y axes)\ncolor (“outside” color)\nfill (“inside” color)\nshape (of points)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-position",
+    "href": "posts/quarto/1_intro.html#aesthetic-position",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: position",
+    "text": "Aesthetic: position\n\nfrom plotnine.data import mtcars\n\nggplot(mtcars, aes('wt', 'mpg')) + geom_point()\n\n\n<ggplot: (377642209)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-color",
+    "href": "posts/quarto/1_intro.html#aesthetic-color",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: color",
+    "text": "Aesthetic: color\n\nggplot(mtcars, aes('wt', 'mpg', color='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036570347362)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-shape",
+    "href": "posts/quarto/1_intro.html#aesthetic-shape",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: shape",
+    "text": "Aesthetic: shape\n\nggplot(mtcars, aes('wt', 'mpg', shape='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036477215516)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-size",
+    "href": "posts/quarto/1_intro.html#aesthetic-size",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: size",
+    "text": "Aesthetic: size\n\nggplot(mtcars, aes('wt', 'mpg', size='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036477012543)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(economics, aes(x='date', y='uempmed'))\n\n\n<ggplot: (-9223372036477212686)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geometrics",
+    "href": "posts/quarto/1_intro.html#geometrics",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Geometrics",
+    "text": "Geometrics\nActual marks we put on a plot"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point()\n\n\n<ggplot: (379000875)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(alpha=0.5)\n\n\n<ggplot: (-9223372036476646845)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(size=0.3)\n\n\n<ggplot: (-9223372036476798727)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line()\n\n\n<ggplot: (377984811)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3)\n\n\n<ggplot: (-9223372036477578254)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour=\"blue\")\n\n\n<ggplot: (-9223372036475598974)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geoms",
+    "href": "posts/quarto/1_intro.html#geoms",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Geoms",
+    "text": "Geoms\n\nsource: https://nbisweden.github.io/RaukR-2019/ggplot/presentation/ggplot_presentation.html#17"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset",
+    "href": "posts/quarto/1_intro.html#dataset",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Dataset",
+    "text": "Dataset\n\nmpg\n\n\n\n\n\n  \n    \n      \n      manufacturer\n      model\n      displ\n      year\n      cyl\n      trans\n      drv\n      cty\n      hwy\n      fl\n      class\n    \n  \n  \n    \n      0\n      audi\n      a4\n      1.8\n      1999\n      4\n      auto(l5)\n      f\n      18\n      29\n      p\n      compact\n    \n    \n      1\n      audi\n      a4\n      1.8\n      1999\n      4\n      manual(m5)\n      f\n      21\n      29\n      p\n      compact\n    \n    \n      2\n      audi\n      a4\n      2.0\n      2008\n      4\n      manual(m6)\n      f\n      20\n      31\n      p\n      compact\n    \n    \n      3\n      audi\n      a4\n      2.0\n      2008\n      4\n      auto(av)\n      f\n      21\n      30\n      p\n      compact\n    \n    \n      4\n      audi\n      a4\n      2.8\n      1999\n      6\n      auto(l5)\n      f\n      16\n      26\n      p\n      compact\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      229\n      volkswagen\n      passat\n      2.0\n      2008\n      4\n      auto(s6)\n      f\n      19\n      28\n      p\n      midsize\n    \n    \n      230\n      volkswagen\n      passat\n      2.0\n      2008\n      4\n      manual(m6)\n      f\n      21\n      29\n      p\n      midsize\n    \n    \n      231\n      volkswagen\n      passat\n      2.8\n      1999\n      6\n      auto(l5)\n      f\n      16\n      26\n      p\n      midsize\n    \n    \n      232\n      volkswagen\n      passat\n      2.8\n      1999\n      6\n      manual(m5)\n      f\n      18\n      26\n      p\n      midsize\n    \n    \n      233\n      volkswagen\n      passat\n      3.6\n      2008\n      6\n      auto(s6)\n      f\n      17\n      26\n      p\n      midsize\n    \n  \n\n234 rows × 11 columns"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-variable-types",
+    "href": "posts/quarto/1_intro.html#dataset-variable-types",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Dataset: variable types",
+    "text": "Dataset: variable types\n\nmpg.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 234 entries, 0 to 233\nData columns (total 11 columns):\n #   Column        Non-Null Count  Dtype   \n---  ------        --------------  -----   \n 0   manufacturer  234 non-null    category\n 1   model         234 non-null    category\n 2   displ         234 non-null    float64 \n 3   year          234 non-null    int64   \n 4   cyl           234 non-null    int64   \n 5   trans         234 non-null    category\n 6   drv           234 non-null    category\n 7   cty           234 non-null    int64   \n 8   hwy           234 non-null    int64   \n 9   fl            234 non-null    category\n 10  class         234 non-null    category\ndtypes: category(6), float64(1), int64(4)\nmemory usage: 14.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-2",
+    "href": "posts/quarto/1_intro.html#data-2",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\n\nggplot(mpg)\n\n\n<ggplot: (-9223372036477484130)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n<ggplot: (-9223372036475671138)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-2",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n<ggplot: (378665329)>\n\n\ndispl - a car’s engine size, in litres.\nhwy - a car’s fuel efficiency on the highway, in miles per gallon (mpg)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom",
+    "text": "Data + Aesthetics + Geom\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point()\n\n\n<ggplot: (379199524)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#facets-small-multiples",
+    "href": "posts/quarto/1_intro.html#facets-small-multiples",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Facets: small multiples",
+    "text": "Facets: small multiples\nSubplots that each display one subset of the data."
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets",
+    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)\n\n\n<ggplot: (-9223372036475782589)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets",
+    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2) \n\n\n<ggplot: (-9223372036476023836)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#statistics",
+    "href": "posts/quarto/1_intro.html#statistics",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Statistics",
+    "text": "Statistics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets + Statistics",
+    "text": "Data + Aesthetics + Geom + Facets + Statistics\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\")\n\n\n<ggplot: (-9223372036477012655)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#coordinate",
+    "href": "posts/quarto/1_intro.html#coordinate",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Coordinate",
+    "text": "Coordinate"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate",
+    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate\n\n\n\n<ggplot: (377600064)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#theme",
+    "href": "posts/quarto/1_intro.html#theme",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Theme",
+    "text": "Theme"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme",
+    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme\n\n\n\n<ggplot: (377251185)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#scale",
+    "href": "posts/quarto/1_intro.html#scale",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Scale",
+    "text": "Scale"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036477578401)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036476669226)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036476008630)>"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#your-turn",
+    "href": "posts/quarto/1_intro.html#your-turn",
+    "title": "Data Visualization: Grammar of Graphics",
+    "section": "Your Turn",
+    "text": "Your Turn\nVisualize AirPassengers dataset.\nDataset: available at https://thiyanga-spatiotemporal.netlify.app/posts/data/"
+  },
+  {
+    "objectID": "posts/quarto/index.html",
+    "href": "posts/quarto/index.html",
+    "title": "About this Blog",
+    "section": "",
+    "text": "Read here"
+  },
+  {
+    "objectID": "posts/data/index.html",
+    "href": "posts/data/index.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "AirPassengers.csv\n\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
+    "section": "",
+    "text": "Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nData Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
   }
 ]
