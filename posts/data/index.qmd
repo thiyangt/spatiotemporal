@@ -14,7 +14,7 @@ jupyter: python3
 
 The AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960
 
-## Dataset 2
+# Dataset 2
 
 [tourism.csv](tourism.csv)
 
@@ -37,3 +37,12 @@ The dataset contains 23,408 rows and 5 variables:
 > Purpose: Stopover purpose of visit: "Holiday", "Visiting friends and relatives","Business", "Other reason"
 
 > Trips: Overnight trips in thousands
+
+Reference
+
+Wang, E, D Cook, and RJ Hyndman (2020).
+  A new tidy data structure to support
+  exploration and modeling of temporal
+  data, Journal of Computational and
+  Graphical Statistics, 29:3, 466-478,
+  doi:10.1080/10618600.2019.1695624.

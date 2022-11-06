@@ -1,7 +1,7 @@
 {
-  "hash": "f97ea1d5c5fbd3a053bd56d3f786a5d4",
+  "hash": "5cce02819443a9748ca30858315250dc",
   "result": {
-    "markdown": "---\ntitle: Datasets\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n1. [AirPassengers.csv](AirPassengers.csv)\n\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960\n\n",
+    "markdown": "---\ntitle: Datasets\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n# Dataset 1\n\n[AirPassengers.csv](AirPassengers.csv)\n\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960\n\n# Dataset 2\n\n[tourism.csv](tourism.csv)\n\nAustralian domestic overnight trips\n\n**Description**\n\nA dataset containing the quarterly overnight trips from 1998 Q1 to 2016 Q4 across Australia.\n\nThe dataset contains 23,408 rows and 5 variables:\n\n**Variable description**\n\n> Quarter: Year quarter (index)\n\n> Region: The tourism regions are formed through the aggregation of Statistical Local Areas (SLAs) which are defined by the various State and Territory tourism authorities according to their research and marketing needs\n\n> State: States and territories of Australia\n\n> Purpose: Stopover purpose of visit: \"Holiday\", \"Visiting friends and relatives\",\"Business\", \"Other reason\"\n\n> Trips: Overnight trips in thousands\n\nReference\n\nWang, E, D Cook, and RJ Hyndman (2020).\n  A new tidy data structure to support\n  exploration and modeling of temporal\n  data, Journal of Computational and\n  Graphical Statistics, 29:3, 466-478,\n  doi:10.1080/10618600.2019.1695624.\n\n",
     "supporting": [
       "index_files"
     ],

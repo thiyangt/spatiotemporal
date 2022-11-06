@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "posts/homework/index.html",
+    "href": "posts/homework/index.html",
+    "title": "Take-home task",
+    "section": "",
+    "text": "Visualize tourism dataset. The dataset is available here"
+  },
+  {
     "objectID": "posts/time_series/file1.html#time-series",
     "href": "posts/time_series/file1.html#time-series",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
@@ -46,7 +53,7 @@
     "href": "posts/time_series/file1.html#data-visualization",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Data Visualization",
-    "text": "Data Visualization\n\nimport plotnine\nfrom plotnine import *\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (382556501)>"
+    "text": "Data Visualization\n\nimport plotnine\nfrom plotnine import *\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (-9223372036472759983)>"
   },
   {
     "objectID": "posts/time_series/file1.html#convert-to-date-and-time",
@@ -60,14 +67,14 @@
     "href": "posts/time_series/file1.html#data-visualization-1",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Data Visualization",
-    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (381649507)>"
+    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (379059867)>"
   },
   {
     "objectID": "posts/time_series/file1.html#data-visualization-2",
     "href": "posts/time_series/file1.html#data-visualization-2",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Data Visualization",
-    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()+geom_point()\n\n\n<ggplot: (-9223372036471519502)>"
+    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()+geom_point()\n\n\n<ggplot: (-9223372036474706246)>"
   },
   {
     "objectID": "posts/time_series/file1.html#split-date-into-month-and-year",
@@ -130,7 +137,7 @@
     "href": "posts/time_series/file1.html#cyclic-1",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Cyclic",
-    "text": "Cyclic\n ## Cyclic + Seasonal"
+    "text": "Cyclic"
   },
   {
     "objectID": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
@@ -144,56 +151,56 @@
     "href": "posts/time_series/file1.html#seasonal-plots",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='year'))+geom_point()\n\n\n<ggplot: (382162538)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='year'))+geom_point()\n\n\n<ggplot: (277416154)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-1",
     "href": "posts/time_series/file1.html#seasonal-plots-1",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()\n\n\n<ggplot: (382159834)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()\n\n\n<ggplot: (380582085)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-2",
     "href": "posts/time_series/file1.html#seasonal-plots-2",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()\n\n\n<ggplot: (382558328)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()\n\n\n<ggplot: (382015040)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-3",
     "href": "posts/time_series/file1.html#seasonal-plots-3",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() \n\n\n<ggplot: (-9223372036472221717)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() \n\n\n<ggplot: (380586802)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-4",
     "href": "posts/time_series/file1.html#seasonal-plots-4",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_boxplot() \n\n\n<ggplot: (-9223372036472492719)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_boxplot() \n\n\n<ggplot: (277363106)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-5",
     "href": "posts/time_series/file1.html#seasonal-plots-5",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot() \n\n\n<ggplot: (-9223372036471539084)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot() \n\n\n<ggplot: (380477248)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-6",
     "href": "posts/time_series/file1.html#seasonal-plots-6",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (-9223372036472087601)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (380379645)>"
   },
   {
     "objectID": "posts/time_series/file1.html#yearly-variation",
     "href": "posts/time_series/file1.html#yearly-variation",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Yearly variation",
-    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='year', y='#Passengers', color='factor(year)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (384667249)>"
+    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='year', y='#Passengers', color='factor(year)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (-9223372036473527962)>"
   },
   {
     "objectID": "posts/time_series/file1.html#index---yearly",
@@ -781,20 +788,27 @@
     "href": "posts/data/index.html",
     "title": "Datasets",
     "section": "",
-    "text": "AirPassengers.csv\n\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960"
+    "text": "1 Dataset 1\nAirPassengers.csv\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960\n\n\n2 Dataset 2\ntourism.csv\nAustralian domestic overnight trips\nDescription\nA dataset containing the quarterly overnight trips from 1998 Q1 to 2016 Q4 across Australia.\nThe dataset contains 23,408 rows and 5 variables:\nVariable description\n\nQuarter: Year quarter (index)\n\n\nRegion: The tourism regions are formed through the aggregation of Statistical Local Areas (SLAs) which are defined by the various State and Territory tourism authorities according to their research and marketing needs\n\n\nState: States and territories of Australia\n\n\nPurpose: Stopover purpose of visit: “Holiday”, “Visiting friends and relatives”,“Business”, “Other reason”\n\n\nTrips: Overnight trips in thousands\n\nReference\nWang, E, D Cook, and RJ Hyndman (2020). A new tidy data structure to support exploration and modeling of temporal data, Journal of Computational and Graphical Statistics, 29:3, 466-478, doi:10.1080/10618600.2019.1695624."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "DSA 554 3.0 Spatio-temporal Data Analysis",
     "section": "",
-    "text": "DSA 554 3.0 Spatio-temporal Data Analysis is offered under MSc in Data Science (DS) and Artificial Intelligence (AI).\nThe MSc in DS and AI at USJ was designed in partnership with the Erasmus+ DS and AI consortium, a group of 15 European and Asian organizations with the mission of bringing European-standard advanced education to Asia"
+    "text": "DSA 554 3.0 Spatio-temporal Data Analysis is offered under MSc in Data Science (DS) and Artificial Intelligence (AI).\nThe MSc in DS and AI at USJ was designed in partnership with the Erasmus+ DS and AI consortium, a group of 15 European and Asian organizations with the mission of bringing European-standard advanced education to Asia."
   },
   {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home task\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#cyclic-seasonal",
+    "href": "posts/time_series/file1.html#cyclic-seasonal",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Cyclic + Seasonal",
+    "text": "Cyclic + Seasonal"
   }
 ]

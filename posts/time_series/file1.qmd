@@ -259,7 +259,8 @@ the magnitude of cycles tends to be more variable than the magnitude of seasonal
 
 ## Cyclic
 
-![](time/cyclic.png)
+![](time/cyclic.png){ width=50% }
+
 ## Cyclic + Seasonal
 
 ![](time/cs.png)

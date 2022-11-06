@@ -1,5 +1,5 @@
 ---
-title: "Course outline"
+title: "Take-home task"
 author: ""
 date: "2022-11-05"
 categories: [news]
