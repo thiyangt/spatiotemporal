@@ -1,0 +1,10 @@
+---
+title: "Course outline"
+author: ""
+date: "2022-11-05"
+categories: [news]
+---
+
+## Week 1
+
+Visualize toursizm dataset. The dataset is available [here](https://thiyanga-spatiotemporal.netlify.app/posts/data/)

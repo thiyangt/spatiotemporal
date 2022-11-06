@@ -8,6 +8,32 @@ format:
 jupyter: python3
 ---
 
-1. [AirPassengers.csv](AirPassengers.csv)
+# Dataset 1
+
+[AirPassengers.csv](AirPassengers.csv)
 
 The AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960
+
+## Dataset 2
+
+[tourism.csv](tourism.csv)
+
+Australian domestic overnight trips
+
+**Description**
+
+A dataset containing the quarterly overnight trips from 1998 Q1 to 2016 Q4 across Australia.
+
+The dataset contains 23,408 rows and 5 variables:
+
+**Variable description**
+
+> Quarter: Year quarter (index)
+
+> Region: The tourism regions are formed through the aggregation of Statistical Local Areas (SLAs) which are defined by the various State and Territory tourism authorities according to their research and marketing needs
+
+> State: States and territories of Australia
+
+> Purpose: Stopover purpose of visit: "Holiday", "Visiting friends and relatives","Business", "Other reason"
+
+> Trips: Overnight trips in thousands
