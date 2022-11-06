@@ -53,7 +53,7 @@
     "href": "posts/time_series/file1.html#data-visualization",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Data Visualization",
-    "text": "Data Visualization\n\nimport plotnine\nfrom plotnine import *\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (-9223372036472759983)>"
+    "text": "Data Visualization\n\nimport plotnine\nfrom plotnine import *\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (-9223372036479770161)>"
   },
   {
     "objectID": "posts/time_series/file1.html#convert-to-date-and-time",
@@ -67,14 +67,14 @@
     "href": "posts/time_series/file1.html#data-visualization-1",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Data Visualization",
-    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (379059867)>"
+    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (-9223372036479774183)>"
   },
   {
     "objectID": "posts/time_series/file1.html#data-visualization-2",
     "href": "posts/time_series/file1.html#data-visualization-2",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Data Visualization",
-    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()+geom_point()\n\n\n<ggplot: (-9223372036474706246)>"
+    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()+geom_point()\n\n\n<ggplot: (-9223372036479770771)>"
   },
   {
     "objectID": "posts/time_series/file1.html#split-date-into-month-and-year",
@@ -158,56 +158,56 @@
     "href": "posts/time_series/file1.html#seasonal-plots",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='year'))+geom_point()\n\n\n<ggplot: (277416154)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='year'))+geom_point()\n\n\n<ggplot: (-9223372036478791978)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-1",
     "href": "posts/time_series/file1.html#seasonal-plots-1",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()\n\n\n<ggplot: (380582085)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()\n\n\n<ggplot: (-9223372036582484245)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-2",
     "href": "posts/time_series/file1.html#seasonal-plots-2",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()\n\n\n<ggplot: (382015040)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()\n\n\n<ggplot: (376120896)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-3",
     "href": "posts/time_series/file1.html#seasonal-plots-3",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() \n\n\n<ggplot: (380586802)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() \n\n\n<ggplot: (-9223372036479294681)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-4",
     "href": "posts/time_series/file1.html#seasonal-plots-4",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_boxplot() \n\n\n<ggplot: (277363106)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_boxplot() \n\n\n<ggplot: (-9223372036479434317)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-5",
     "href": "posts/time_series/file1.html#seasonal-plots-5",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot() \n\n\n<ggplot: (380477248)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot() \n\n\n<ggplot: (-9223372036480369867)>"
   },
   {
     "objectID": "posts/time_series/file1.html#seasonal-plots-6",
     "href": "posts/time_series/file1.html#seasonal-plots-6",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Seasonal plots",
-    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (380379645)>"
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (-9223372036477430072)>"
   },
   {
     "objectID": "posts/time_series/file1.html#yearly-variation",
     "href": "posts/time_series/file1.html#yearly-variation",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
     "section": "Yearly variation",
-    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='year', y='#Passengers', color='factor(year)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (-9223372036473527962)>"
+    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='year', y='#Passengers', color='factor(year)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n<ggplot: (377342307)>"
   },
   {
     "objectID": "posts/time_series/file1.html#index---yearly",
