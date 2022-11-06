@@ -1,5 +1,5 @@
 ---
-title: "Take-home task"
+title: "Take-home tasks"
 author: ""
 date: "2022-11-05"
 categories: [news]
