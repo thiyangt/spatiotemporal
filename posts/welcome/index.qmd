@@ -1,20 +1,9 @@
 ---
-title: "Reading Materials"
+title: "Course outline"
 author: ""
 date: "2022-11-02"
 categories: [news]
 ---
-
-
-# Reading Materials
-
-## Time series analysis
-
-[Forecasting: Principles and Practice (2nd ed) by Rob J Hyndman and George Athanasopoulos](https://otexts.com/fpp2/)
-
-[Forecasting: theory and practice](https://forecasting-encyclopedia.com/)
-
-This written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field. 
 
 ## Course outline
 

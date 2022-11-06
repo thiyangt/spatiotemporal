@@ -2,7 +2,8 @@
 title: "Week 1A: Data Visualization: Grammar of Graphics"
 format:
   revealjs:
-    incremental: true   
+    slide-number: true
+    show-slide-number: all   
 jupyter: python3
 ---
 
