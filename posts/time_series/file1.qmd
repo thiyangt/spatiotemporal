@@ -1,5 +1,5 @@
 ---
-title: "Time Series: Objects in Python and Visualization"
+title: "Week 1B: Time Series: Objects in Python and Visualization"
 format:
   revealjs:
     slide-number: true

@@ -1,5 +1,5 @@
 ---
-title: "Data Visualization: Grammar of Graphics"
+title: "Week 1A: Data Visualization: Grammar of Graphics"
 format:
   revealjs:
     incremental: true   

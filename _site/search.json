@@ -408,385 +408,385 @@
   {
     "objectID": "posts/quarto/1_intro.html#section-3",
     "href": "posts/quarto/1_intro.html#section-3",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "",
     "text": "click here"
   },
   {
     "objectID": "posts/quarto/1_intro.html#grammar",
     "href": "posts/quarto/1_intro.html#grammar",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Grammar",
     "text": "Grammar\n\n\n\nEnglish\n\nNouns\nArticle\nAdjective\nVerb\nAdverb\nProposition\n\n\n\nGraphics"
   },
   {
     "objectID": "posts/quarto/1_intro.html#grammar---example",
     "href": "posts/quarto/1_intro.html#grammar---example",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Grammar - Example",
-    "text": "Grammar - Example\n\n\nEnglish\nThe little monkey hangs confidently by a branch.\n\nGraphics\n\n\n\n\n\n<ggplot: (-9223372036476274737)>"
+    "text": "Grammar - Example\n\n\nEnglish\nThe little monkey hangs confidently by a branch.\n\nGraphics\n\n\n\n\n\n<ggplot: (-9223372036482691875)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#grammar---example-1",
     "href": "posts/quarto/1_intro.html#grammar---example-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Grammar - Example",
     "text": "Grammar - Example\n\n\nEnglish\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch\n\nGraphics"
   },
   {
     "objectID": "posts/quarto/1_intro.html#graphics---grammar-components",
     "href": "posts/quarto/1_intro.html#graphics---grammar-components",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Graphics - Grammar components",
-    "text": "Graphics - Grammar components\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (379211058)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
+    "text": "Graphics - Grammar components\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (372537278)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
   },
   {
     "objectID": "posts/quarto/1_intro.html#geom_line",
     "href": "posts/quarto/1_intro.html#geom_line",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "geom_line",
-    "text": "geom_line\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (-9223372036477217606)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
+    "text": "geom_line\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (372547718)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
   },
   {
     "objectID": "posts/quarto/1_intro.html#geom_point",
     "href": "posts/quarto/1_intro.html#geom_point",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "geom_point",
-    "text": "geom_point\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (378527331)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_point() # line plot\n    + labs(x='date', y='median duration of unemployment, in week')\n)"
+    "text": "geom_point\n\nPlotCode\n\n\n\n\n\n\n\n<ggplot: (-9223372036481919323)>\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_point() # line plot\n    + labs(x='date', y='median duration of unemployment, in week')\n)"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data",
     "href": "posts/quarto/1_intro.html#data",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data",
     "text": "Data\nDate: data to be plotted"
   },
   {
     "objectID": "posts/quarto/1_intro.html#packages",
     "href": "posts/quarto/1_intro.html#packages",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Packages",
     "text": "Packages\n\nimport pandas as pd\nimport plotnine\n\nfrom plotnine import *\nfrom plotnine.data import *"
   },
   {
     "objectID": "posts/quarto/1_intro.html#dataset-economics",
     "href": "posts/quarto/1_intro.html#dataset-economics",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n  \n    \n      \n      date\n      pce\n      pop\n      psavert\n      uempmed\n      unemploy\n      year\n      month\n    \n  \n  \n    \n      0\n      1967-07-01\n      507.4\n      198712\n      12.5\n      4.5\n      2944\n      1967\n      7\n    \n    \n      1\n      1967-08-01\n      510.5\n      198911\n      12.5\n      4.7\n      2945\n      1967\n      8\n    \n    \n      2\n      1967-09-01\n      516.3\n      199113\n      11.7\n      4.6\n      2958\n      1967\n      9"
+    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n  \n    \n      \n      date\n      pce\n      pop\n      psavert\n      uempmed\n      unemploy\n    \n  \n  \n    \n      0\n      1967-07-01\n      507.4\n      198712\n      12.5\n      4.5\n      2944\n    \n    \n      1\n      1967-08-01\n      510.5\n      198911\n      12.5\n      4.7\n      2945\n    \n    \n      2\n      1967-09-01\n      516.3\n      199113\n      11.7\n      4.6\n      2958"
   },
   {
     "objectID": "posts/quarto/1_intro.html#dataset-economics-1",
     "href": "posts/quarto/1_intro.html#dataset-economics-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
+    "text": "Dataset: economics\n\neconomics.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 574 entries, 0 to 573\nData columns (total 6 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(2)\nmemory usage: 27.0 KB"
   },
   {
     "objectID": "posts/quarto/1_intro.html#dataset-economics-2",
     "href": "posts/quarto/1_intro.html#dataset-economics-2",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Dataset: economics",
     "text": "Dataset: economics\n\neconomics['year'] = economics['date'].dt.year\neconomics['month'] = economics['date'].dt.month"
   },
   {
     "objectID": "posts/quarto/1_intro.html#dataset-economics-3",
     "href": "posts/quarto/1_intro.html#dataset-economics-3",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Dataset: economics",
     "text": "Dataset: economics\n\neconomics.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
   },
   {
     "objectID": "posts/quarto/1_intro.html#dataset-economics-4",
     "href": "posts/quarto/1_intro.html#dataset-economics-4",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Dataset: economics",
     "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n  \n    \n      \n      date\n      pce\n      pop\n      psavert\n      uempmed\n      unemploy\n      year\n      month\n    \n  \n  \n    \n      0\n      1967-07-01\n      507.4\n      198712\n      12.5\n      4.5\n      2944\n      1967\n      7\n    \n    \n      1\n      1967-08-01\n      510.5\n      198911\n      12.5\n      4.7\n      2945\n      1967\n      8\n    \n    \n      2\n      1967-09-01\n      516.3\n      199113\n      11.7\n      4.6\n      2958\n      1967\n      9"
   },
   {
     "objectID": "posts/quarto/1_intro.html#tidy-data",
     "href": "posts/quarto/1_intro.html#tidy-data",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Tidy data",
     "text": "Tidy data\n\n\nEvery column is a variable.\nEvery row is an observation.\nEvery cell is a single value."
   },
   {
     "objectID": "posts/quarto/1_intro.html#tidy-data---example",
     "href": "posts/quarto/1_intro.html#tidy-data---example",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Tidy data - Example",
     "text": "Tidy data - Example"
   },
   {
     "objectID": "posts/quarto/1_intro.html#tidy-data---example-1",
     "href": "posts/quarto/1_intro.html#tidy-data---example-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Tidy data - Example",
     "text": "Tidy data - Example"
   },
   {
     "objectID": "posts/quarto/1_intro.html#tidy-data---example-2",
     "href": "posts/quarto/1_intro.html#tidy-data---example-2",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Tidy data - Example",
     "text": "Tidy data - Example"
   },
   {
     "objectID": "posts/quarto/1_intro.html#tidy-data---example-3",
     "href": "posts/quarto/1_intro.html#tidy-data---example-3",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Tidy data - Example",
     "text": "Tidy data - Example"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-1",
     "href": "posts/quarto/1_intro.html#data-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data",
-    "text": "Data\n\nggplot(data=economics)\n\n\n<ggplot: (376784483)>"
+    "text": "Data\n\nggplot(data=economics)\n\n\n<ggplot: (271538191)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
     "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Aesthetics: mapping variables",
     "text": "Aesthetics: mapping variables"
   },
   {
     "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
     "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Aesthetics: mapping variables",
     "text": "Aesthetics: mapping variables\nAesthetic means “something you can see”.\n\nposition (i.e., on the x and y axes)\ncolor (“outside” color)\nfill (“inside” color)\nshape (of points)"
   },
   {
     "objectID": "posts/quarto/1_intro.html#aesthetic-position",
     "href": "posts/quarto/1_intro.html#aesthetic-position",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Aesthetic: position",
-    "text": "Aesthetic: position\n\nfrom plotnine.data import mtcars\n\nggplot(mtcars, aes('wt', 'mpg')) + geom_point()\n\n\n<ggplot: (377642209)>"
+    "text": "Aesthetic: position\n\nfrom plotnine.data import mtcars\n\nggplot(mtcars, aes('wt', 'mpg')) + geom_point()\n\n\n<ggplot: (-9223372036481721961)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#aesthetic-color",
     "href": "posts/quarto/1_intro.html#aesthetic-color",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Aesthetic: color",
-    "text": "Aesthetic: color\n\nggplot(mtcars, aes('wt', 'mpg', color='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036570347362)>"
+    "text": "Aesthetic: color\n\nggplot(mtcars, aes('wt', 'mpg', color='factor(cyl)')) + geom_point()\n\n\n<ggplot: (372149070)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#aesthetic-shape",
     "href": "posts/quarto/1_intro.html#aesthetic-shape",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Aesthetic: shape",
-    "text": "Aesthetic: shape\n\nggplot(mtcars, aes('wt', 'mpg', shape='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036477215516)>"
+    "text": "Aesthetic: shape\n\nggplot(mtcars, aes('wt', 'mpg', shape='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036481470867)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#aesthetic-size",
     "href": "posts/quarto/1_intro.html#aesthetic-size",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Aesthetic: size",
-    "text": "Aesthetic: size\n\nggplot(mtcars, aes('wt', 'mpg', size='factor(cyl)')) + geom_point()\n\n\n<ggplot: (-9223372036477012543)>"
+    "text": "Aesthetic: size\n\nggplot(mtcars, aes('wt', 'mpg', size='factor(cyl)')) + geom_point()\n\n\n<ggplot: (373526308)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics",
     "href": "posts/quarto/1_intro.html#data-aesthetics",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(economics, aes(x='date', y='uempmed'))\n\n\n<ggplot: (-9223372036477212686)>"
+    "text": "Data + Aesthetics\n\nggplot(economics, aes(x='date', y='uempmed'))\n\n\n<ggplot: (373525231)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#geometrics",
     "href": "posts/quarto/1_intro.html#geometrics",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Geometrics",
     "text": "Geometrics\nActual marks we put on a plot"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point()\n\n\n<ggplot: (379000875)>"
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point()\n\n\n<ggplot: (-9223372036481113852)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(alpha=0.5)\n\n\n<ggplot: (-9223372036476646845)>"
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(alpha=0.5)\n\n\n<ggplot: (373667427)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(size=0.3)\n\n\n<ggplot: (-9223372036476798727)>"
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(size=0.3)\n\n\n<ggplot: (-9223372036480828556)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line()\n\n\n<ggplot: (377984811)>"
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line()\n\n\n<ggplot: (374074376)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3)\n\n\n<ggplot: (-9223372036477578254)>"
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3)\n\n\n<ggplot: (-9223372036480605468)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour=\"blue\")\n\n\n<ggplot: (-9223372036475598974)>"
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour=\"blue\")\n\n\n<ggplot: (374292295)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#geoms",
     "href": "posts/quarto/1_intro.html#geoms",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Geoms",
     "text": "Geoms\n\nsource: https://nbisweden.github.io/RaukR-2019/ggplot/presentation/ggplot_presentation.html#17"
   },
   {
     "objectID": "posts/quarto/1_intro.html#dataset",
     "href": "posts/quarto/1_intro.html#dataset",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Dataset",
     "text": "Dataset\n\nmpg\n\n\n\n\n\n  \n    \n      \n      manufacturer\n      model\n      displ\n      year\n      cyl\n      trans\n      drv\n      cty\n      hwy\n      fl\n      class\n    \n  \n  \n    \n      0\n      audi\n      a4\n      1.8\n      1999\n      4\n      auto(l5)\n      f\n      18\n      29\n      p\n      compact\n    \n    \n      1\n      audi\n      a4\n      1.8\n      1999\n      4\n      manual(m5)\n      f\n      21\n      29\n      p\n      compact\n    \n    \n      2\n      audi\n      a4\n      2.0\n      2008\n      4\n      manual(m6)\n      f\n      20\n      31\n      p\n      compact\n    \n    \n      3\n      audi\n      a4\n      2.0\n      2008\n      4\n      auto(av)\n      f\n      21\n      30\n      p\n      compact\n    \n    \n      4\n      audi\n      a4\n      2.8\n      1999\n      6\n      auto(l5)\n      f\n      16\n      26\n      p\n      compact\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      229\n      volkswagen\n      passat\n      2.0\n      2008\n      4\n      auto(s6)\n      f\n      19\n      28\n      p\n      midsize\n    \n    \n      230\n      volkswagen\n      passat\n      2.0\n      2008\n      4\n      manual(m6)\n      f\n      21\n      29\n      p\n      midsize\n    \n    \n      231\n      volkswagen\n      passat\n      2.8\n      1999\n      6\n      auto(l5)\n      f\n      16\n      26\n      p\n      midsize\n    \n    \n      232\n      volkswagen\n      passat\n      2.8\n      1999\n      6\n      manual(m5)\n      f\n      18\n      26\n      p\n      midsize\n    \n    \n      233\n      volkswagen\n      passat\n      3.6\n      2008\n      6\n      auto(s6)\n      f\n      17\n      26\n      p\n      midsize\n    \n  \n\n234 rows × 11 columns"
   },
   {
     "objectID": "posts/quarto/1_intro.html#dataset-variable-types",
     "href": "posts/quarto/1_intro.html#dataset-variable-types",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Dataset: variable types",
     "text": "Dataset: variable types\n\nmpg.info()\n\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 234 entries, 0 to 233\nData columns (total 11 columns):\n #   Column        Non-Null Count  Dtype   \n---  ------        --------------  -----   \n 0   manufacturer  234 non-null    category\n 1   model         234 non-null    category\n 2   displ         234 non-null    float64 \n 3   year          234 non-null    int64   \n 4   cyl           234 non-null    int64   \n 5   trans         234 non-null    category\n 6   drv           234 non-null    category\n 7   cty           234 non-null    int64   \n 8   hwy           234 non-null    int64   \n 9   fl            234 non-null    category\n 10  class         234 non-null    category\ndtypes: category(6), float64(1), int64(4)\nmemory usage: 14.0 KB"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-2",
     "href": "posts/quarto/1_intro.html#data-2",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data",
-    "text": "Data\n\nggplot(mpg)\n\n\n<ggplot: (-9223372036477484130)>"
+    "text": "Data\n\nggplot(mpg)\n\n\n<ggplot: (-9223372036480477966)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-1",
     "href": "posts/quarto/1_intro.html#data-aesthetics-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n<ggplot: (-9223372036475671138)>"
+    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n<ggplot: (374297846)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-2",
     "href": "posts/quarto/1_intro.html#data-aesthetics-2",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n<ggplot: (378665329)>\n\n\ndispl - a car’s engine size, in litres.\nhwy - a car’s fuel efficiency on the highway, in miles per gallon (mpg)"
+    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n<ggplot: (-9223372036482475772)>\n\n\ndispl - a car’s engine size, in litres.\nhwy - a car’s fuel efficiency on the highway, in miles per gallon (mpg)"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geom",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geom",
-    "text": "Data + Aesthetics + Geom\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point()\n\n\n<ggplot: (379199524)>"
+    "text": "Data + Aesthetics + Geom\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point()\n\n\n<ggplot: (-9223372036482444912)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#facets-small-multiples",
     "href": "posts/quarto/1_intro.html#facets-small-multiples",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Facets: small multiples",
     "text": "Facets: small multiples\nSubplots that each display one subset of the data."
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geom + Facets",
-    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)\n\n\n<ggplot: (-9223372036475782589)>"
+    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)\n\n\n<ggplot: (372859933)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geom + Facets",
-    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2) \n\n\n<ggplot: (-9223372036476023836)>"
+    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2) \n\n\n<ggplot: (-9223372036482390496)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#statistics",
     "href": "posts/quarto/1_intro.html#statistics",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Statistics",
     "text": "Statistics"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geom + Facets + Statistics",
-    "text": "Data + Aesthetics + Geom + Facets + Statistics\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\")\n\n\n<ggplot: (-9223372036477012655)>"
+    "text": "Data + Aesthetics + Geom + Facets + Statistics\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\")\n\n\n<ggplot: (374955093)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#coordinate",
     "href": "posts/quarto/1_intro.html#coordinate",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Coordinate",
     "text": "Coordinate"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate",
-    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate\n\n\n\n<ggplot: (377600064)>"
+    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate\n\n\n\n<ggplot: (-9223372036480505761)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#theme",
     "href": "posts/quarto/1_intro.html#theme",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Theme",
     "text": "Theme"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme",
-    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme\n\n\n\n<ggplot: (377251185)>"
+    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme\n\n\n\n<ggplot: (-9223372036481917801)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#scale",
     "href": "posts/quarto/1_intro.html#scale",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Scale",
     "text": "Scale"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036477578401)>"
+    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036481971982)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036476669226)>"
+    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (373442424)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
     "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (-9223372036476008630)>"
+    "text": "Data + Aesthetics + Geometrics + Scale\n\n\n\n<ggplot: (374966013)>"
   },
   {
     "objectID": "posts/quarto/1_intro.html#your-turn",
     "href": "posts/quarto/1_intro.html#your-turn",
-    "title": "Data Visualization: Grammar of Graphics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
     "section": "Your Turn",
     "text": "Your Turn\nVisualize AirPassengers dataset.\nDataset: available at https://thiyanga-spatiotemporal.netlify.app/posts/data/"
   },
@@ -809,6 +809,6 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nData Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n  \n\n\n\n\nTime Series Analysis\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n  \n\n\n\n\nTime Series Analysis\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
   }
 ]
