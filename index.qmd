@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "DSA 554 3.0 Spatio-temporal Data Analysis"
 image: profile.jpg
 about:
   template: jolla
