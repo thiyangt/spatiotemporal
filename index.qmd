@@ -1,5 +1,5 @@
 ---
-title: "DSA 554 3.0 Spatio-temporal Data Analysis"
+title: "About"
 image: profile.jpg
 about:
   template: jolla
@@ -17,6 +17,3 @@ about:
 ---
 
 
-This unit is offered under MSc in Data Science (DS) and Artificial Intelligence (AI).
-
-The MSc in DS and AI at USJ was designed in partnership with the Erasmus+ DS and AI consortium, a group of 15 European and Asian organizations with the mission of bringing European-standard advanced education to Asia
