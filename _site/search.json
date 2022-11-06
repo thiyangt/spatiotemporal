@@ -140,6 +140,13 @@
     "text": "Cyclic"
   },
   {
+    "objectID": "posts/time_series/file1.html#cyclic-seasonal",
+    "href": "posts/time_series/file1.html#cyclic-seasonal",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Cyclic + Seasonal",
+    "text": "Cyclic + Seasonal"
+  },
+  {
     "objectID": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
     "href": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
     "title": "Week 1B: Time Series: Objects in Python and Visualization",
@@ -803,12 +810,5 @@
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
     "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home task\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/time_series/file1.html#cyclic-seasonal",
-    "href": "posts/time_series/file1.html#cyclic-seasonal",
-    "title": "Week 1B: Time Series: Objects in Python and Visualization",
-    "section": "Cyclic + Seasonal",
-    "text": "Cyclic + Seasonal"
   }
 ]
