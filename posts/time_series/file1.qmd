@@ -1,0 +1,549 @@
+---
+title: "Time Series: Objects in Python and Visualization"
+format:
+  revealjs:
+    slide-number: true
+    show-slide-number: print  
+jupyter: python3
+---
+
+## Time Series
+
+A time series is a sequence of observations taken sequentially in time.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Cross-sectional data**
+
+```{python}
+import pandas as pd
+data = {
+  "ID": [1, 2, 3],
+  "calories": [420, 380, 390]
+  
+}
+
+#load data into a DataFrame object:
+df = pd.DataFrame(data)
+df
+```
+
+Observations that come from different individuals or groups at a single point in time.
+
+:::
+
+
+::: {.column width="50%"}
+
+**Time series data**
+
+
+```{python}
+import pandas as pd
+data = {
+  "Year": [2019, 2020, 2021],
+  "Sales": [490, 980, 260]
+  
+}
+
+#load data into a DataFrame object:
+df = pd.DataFrame(data)
+df
+```
+
+A set of observations, along with some information about what times those observations were recorded.
+
+:::
+
+::::
+
+## DateTime
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Cross-sectional data**
+
+```{python}
+#| echo: true
+import pandas as pd
+data = {
+  "ID": [1, 2, 3],
+  "calories": [420, 380, 390]
+  
+}
+
+#load data into a DataFrame object:
+dfc = pd.DataFrame(data)
+dfc
+```
+
+
+
+:::
+
+
+::: {.column width="50%"}
+
+**Time series data**
+
+
+```{python}
+#| echo: true
+data = {
+  "Year": [2019, 2020, 2021],
+  "Sales": [490, 980, 260]
+  
+}
+
+#load data into a DataFrame object:
+dft = pd.DataFrame(data)
+dft
+```
+
+:::
+
+::::
+
+
+## DateTime
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Cross-sectional data**
+
+```{python}
+#| echo: true
+dfc.info()
+```
+
+
+
+:::
+
+
+::: {.column width="50%"}
+
+**Time series data**
+
+
+```{python}
+#| echo: true
+dft.info()
+```
+
+:::
+
+::::
+
+
+## Necessary packages 
+
+```{python}
+#| echo: true
+import pandas as pd
+import numpy as np
+import datetime
+```
+
+## Read AirPassenger
+
+```{python}
+#| echo: true
+airpassenger = pd.read_csv('AirPassengers.csv')
+airpassenger
+```
+
+
+## AirPassenger dataset
+
+```{python}
+#| echo: true
+airpassenger.info()
+```
+
+## Data Visualization
+
+```{python}
+#| echo: true
+import plotnine
+from plotnine import *
+ggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()
+```
+
+## Convert to Date and Time
+
+```{python}
+#| echo: true
+from datetime import datetime
+airpassenger['Month']= pd.to_datetime(airpassenger['Month'])
+airpassenger.info()
+```
+
+## Data Visualization
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()
+```
+
+## Data Visualization
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()+geom_point()
+```
+
+## Split date into month and year
+
+```{python}
+#| echo: true
+airpassenger['year'] = airpassenger['Month'].dt.year
+airpassenger['month'] = airpassenger['Month'].dt.month
+```
+
+
+## Split date into month and year (cont.)
+
+```{python}
+#| echo: true
+airpassenger
+```
+
+## Time Series Patterns
+
+### Trend
+
+Long-term increase or decrease in the data.
+
+### Seasonal
+
+A seasonal pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week). Seasonality is always of a fixed and known period. Hence, seasonal time series are sometimes called periodic time series.
+
+Period is unchanging and associated with some aspect of the calendar.
+
+## Time Series Patterns (cont)
+
+### Cyclic
+
+A cyclic pattern exists when data exhibit rises and falls that are not of fixed period. The duration of these fluctuations is usually of at least 2 years.
+In general,
+
+the average length of cycles is longer than the length of a seasonal pattern.
+
+the magnitude of cycles tends to be more variable than the magnitude of seasonal patterns
+
+## Example: trend
+
+![](time/trend.png)
+
+## Example: seasonal
+
+![](time/seasonal.png)
+
+## Example: multiple seasonality
+
+![](time/ms.png)
+
+## Example: Trend + Seasonal
+
+![](time/trendsea.png)
+
+## Cyclic
+
+![](time/cyclic.png)
+## Cyclic + Seasonal
+
+![](time/cs.png)
+
+## Frequency of a time series: Seasonal periods
+
+![](time/freq.png)
+
+## Seasonal plots
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='month', y='#Passengers', color='year'))+geom_point()
+```
+
+## Seasonal plots
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()
+```
+
+## Seasonal plots
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()
+```
+
+## Seasonal plots
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() 
+```
+
+
+## Seasonal plots
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_boxplot() 
+```
+
+## Seasonal plots
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot() 
+```
+
+## Seasonal plots
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot(alpha=0.5) 
+```
+
+## Yearly variation
+
+```{python}
+#| echo: true
+ggplot(airpassenger, aes(x='year', y='#Passengers', color='factor(year)'))+ geom_point()+ geom_boxplot(alpha=0.5) 
+```
+
+
+
+# `pandas` Time Series: index by time
+
+## Index - Yearly
+
+**Method 1**
+
+```{python}
+#| echo: true
+index1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])
+data1 = pd.Series([123, 39, 78, 52, 110], index=index1)
+data1
+
+```
+
+
+## Index - Yearly (cont.)
+
+**Method 2**
+
+`freq='AS'` for start of year
+
+```{python}
+#| echo: true
+index2 = pd.date_range("2012", periods=5, freq='AS')
+index2
+```
+
+```{python}
+#| echo: true
+data2 = pd.Series([123, 39, 78, 52, 110], index=index2)
+data2
+```
+
+## Index - Yearly (cont.)
+
+**Method 3**
+
+`freq='A'` end of year frequency
+
+```{python}
+#| echo: true
+index3 = pd.date_range("2012", periods=5, freq='A')
+index3
+```
+
+```{python}
+#| echo: true
+data3 = pd.Series([123, 39, 78, 52, 110], index=index3)
+data3
+```
+
+## Index - Yearly (cont.)
+
+**Method 4**
+
+Annual indexing with arbitrary month
+
+```{python}
+#| echo: true
+index4 = pd.date_range("2012", periods=5, freq='AS-NOV')
+index4
+```
+
+```{python}
+#| echo: true
+data4 = pd.Series([123, 39, 78, 52, 110], index=index4)
+data4
+```
+
+## Index - Yearly (cont.)
+
+```{python}
+#| echo: true
+index = pd.period_range('2012-01', periods=8, freq='A')
+index
+```
+
+
+## Index - Monthly
+
+**Method 1**
+
+```{python}
+#| echo: true
+index = pd.period_range('2022-01', periods=8, freq='M')
+index
+```
+
+**Method 2**
+
+```{python}
+#| echo: true
+index = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')
+index
+```
+
+## Index - Quarterly
+
+```{python}
+#| echo: true
+index = pd.period_range('2022-01', periods=8, freq='Q')
+index
+```
+
+## Index  - Daily
+
+```{python}
+#| echo: true
+index = pd.period_range('2022-01-01', periods=8, freq='D')
+index
+```
+
+## Index  - Hourly
+
+**Range of hourly timestamps**
+
+```{python}
+#| echo: true
+pd.period_range('2022-01', periods=8, freq='H')
+
+```
+
+```{python}
+#| echo: true
+pd.date_range('2022-01', periods=8, freq='H')
+
+```
+
+**Sequence of durations increasing by an hour**
+
+```{python}
+#| echo: true
+pd.timedelta_range(0, periods=10, freq='H')
+```
+
+## Define multiple frequencies
+
+> Next lesson
+
+## Correlation
+
+![](time/cor.png)
+
+## Autocorrelation
+
+![](time/auto.png)
+
+## ACF plot
+
+```{python}
+#| echo: true
+import pandas as pd
+from matplotlib import pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
+# Select relevant data, index by Date
+data = airpassenger[['Month', '#Passengers']].set_index(['Month'])
+# Calculate the ACF (via statsmodel)
+data
+```
+
+## ACF plot
+
+```{python}
+#| echo: true
+data.info()
+plot_acf(data, lags=50)
+```
+
+
+
+## ACF
+
+![](time/a1.png)
+
+## ACF
+
+![](time/a2.png)
+
+## ACF
+
+![](time/a3.png)
+
+## ACF
+
+![](time/a4.png)
+
+## ACF
+
+![](time/a5.png)
+## Time series forecasting
+
+![](time/a6.png)
+
+## Training and Test Set
+
+![](time/train.png)
+
+## Simple time series forecasting technique
+
+![](time/m1.png)
+
+## Simple time series forecasting technique
+
+![](time/m2.png)
+
+## Simple time series forecasting technique
+
+![](time/m3.png)
+
+## Simple time series forecasting technique
+
+![](time/m4.png)
+
+## Simple time series forecasting technique
+
+![](time/m5.png)
+
+## References
+
+[https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html](https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html)

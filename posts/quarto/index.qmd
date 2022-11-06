@@ -8,9 +8,11 @@ format:
 jupyter: python3
 ---
 
-# This blog is made with Quarto
+# This blog is made with Quarto and Python.
 
 ## What is Quarto?
+
+[Read here](https://quarto.org/)
 
 # Data Visualization Example with Python
 

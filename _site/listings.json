@@ -2,12 +2,12 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/extrafiles/file1.html",
+      "/posts/time_series/file1.html",
       "/posts/quarto/1_intro.html",
       "/posts/quarto/index.html",
       "/posts/data/index.html",
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html"
+      "/posts/welcome/index.html",
+      "/posts/time_series/index.html"
     ]
   }
 ]
