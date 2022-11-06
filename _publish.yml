@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 1c8c073d-ef44-4201-aa96-1a94ac74ef3a
+      url: 'https://melodic-yeot-9f7007.netlify.app'
