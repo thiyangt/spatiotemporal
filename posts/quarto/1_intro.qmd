@@ -468,7 +468,7 @@ ggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.
 
 source: https://nbisweden.github.io/RaukR-2019/ggplot/presentation/ggplot_presentation.html#17
 
-# Grammar of Graphics - Plot 2 with `mtcars`
+# Grammar of Graphics - Plot 2 with `mpg`
 
 ## Dataset
 
@@ -560,6 +560,7 @@ ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2
 ## Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate
 
 ```{python}
+#| echo: true
 ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2)+ stat_smooth(method = "lm") + coord_flip()
 
 ```
@@ -572,6 +573,7 @@ ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2
 ## Data + Aesthetics + Geometrics + Facets + Statistics +  Coordinate+ Theme
 
 ```{python}
+#| echo: true
 ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2)+ stat_smooth(method = "lm") + coord_flip() + theme_dark()
 
 ```
@@ -583,6 +585,7 @@ ggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap("class", nrow=2
 ## Data + Aesthetics + Geometrics + Scale
 
 ```{python}
+#| echo: true
 ggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() 
 
 ```
@@ -590,6 +593,7 @@ ggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point()
 ## Data + Aesthetics + Geometrics + Scale
 
 ```{python}
+#| echo: true
 ggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_brewer()
 
 ```
@@ -597,6 +601,7 @@ ggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color
 ## Data + Aesthetics + Geometrics + Scale
 
 ```{python}
+#| echo: true
 ggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_manual(values=['blue', 'red', 'green'])
 
 ```
