@@ -7,13 +7,6 @@
     "text": "Forecasting: Principles and Practice (2nd ed) by Rob J Hyndman and George Athanasopoulos\nForecasting: theory and practice\nThis written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field."
   },
   {
-    "objectID": "posts/welcome/index.html#course-outline",
-    "href": "posts/welcome/index.html#course-outline",
-    "title": "Reading Materials",
-    "section": "Course outline",
-    "text": "Course outline"
-  },
-  {
     "objectID": "posts/time_series/file1.html#time-series",
     "href": "posts/time_series/file1.html#time-series",
     "title": "Time Series: Objects in Python and Visualization",
@@ -803,6 +796,13 @@
     "title": "Datasets",
     "section": "",
     "text": "AirPassengers.csv\n\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DSA 554 3.0 Spatio-temporal Data Analysis",
+    "section": "",
+    "text": "DSA 554 3.0 Spatio-temporal Data Analysis is offered under MSc in Data Science (DS) and Artificial Intelligence (AI).\nThe MSc in DS and AI at USJ was designed in partnership with the Erasmus+ DS and AI consortium, a group of 15 European and Asian organizations with the mission of bringing European-standard advanced education to Asia"
   },
   {
     "objectID": "blog.html",
