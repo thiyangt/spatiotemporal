@@ -5,6 +5,8 @@ date: "2022-11-05"
 categories: [news]
 ---
 
-## Week 1
+## Week 1: 05 Nov 2022
 
-Visualize toursizm dataset. The dataset is available [here](https://thiyanga-spatiotemporal.netlify.app/posts/data/)
+Visualize tourism dataset. The dataset is available [here](https://thiyanga-spatiotemporal.netlify.app/posts/data/)
+
+
