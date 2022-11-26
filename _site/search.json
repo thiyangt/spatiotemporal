@@ -812,6 +812,69 @@
     "text": "PACF - First differencing on diff(log(data), 12)\n\nplot_pacf(y_train.naturallog.diff12.diff.dropna(), lags=50)\nplt.show()"
   },
   {
+    "objectID": "posts/time_series/Week3.html#testing-for-nonstationarity-for-the-presence-of-unit-roots",
+    "href": "posts/time_series/Week3.html#testing-for-nonstationarity-for-the-presence-of-unit-roots",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Testing for nonstationarity for the presence of unit roots",
+    "text": "Testing for nonstationarity for the presence of unit roots\n\nDickey and Fuller (DF) test\nAugmented DF test\nPhillips and Perron (PP) nonparametric test\nKwiatkowski-Phillips-Schmidt-Shin (KPSS) test"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test",
+    "href": "posts/time_series/Week3.html#kpss-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\nH0: Series is level or trend stationary.\nH1: Series is not stationary."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-1",
+    "href": "posts/time_series/Week3.html#kpss-test-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nfrom statsmodels.tsa.stattools import kpss\ndef kpss_test(series, **kw):    \n    statistic, p_value, n_lags, critical_values = kpss(series, **kw)\n    # Format Output\n    print(f'KPSS Statistic: {statistic}')\n    print(f'p-value: {p_value}')\n    print(f'num lags: {n_lags}')\n    print('Critial Values:')\n    for key, value in critical_values.items():\n        print(f'   {key} : {value}')\n    print(f'Result: The series is {\"not \" if p_value < 0.05 else \"\"}stationary')\n\nkpss_test(y_train.naturallog)\n\nKPSS Statistic: 1.9204939010623039\np-value: 0.01\nnum lags: 6\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is not stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-2",
+    "href": "posts/time_series/Week3.html#kpss-test-2",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nkpss_test(y_train.naturallog.diff12.dropna())\n\nKPSS Statistic: 0.29885781439314946\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-3",
+    "href": "posts/time_series/Week3.html#kpss-test-3",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nKPSS test may not necessarily reject the null hypothesis (that the series is level or trend stationary) even if a series is steadily increasing or decreasing.\nThe word ‘deterministic’ implies the slope of the trend in the series does not change permanently. That is, even if the series goes through a shock, it tends to regain its original path.\n\nsource: https://www.machinelearningplus.com/time-series/kpss-test-for-stationarity/"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-4",
+    "href": "posts/time_series/Week3.html#kpss-test-4",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nBy default, it tests for stationarity around a ‘mean’ only.\nTo turn ON the stationarity testing around a trend, you need to explicitly pass the regression=‘ct’ parameter to the kpss\n\n\nkpss_test(y_train.naturallog.diff12.dropna(), regression='ct')\n\nKPSS Statistic: 0.0760056301424143\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.119\n   5% : 0.146\n   2.5% : 0.176\n   1% : 0.216\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#adf-test",
+    "href": "posts/time_series/Week3.html#adf-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ADF test",
+    "text": "ADF test\n\nfrom statsmodels.tsa.stattools import adfuller\n\ndef adf_test(series):\n    result = adfuller(series, autolag='AIC')\n    print(f'ADF Statistic: {result[0]}')\n    print(f'p-value: {result[1]}')\n    for key, value in result[4].items():\n        print('Critial Values:')\n        print(f'   {key}, {value}')\n\nseries = df.loc[:, 'value'].values\n\nH0: Series is not stationary\nH1: Series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#adf-test-1",
+    "href": "posts/time_series/Week3.html#adf-test-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ADF test",
+    "text": "ADF test\n\nadf_test(y_train.naturallog)\n\nADF Statistic: -1.3176112021439967\np-value: 0.6210771494355872\nCritial Values:\n   1%, -3.4870216863700767\nCritial Values:\n   5%, -2.8863625166643136\nCritial Values:\n   10%, -2.580009026141913\n\n\n\nadf_test(y_train.naturallog.diff12.dropna())\n\nADF Statistic: -2.5844902417566793\np-value: 0.09624537566648711\nCritial Values:\n   1%, -3.492995948509562\nCritial Values:\n   5%, -2.888954648057252\nCritial Values:\n   10%, -2.58139291903223\n\n\n\nadf_test(y_train.naturallog.diff12.diff.dropna())\n\nADF Statistic: -4.08727195454389\np-value: 0.0010165214009067135\nCritial Values:\n   1%, -3.4936021509366793\nCritial Values:\n   5%, -2.8892174239808703\nCritial Values:\n   10%, -2.58153320754717"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-vs-adf-test",
+    "href": "posts/time_series/Week3.html#kpss-vs-adf-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS vs ADF test",
+    "text": "KPSS vs ADF test\nIf a series is stationary according to the KPSS test by setting regression=‘ct’ and is not stationary according to the ADF test, it means the series is stationary around a deterministic trend.\nFurther reading:\nKwiatkowski, D.; Phillips, P. C. B.; Schmidt, P.; Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. Journal of Econometrics, 54 (1-3): 159-178."
+  },
+  {
     "objectID": "posts/time_series/Week3.html#arp",
     "href": "posts/time_series/Week3.html#arp",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
@@ -875,6 +938,62 @@
     "text": "Fitting ARIMA models\n\nfrom sktime.forecasting.arima import ARIMA\nforecaster1 = ARIMA(  \n    order=(1, 1, 0),\n    seasonal_order=(1, 1, 0, 12),\n    suppress_warnings=True)\nforecaster1.fit(y_train.naturallog)    \n\nARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.ARIMAARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)"
   },
   {
+    "objectID": "posts/time_series/Week3.html#step-6-check-residual-series",
+    "href": "posts/time_series/Week3.html#step-6-check-residual-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 6: Check residual series",
+    "text": "Step 6: Check residual series\n\nfhtrain = ForecastingHorizon(\n    pd.PeriodIndex(pd.period_range(start='1949-01', end='1959-12', freq='M')), is_relative=False\n)\nfhtrain\n\nForecastingHorizon(['1949-01', '1949-02', '1949-03', '1949-04', '1949-05', '1949-06',\n             '1949-07', '1949-08', '1949-09', '1949-10',\n             ...\n             '1959-03', '1959-04', '1959-05', '1959-06', '1959-07', '1959-08',\n             '1959-09', '1959-10', '1959-11', '1959-12'],\n            dtype='period[M]', length=132, is_relative=False)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
+    "href": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Obtain predictions for the training period",
+    "text": "Obtain predictions for the training period\n\ny_pred_train = forecaster1.predict(fhtrain)\ny_pred_train\n\n1949-01         NaN\n1949-02    4.718760\n1949-03    4.770946\n1949-04    4.883063\n1949-05    4.860073\n             ...   \n1959-08    6.310106\n1959-09    6.138659\n1959-10    6.004945\n1959-11    5.869054\n1959-12    5.974289\nFreq: M, Length: 132, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#obtain-residual-series",
+    "href": "posts/time_series/Week3.html#obtain-residual-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Obtain residual series",
+    "text": "Obtain residual series\n\nresidual = y_train.naturallog - y_pred_train\nresidual\n\n1949-01         NaN\n1949-02    0.051925\n1949-03    0.111856\n1949-04   -0.023251\n1949-05   -0.064283\n             ...   \n1959-08    0.016043\n1959-09   -0.000931\n1959-10    0.003868\n1959-11    0.022590\n1959-12    0.029598\nFreq: M, Length: 132, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-residuals",
+    "href": "posts/time_series/Week3.html#plot-residuals",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot residuals",
+    "text": "Plot residuals\n\nplot_series(residual)\n\n(<Figure size 1920x480 with 1 Axes>, <AxesSubplot: >)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-residuals-cont.",
+    "href": "posts/time_series/Week3.html#plot-residuals-cont.",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot residuals (cont.)",
+    "text": "Plot residuals (cont.)\n\nplot_acf(residual.dropna(), lags=50)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-residuals-cont.-1",
+    "href": "posts/time_series/Week3.html#plot-residuals-cont.-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot residuals (cont.)",
+    "text": "Plot residuals (cont.)\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nplt.hist(residual)\nplt.show()\n\n\nYour turn: remove the outlier and draw the histogram"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#ljung-box-test",
+    "href": "posts/time_series/Week3.html#ljung-box-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Ljung-Box Test",
+    "text": "Ljung-Box Test\nH0: Residuals are not serially correlated.\nH1: Residuals are serially correlated.\n\n\n\n\n\n\n  \n    \n      \n      lb_stat\n      lb_pvalue\n    \n  \n  \n    \n      20\n      3.984776\n      0.999955"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-7-generate-forecasts",
+    "href": "posts/time_series/Week3.html#step-7-generate-forecasts",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 7: Generate forecasts",
+    "text": "Step 7: Generate forecasts\n\ny_pred_1 = forecaster1.predict(fh)\ny_pred_1\n\n1960-01    6.037478\n1960-02    5.982107\n1960-03    6.133707\n1960-04    6.102795\n1960-05    6.154218\n1960-06    6.301004\n1960-07    6.437653\n1960-08    6.461717\n1960-09    6.257650\n1960-10    6.134112\n1960-11    6.003672\n1960-12    6.103036\nFreq: M, dtype: float64"
+  },
+  {
     "objectID": "posts/time_series/Week3.html#back-transformation",
     "href": "posts/time_series/Week3.html#back-transformation",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
@@ -901,6 +1020,104 @@
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Your Turn",
     "text": "Your Turn\nFit other variants of ARIMA models and identify the best ARIMA model for the series."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#modelling-steps",
+    "href": "posts/time_series/Week3.html#modelling-steps",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Modelling steps",
+    "text": "Modelling steps\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\nIf the data are non-stationary, take first differences of the data until the data are stationary.\nExamine the ACF/PACF to identify a suitable model.\nTry your chosen model(s), and use the AICc to search for a better model."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#modelling-steps-cont.",
+    "href": "posts/time_series/Week3.html#modelling-steps-cont.",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Modelling steps (cont.)",
+    "text": "Modelling steps (cont.)\n\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts.\n\nSource: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#modelling-steps",
+    "href": "posts/time_series/Week4.html#modelling-steps",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Modelling steps",
+    "text": "Modelling steps\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\n\n3. If the data are non-stationary, take first differences of the data until the data are stationary.\n4. Examine the ACF/PACF to identify a suitable model.\n5. Try your chosen model(s), and use the AICc to search for a better model."
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#modelling-steps-cont.",
+    "href": "posts/time_series/Week4.html#modelling-steps-cont.",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Modelling steps (cont.)",
+    "text": "Modelling steps (cont.)\n\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts."
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#modelling-steps-autoarima",
+    "href": "posts/time_series/Week4.html#modelling-steps-autoarima",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Modelling steps: AutoARIMA",
+    "text": "Modelling steps: AutoARIMA\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\nUse AutoARIMA to select a model.\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts."
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#modeling-with-python",
+    "href": "posts/time_series/Week4.html#modeling-with-python",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Modeling with Python",
+    "text": "Modeling with Python\n\nfrom sktime import *\nfrom sktime.datasets import load_airline\nfrom sktime.utils.plotting import plot_series\ny = load_airline()\nplot_series(y)\n\n(<Figure size 1536x384 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#your-turn",
+    "href": "posts/time_series/Week4.html#your-turn",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Your turn",
+    "text": "Your turn\nTake other important visualizations"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#define-forecast-horizon",
+    "href": "posts/time_series/Week4.html#define-forecast-horizon",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Define forecast horizon",
+    "text": "Define forecast horizon\n\nimport numpy as np\nimport pandas as pd\nfrom sktime.forecasting.base import ForecastingHorizon\nfh = ForecastingHorizon(\n    pd.PeriodIndex(pd.date_range(\"1960-01\", periods=12, freq=\"M\")), is_relative=False\n)\nfh\n\nForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',\n             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],\n            dtype='period[M]', is_relative=False)"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#split-data-into-training-and-test",
+    "href": "posts/time_series/Week4.html#split-data-into-training-and-test",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Split data into training and test",
+    "text": "Split data into training and test\n\nfrom sktime.forecasting.model_selection import temporal_train_test_split\ny_train, y_test = temporal_train_test_split(y, fh=fh)"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#define-forecaster-with-sktime",
+    "href": "posts/time_series/Week4.html#define-forecaster-with-sktime",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Define forecaster with sktime",
+    "text": "Define forecaster with sktime\n\nfrom sktime.forecasting.statsforecast import StatsForecastAutoARIMA\nimport numpy as np\nforecaster = StatsForecastAutoARIMA(  \n    sp=12,  max_p=2, max_q=2\n)\ny_train.naturallog = np.log(y_train)\nforecaster.fit(y_train.naturallog)\n\nStatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.StatsForecastAutoARIMAStatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)\n\n\nsp: Number of observations per unit of time.\nHelp: https://www.sktime.org/en/stable/api_reference/auto_generated/sktime.forecasting.statsforecast.StatsForecastAutoARIMA.html"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#your-turn-1",
+    "href": "posts/time_series/Week4.html#your-turn-1",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Your turn",
+    "text": "Your turn\nPreferm residual analysis"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#obtain-predictions-for-the-training-period",
+    "href": "posts/time_series/Week4.html#obtain-predictions-for-the-training-period",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Obtain predictions for the training period",
+    "text": "Obtain predictions for the training period\n\ny_pred = forecaster.predict(fh)\ny_pred \n\n1960-01    6.038882\n1960-02    5.989590\n1960-03    6.146032\n1960-04    6.119674\n1960-05    6.159455\n1960-06    6.304701\n1960-07    6.432675\n1960-08    6.444805\n1960-09    6.266803\n1960-10    6.136178\n1960-11    6.007715\n1960-12    6.114486\nFreq: M, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#prediction-intervals",
+    "href": "posts/time_series/Week4.html#prediction-intervals",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Prediction intervals",
+    "text": "Prediction intervals\n\ncoverage = 0.9\ny_pred_ints = forecaster.predict_interval(coverage=coverage)\ny_pred_ints\n\n\n\n\n\n  \n    \n      \n      Coverage\n    \n    \n      \n      0.9\n    \n    \n      \n      lower\n      upper\n    \n  \n  \n    \n      1960-01\n      5.978520\n      6.099244\n    \n    \n      1960-02\n      5.916820\n      6.062361\n    \n    \n      1960-03\n      6.062679\n      6.229384\n    \n    \n      1960-04\n      6.026940\n      6.212408\n    \n    \n      1960-05\n      6.058205\n      6.260705\n    \n    \n      1960-06\n      6.195598\n      6.413804\n    \n    \n      1960-07\n      6.316247\n      6.549103\n    \n    \n      1960-08\n      6.321487\n      6.568124\n    \n    \n      1960-09\n      6.136959\n      6.396648\n    \n    \n      1960-10\n      6.000121\n      6.272235\n    \n    \n      1960-11\n      5.865717\n      6.149713\n    \n    \n      1960-12\n      5.966786\n      6.262187"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#plotting-values",
+    "href": "posts/time_series/Week4.html#plotting-values",
+    "title": "Week 4A: AutoARIMA",
+    "section": "Plotting values",
+    "text": "Plotting values\n\ny_test.naturallog = np.log(y_test)\nfrom sktime.utils import plotting\n\n# also requires predictions\ny_pred = forecaster.predict()\n\nfig, ax = plotting.plot_series(y_train.naturallog, y_pred, labels=[\"y\", \"y_pred\"])\nax.fill_between(\n    ax.get_lines()[-1].get_xdata(),\n    y_pred_ints[\"Coverage\"][coverage][\"lower\"],\n    y_pred_ints[\"Coverage\"][coverage][\"upper\"],\n    alpha=0.2,\n    color=ax.get_lines()[-1].get_c(),\n    label=f\"{coverage}% prediction intervals\",\n)\nax.legend();"
   },
   {
     "objectID": "posts/quarto/1_intro.html#section-3",
@@ -1313,251 +1530,209 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/time_series/Week3.html#step-6-check-residual-series",
-    "href": "posts/time_series/Week3.html#step-6-check-residual-series",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 6: Check residual series",
-    "text": "Step 6: Check residual series\n\nfhtrain = ForecastingHorizon(\n    pd.PeriodIndex(pd.period_range(start='1949-01', end='1959-12', freq='M')), is_relative=False\n)\nfhtrain\n\nForecastingHorizon(['1949-01', '1949-02', '1949-03', '1949-04', '1949-05', '1949-06',\n             '1949-07', '1949-08', '1949-09', '1949-10',\n             ...\n             '1959-03', '1959-04', '1959-05', '1959-06', '1959-07', '1959-08',\n             '1959-09', '1959-10', '1959-11', '1959-12'],\n            dtype='period[M]', length=132, is_relative=False)"
+    "objectID": "posts/time_series/Week4b.html#packages",
+    "href": "posts/time_series/Week4b.html#packages",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "packages",
+    "text": "packages\n\nimport plotnine\nimport geopandas as gpd\nimport pandas as pd"
   },
   {
-    "objectID": "posts/time_series/Week3.html#step-7-generate-forecasts",
-    "href": "posts/time_series/Week3.html#step-7-generate-forecasts",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 7: Generate forecasts",
-    "text": "Step 7: Generate forecasts\n\ny_pred_1 = forecaster1.predict(fh)\ny_pred_1\n\n1960-01    6.037478\n1960-02    5.982107\n1960-03    6.133707\n1960-04    6.102795\n1960-05    6.154218\n1960-06    6.301004\n1960-07    6.437653\n1960-08    6.461717\n1960-09    6.257650\n1960-10    6.134112\n1960-11    6.003672\n1960-12    6.103036\nFreq: M, dtype: float64"
+    "objectID": "posts/time_series/Week4b.html#source",
+    "href": "posts/time_series/Week4b.html#source",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Source",
+    "text": "Source\nhttps://coderzcolumn.com/tutorials/data-science/maps-using-plotnine-choropleth-scatter-bubble-maps"
   },
   {
-    "objectID": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
-    "href": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Obtain predictions for the training period",
-    "text": "Obtain predictions for the training period\n\ny_pred_train = forecaster1.predict(fhtrain)\ny_pred_train\n\n1949-01         NaN\n1949-02    4.718760\n1949-03    4.770946\n1949-04    4.883063\n1949-05    4.860073\n             ...   \n1959-08    6.310106\n1959-09    6.138659\n1959-10    6.004945\n1959-11    5.869054\n1959-12    5.974289\nFreq: M, Length: 132, dtype: float64"
+    "objectID": "posts/time_series/Week4b.html#us-states-geo-json",
+    "href": "posts/time_series/Week4b.html#us-states-geo-json",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "US States Geo JSON",
+    "text": "US States Geo JSON\n\nus_states_geo = gpd.read_file(\"us-states.json\")\n\nus_states_geo.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0..."
   },
   {
-    "objectID": "posts/time_series/Week3.html#obtain-residual-series",
-    "href": "posts/time_series/Week3.html#obtain-residual-series",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Obtain residual series",
-    "text": "Obtain residual series\n\nresidual = y_train.naturallog - y_pred_train\nresidual\n\n1949-01         NaN\n1949-02    0.051925\n1949-03    0.111856\n1949-04   -0.023251\n1949-05   -0.064283\n             ...   \n1959-08    0.016043\n1959-09   -0.000931\n1959-10    0.003868\n1959-11    0.022590\n1959-12    0.029598\nFreq: M, Length: 132, dtype: float64"
+    "objectID": "posts/time_series/Week4b.html#geospatial-data-about-the-whole-world",
+    "href": "posts/time_series/Week4b.html#geospatial-data-about-the-whole-world",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Geospatial data about the whole world",
+    "text": "Geospatial data about the whole world\n\nworld = gpd.read_file(gpd.datasets.get_path(\"naturalearth_lowres\"))\nprint(\"Geometry Column Name : \", world.geometry.name)\nprint(\"Dataset Size : \", world.shape)\nworld.head()\n\nGeometry Column Name :  geometry\nDataset Size :  (177, 6)\n\n\n\n\n\n\n  \n    \n      \n      pop_est\n      continent\n      name\n      iso_a3\n      gdp_md_est\n      geometry\n    \n  \n  \n    \n      0\n      920938\n      Oceania\n      Fiji\n      FJI\n      8374.0\n      MULTIPOLYGON (((180.00000 -16.06713, 180.00000...\n    \n    \n      1\n      53950935\n      Africa\n      Tanzania\n      TZA\n      150600.0\n      POLYGON ((33.90371 -0.95000, 34.07262 -1.05982...\n    \n    \n      2\n      603253\n      Africa\n      W. Sahara\n      ESH\n      906.5\n      POLYGON ((-8.66559 27.65643, -8.66512 27.58948...\n    \n    \n      3\n      35623680\n      North America\n      Canada\n      CAN\n      1674000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -122.9742...\n    \n    \n      4\n      326625791\n      North America\n      United States of America\n      USA\n      18560000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -120.0000..."
   },
   {
-    "objectID": "posts/time_series/Week3.html#plot-residuals",
-    "href": "posts/time_series/Week3.html#plot-residuals",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Plot residuals",
-    "text": "Plot residuals\n\nplot_series(residual)\n\n(<Figure size 1920x480 with 1 Axes>, <AxesSubplot: >)"
+    "objectID": "posts/time_series/Week4b.html#work-happiness-data",
+    "href": "posts/time_series/Week4b.html#work-happiness-data",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Work happiness data",
+    "text": "Work happiness data\n\nworld_happiness = pd.read_csv(\"world_happiness_2019.csv\")\nprint(\"Dataset Size : \",world_happiness.shape)\nworld_happiness.head()\n\nDataset Size :  (156, 9)\n\n\n\n\n\n\n  \n    \n      \n      Overall rank\n      Country or region\n      Score\n      GDP per capita\n      Social support\n      Healthy life expectancy\n      Freedom to make life choices\n      Generosity\n      Perceptions of corruption\n    \n  \n  \n    \n      0\n      1\n      Finland\n      7.769\n      1.340\n      1.587\n      0.986\n      0.596\n      0.153\n      0.393\n    \n    \n      1\n      2\n      Denmark\n      7.600\n      1.383\n      1.573\n      0.996\n      0.592\n      0.252\n      0.410\n    \n    \n      2\n      3\n      Norway\n      7.554\n      1.488\n      1.582\n      1.028\n      0.603\n      0.271\n      0.341\n    \n    \n      3\n      4\n      Iceland\n      7.494\n      1.380\n      1.624\n      1.026\n      0.591\n      0.354\n      0.118\n    \n    \n      4\n      5\n      Netherlands\n      7.488\n      1.396\n      1.522\n      0.999\n      0.557\n      0.322\n      0.298\n    \n  \n\n\n\n\nData:https://github.com/sunny2309/datasets"
   },
   {
-    "objectID": "posts/time_series/Week3.html#plot-residuals-cont.",
-    "href": "posts/time_series/Week3.html#plot-residuals-cont.",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Plot residuals (cont.)",
-    "text": "Plot residuals (cont.)\n\nplot_acf(residual.dropna(), lags=50)"
+    "objectID": "posts/time_series/Week4b.html#merge-data",
+    "href": "posts/time_series/Week4b.html#merge-data",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Merge data",
+    "text": "Merge data\n\nworld_total_data = world.merge(world_happiness, left_on=\"name\", right_on=\"Country or region\")\nworld_total_data.head()\n\n\n\n\n\n  \n    \n      \n      pop_est\n      continent\n      name\n      iso_a3\n      gdp_md_est\n      geometry\n      Overall rank\n      Country or region\n      Score\n      GDP per capita\n      Social support\n      Healthy life expectancy\n      Freedom to make life choices\n      Generosity\n      Perceptions of corruption\n    \n  \n  \n    \n      0\n      53950935\n      Africa\n      Tanzania\n      TZA\n      150600.0\n      POLYGON ((33.90371 -0.95000, 34.07262 -1.05982...\n      153\n      Tanzania\n      3.231\n      0.476\n      0.885\n      0.499\n      0.417\n      0.276\n      0.147\n    \n    \n      1\n      35623680\n      North America\n      Canada\n      CAN\n      1674000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -122.9742...\n      9\n      Canada\n      7.278\n      1.365\n      1.505\n      1.039\n      0.584\n      0.285\n      0.308\n    \n    \n      2\n      326625791\n      North America\n      United States of America\n      USA\n      18560000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -120.0000...\n      19\n      United States of America\n      6.892\n      1.433\n      1.457\n      0.874\n      0.454\n      0.280\n      0.128\n    \n    \n      3\n      18556698\n      Asia\n      Kazakhstan\n      KAZ\n      460700.0\n      POLYGON ((87.35997 49.21498, 86.59878 48.54918...\n      60\n      Kazakhstan\n      5.809\n      1.173\n      1.508\n      0.729\n      0.410\n      0.146\n      0.096\n    \n    \n      4\n      29748859\n      Asia\n      Uzbekistan\n      UZB\n      202300.0\n      POLYGON ((55.96819 41.30864, 55.92892 44.99586...\n      41\n      Uzbekistan\n      6.174\n      0.745\n      1.529\n      0.756\n      0.631\n      0.322\n      0.240"
   },
   {
-    "objectID": "posts/time_series/Week3.html#plot-residuals-cont.-1",
-    "href": "posts/time_series/Week3.html#plot-residuals-cont.-1",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Plot residuals (cont.)",
-    "text": "Plot residuals (cont.)\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nplt.hist(residual)\nplt.show()\n\n\nYour turn: remove the outlier and draw the histogram"
+    "objectID": "posts/time_series/Week4b.html#world-happiness-choropleth-map",
+    "href": "posts/time_series/Week4b.html#world-happiness-choropleth-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "World Happiness Choropleth Map",
+    "text": "World Happiness Choropleth Map\n\nfrom plotnine import ggplot, geom_map, aes, scale_fill_cmap, theme, labs\n\nchart = ggplot(data=world_total_data, mapping=aes(fill=\"Score\"))\nmap_proj = geom_map()\nlabels = labs(title=\"World Happiness Score Choropleth Map\")\ntheme_details = theme(figure_size=(12,6))\ncolormap = scale_fill_cmap(cmap_name=\"Blues\")\n\nworld_happiness_choropleth = chart + map_proj + labels + theme_details + colormap\n\nworld_happiness_choropleth\n\n\n<ggplot: (392175624)>"
   },
   {
-    "objectID": "posts/time_series/Week3.html#modelling-steps",
-    "href": "posts/time_series/Week3.html#modelling-steps",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Modelling steps",
-    "text": "Modelling steps\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\nIf the data are non-stationary, take first differences of the data until the data are stationary.\nExamine the ACF/PACF to identify a suitable model.\nTry your chosen model(s), and use the AICc to search for a better model."
+    "objectID": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map",
+    "href": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "World Healthy Life Expectancy Choropleth Map",
+    "text": "World Healthy Life Expectancy Choropleth Map\n\nfrom plotnine import scale_color_cmap\n\nchart = ggplot(data=world_total_data, mapping=aes(fill=\"Healthy life expectancy\", color=\"Healthy life expectancy\"))\nmap_proj = geom_map()\nlabels = labs(title=\"World Healthy Life Expectancy Choropleth Map\")\ntheme_details = theme(figure_size=(12,6))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdYlGn\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdYlGn\")\n\nworld_happiness_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap\n\nworld_happiness_choropleth\n\n\n<ggplot: (-9223372036455894058)>"
   },
   {
-    "objectID": "posts/time_series/Week3.html#testing-for-nonstationarity-for-the-presence-of-unit-roots",
-    "href": "posts/time_series/Week3.html#testing-for-nonstationarity-for-the-presence-of-unit-roots",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Testing for nonstationarity for the presence of unit roots",
-    "text": "Testing for nonstationarity for the presence of unit roots\n\nDickey and Fuller (DF) test\nAugmented DF test\nPhillips and Perron (PP) nonparametric test\nKwiatkowski-Phillips-Schmidt-Shin (KPSS) test"
+    "objectID": "posts/time_series/Week4b.html#map-for-asia",
+    "href": "posts/time_series/Week4b.html#map-for-asia",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Map for ASIA",
+    "text": "Map for ASIA\n\nasia_data = world_total_data[world_total_data[\"continent\"] == 'Asia']\n\nchart = ggplot(data=asia_data, mapping=aes(fill=\"Freedom to make life choices\", color=\"Freedom to make life choices\"))\nmap_proj = geom_map()\nlabels = labs(title=\"Asia freedom to make life choices Choropleth Map\")\ntheme_details = theme(figure_size=(10,7))\nfill_colormap = scale_fill_cmap(cmap_name=\"PiYG\")\ncolor_colormap = scale_color_cmap(cmap_name=\"PiYG\")\n\nasia_happiness_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap\n\nasia_happiness_choropleth\n\n\n<ggplot: (-9223372036462133325)>"
   },
   {
-    "objectID": "posts/time_series/Week3.html#kpss-test",
-    "href": "posts/time_series/Week3.html#kpss-test",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "KPSS test",
-    "text": "KPSS test\nH0: Series is level or trend stationary.\nH1: Series is not stationary."
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#kpss-test-1",
-    "href": "posts/time_series/Week3.html#kpss-test-1",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "KPSS test",
-    "text": "KPSS test\n\nfrom statsmodels.tsa.stattools import kpss\ndef kpss_test(series, **kw):    \n    statistic, p_value, n_lags, critical_values = kpss(series, **kw)\n    # Format Output\n    print(f'KPSS Statistic: {statistic}')\n    print(f'p-value: {p_value}')\n    print(f'num lags: {n_lags}')\n    print('Critial Values:')\n    for key, value in critical_values.items():\n        print(f'   {key} : {value}')\n    print(f'Result: The series is {\"not \" if p_value < 0.05 else \"\"}stationary')\n\nkpss_test(y_train.naturallog)\n\nKPSS Statistic: 1.9204939010623039\np-value: 0.01\nnum lags: 6\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is not stationary"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#kpss-test-2",
-    "href": "posts/time_series/Week3.html#kpss-test-2",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "KPSS test",
-    "text": "KPSS test\n\nkpss_test(y_train.naturallog.diff12.dropna())\n\nKPSS Statistic: 0.29885781439314946\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#kpss-test-3",
-    "href": "posts/time_series/Week3.html#kpss-test-3",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "KPSS test",
-    "text": "KPSS test\n\nKPSS test may not necessarily reject the null hypothesis (that the series is level or trend stationary) even if a series is steadily increasing or decreasing.\nThe word ‘deterministic’ implies the slope of the trend in the series does not change permanently. That is, even if the series goes through a shock, it tends to regain its original path.\n\nsource: https://www.machinelearningplus.com/time-series/kpss-test-for-stationarity/"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#example",
-    "href": "posts/time_series/Week3.html#example",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Example",
-    "text": "Example\n\nkpss_test(y_train.naturallog.diff12.dropna(), regression='ct')\n\nKPSS Statistic: 0.0760056301424143\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.119\n   5% : 0.146\n   2.5% : 0.176\n   1% : 0.216\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#kpss-test-4",
-    "href": "posts/time_series/Week3.html#kpss-test-4",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "KPSS test",
-    "text": "KPSS test\n\nBy default, it tests for stationarity around a ‘mean’ only.\nTo turn ON the stationarity testing around a trend, you need to explicitly pass the regression=‘ct’ parameter to the kpss\n\n\nkpss_test(y_train.naturallog.diff12.dropna(), regression='ct')\n\nKPSS Statistic: 0.0760056301424143\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.119\n   5% : 0.146\n   2.5% : 0.176\n   1% : 0.216\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#adf-test",
-    "href": "posts/time_series/Week3.html#adf-test",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "ADF test",
-    "text": "ADF test\n\nfrom statsmodels.tsa.stattools import adfuller\n\ndef adf_test(series):\n    result = adfuller(series, autolag='AIC')\n    print(f'ADF Statistic: {result[0]}')\n    print(f'p-value: {result[1]}')\n    for key, value in result[4].items():\n        print('Critial Values:')\n        print(f'   {key}, {value}')\n\nseries = df.loc[:, 'value'].values\n\nH0: Series is not stationary\nH1: Series is stationary"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#adf-test-1",
-    "href": "posts/time_series/Week3.html#adf-test-1",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "ADF test",
-    "text": "ADF test\n\nadf_test(y_train.naturallog)\n\nADF Statistic: -1.3176112021439967\np-value: 0.6210771494355872\nCritial Values:\n   1%, -3.4870216863700767\nCritial Values:\n   5%, -2.8863625166643136\nCritial Values:\n   10%, -2.580009026141913\n\n\n\nadf_test(y_train.naturallog.diff12.dropna())\n\nADF Statistic: -2.5844902417566793\np-value: 0.09624537566648711\nCritial Values:\n   1%, -3.492995948509562\nCritial Values:\n   5%, -2.888954648057252\nCritial Values:\n   10%, -2.58139291903223\n\n\n\nadf_test(y_train.naturallog.diff12.diff.dropna())\n\nADF Statistic: -4.08727195454389\np-value: 0.0010165214009067135\nCritial Values:\n   1%, -3.4936021509366793\nCritial Values:\n   5%, -2.8892174239808703\nCritial Values:\n   10%, -2.58153320754717"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#kpss-vs-adf-test",
-    "href": "posts/time_series/Week3.html#kpss-vs-adf-test",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "KPSS vs ADF test",
-    "text": "KPSS vs ADF test\nIf a series is stationary according to the KPSS test by setting regression=‘ct’ and is not stationary according to the ADF test, it means the series is stationary around a deterministic trend.\nFurther reading:\nKwiatkowski, D.; Phillips, P. C. B.; Schmidt, P.; Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. Journal of Econometrics, 54 (1-3): 159-178."
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#ljung-box-test",
-    "href": "posts/time_series/Week3.html#ljung-box-test",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Ljung-Box Test",
-    "text": "Ljung-Box Test\nH0: Residuals are not serially correlated.\nH1: Residuals are serially correlated.\n\n\n\n\n\n\n  \n    \n      \n      lb_stat\n      lb_pvalue\n    \n  \n  \n    \n      20\n      3.984776\n      0.999955"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#section-4",
-    "href": "posts/time_series/Week3.html#section-4",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "objectID": "posts/time_series/Week4b.html#section",
+    "href": "posts/time_series/Week4b.html#section",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
     "section": "",
-    "text": "Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\n\n7.Once the residuals look like white noise, calculate forecasts.\nSource: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos"
+    "text": "<ggplot: (394305940)>"
   },
   {
-    "objectID": "posts/time_series/Week3.html#modelling-steps-cont.",
-    "href": "posts/time_series/Week3.html#modelling-steps-cont.",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Modelling steps (cont.)",
-    "text": "Modelling steps (cont.)\n\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts.\n\nSource: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos"
+    "objectID": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map-1",
+    "href": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map-1",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "World Healthy Life Expectancy Choropleth Map",
+    "text": "World Healthy Life Expectancy Choropleth Map\n\n\n\n<ggplot: (-9223372036461730872)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#modelling-steps",
-    "href": "posts/time_series/Week4.html#modelling-steps",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Modelling steps",
-    "text": "Modelling steps\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\n\n3. If the data are non-stationary, take first differences of the data until the data are stationary.\n4. Examine the ACF/PACF to identify a suitable model.\n5. Try your chosen model(s), and use the AICc to search for a better model."
+    "objectID": "posts/time_series/Week4b.html#section-1",
+    "href": "posts/time_series/Week4b.html#section-1",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (393282831)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#modelling-steps-cont.",
-    "href": "posts/time_series/Week4.html#modelling-steps-cont.",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Modelling steps (cont.)",
-    "text": "Modelling steps (cont.)\n\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts."
+    "objectID": "posts/time_series/Week4b.html#us-states-population-2018-choropleth-map",
+    "href": "posts/time_series/Week4b.html#us-states-population-2018-choropleth-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "US States Population 2018 Choropleth Map",
+    "text": "US States Population 2018 Choropleth Map\n\nus_state_pop = pd.read_csv(\"State Populations.csv\")\nus_state_pop.head()\n\n\n\n\n\n  \n    \n      \n      State\n      2018 Population\n    \n  \n  \n    \n      0\n      California\n      39776830\n    \n    \n      1\n      Texas\n      28704330\n    \n    \n      2\n      Florida\n      21312211\n    \n    \n      3\n      New York\n      19862512\n    \n    \n      4\n      Pennsylvania\n      12823989"
   },
   {
-    "objectID": "posts/time_series/Week4.html#modeling-with-python",
-    "href": "posts/time_series/Week4.html#modeling-with-python",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Modeling with Python",
-    "text": "Modeling with Python\n\nfrom sktime import *\nfrom sktime.datasets import load_airline\nfrom sktime.utils.plotting import plot_series\ny = load_airline()\nplot_series(y)\n\n(<Figure size 1536x384 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
+    "objectID": "posts/time_series/Week4b.html#merge-data-1",
+    "href": "posts/time_series/Week4b.html#merge-data-1",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Merge data",
+    "text": "Merge data\n\nus_states_pop = us_states_geo.merge(us_state_pop, left_on=\"name\", right_on=\"State\")\n\nus_states_pop.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n      State\n      2018 Population\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n      Alabama\n      4888949\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n      Alaska\n      738068\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n      Arizona\n      7123898\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n      Arkansas\n      3020327\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0...\n      California\n      39776830"
   },
   {
-    "objectID": "posts/time_series/Week4.html#your-turn",
-    "href": "posts/time_series/Week4.html#your-turn",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Your turn",
-    "text": "Your turn\nTake other important visualizations"
+    "objectID": "posts/time_series/Week4b.html#us-population",
+    "href": "posts/time_series/Week4b.html#us-population",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "US population",
+    "text": "US population\n\nfrom plotnine import scale_color_cmap, xlim, ylim, element_rect\n\nchart = ggplot()\nmap_proj = geom_map(data=us_states_pop, mapping=aes(fill=\"2018 Population\", color=\"2018 Population\"))\nlabels = labs(title=\"US 2018 Population Choropleth Map\")\ntheme_details = theme(figure_size=(10,6), panel_background=element_rect(fill=\"snow\"))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdYlBu\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdYlBu\")\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nus_pop_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap + xlimit + ylimit\n\nus_pop_choropleth\n\n\n<ggplot: (394295353)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#define-forecast-horizon",
-    "href": "posts/time_series/Week4.html#define-forecast-horizon",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Define forecast horizon",
-    "text": "Define forecast horizon\n\nimport numpy as np\nimport pandas as pd\nfrom sktime.forecasting.base import ForecastingHorizon\nfh = ForecastingHorizon(\n    pd.PeriodIndex(pd.date_range(\"1960-01\", periods=12, freq=\"M\")), is_relative=False\n)\nfh\n\nForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',\n             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],\n            dtype='period[M]', is_relative=False)"
+    "objectID": "posts/time_series/Week4b.html#section-2",
+    "href": "posts/time_series/Week4b.html#section-2",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (-9223372036453558058)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#split-data-into-training-and-test",
-    "href": "posts/time_series/Week4.html#split-data-into-training-and-test",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Split data into training and test",
-    "text": "Split data into training and test\n\nfrom sktime.forecasting.model_selection import temporal_train_test_split\ny_train, y_test = temporal_train_test_split(y, fh=fh)"
+    "objectID": "posts/time_series/Week4b.html#starbucks-store-count-per-us-states",
+    "href": "posts/time_series/Week4b.html#starbucks-store-count-per-us-states",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Starbucks Store Count Per US States",
+    "text": "Starbucks Store Count Per US States\n\nstarbucks_stores = pd.read_csv(\"starbucks_store_locations.csv\")\n\nstarbucks_stores.head()\n\n\n\n\n\n  \n    \n      \n      Brand\n      Store Number\n      Store Name\n      Ownership Type\n      Street Address\n      City\n      State/Province\n      Country\n      Postcode\n      Phone Number\n      Timezone\n      Longitude\n      Latitude\n    \n  \n  \n    \n      0\n      Starbucks\n      47370-257954\n      Meritxell, 96\n      Licensed\n      Av. Meritxell, 96\n      Andorra la Vella\n      7\n      AD\n      AD500\n      376818720\n      GMT+1:00 Europe/Andorra\n      1.53\n      42.51\n    \n    \n      1\n      Starbucks\n      22331-212325\n      Ajman Drive Thru\n      Licensed\n      1 Street 69, Al Jarf\n      Ajman\n      AJ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      55.47\n      25.42\n    \n    \n      2\n      Starbucks\n      47089-256771\n      Dana Mall\n      Licensed\n      Sheikh Khalifa Bin Zayed St.\n      Ajman\n      AJ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      55.47\n      25.39\n    \n    \n      3\n      Starbucks\n      22126-218024\n      Twofour 54\n      Licensed\n      Al Salam Street\n      Abu Dhabi\n      AZ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      54.38\n      24.48\n    \n    \n      4\n      Starbucks\n      17127-178586\n      Al Ain Tower\n      Licensed\n      Khaldiya Area, Abu Dhabi Island\n      Abu Dhabi\n      AZ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      54.54\n      24.51"
   },
   {
-    "objectID": "posts/time_series/Week4.html#define-forecaster-with-sktime",
-    "href": "posts/time_series/Week4.html#define-forecaster-with-sktime",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Define forecaster with sktime",
-    "text": "Define forecaster with sktime\n\nfrom sktime.forecasting.statsforecast import StatsForecastAutoARIMA\nimport numpy as np\nforecaster = StatsForecastAutoARIMA(  \n    sp=12,  max_p=2, max_q=2\n)\ny_train.naturallog = np.log(y_train)\nforecaster.fit(y_train.naturallog)\n\nStatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.StatsForecastAutoARIMAStatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)\n\n\nsp: Number of observations per unit of time.\nHelp: https://www.sktime.org/en/stable/api_reference/auto_generated/sktime.forecasting.statsforecast.StatsForecastAutoARIMA.html"
+    "objectID": "posts/time_series/Week4b.html#extract-us-data",
+    "href": "posts/time_series/Week4b.html#extract-us-data",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Extract US data",
+    "text": "Extract US data\n\nus_stores = starbucks_stores[starbucks_stores.Country==\"US\"]\nus_stores_statewise_cnt = us_stores.groupby(\"State/Province\").count()[[\"Store Name\"]].rename(columns={\"Store Name\":\"Count\"})\nus_stores_statewise_cnt = us_stores_statewise_cnt.reset_index()\nus_stores_statewise_cnt.head()\n\n\n\n\n\n  \n    \n      \n      State/Province\n      Count\n    \n  \n  \n    \n      0\n      AK\n      49\n    \n    \n      1\n      AL\n      85\n    \n    \n      2\n      AR\n      55\n    \n    \n      3\n      AZ\n      488\n    \n    \n      4\n      CA\n      2821"
   },
   {
-    "objectID": "posts/time_series/Week4.html#your-turn-1",
-    "href": "posts/time_series/Week4.html#your-turn-1",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Your turn",
-    "text": "Your turn\nPreferm residual analysis"
+    "objectID": "posts/time_series/Week4b.html#merge-data-2",
+    "href": "posts/time_series/Week4b.html#merge-data-2",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Merge data",
+    "text": "Merge data\n\nus_stores_statewise = us_states_geo.merge(us_stores_statewise_cnt, left_on=\"id\", right_on=\"State/Province\")\n\nus_stores_statewise.head()\nid  \n\n<function id(obj, /)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#obtain-predictions",
-    "href": "posts/time_series/Week4.html#obtain-predictions",
-    "title": "Week 4: AutoARIMA",
-    "section": "Obtain predictions",
-    "text": "Obtain predictions"
+    "objectID": "posts/time_series/Week4b.html#map",
+    "href": "posts/time_series/Week4b.html#map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Map",
+    "text": "Map\n\nfrom plotnine import scale_color_cmap, xlim, ylim, element_rect\n\nchart = ggplot()\nmap_proj = geom_map(data=us_stores_statewise, mapping=aes(fill=\"Count\", color=\"Count\"))\nlabels = labs(title=\"Starbucks US Stores Choropleth Map\")\ntheme_details = theme(figure_size=(10,6), panel_background=element_rect(fill=\"#a3ccff\"))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdBu\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdBu\")\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nus_stores_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap + xlimit + ylimit\n\nus_stores_choropleth\n\n\n<ggplot: (-9223372036461897535)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#obtain-predictions-for-the-training-period",
-    "href": "posts/time_series/Week4.html#obtain-predictions-for-the-training-period",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Obtain predictions for the training period",
-    "text": "Obtain predictions for the training period\n\ny_pred = forecaster.predict(fh)\ny_pred \n\n1960-01    6.038882\n1960-02    5.989590\n1960-03    6.146032\n1960-04    6.119674\n1960-05    6.159455\n1960-06    6.304701\n1960-07    6.432675\n1960-08    6.444805\n1960-09    6.266803\n1960-10    6.136178\n1960-11    6.007715\n1960-12    6.114486\nFreq: M, dtype: float64"
+    "objectID": "posts/time_series/Week4b.html#section-3",
+    "href": "posts/time_series/Week4b.html#section-3",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (398881649)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#plot-training-test-and-forecasts",
-    "href": "posts/time_series/Week4.html#plot-training-test-and-forecasts",
-    "title": "Week 4: AutoARIMA",
-    "section": "Plot training, test, and forecasts",
-    "text": "Plot training, test, and forecasts\n\nplot_series(y_train, y_test, y_pred, labels=[\"y_train\", \"y_test\", \"y_pred\"])\n\n(<Figure size 1536x384 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
+    "objectID": "posts/time_series/Week4b.html#scatter-map",
+    "href": "posts/time_series/Week4b.html#scatter-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Scatter map",
+    "text": "Scatter map\n\n\n\n<ggplot: (398265871)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#prediction-intervals",
-    "href": "posts/time_series/Week4.html#prediction-intervals",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Prediction intervals",
-    "text": "Prediction intervals\n\ncoverage = 0.9\ny_pred_ints = forecaster.predict_interval(coverage=coverage)\ny_pred_ints\n\n\n\n\n\n  \n    \n      \n      Coverage\n    \n    \n      \n      0.9\n    \n    \n      \n      lower\n      upper\n    \n  \n  \n    \n      1960-01\n      5.978520\n      6.099244\n    \n    \n      1960-02\n      5.916820\n      6.062361\n    \n    \n      1960-03\n      6.062679\n      6.229384\n    \n    \n      1960-04\n      6.026940\n      6.212408\n    \n    \n      1960-05\n      6.058205\n      6.260705\n    \n    \n      1960-06\n      6.195598\n      6.413804\n    \n    \n      1960-07\n      6.316247\n      6.549103\n    \n    \n      1960-08\n      6.321487\n      6.568124\n    \n    \n      1960-09\n      6.136959\n      6.396648\n    \n    \n      1960-10\n      6.000121\n      6.272235\n    \n    \n      1960-11\n      5.865717\n      6.149713\n    \n    \n      1960-12\n      5.966786\n      6.262187"
+    "objectID": "posts/time_series/Week4b.html#section-4",
+    "href": "posts/time_series/Week4b.html#section-4",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (395230777)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#plotting-values",
-    "href": "posts/time_series/Week4.html#plotting-values",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Plotting values",
-    "text": "Plotting values\n\ny_test.naturallog = np.log(y_test)\nfrom sktime.utils import plotting\n\n# also requires predictions\ny_pred = forecaster.predict()\n\nfig, ax = plotting.plot_series(y_train.naturallog, y_pred, labels=[\"y\", \"y_pred\"])\nax.fill_between(\n    ax.get_lines()[-1].get_xdata(),\n    y_pred_ints[\"Coverage\"][coverage][\"lower\"],\n    y_pred_ints[\"Coverage\"][coverage][\"upper\"],\n    alpha=0.2,\n    color=ax.get_lines()[-1].get_c(),\n    label=f\"{coverage}% prediction intervals\",\n)\nax.legend();"
+    "objectID": "posts/time_series/Week4b.html#us-scatter-map",
+    "href": "posts/time_series/Week4b.html#us-scatter-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "US scatter map",
+    "text": "US scatter map\n\nchart = ggplot(data=us_states_geo)\nmap_proj = geom_map(fill=\"white\", color=\"lightgrey\")\nlabels = labs(title=\"US Starbucks Stores Map\")\ntheme_details = theme(figure_size=(12,6.5))\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nscatter_points = geom_point(data=us_stores.dropna(),\n                            mapping=aes(x=\"Longitude\", y=\"Latitude\"),\n                            color=\"tomato\", alpha=0.3, size=1)\n\nus_starbucks_stores = chart + map_proj + labels + theme_details + xlimit + ylimit + scatter_points\n\nus_starbucks_stores\n\n\n<ggplot: (392924217)>"
   },
   {
-    "objectID": "posts/time_series/Week4.html#modelling-steps-autoarima",
-    "href": "posts/time_series/Week4.html#modelling-steps-autoarima",
-    "title": "Week 4A: AutoARIMA",
-    "section": "Modelling steps: AutoARIMA",
-    "text": "Modelling steps: AutoARIMA\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\nUse AutoARIMA to select a model.\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts."
+    "objectID": "posts/time_series/Week4b.html#section-5",
+    "href": "posts/time_series/Week4b.html#section-5",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (283269412)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#store-count-per-us-states-bubble-map",
+    "href": "posts/time_series/Week4b.html#store-count-per-us-states-bubble-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Store Count per US States Bubble Map",
+    "text": "Store Count per US States Bubble Map\n\ndef calculate_center(df):\n    \"\"\"\n    Calculate the centre of a geometry\n\n    This method first converts to a planar crs, gets the centroid\n    then converts back to the original crs. This gives a more\n    accurate\n    \"\"\"\n    original_crs = df.crs\n    planar_crs = 'EPSG:3857'\n    return df['geometry'].to_crs(planar_crs).centroid.to_crs(original_crs)\n\nus_stores_statewise[\"center\"] = calculate_center(us_stores_statewise)\nus_stores_statewise[\"x\"] = [val.x for val in us_stores_statewise.center]\nus_stores_statewise[\"x2\"] = [val.x+2.2 for val in us_stores_statewise.center]\nus_stores_statewise[\"y\"] = [val.y for val in us_stores_statewise.center]"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#bubble-map",
+    "href": "posts/time_series/Week4b.html#bubble-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Bubble map",
+    "text": "Bubble map\n\nfrom plotnine import geom_text\n\nchart = ggplot(data=us_states_geo)\nmap_proj = geom_map(fill=\"white\", color=\"lightgrey\")\nlabels = labs(x=\"Longitude\", y=\"Latitude\", title=\"US Starbucks Stores Count Bubble Map\", size=\"Store Count\")\ntheme_details = theme(figure_size=(12,6.5))\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nscatter_points = geom_point(data=us_stores_statewise.dropna(),\n                            mapping=aes(x=\"x\", y=\"y\", size=\"Count\"),\n                            color=\"tomato\", alpha=0.7)\n\ntexts = geom_text(data=us_stores_statewise.dropna(),\n                            mapping=aes(x=\"x2\", y=\"y\", label=\"State/Province\"),\n                            color=\"black\", size=8)\n\nus_starbucks_stores = chart + map_proj + labels + theme_details + xlimit + ylimit + scatter_points + texts\n\nus_starbucks_stores\n\n\n<ggplot: (396069461)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-6",
+    "href": "posts/time_series/Week4b.html#section-6",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "us_stores_statewise.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n      State/Province\n      Count\n      center\n      x\n      x2\n      y\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n      AL\n      85\n      POINT (-86.82705 32.81439)\n      -86.827048\n      -84.627048\n      32.814386\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n      AK\n      49\n      POINT (-152.52500 65.00297)\n      -152.525004\n      -150.325004\n      65.002968\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n      AZ\n      488\n      POINT (-111.66516 34.33632)\n      -111.665157\n      -109.465157\n      34.336315\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n      AR\n      55\n      POINT (-92.43914 34.91573)\n      -92.439137\n      -90.239137\n      34.915733\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0...\n      CA\n      2821\n      POINT (-119.68388 37.38770)\n      -119.683878\n      -117.483878\n      37.387697"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-7",
+    "href": "posts/time_series/Week4b.html#section-7",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (-9223372036454627026)>"
   }
 ]
