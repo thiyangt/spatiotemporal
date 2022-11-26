@@ -399,6 +399,447 @@
     "text": "Forecasting: Principles and Practice (2nd ed) by Rob J Hyndman and George Athanasopoulos\nForecasting: theory and practice\nThis written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field."
   },
   {
+    "objectID": "posts/time_series/Week2.html#sktime-unified-python-library-for-time-series-machine-learning",
+    "href": "posts/time_series/Week2.html#sktime-unified-python-library-for-time-series-machine-learning",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "sktime: Unified Python library for time series machine learning",
+    "text": "sktime: Unified Python library for time series machine learning\nInstalling sktime from PyPI\nTo install sktime with core dependencies, excluding soft dependencies, via pip type:\npip install sktime\nTo install sktime with maximum dependencies, including soft dependencies, install with the all_extras modifier:\npip install sktime[all_extras]\nExtracted from:\nhttps://www.sktime.org/en/stable/installation.html"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#probabilistic-time-series-model",
+    "href": "posts/time_series/Week2.html#probabilistic-time-series-model",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Probabilistic time series model",
+    "text": "Probabilistic time series model\nLet \\({X_1, X_2, ...}\\) be a sequence of random variables. Then the joint distribution of the random vector \\(([X_1, X_2, ..., X_n])\\) is\n\\[P[X_1 \\le x_1, X_2 \\le x_2, ..., X_n \\le x_n]\\]\nwhere \\(-\\infty < x_1, ..., x_n < \\infty\\) and \\((n = 1, 2, ...)\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#mean-function",
+    "href": "posts/time_series/Week2.html#mean-function",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Mean function",
+    "text": "Mean function\nThe mean function of \\({X_t}\\) is\n\\[\\mu_X(t)=E(X_t).\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#covariance-function",
+    "href": "posts/time_series/Week2.html#covariance-function",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Covariance function",
+    "text": "Covariance function\nThe covariance function of \\({X_t}\\) is\n\\[\\gamma_X(r, s)=Cov(X_r, X_s)=E[(X_r-\\mu_X(r))(X_s-\\mu_X(s))]\\]\nfor all integers \\((r)\\) and \\((s)\\).\nThe covariance function of \\({X_t}\\) at lag \\((h)\\) is defined by \\[\\gamma_X(h):=\\gamma_X(h, 0)=\\gamma(t+h, t)=Cov(X_{t+h}, X_t).\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#autocovariance-function",
+    "href": "posts/time_series/Week2.html#autocovariance-function",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Autocovariance function",
+    "text": "Autocovariance function\nThe auto covariance function of \\({X_t}\\) at lag \\((h)\\) is\n\\[\\gamma_X(h)=Cov(X_{t+h}, X_t).\\] Autocorrelation function\nThe autocorrelation function of \\({X_t}\\) at lag \\((h)\\) is\n\\[\\rho_X(h)=\\frac{\\gamma_X(h)}{\\gamma_X(0)}=Cor(X_{t+h}, X_t).\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#weekly-stationary",
+    "href": "posts/time_series/Week2.html#weekly-stationary",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Weekly stationary",
+    "text": "Weekly stationary\nA time series \\({X_t}\\) is called weekly stationary if\n\n\\(\\mu_X(t)\\) is independent of \\(t\\).\n\\(\\gamma_X(t+h, t)\\)` is independent of \\((t)\\) for each \\((h)\\).\n\nIn other words the statistical properties of the time series (mean, variance, autocorrelation, etc.) do not depend on the time at which the series is observed, that is no trend or seasonality. However, a time series with cyclic behaviour (but with no trend or seasonality) is stationary."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#strict-stationarity-of-a-time-series",
+    "href": "posts/time_series/Week2.html#strict-stationarity-of-a-time-series",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Strict stationarity of a time series",
+    "text": "Strict stationarity of a time series\nA time series \\({X_t\\}\\) is called weekly stationary if the random vector \\([X_1, X_2..., X_n]\\) and \\([X_{1+h}, X_{2+h}..., X_{n+h}]\\) have the same joint distribution for all integers \\((h)\\) and \\((n > 0)\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#iid-noise",
+    "href": "posts/time_series/Week2.html#iid-noise",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "1. iid noise",
+    "text": "1. iid noise\n\nno trend or seasonal component\nobservations are independent and identically distributed (iid) random variables with zero mean.\nNotation: \\({X_t} \\sim IID(0, \\sigma^2)\\)\nplays an important role as a building block for more complicated time series."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#section",
+    "href": "posts/time_series/Week2.html#section",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "",
+    "text": "import numpy\nimport matplotlib.pyplot as plt\n\nmean = 0\nstd = 1 \nnum_samples = 1000\nsamples = numpy.random.normal(mean, std, size=num_samples)\nsamples\n\narray([ 1.93726162e+00,  1.09390296e+00,  1.45557680e-01,  8.03326487e-01,\n        7.67866237e-01,  1.30455277e-01, -8.67786958e-01,  2.36250741e-01,\n        4.94848951e-01,  1.31950602e+00, -2.50160893e-01,  2.06437878e-01,\n       -4.47566030e-02, -9.20583339e-01,  8.08363851e-01,  1.18066484e+00,\n        1.49617503e+00,  1.57949207e-01,  1.13797108e+00,  8.58417673e-01,\n       -1.00202347e+00, -7.20359860e-01, -6.68212570e-01,  3.01356081e-01,\n       -1.35764139e+00, -1.02903768e-01,  2.15266669e+00,  1.39696770e-01,\n       -9.03843485e-01, -1.33550893e+00,  3.22762247e-01,  6.31535304e-05,\n        1.44091952e-01, -6.86482906e-01, -2.12071574e+00, -1.02902476e+00,\n       -1.10629991e+00, -5.15723809e-01,  6.44460063e-01,  3.92974483e-01,\n       -4.76423878e-01,  2.53854196e-01,  2.94707885e-01,  1.52882832e+00,\n       -5.23581939e-01, -1.56395330e+00, -4.06314007e-02,  5.34449634e-01,\n        4.80669433e-01, -7.95122319e-01,  4.99984229e-01,  2.21297460e+00,\n        1.34023991e+00, -6.57134520e-01, -2.65082322e-02, -7.17121838e-01,\n       -3.64850871e-01, -9.59241796e-01,  6.03921450e-02,  1.96967623e+00,\n        5.51851096e-01, -8.75548229e-01,  6.80521028e-02,  5.40027305e-02,\n       -6.85572422e-01,  6.48384867e-01,  9.93083695e-02, -1.81853466e+00,\n       -1.01271780e+00, -1.78318055e-01,  1.77961335e-01,  9.00598006e-01,\n        5.50387049e-02,  1.87265992e-01,  1.18449176e+00,  1.16873870e+00,\n       -5.48029729e-02, -1.17167632e+00,  1.31122402e+00, -1.47687745e-01,\n       -1.69115586e+00, -7.84741360e-01,  1.98410614e-01,  3.65523782e-01,\n       -6.66629692e-01,  5.98364361e-01, -4.96586793e-01,  1.76649056e-01,\n        4.82221223e-01, -6.58164575e-01,  8.22184949e-01, -1.33470856e+00,\n       -1.08462985e+00, -9.29419610e-01, -2.72461540e-01,  1.88666896e+00,\n        2.56788376e-01, -2.37123095e-02,  5.75792167e-01,  8.44224829e-01,\n       -1.24289640e-01, -5.06919148e-01,  1.09541464e+00, -1.15297606e+00,\n       -3.97340522e-01, -5.79223553e-01,  1.24400589e-01,  4.33501042e-01,\n        1.90868209e+00,  5.58159319e-01, -6.38807969e-01,  3.33055332e-01,\n       -1.66508795e-01,  7.74901090e-01, -2.39806779e-01,  4.48673587e-03,\n       -6.10545960e-01, -1.63550847e+00,  1.22895402e+00,  5.24576466e-01,\n       -1.66871289e+00, -1.21986057e+00,  1.08756679e+00,  1.25156820e+00,\n        2.02542078e+00,  6.58964863e-01, -6.87735972e-01,  1.18054405e-01,\n       -4.63322893e-01,  1.07025194e+00,  3.52951185e-01, -8.55846520e-02,\n        2.11044407e-01,  5.74516792e-01, -1.46237344e+00,  7.41602836e-02,\n        8.30700636e-01,  6.25155009e-01, -6.10670728e-01, -1.02381524e+00,\n        1.23486545e+00,  5.04762277e-01,  1.47443487e-02,  2.78529397e-01,\n       -1.14131786e+00,  3.83356561e-01, -6.45074859e-01,  1.86950043e-02,\n       -2.33986852e+00,  1.11262194e+00,  3.29707349e-01, -1.23139721e+00,\n       -1.18311706e+00, -7.25523669e-01,  1.50971558e+00,  6.18097583e-01,\n        8.24321012e-01,  2.71205284e-01,  1.24607777e+00,  1.20260660e+00,\n       -3.20287365e-01,  7.93776791e-01, -7.28963964e-01,  1.67857596e+00,\n        1.08277499e+00, -1.94747019e+00,  9.79651070e-01, -1.68372101e+00,\n       -9.95486492e-01,  5.84582903e-01, -5.41624058e-01,  3.96237328e-01,\n       -1.12575381e+00, -1.42429345e+00,  1.02680939e+00,  1.09639954e+00,\n       -2.71920475e+00, -7.29215044e-01,  2.54571415e+00,  4.93207138e-01,\n        9.45370791e-01, -4.35906744e-01, -1.55175862e+00,  1.39243829e+00,\n        1.76330173e+00,  1.68070373e+00,  2.42084361e-01,  1.69605342e+00,\n        1.12210566e+00, -8.75476617e-01, -1.27583386e+00, -1.02133614e-01,\n        7.84943085e-01,  5.50659698e-01, -1.33589100e-01,  2.08289042e+00,\n       -3.96608650e-01, -1.44466329e-01,  1.15378206e-01,  2.84253251e-01,\n       -2.26585123e-01, -1.48785864e+00, -4.15107762e-01,  1.78861766e+00,\n       -1.60192156e-01, -1.45255746e+00, -5.34802520e-01,  2.10699242e+00,\n        3.73717826e-01, -2.14415617e-01, -4.92381737e-02,  1.41370337e+00,\n       -6.21781244e-01,  4.40279042e-01, -4.10310536e-01, -2.03071078e-02,\n        1.26930814e-01,  1.19877734e+00, -5.69728030e-01,  1.26536783e+00,\n        7.43534925e-01,  1.36387704e-01, -2.96854444e-01, -2.25912461e-01,\n       -2.95260198e+00, -1.76664951e+00,  1.85428869e-01,  4.00527064e-02,\n       -2.55989962e+00,  6.41654584e-01, -5.06386552e-01,  8.34531114e-01,\n       -1.76903633e+00, -5.08423589e-01, -1.37058113e+00, -1.73459156e+00,\n        9.78797549e-01,  1.44729247e+00, -1.03435253e-01,  1.38955000e+00,\n        5.02231553e-01, -1.35190626e+00, -6.50001321e-01,  6.04991604e-01,\n        1.68710523e+00, -1.68568249e-01,  4.62638436e-01,  1.53192655e+00,\n       -3.35318256e-01,  1.13842233e+00,  1.43594829e+00,  4.04277616e-01,\n        4.01739011e-01,  7.31753539e-01,  1.43308005e+00, -9.86169868e-01,\n        1.72919842e-02, -1.36598593e+00, -1.14185613e+00, -1.96686926e+00,\n        8.36768866e-02,  4.04666261e-01, -4.89948157e-01, -6.73314519e-02,\n       -1.08580226e+00, -1.17865182e-01, -1.95064949e+00, -9.13271160e-02,\n        6.28573908e-01,  2.52185180e-01, -8.42666294e-02,  8.29710067e-01,\n       -2.88221497e-01, -1.45272918e-02, -4.89592298e-01, -1.83592127e+00,\n        3.27379664e+00,  5.85720800e-01, -4.73805893e-01,  8.85065042e-01,\n       -1.25332588e+00,  8.01813363e-01, -1.19255772e+00,  1.97043891e-01,\n        6.32896424e-01, -5.22806606e-01, -1.58449063e-01,  7.93426793e-02,\n        1.08025463e+00, -5.80768921e-01, -7.53775645e-01, -9.55123013e-01,\n       -4.86363520e-01,  3.88835076e-01, -2.39896086e+00,  1.39345111e+00,\n       -1.62760381e+00,  7.08545427e-01, -5.75259395e-01, -1.04026478e+00,\n       -1.10688797e-01, -3.33328760e-01,  1.90440779e+00,  7.61564074e-01,\n       -8.69426436e-01,  1.19719467e+00, -5.65278701e-01, -1.52648516e+00,\n       -2.38066947e-01, -4.51184614e-01, -2.39893349e-01,  2.30321919e-01,\n       -1.61350181e+00,  7.79979499e-01,  1.02666694e+00, -2.24570496e+00,\n       -1.63307718e+00, -5.14825768e-01, -2.50516027e+00, -1.16937513e+00,\n        7.85121072e-01, -5.40512826e-01, -8.79659182e-01, -1.04591325e+00,\n        9.16534663e-01,  1.39835035e+00, -1.31827899e+00, -9.23756998e-01,\n        3.87163000e-01,  1.22469766e+00, -1.08556997e+00,  1.36374087e+00,\n        5.13696818e-01, -9.39330958e-02,  3.21298428e-01,  5.69639880e-01,\n       -1.81229659e+00, -9.16501240e-01,  1.54672356e+00,  1.21329748e+00,\n       -9.90346420e-01,  9.51663212e-01, -9.22263603e-01, -8.90848768e-02,\n        7.99569924e-01,  1.63592671e+00, -6.50205594e-01, -7.60230560e-01,\n        4.34627310e-01,  1.25326063e+00,  1.79407237e+00,  4.84963857e-01,\n        8.71092426e-01,  6.51812440e-01,  1.36972177e+00, -5.92463674e-01,\n       -1.94227762e+00,  6.58731217e-01,  1.74620568e-01,  1.58516806e+00,\n       -1.16502444e+00, -5.00981969e-01, -9.97026397e-01, -4.28026277e-01,\n       -2.58551650e+00,  1.61265054e+00, -1.05889048e+00,  1.54812326e+00,\n        2.69789039e+00, -9.36912901e-01,  5.40016204e-02, -5.94340899e-01,\n       -9.04257249e-01, -1.60533939e-01, -3.53920827e-01,  1.85782070e-01,\n       -1.25683840e+00,  1.44797996e+00,  8.13794430e-01,  8.46066750e-01,\n        1.32126877e+00, -3.73460154e-01,  1.14796558e-01, -6.48050445e-01,\n        7.60716684e-01, -2.55259173e+00, -1.65471868e+00, -6.47613067e-02,\n        3.93542232e-01,  1.19022116e-01,  7.70819677e-01, -1.11828442e+00,\n       -1.76781166e-01, -1.21084608e-01, -3.63911659e-01,  5.37954782e-01,\n       -7.55376011e-01, -2.56560156e-01,  1.96270346e+00, -3.22884712e-01,\n        9.10032496e-01,  3.73680019e-01, -8.25228157e-01, -1.25276631e+00,\n       -1.14747390e-01, -1.64774595e+00, -1.59730583e+00, -1.09516782e+00,\n       -3.61640132e-02, -2.99245436e-02, -7.35391620e-02,  6.22437077e-03,\n        1.08231923e+00, -5.86040881e-01, -8.22667534e-01,  1.99813307e-01,\n       -6.05807478e-01, -8.27962837e-01, -8.31263020e-01, -6.70647541e-02,\n       -2.17715429e+00,  6.07826258e-01,  2.46888950e+00,  5.29972006e-01,\n       -1.18045129e+00,  6.57487510e-01,  2.70234197e+00, -1.26158895e+00,\n        1.51117146e+00, -1.00358661e+00, -3.63869707e-01,  5.48142494e-01,\n       -1.81589806e+00, -2.32816549e-01,  1.06190343e+00,  9.61728908e-01,\n       -3.94270343e-01,  4.57043607e-01, -1.86026385e+00,  7.32441387e-01,\n       -2.69252729e-01,  1.66821834e-01,  1.36973526e+00, -5.91529967e-01,\n        1.85079386e-01, -9.75499923e-01,  6.53796926e-01,  1.33957694e+00,\n        1.46321632e+00,  5.66689270e-01, -9.04189847e-01,  1.02504706e+00,\n       -1.31418655e+00,  1.25191563e+00, -4.41195156e-01, -5.30129400e-01,\n        1.39669173e+00,  5.25606537e-01, -8.94829775e-01, -3.07068351e-01,\n       -1.41821100e+00, -3.23435640e-01,  5.65970199e-01,  9.53167698e-01,\n       -7.66948471e-01,  3.41388308e-01, -6.74233165e-01,  1.23120698e+00,\n       -3.96915513e-01, -5.47844439e-01,  1.67906960e-01, -4.75125268e-01,\n        3.19115087e-03, -5.51327491e-01, -7.43643460e-01, -7.08333748e-01,\n       -1.83987994e-01, -5.19619803e-01,  9.59036839e-01, -4.44576882e-01,\n       -1.30790582e+00,  8.97694896e-01, -4.66329718e-01,  1.78714875e-01,\n       -2.35960770e+00,  1.89475921e-01,  7.30919224e-01,  1.42806077e-01,\n        1.75460852e-02,  2.93082210e-01, -2.92537793e-01,  4.61000697e-01,\n       -1.04063602e+00,  1.55403072e-01, -6.38516226e-01, -1.07090230e+00,\n       -5.11565426e-01, -1.00643424e+00, -7.02981684e-03, -2.18757927e-01,\n       -1.94784703e-02, -8.87988786e-01, -1.26828283e+00, -9.88413048e-01,\n        1.24494977e-01, -1.04992798e+00,  6.75523501e-01,  9.65363626e-01,\n        1.14352765e+00, -1.13157185e+00,  1.69723238e+00,  1.71061890e-01,\n       -1.21072525e+00,  8.10505804e-02, -9.21240907e-01,  6.08167385e-01,\n       -5.06200512e-01, -6.26766136e-01, -3.79390532e-01, -9.96019048e-02,\n        8.98907338e-01,  4.47491077e-01,  6.08620659e-02,  3.42063618e-01,\n        1.19075897e+00,  4.98850290e-01, -5.46322362e-01, -9.89217937e-01,\n        4.56230575e-01,  2.17591108e+00, -1.21872053e+00,  1.11808020e+00,\n        7.09425976e-01, -1.49067276e-01,  1.33183064e+00,  6.72344500e-01,\n       -2.41899311e-01,  1.89180230e+00,  7.76921842e-01,  1.49561046e+00,\n        2.32796548e-01, -1.82194621e-01, -1.73801255e+00,  1.59007489e+00,\n       -2.04075108e-01, -1.94499076e-01, -9.30674145e-01, -1.38810383e+00,\n        2.17719234e+00, -1.37281765e+00, -1.08454565e-02, -1.39207369e-01,\n       -1.65791937e+00, -9.58488690e-01,  7.19087020e-01, -4.21104637e-02,\n        5.92303381e-01, -5.99581949e-01, -9.40846400e-01,  1.44028309e+00,\n       -1.27686396e+00, -7.47392607e-01,  1.00238637e+00,  1.88291264e-01,\n        7.88235319e-01, -5.42591643e-01,  4.09642256e-01, -4.84805324e-02,\n        1.92012728e-02, -4.20791610e-02,  1.67231682e+00,  9.93465191e-01,\n        2.96082615e+00,  8.32828418e-01, -1.38590014e+00, -1.88376917e-01,\n       -1.25977514e-01,  2.14802932e-01, -8.63400717e-01, -9.55102544e-02,\n        8.45551016e-02, -1.02746724e+00, -2.94386451e-01,  7.12370503e-01,\n       -5.39466872e-01,  6.06786913e-01, -9.56371248e-01, -7.64829110e-01,\n        2.73370729e+00,  3.90652072e-01,  1.82203705e-01,  6.88755848e-01,\n        2.39964035e-01, -3.89596705e-01,  1.73463709e+00, -1.31002601e-01,\n        1.27931228e+00, -4.08288776e-01, -2.07581521e+00, -7.43426319e-01,\n       -1.48101344e+00,  5.48326992e-02,  7.46470420e-02,  5.54816513e-01,\n       -3.67140702e+00,  1.15115781e+00, -4.14587126e-01,  1.94210465e+00,\n       -2.42500116e-01, -2.66789049e-01,  8.88946281e-01,  3.84894367e-01,\n       -8.55810206e-01,  9.17498467e-01,  1.30458503e+00,  5.39221229e-02,\n        5.39081061e-01, -1.61749588e+00,  5.89176291e-01,  2.67798617e-01,\n        1.49937966e+00,  2.07253999e-01,  2.29823778e-02, -2.14194872e-01,\n       -3.71789674e-01,  7.89188537e-01,  6.46400431e-05, -2.15943467e-01,\n        8.90653711e-01,  8.90328946e-01, -4.45819661e-01,  1.42944631e+00,\n       -2.49047284e+00,  5.79622355e-01, -2.42475066e+00,  4.38805362e-01,\n        7.12532878e-01, -1.32704762e+00,  2.17155230e-01,  3.79876827e-01,\n        1.02025483e+00,  4.73311642e-01, -1.00392146e+00,  1.04958233e+00,\n        1.33988828e+00, -7.14720789e-01,  5.53877606e-01,  1.56319823e+00,\n        1.28941450e+00,  1.16326445e-01, -4.90152591e-01, -2.64161676e-01,\n        7.35088141e-01, -4.34061183e-01,  1.02291975e+00,  2.16915805e-02,\n       -4.77127459e-01,  2.05339623e+00,  1.83357697e+00, -3.87236132e-01,\n        7.97324593e-01,  1.20101155e+00, -2.78865743e-01,  1.38342288e+00,\n       -6.04560677e-01, -4.75151727e-01, -3.50432122e+00,  2.90533435e-01,\n        3.84998165e-01,  2.21820519e-01, -9.03425409e-01,  4.89838209e-01,\n       -6.36137308e-01,  1.69564066e-01, -1.66090486e-01,  7.22338813e-01,\n        1.88027963e-01, -1.40244366e+00,  1.22833706e+00,  1.44313168e+00,\n        1.64195403e-01,  1.13988066e+00, -6.32930173e-01, -8.56876495e-01,\n        8.75968430e-01,  1.01749678e+00, -1.01707764e+00, -4.86041106e-01,\n        9.51758929e-01,  9.02890393e-01, -1.40179828e-02,  1.85982670e-01,\n        3.70685660e-01, -4.51757718e-01, -7.66692038e-01, -3.28774475e-01,\n        1.03348853e-02, -9.38774503e-01, -1.28509672e+00,  1.26485272e+00,\n       -3.19649010e-01,  7.27938466e-02, -2.09737369e+00,  1.76622159e-01,\n        3.80418084e-01, -9.39092233e-02, -9.38860483e-01,  1.62614830e+00,\n       -5.70200315e-02, -1.70685684e+00, -1.10683996e-01,  5.48415026e-01,\n        1.10200526e+00, -5.72415483e-01,  3.07924510e-01,  9.85721254e-02,\n        1.74270883e+00, -9.69026252e-02, -9.10838132e-01,  1.54076939e+00,\n        9.35585373e-02, -5.13293339e-01,  2.45468138e-01,  8.25430107e-01,\n       -4.73606866e-01, -2.28581001e-01, -1.22284734e+00,  1.40481615e+00,\n        1.83184476e-01, -3.01205279e-02, -4.11879017e-01,  3.96698741e-01,\n        5.27035754e-01,  3.72555717e-01, -2.21897064e+00,  1.81215540e+00,\n        3.01343037e-01, -6.46405110e-01, -2.13887128e+00, -1.85088485e+00,\n       -2.95259142e-01, -4.58462772e-01, -1.81246444e+00, -2.39906078e-01,\n        3.14228061e-01, -8.66050432e-01, -7.02768760e-01,  1.08056370e+00,\n        2.54599968e-01, -7.42555850e-01, -1.01459483e+00,  9.62934515e-01,\n       -2.17884901e+00, -1.56033306e+00,  7.42603091e-01,  1.50629966e-01,\n        2.05953523e-01,  1.66695574e+00, -1.56277522e-01,  2.64021341e-01,\n        1.45988075e+00, -3.87954527e-01, -7.45617365e-02, -5.51667679e-01,\n        2.99071379e-01,  8.39415114e-01, -7.81361940e-01,  1.06761345e-01,\n        1.40943118e-01, -2.13717551e+00,  1.38278076e+00,  3.04127420e-01,\n        1.42095597e+00,  1.87098942e+00, -2.26342834e-01,  3.99856610e-01,\n       -6.34877032e-01,  1.24970663e+00,  8.02398626e-01,  4.85894763e-01,\n       -1.06793978e-01,  1.09413901e+00,  3.76450322e-01, -7.33618379e-01,\n        5.72099179e-02, -1.38429119e+00, -2.10892602e+00,  5.38965639e-01,\n       -9.30353020e-01, -1.28281612e+00, -1.89579370e+00, -9.94198100e-01,\n       -8.74248255e-01, -1.18486491e+00, -8.91101615e-01, -2.00347047e+00,\n        9.99942887e-01, -4.98826027e-03,  1.58087752e+00,  1.46801401e-01,\n        2.17604964e-02,  3.74320814e-01, -2.23500282e+00,  8.72937003e-02,\n        5.15078942e-01,  3.53019420e-01,  1.13344183e+00,  9.08198364e-01,\n        6.12922117e-01,  1.30298547e+00, -1.14824762e+00, -2.42110099e-01,\n       -6.04666740e-01,  1.43758606e+00, -4.62401875e-01,  1.55342049e+00,\n        4.02412733e-01, -1.93213283e-01, -1.04763247e+00, -7.77726834e-01,\n        1.08073790e-01,  1.62488452e+00, -1.06385560e+00, -1.00597600e+00,\n        1.14061973e+00,  2.20395679e-01, -7.29007734e-01,  1.01141702e+00,\n        1.50442958e+00, -2.49433463e-01, -2.78777103e-02,  4.51687892e-01,\n        1.17014229e+00, -4.06589901e-01, -4.57640125e-01, -1.77455236e+00,\n       -7.95179177e-01, -5.02858740e-02,  3.91171794e-01, -1.36953888e+00,\n        7.56281879e-01, -1.11007027e+00,  2.82576739e-01, -1.02521297e+00,\n       -7.99625777e-01,  8.63281185e-01, -5.25254132e-01, -2.35496959e+00,\n        5.45706224e-01, -9.36413504e-01, -1.87760551e+00, -4.65464495e-01,\n        5.63177893e-01, -1.28073490e+00, -4.53615714e-02, -1.61995583e+00,\n        1.79609373e-01, -5.99644737e-01, -4.59084913e-01,  1.09535028e-01,\n       -7.90326118e-03, -1.16254678e+00, -3.29233717e-01, -4.69606634e-01,\n       -7.97916219e-01,  1.08856356e+00, -2.07541198e-02, -4.56924705e-01,\n       -1.17600544e+00,  1.36107979e-01,  7.27282387e-01,  5.84996904e-01,\n       -2.03732471e+00,  1.53991827e+00, -4.30567699e-01,  2.46172987e+00,\n       -7.30263336e-01, -2.97633928e-01, -4.92255834e-02, -1.94423314e+00,\n        9.83841859e-01, -7.53282174e-01,  8.60489542e-01, -2.43181481e+00,\n        5.43986495e-01,  1.76922975e+00,  8.13913817e-01,  1.35993336e+00,\n       -8.47603590e-01, -1.74872814e-01,  5.83756796e-01,  2.80802188e+00,\n        1.94048858e+00,  3.11622120e-01, -8.85889922e-01,  5.56805613e-01,\n       -3.09124546e-02,  1.43418763e-01,  4.09159150e-01,  6.83666422e-01,\n        3.60378381e-01,  1.08373729e+00, -1.91071671e+00, -1.74975948e+00,\n       -6.33411193e-01,  3.35126104e-01, -7.64718287e-01, -8.71683441e-01,\n        8.78385298e-01, -1.03781558e+00, -1.26657713e+00,  8.58891155e-01,\n       -2.92501310e-01, -1.47181282e+00,  1.28728365e+00,  1.34335740e-01,\n       -4.01811443e-02,  1.39525544e-01, -6.55177731e-01,  1.03239837e-01,\n        1.89101374e+00, -4.62095757e-01,  7.36513906e-01,  1.20262553e+00,\n       -1.55054436e-01,  1.40398413e-02,  2.98047396e-01, -2.97565176e-01,\n        6.77722173e-01,  1.53459808e-01, -2.22719621e+00, -1.27891954e+00,\n        1.18653233e+00,  9.30508603e-01,  4.71817177e-01,  2.60051868e-01,\n        4.17637182e-01,  1.92715642e+00, -1.47455658e+00, -1.81260877e-01,\n       -2.52284535e+00,  2.00227007e-01, -5.20905281e-01, -7.01607093e-01,\n        8.27060564e-01,  1.34596220e-01, -1.31655646e+00, -1.94035333e+00,\n       -1.81829300e+00, -1.55425715e+00, -8.66820666e-01, -1.01346791e+00,\n        4.78494797e-01,  2.25583632e-01,  1.18312352e-01,  6.63636795e-01,\n       -7.34015742e-01, -4.09766645e-01, -6.66107572e-01,  1.21546030e+00,\n        1.27413979e+00, -1.26806375e+00, -1.43283072e+00, -3.67061562e-02,\n       -5.33577824e-01, -3.27470038e-01,  4.21449241e-01,  2.40169156e-01,\n        4.90816214e-01,  4.93701371e-01, -2.21426564e-01,  1.48279086e-01,\n        8.13708576e-01, -9.80167622e-01,  6.96625825e-01,  1.71869023e+00,\n        9.16063126e-01,  9.96634499e-01,  5.43469458e-01, -4.31628812e-01,\n        4.03641964e-01,  1.45325974e-01, -1.52966805e+00, -5.42465475e-01,\n        6.02517752e-01, -5.42020794e-01, -2.31039063e-01, -6.35203690e-01,\n       -7.99726383e-01,  9.32334321e-02,  4.01022484e-01,  1.50820814e+00,\n        1.39383091e+00, -4.08939302e-01,  8.94134984e-02,  8.71630498e-01,\n       -6.89401882e-02, -8.71528154e-01, -9.11027911e-01, -4.66827036e-01])"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#white-noise",
+    "href": "posts/time_series/Week2.html#white-noise",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "2. White noise",
+    "text": "2. White noise\nIf \\({X_t}\\) is a sequence of uncorrelated random variables, each with zero mean and variance \\(\\sigma^2\\), then such a sequence is referred to as white noise.\nNote: Every \\((IID(0, \\sigma^2)\\) sequence is \\((WN(0, \\sigma^2)\\) but not conversely."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#random-walk",
+    "href": "posts/time_series/Week2.html#random-walk",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "3. Random walk",
+    "text": "3. Random walk\nA random walk process is obtained by cumulatively summing iid random variables. If \\({S_t, t=0, 1, 2, ...}\\) is a random walk process, then \\(S_0 =0\\)\n\\(S_1=0+X_1\\)\n\\(S_2=0+X_1+X_2\\)\n\\(...\\)\n\\(S_t=X_1+X_2+...+X_t.\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#question",
+    "href": "posts/time_series/Week2.html#question",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Question",
+    "text": "Question\nIs \\({S_t, t=0, 1, 2, ...}\\) a weak stationary process?"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#identifying-non-stationarity-in-the-mean",
+    "href": "posts/time_series/Week2.html#identifying-non-stationarity-in-the-mean",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Identifying non-stationarity in the mean",
+    "text": "Identifying non-stationarity in the mean\n\nUsing time series plot\nACF plot\n\nACF of stationary time series will drop to relatively quickly.\nThe ACF of non-stationary series decreases slowly.\nFor non-stationary series, the ACF at lag 1 is often large and positive."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#backshift-notation",
+    "href": "posts/time_series/Week2.html#backshift-notation",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Backshift notation:",
+    "text": "Backshift notation:\n\\[BX_t=X_{t-1}\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#ordinary-differencing",
+    "href": "posts/time_series/Week2.html#ordinary-differencing",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Ordinary differencing",
+    "text": "Ordinary differencing\nThe first-order differencing can be defined as\n\\[\\nabla X_t = X_t-X_{t-1}=X_t-BX_t=(1-B)X_t\\] where \\(\\nabla=1-B\\).\nThe second-order differencing\n\\[\\nabla^2X_t=\\nabla(\\nabla X_t)=\\nabla(X_t-X_{t-1})=\\nabla X_t - \\nabla X_{t-1}\\]\n\\[\\nabla X_t - \\nabla X_{t-1}=(X_t-X_{t-1})-(X_{t-1}-X_{t-2})\\] - In practice, we seldom need to go beyond second order differencing."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#seasonal-differencing",
+    "href": "posts/time_series/Week2.html#seasonal-differencing",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Seasonal differencing",
+    "text": "Seasonal differencing\n\ndifferencing between an observation and the corresponding observation from the previous year.\n\n\\[\\nabla_mX_t=X_t-X_{t-m}=(1-B^m)X_t\\] where \\((m)\\) is the number of seasons. For monthly, \\((m=12)\\), for quarterly \\((m=4)\\).\nFor monthly series\n\\[\\nabla_{12}X_t=X_t-X_{t-12}\\] ##\nTwice-differenced series\n\\[\\nabla^2_{12}X_t=\\nabla_{12}X_t-\\nabla_{12}X_{t-1}\\] \\[\\nabla_{12}X_t-\\nabla_{12}X_{t-1}=(X_t-X_{t-12})-(X_{t-1}-X_{t-13}\\] If seasonality is strong, the seasonal differencing should be done first."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#question-1",
+    "href": "posts/time_series/Week2.html#question-1",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Question",
+    "text": "Question\nShow that \\((AR(P)\\) is a linear filter with transfer function \\(\\phi^{-1}(B)\\), where \\((\\phi(B)=1-\\phi_1B-\\phi_2B^2-...-\\phi_pB^p.)\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#stationary-condition-for-arp",
+    "href": "posts/time_series/Week2.html#stationary-condition-for-arp",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Stationary condition for AR(P)",
+    "text": "Stationary condition for AR(P)\nThe roots of \\((\\phi(B)=0)\\) (characteristic equation) must lie outside the unit circle."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#stationarity-conditions-for-ar1",
+    "href": "posts/time_series/Week2.html#stationarity-conditions-for-ar1",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Stationarity Conditions for AR(1)",
+    "text": "Stationarity Conditions for AR(1)\nLet’s consider \\((AR(1))\\) process,\n\\[x_t=\\phi_1x_{t-1}+\\epsilon_t.\\]\nThen,\n\\[(1-\\phi_1 B)x_t=\\epsilon_t.\\]\nThis may be written as, \\[x_t=(1-\\phi_1 B)^{-1}\\epsilon_t=\\sum_{j=0}^{\\infty}\\phi_1^j\\epsilon_{t-j}.\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#section-2",
+    "href": "posts/time_series/Week2.html#section-2",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "",
+    "text": "Hence,\n\\[\\psi(B)=(1-\\phi_1 B)^{-1}=\\sum_{j=0}^{\\infty}\\phi_1^jB^j\\]\nIf \\((\\phi_1| &lt; 1,)\\) the \\((AR(1))\\) process is stationary.\nThis is equivalent to saying the roots of \\((1-\\phi_1B=0)\\) must lie outside the unit circle."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#geometric-series",
+    "href": "posts/time_series/Week2.html#geometric-series",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Geometric series",
+    "text": "Geometric series\n\\[a+ar+ar^2+ar^3+...=\\frac{a}{1-r}\\]\nfor \\((|r|&lt;1.)\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#ar1-process",
+    "href": "posts/time_series/Week2.html#ar1-process",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "AR(1) process",
+    "text": "AR(1) process\n\\[x_t=c+\\phi_1x_{t-1}+\\epsilon_t,\\]\n\nwhen \\(\\phi_1=0\\) - equivalent to white noise process\nwhen \\(\\phi_1=0\\) and \\(c=0\\) - random walk\nwhen \\(\\phi_1=1\\) and \\(c \\neq 0\\) - random walk with drift\nwhen \\(\\phi_1 < 0\\) - oscillates around the mean"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#section-3",
+    "href": "posts/time_series/Week2.html#section-3",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "",
+    "text": "slides: https://tsforecasting-thiyanga.netlify.app/slides/timeseries2.html#27"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf",
+    "href": "posts/time_series/Week3.html#acf",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF",
+    "text": "ACF\n\n\n\n\n\nWhite noise implies stationarity. Stationarity does not imply white noise."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#non-stationary-time-series",
+    "href": "posts/time_series/Week3.html#non-stationary-time-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Non-Stationary Time Series",
+    "text": "Non-Stationary Time Series\n1. Deterministic trend\n\\[Y_t  = f(t) + \\epsilon_t\\]\nwhere \\(\\epsilon_t \\sim iid(0, \\sigma^2)\\), \\(t = 1, 2, ...T\\)\nMean of the process is time dependent, but the variance of the process is constant."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#non-stationary-time-series-cont.",
+    "href": "posts/time_series/Week3.html#non-stationary-time-series-cont.",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Non-Stationary Time Series (cont.)",
+    "text": "Non-Stationary Time Series (cont.)\n2. Random walk\n\\[Y_t = Y_{t-1} + \\epsilon_t\\]\n\nRandom walk has a stochastic trend.\nModel behind naive method."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#non-stationary-time-series-cont.-1",
+    "href": "posts/time_series/Week3.html#non-stationary-time-series-cont.-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Non-Stationary Time Series (cont.)",
+    "text": "Non-Stationary Time Series (cont.)\n3. Random walk with drift\n\\[Y_t = \\alpha+  Y_{t-1} + \\epsilon_t\\]\n\nRandom walk with drift has a stochastic trend and a deterministic trend.\nModel behind drift method."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk",
+    "href": "posts/time_series/Week3.html#random-walk",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk",
+    "text": "Random walk\n\\[\n\\begin{aligned}\n  Y_t &= Y_{t-1} + \\epsilon_t \\\\\n     Y_1    &= Y_0 + \\epsilon_1 \\\\\n         Y_2 &=  Y_1 + \\epsilon_2=Y_0 + \\epsilon_1 + \\epsilon_2\\\\\n          Y_3 &=  Y_2 + \\epsilon_3=Y_0 + \\epsilon_1 + \\epsilon_2 +\\epsilon_3\\\\\n          .   \\\\\n          Y_t &=Y_{t-1} + \\epsilon_t=Y_0 + \\epsilon_1 + \\epsilon_2 + \\epsilon_3 +...+ \\epsilon_t = Y_0 + \\sum_{i=1}^{t} \\epsilon_t\n\\end{aligned}\n\\]\nMean: \\(E(Y_t) = Y_0\\).\nVariance: \\(Var(Y_t)=t \\sigma^2\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk-with-drift",
+    "href": "posts/time_series/Week3.html#random-walk-with-drift",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk with drift",
+    "text": "Random walk with drift\n\\[\n\\begin{aligned}\n  Y_t &= Y_{t-1} + \\epsilon_t \\\\\n     Y_1    &= \\alpha+Y_0 + \\epsilon_1 \\\\\n         Y_2 &= \\alpha+ Y_1 + \\epsilon_2=2 \\alpha+Y_0 + \\epsilon_1 + \\epsilon_2\\\\\n          Y_3 &= \\alpha+ Y_2 + \\epsilon_3= 3 \\alpha+ Y_0 + \\epsilon_1 + \\epsilon_2 +\\epsilon_3\\\\\n          .   \\\\\n          Y_t &= \\alpha+Y_{t-1} + \\epsilon_t= t \\alpha+ Y_0 + \\epsilon_1 + \\epsilon_2 + \\epsilon_3 +...+ \\epsilon_t \\\\\n          Y_t &= t \\alpha + Y_0 + \\sum_{i=1}^{t} \\epsilon_t\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk-with-drift-cont.",
+    "href": "posts/time_series/Week3.html#random-walk-with-drift-cont.",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk with drift (cont.)",
+    "text": "Random walk with drift (cont.)\nIt has a deterministic trend \\((Y_0 + t \\alpha)\\) and a stochastic trend \\(\\sum_{i=1}^{t} \\epsilon_t\\).\nMean: \\(E(Y_t) = Y_0 + t\\alpha\\)\nVariance: \\(Var(Y_t) = t\\sigma^2\\).\nThere is a trend in both mean and variance."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#common-trend-removal-de-trending-procedures",
+    "href": "posts/time_series/Week3.html#common-trend-removal-de-trending-procedures",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Common trend removal (de-trending) procedures",
+    "text": "Common trend removal (de-trending) procedures\n\nDeterministic trend: Time-trend regression\nThe trend can be removed by fitting a deterministic polynomial time trend. The residual series after removing the trend will give us the de-trended series.\nStochastic trend: Differencing\nThe process is also known as a Difference-stationary process."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk-1",
+    "href": "posts/time_series/Week3.html#random-walk-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk",
+    "text": "Random walk\n\nimport numpy as np\nrw = np.cumsum(samples)\nplt.plot(rw)\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk---acf",
+    "href": "posts/time_series/Week3.html#random-walk---acf",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk - ACF",
+    "text": "Random walk - ACF"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#difference-series",
+    "href": "posts/time_series/Week3.html#difference-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Difference series",
+    "text": "Difference series\n\n\n\n\n\n\n  \n    \n      \n      Values\n      Lag 1\n      Lag 2\n    \n  \n  \n    \n      0\n      1.575475\n      NaN\n      NaN\n    \n    \n      1\n      1.734250\n      0.158775\n      NaN\n    \n    \n      2\n      1.421905\n      -0.312345\n      -0.471119\n    \n    \n      3\n      2.687995\n      1.266089\n      1.578434\n    \n    \n      4\n      3.681683\n      0.993688\n      -0.272401\n    \n    \n      ...\n      ...\n      ...\n      ...\n    \n    \n      95\n      2.349565\n      1.680868\n      3.185980\n    \n    \n      96\n      2.445324\n      0.095759\n      -1.585109\n    \n    \n      97\n      1.766177\n      -0.679147\n      -0.774905\n    \n    \n      98\n      3.590430\n      1.824253\n      2.503399\n    \n    \n      99\n      4.399019\n      0.808589\n      -1.015664\n    \n  \n\n100 rows × 3 columns"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-lag-1-series",
+    "href": "posts/time_series/Week3.html#plot-lag-1-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot Lag 1 series",
+    "text": "Plot Lag 1 series"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf-lag-1-series",
+    "href": "posts/time_series/Week3.html#acf-lag-1-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF Lag 1 series",
+    "text": "ACF Lag 1 series"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#nd-order-differencing",
+    "href": "posts/time_series/Week3.html#nd-order-differencing",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "2nd order differencing",
+    "text": "2nd order differencing\n\nplot_acf(df.value.diff().diff().dropna())\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#variance-stabilization",
+    "href": "posts/time_series/Week3.html#variance-stabilization",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Variance stabilization",
+    "text": "Variance stabilization\nEg:\n\nSquare root: \\(W_t = \\sqrt{Y_t}\\)\nLogarithm: \\(W_t = log({Y_t})\\)\n\nThis very useful.\nInterpretable: Changes in a log value are relative (percent) changes on the original sclae."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960",
+    "href": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Monthly Airline Passenger Numbers 1949-1960",
+    "text": "Monthly Airline Passenger Numbers 1949-1960\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nfrom datetime import datetime\nimport plotnine\nfrom plotnine import *\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (335246065)>"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960---log",
+    "href": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960---log",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Monthly Airline Passenger Numbers 1949-1960 - log",
+    "text": "Monthly Airline Passenger Numbers 1949-1960 - log\n\nimport numpy as np\nairpassenger['naturallog'] = np.log(airpassenger['#Passengers']) \nggplot(airpassenger, aes(x='Month', y='naturallog'))+geom_line()\n\n\n<ggplot: (334789051)>"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#box-cox-transformation",
+    "href": "posts/time_series/Week3.html#box-cox-transformation",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Box-Cox transformation",
+    "text": "Box-Cox transformation\n\\[\n  w_t=\\begin{cases}\n    log(y_t), & \\text{if $\\lambda=0$} \\newline\n    (Y_t^\\lambda - 1)/ \\lambda, & \\text{otherwise}.\n  \\end{cases}\n\\]\nDifferent values of \\(\\lambda\\) gives you different transformations.\n\n\\(\\lambda=1\\): No substantive transformation\n\\(\\lambda = \\frac{1}{2}\\): Square root plus linear transformation\n\\(\\lambda=0\\): Natural logarithm\n\\(\\lambda = -1\\): Inverse plus 1\n\nBalance the seasonal fluctuations and random variation across the series."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#box-cox-transformation-1",
+    "href": "posts/time_series/Week3.html#box-cox-transformation-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Box-Cox transformation",
+    "text": "Box-Cox transformation\n\n# import modules\nimport numpy as np\nfrom scipy import stats\n \ny2,fitted_lambda = stats.boxcox(airpassenger['#Passengers'])"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#armap-q-model",
+    "href": "posts/time_series/Week3.html#armap-q-model",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ARMA(p, q) model",
+    "text": "ARMA(p, q) model\n\\[Y_t=c+\\phi_1Y_{t-1}+...+\\phi_p Y_{t-p}+ \\theta_1\\epsilon_{t-1}+...+\\theta_q\\epsilon_{t-q}+\\epsilon_t\\]\n\nThese are stationary models.\nThey are only suitable for stationary series."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#arimap-d-q-model",
+    "href": "posts/time_series/Week3.html#arimap-d-q-model",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ARIMA(p, d, q) model",
+    "text": "ARIMA(p, d, q) model\nDifferencing –> ARMA\nStep 1: Differencing\n\\[Y'_t = (1-B)^dY_t\\]\nStep 2: ARMA\n\\[Y'_t=c+\\phi_1Y'_{t-1}+...+\\phi_p Y'_{t-p}+ \\theta_1\\epsilon_{t-1}+...+\\theta_q\\epsilon_{t-q}+\\epsilon_t\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#section-2",
+    "href": "posts/time_series/Week3.html#section-2",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "Need transformations?\nNeed differencing?"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#section-3",
+    "href": "posts/time_series/Week3.html#section-3",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.\n\\(ARIMA(3,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,3)(1,1,1)_{12}\\)\n\\(ARIMA(3,1,3)(1,1,1)_{12}\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-2-apply-transformations",
+    "href": "posts/time_series/Week3.html#step-2-apply-transformations",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 2: Apply transformations",
+    "text": "Step 2: Apply transformations\n\nimport numpy as np\nairpassenger['naturallog'] = np.log(airpassenger['#Passengers'])"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-3-take-difference-series",
+    "href": "posts/time_series/Week3.html#step-3-take-difference-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 3: Take difference series",
+    "text": "Step 3: Take difference series\nIdentifying non-stationarity by looking at plots\n\nTime series plot\nThe ACF of stationary data drops to zero relatively quickly.\nThe ACF of non-stationary data decreases slowly.\nFor non-stationary data, the value of \\(r_1\\) is often large and positive."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#non-seasonal-differencing-and-seasonal-differencing",
+    "href": "posts/time_series/Week3.html#non-seasonal-differencing-and-seasonal-differencing",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Non-seasonal differencing and seasonal differencing",
+    "text": "Non-seasonal differencing and seasonal differencing\nNon seasonal first-order differencing: \\(Y'_t=Y_t - Y_{t-1}\\)\n\nNon seasonal second-order differencing: \\(Y''_t=Y'_t - Y'_{t-1}\\)\n\nSeasonal differencing: \\(Y_t - Y_{t-m}\\)\n\n\nFor monthly, \\(m=12\\), for quarterly, \\(m=4\\).\n\n\n\nSeasonally differenced series will have \\(T-m\\) observations. \n\n\nThere are times differencing once is not enough. However, in practice,it is almost never necessary to go beyond second-order differencing."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf-of-log-transformation-series",
+    "href": "posts/time_series/Week3.html#acf-of-log-transformation-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF of log-transformation series",
+    "text": "ACF of log-transformation series"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#take-difference-series",
+    "href": "posts/time_series/Week3.html#take-difference-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Take difference series",
+    "text": "Take difference series\n\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n      naturallog\n      naturalloglag12\n    \n  \n  \n    \n      0\n      1949-01-01\n      112\n      4.718499\n      NaN\n    \n    \n      1\n      1949-02-01\n      118\n      4.770685\n      NaN\n    \n    \n      2\n      1949-03-01\n      132\n      4.882802\n      NaN\n    \n    \n      3\n      1949-04-01\n      129\n      4.859812\n      NaN\n    \n    \n      4\n      1949-05-01\n      121\n      4.795791\n      NaN\n    \n    \n      5\n      1949-06-01\n      135\n      4.905275\n      NaN\n    \n    \n      6\n      1949-07-01\n      148\n      4.997212\n      NaN\n    \n    \n      7\n      1949-08-01\n      148\n      4.997212\n      NaN\n    \n    \n      8\n      1949-09-01\n      136\n      4.912655\n      NaN\n    \n    \n      9\n      1949-10-01\n      119\n      4.779123\n      NaN\n    \n    \n      10\n      1949-11-01\n      104\n      4.644391\n      NaN\n    \n    \n      11\n      1949-12-01\n      118\n      4.770685\n      NaN\n    \n    \n      12\n      1950-01-01\n      115\n      4.744932\n      0.026433"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#take-difference-series-1",
+    "href": "posts/time_series/Week3.html#take-difference-series-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Take difference series",
+    "text": "Take difference series\n\nairpassenger['naturalloglag12'] = airpassenger['naturallog'].diff(12)\nairpassenger.tail(13)\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n      naturallog\n      naturalloglag12\n    \n  \n  \n    \n      131\n      1959-12-01\n      405\n      6.003887\n      0.183804\n    \n    \n      132\n      1960-01-01\n      417\n      6.033086\n      0.146982\n    \n    \n      133\n      1960-02-01\n      391\n      5.968708\n      0.133897\n    \n    \n      134\n      1960-03-01\n      419\n      6.037871\n      0.031518\n    \n    \n      135\n      1960-04-01\n      461\n      6.133398\n      0.151984\n    \n    \n      136\n      1960-05-01\n      472\n      6.156979\n      0.116724\n    \n    \n      137\n      1960-06-01\n      535\n      6.282267\n      0.125288\n    \n    \n      138\n      1960-07-01\n      622\n      6.432940\n      0.126665\n    \n    \n      139\n      1960-08-01\n      606\n      6.406880\n      0.080731\n    \n    \n      140\n      1960-09-01\n      508\n      6.230481\n      0.092754\n    \n    \n      141\n      1960-10-01\n      461\n      6.133398\n      0.124585\n    \n    \n      142\n      1960-11-01\n      390\n      5.966147\n      0.074503\n    \n    \n      143\n      1960-12-01\n      432\n      6.068426\n      0.064539"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf---difflogdata-12",
+    "href": "posts/time_series/Week3.html#acf---difflogdata-12",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF - diff(log(data), 12)",
+    "text": "ACF - diff(log(data), 12)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#first-differencing-on-difflogdata-12",
+    "href": "posts/time_series/Week3.html#first-differencing-on-difflogdata-12",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "First differencing on diff(log(data), 12)",
+    "text": "First differencing on diff(log(data), 12)\n\nairpassenger['naturalloglag12diff'] = airpassenger['naturallog'].diff(12).diff()\nplot_acf(airpassenger['naturalloglag12diff'].dropna())\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#first-differencing-on-difflogdata-12-1",
+    "href": "posts/time_series/Week3.html#first-differencing-on-difflogdata-12-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "First differencing on diff(log(data), 12)",
+    "text": "First differencing on diff(log(data), 12)\n\nairpassenger['naturalloglag12diff'] = airpassenger['naturallog'].diff(12).diff()\nplot_pacf(airpassenger['naturalloglag12diff'].dropna())\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#arp",
+    "href": "posts/time_series/Week3.html#arp",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "AR(p)",
+    "text": "AR(p)\n\nACF dies out in an exponential or damped sine-wave manner.\nthere is a significant spike at lag \\(p\\) in PACF, but none beyond \\(p\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#maq",
+    "href": "posts/time_series/Week3.html#maq",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "MA(q)",
+    "text": "MA(q)\n\nACF has all zero spikes beyond the \\(q^{th}\\) spike.\nPACF dies out in an exponential or damped sine-wave manner."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#seasonal-components",
+    "href": "posts/time_series/Week3.html#seasonal-components",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Seasonal components",
+    "text": "Seasonal components\n\nThe seasonal part of an AR or MA model will be seen in the seasonal lags of the PACF and ACF."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#arima00000112-will-show",
+    "href": "posts/time_series/Week3.html#arima00000112-will-show",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ARIMA(0,0,0)(0,0,1)12 will show",
+    "text": "ARIMA(0,0,0)(0,0,1)12 will show\n\na spike at lag 12 in the ACF but no other significant spikes.\nThe PACF will show exponential decay in the seasonal lags 12, 24, 36, . . . ."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#arima00010012-will-show",
+    "href": "posts/time_series/Week3.html#arima00010012-will-show",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ARIMA(0,0,0)(1,0,0)12 will show",
+    "text": "ARIMA(0,0,0)(1,0,0)12 will show\n\nexponential decay in the seasonal lags of the ACF.\na single significant spike at lag 12 in the PACF."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-4-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
+    "href": "posts/time_series/Week3.html#step-4-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 4: Examine the ACF/PACF to identify a suitable model (cont.)",
+    "text": "Step 4: Examine the ACF/PACF to identify a suitable model (cont.)\n\n\\(d=1\\) and \\(D=1\\) (from step 3)\nSignificant spike at lag 1 in ACF suggests non-seasonal MA(1) component.\nSignificant spike at lag 12 in ACF suggests seasonal MA(1) component.\nInitial candidate model: \\(ARIMA(0,1,1)(0,1,1)_{12}\\).\nBy analogous logic applied to the PACF, we could also have started with \\(ARIMA(1,1,0)(1,1,0)_{12}\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#models",
+    "href": "posts/time_series/Week3.html#models",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Models",
+    "text": "Models\nInitial model:\n\\(ARIMA(0,1,1)(0,1,1)_{12}\\)\n\\(ARIMA(1,1,0)(1,1,0)_{12}\\)\nTry some variations of the initial model:\n\\(ARIMA(0,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,1)(1,1,0)_{12}\\)\n\\(ARIMA(1,1,1)(1,1,1)_{12}\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#section-4",
+    "href": "posts/time_series/Week3.html#section-4",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.\n\\(ARIMA(3,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,3)(1,1,1)_{12}\\)\n\\(ARIMA(3,1,3)(1,1,1)_{12}\\)"
+  },
+  {
     "objectID": "posts/quarto/1_intro.html#section-3",
     "href": "posts/quarto/1_intro.html#section-3",
     "title": "Week 1A: Data Visualization: Grammar of Graphics",
@@ -809,6 +1250,27 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#example-2",
+    "href": "posts/time_series/Week3.html#example-2",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Example 2",
+    "text": "Example 2\n\nimport numpy as np, pandas as pd\nfrom statsmodels.graphics.tsaplots import plot_acf, plot_pacf\nimport matplotlib.pyplot as plt\nplt.rcParams.update({'figure.figsize':(9,7), 'figure.dpi':120})\n\n# Import data\ndf = pd.read_csv('wwwusage.csv', names=['value'], header=0)\n\n# Original Series\nfig, axes = plt.subplots(2, 2, sharex=True)\naxes[0, 0].plot(df.value); axes[0, 0].set_title('Original Series')\nplot_acf(df.value, ax=axes[0, 1], lags=np.arange(len(df)))\n\n# 1st Differencing\naxes[1, 0].plot(df.value.diff()); axes[1, 0].set_title('1st Order Differencing')\nplot_acf(df.value.diff().dropna(), ax=axes[1, 1], lags=np.arange(len(df) - 1))\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#section-1",
+    "href": "posts/time_series/Week3.html#section-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "<ggplot: (330176250)>"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#box-cox-transformation-exploring-the-output",
+    "href": "posts/time_series/Week3.html#box-cox-transformation-exploring-the-output",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Box-Cox transformation: Exploring the output",
+    "text": "Box-Cox transformation: Exploring the output\n\nfitted_lambda\n\n0.14802265137037945\n\n\n\ny2\n\narray([ 6.82749005,  6.93282224,  7.16189151,  7.11461078,  6.98378687,\n        7.20826542,  7.39959794,  7.39959794,  7.22352834,  6.94993188,\n        6.67930112,  6.93282224,  6.88074148,  7.0663838 ,  7.29843847,\n        7.20826542,  7.05009066,  7.41371485,  7.69297755,  7.69297755,\n        7.53726005,  7.17744836,  6.86312389,  7.28363955,  7.35675408,\n        7.42775127,  7.791663  ,  7.6033268 ,  7.71801394,  7.791663  ,\n        8.03379957,  8.03379957,  7.86322651,  7.59025293,  7.3711186 ,\n        7.64214252,  7.70552693,  7.81574285,  7.96693012,  7.82769741,\n        7.85143867,  8.23478523,  8.35415797,  8.46833738,  8.14152446,\n        7.94424651,  7.71801394,  7.97819691,  8.00058286,  8.00058286,\n        8.41186604,  8.40233549,  8.34441554,  8.47763304,  8.66568618,\n        8.73398286,  8.42136224,  8.16254066,  7.81574285,  8.05570781,\n        8.08822445,  7.90983871,  8.40233549,  8.32482145,  8.39277032,\n        8.66568618,  8.97573698,  8.90544371,  8.62209995,  8.34441554,\n        8.0774311 ,  8.34441554,  8.46833738,  8.38317027,  8.69150146,\n        8.70857469,  8.71707079,  9.07418456,  9.41661628,  9.30252389,\n        9.05177744,  8.75078932,  8.42136224,  8.78409104,  8.83328615,\n        8.77580407,  9.08902184,  9.0592668 ,  9.0964106 ,  9.48162515,\n        9.72179099,  9.67415098,  9.35679401,  9.00640692,  8.72554012,\n        9.00640692,  9.07418456,  8.96801544,  9.36350433,  9.30936559,\n        9.35679401,  9.77445522, 10.01359054, 10.02424732,  9.66813973,\n        9.30252389,  8.9987716 ,  9.22613489,  9.25415593,  9.0964106 ,\n        9.40343224,  9.30936559,  9.41003199,  9.84886109, 10.14918625,\n       10.21968352,  9.66813973,  9.38353935,  9.03673716,  9.23316669,\n        9.390186  ,  9.26806127,  9.68014959,  9.61958794,  9.76283534,\n       10.05072014, 10.426264  , 10.4768849 , 10.00289463,  9.68613564,\n        9.40343224,  9.67415098,  9.74531682,  9.58881702,  9.75700771,\n        9.99215929, 10.05072014, 10.36531089, 10.75145254, 10.68404894,\n       10.23457308,  9.99215929,  9.58262264,  9.83186035])"
   }
 ]

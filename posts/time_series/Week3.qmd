@@ -1,0 +1,535 @@
+---
+title: "Week 3: AR/ MA/ ARMA/ ARIMA"
+format:
+  revealjs:
+    slide-number: true
+    show-slide-number: all 
+jupyter: python3
+---
+
+# Recap: Stationarity
+
+```{python}
+#| fig-column: margin
+#| echo: true
+import numpy
+import matplotlib.pyplot as plt
+
+mean = 0
+std = 1 
+num_samples = 100
+samples = numpy.random.normal(mean, std, size=num_samples)
+plt.plot(samples)
+plt.show()
+```
+
+## ACF 
+
+```{python}
+import pandas as pd
+from matplotlib import pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
+plot_acf(samples, lags=20)
+plt.show()
+```
+
+White noise implies stationarity. Stationarity does not imply white noise.
+
+## Non-Stationary Time Series
+
+**1. Deterministic trend**
+
+$$Y_t  = f(t) + \epsilon_t$$
+
+
+where $\epsilon_t \sim iid(0, \sigma^2)$, $t = 1, 2, ...T$
+
+Mean of the process is time dependent, but the variance of the process is constant.
+
+## Non-Stationary Time Series (cont.)
+
+**2. Random walk** 
+
+$$Y_t = Y_{t-1} + \epsilon_t$$
+
+- Random walk has a stochastic trend.
+
+- Model behind naive method.
+
+## Non-Stationary Time Series (cont.)
+
+**3. Random walk with drift**
+
+$$Y_t = \alpha+  Y_{t-1} + \epsilon_t$$
+
+- Random walk with drift has a stochastic trend and a deterministic trend.
+
+- Model behind drift method.
+
+
+## Random walk
+
+
+$$
+\begin{aligned}
+  Y_t &= Y_{t-1} + \epsilon_t \\
+     Y_1    &= Y_0 + \epsilon_1 \\
+         Y_2 &=  Y_1 + \epsilon_2=Y_0 + \epsilon_1 + \epsilon_2\\
+          Y_3 &=  Y_2 + \epsilon_3=Y_0 + \epsilon_1 + \epsilon_2 +\epsilon_3\\
+          .   \\
+          Y_t &=Y_{t-1} + \epsilon_t=Y_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 +...+ \epsilon_t = Y_0 + \sum_{i=1}^{t} \epsilon_t
+\end{aligned}
+$$
+
+Mean: $E(Y_t) = Y_0$.
+
+Variance: $Var(Y_t)=t \sigma^2$.
+
+## Random walk with drift
+
+
+$$
+\begin{aligned}
+  Y_t &= Y_{t-1} + \epsilon_t \\
+     Y_1    &= \alpha+Y_0 + \epsilon_1 \\
+         Y_2 &= \alpha+ Y_1 + \epsilon_2=2 \alpha+Y_0 + \epsilon_1 + \epsilon_2\\
+          Y_3 &= \alpha+ Y_2 + \epsilon_3= 3 \alpha+ Y_0 + \epsilon_1 + \epsilon_2 +\epsilon_3\\
+          .   \\
+          Y_t &= \alpha+Y_{t-1} + \epsilon_t= t \alpha+ Y_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 +...+ \epsilon_t \\
+          Y_t &= t \alpha + Y_0 + \sum_{i=1}^{t} \epsilon_t
+\end{aligned}
+$$
+
+## Random walk with drift (cont.)
+
+
+It has a *deterministic trend* $(Y_0 + t \alpha)$ and a *stochastic trend* $\sum_{i=1}^{t} \epsilon_t$.
+
+Mean: $E(Y_t) = Y_0 + t\alpha$
+
+Variance: $Var(Y_t) = t\sigma^2$.
+
+There is a trend in both mean and variance. 
+
+
+## Common trend removal (de-trending) procedures
+
+1. Deterministic trend: Time-trend regression
+
+      The trend can be removed by fitting a deterministic polynomial time trend. The residual series after removing the trend will give us the de-trended series.
+
+1. Stochastic trend: Differencing
+ 
+      The process is also known as a **Difference-stationary process**.
+      
+# Notation: I(d)
+
+Integrated to order $d$: Series can be made stationary by differencing $d$ times.
+ 
+ - Known as $I(d)$ process.
+ 
+
+**Question: ** Show that random walk process is an $I(1)$ process.
+
+The random walk process is called a unit root process.
+(If one of the roots turns out to be one, then the process is called unit root process.)
+
+## Random walk
+
+```{python}
+#| echo: true
+import numpy as np
+rw = np.cumsum(samples)
+plt.plot(rw)
+plt.show()
+```
+
+## Random walk - ACF
+
+```{python}
+plot_acf(rw, lags=20)
+plt.show()
+```
+
+## Difference series
+
+```{python}
+df = pd.DataFrame(rw, columns = ['Values'])
+df['Lag 1'] = df['Values'].diff()
+df['Lag 2'] = df['Values'].diff().diff()
+df
+```
+
+## Plot Lag 1 series
+
+```{python}
+plt.plot(df['Values'].diff())
+plt.show()
+```
+
+## ACF Lag 1 series
+
+```{python}
+diff = df['Lag 1']
+plot_acf(diff.dropna(), lags=20)
+plt.show()
+```
+
+
+## Example 2
+
+```{python}
+#| echo: true
+#| eval: false
+import numpy as np, pandas as pd
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+import matplotlib.pyplot as plt
+plt.rcParams.update({'figure.figsize':(9,7), 'figure.dpi':120})
+
+# Import data
+df = pd.read_csv('wwwusage.csv', names=['value'], header=0)
+
+# Original Series
+fig, axes = plt.subplots(2, 2, sharex=True)
+axes[0, 0].plot(df.value); axes[0, 0].set_title('Original Series')
+plot_acf(df.value, ax=axes[0, 1], lags=np.arange(len(df)))
+
+# 1st Differencing
+axes[1, 0].plot(df.value.diff()); axes[1, 0].set_title('1st Order Differencing')
+plot_acf(df.value.diff().dropna(), ax=axes[1, 1], lags=np.arange(len(df) - 1))
+plt.show()
+
+```
+
+
+##
+
+```{python}
+
+import numpy as np, pandas as pd
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+import matplotlib.pyplot as plt
+plt.rcParams.update({'figure.figsize':(9,7), 'figure.dpi':120})
+
+# Import data
+df = pd.read_csv('wwwusage.csv', names=['value'], header=0)
+
+# Original Series
+fig, axes = plt.subplots(2, 2, sharex=True)
+axes[0, 0].plot(df.value); axes[0, 0].set_title('Original Series')
+plot_acf(df.value, ax=axes[0, 1], lags=np.arange(len(df)))
+
+# 1st Differencing
+axes[1, 0].plot(df.value.diff()); axes[1, 0].set_title('1st Order Differencing')
+plot_acf(df.value.diff().dropna(), ax=axes[1, 1], lags=np.arange(len(df) - 1))
+plt.show()
+
+```
+
+## 2nd order differencing
+
+```{python}
+#| echo: true
+plot_acf(df.value.diff().diff().dropna())
+plt.show()
+```
+
+## Variance stabilization
+
+Eg:
+
+- Square root: $W_t = \sqrt{Y_t}$
+
+- Logarithm: $W_t = log({Y_t})$
+
+     - This very useful.
+     
+     - Interpretable: Changes in a log value are **relative (percent) changes on the original sclae**.
+     
+## Monthly Airline Passenger Numbers 1949-1960
+
+```{python}
+#| echo: true
+airpassenger = pd.read_csv('AirPassengers.csv')
+from datetime import datetime
+import plotnine
+from plotnine import *
+airpassenger['Month']= pd.to_datetime(airpassenger['Month'])
+ggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()
+```
+
+## Monthly Airline Passenger Numbers 1949-1960 - log
+
+```{python}
+#| echo: true
+import numpy as np
+airpassenger['naturallog'] = np.log(airpassenger['#Passengers']) 
+ggplot(airpassenger, aes(x='Month', y='naturallog'))+geom_line()
+```
+
+## Box-Cox transformation
+
+$$
+  w_t=\begin{cases}
+    log(y_t), & \text{if $\lambda=0$} \newline
+    (Y_t^\lambda - 1)/ \lambda, & \text{otherwise}.
+  \end{cases}
+$$
+
+
+Different values of $\lambda$ gives you different transformations.
+
+- $\lambda=1$: No **substantive** transformation
+
+- $\lambda = \frac{1}{2}$: Square root plus linear transformation
+
+- $\lambda=0$: Natural logarithm
+
+- $\lambda = -1$: Inverse plus 1
+
+Balance the seasonal fluctuations and random variation across the series.
+
+## Box-Cox transformation
+
+```{python}
+#| echo: true
+# import modules
+import numpy as np
+from scipy import stats
+ 
+y2,fitted_lambda = stats.boxcox(airpassenger['#Passengers'])
+
+```
+
+
+##  Box-Cox transformation: Exploring the output
+
+```{python}
+#| echo: true
+
+fitted_lambda
+```
+
+```{python}
+#| echo: true
+y2
+
+```
+
+
+
+
+## ARMA(p, q) model
+
+
+$$Y_t=c+\phi_1Y_{t-1}+...+\phi_p Y_{t-p}+ \theta_1\epsilon_{t-1}+...+\theta_q\epsilon_{t-q}+\epsilon_t$$
+
+- These are stationary models.
+
+- They are only suitable for **stationary series**.
+
+## ARIMA(p, d, q) model
+
+Differencing --> ARMA
+
+**Step 1: Differencing**
+
+$$Y'_t = (1-B)^dY_t$$
+
+**Step 2: ARMA**
+
+$$Y'_t=c+\phi_1Y'_{t-1}+...+\phi_p Y'_{t-p}+ \theta_1\epsilon_{t-1}+...+\theta_q\epsilon_{t-q}+\epsilon_t$$
+
+# Step 1: Plot data
+
+1. Detect unusual observations in the data
+
+1. Detect non-stationarity by visual inspections of plots
+
+Stationary series:
+
+- has a constant mean value and fluctuates around the mean.
+
+- constant variance.
+
+- no pattern predictable in the long-term.
+
+##
+
+```{python}
+ggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()
+
+```
+
+
+##
+
+1. Need transformations?
+
+2. Need differencing?
+
+## Step 2: Apply transformations
+
+```{python}
+#| echo: true
+import numpy as np
+airpassenger['naturallog'] = np.log(airpassenger['#Passengers']) 
+```
+
+## Step 3: Take difference series
+
+**Identifying non-stationarity by looking at plots**
+
+- Time series plot
+
+- The ACF of stationary data drops to zero relatively quickly.
+
+- The ACF of non-stationary data decreases slowly.
+
+- For non-stationary data, the value of $r_1$ is often large and positive.
+
+## Non-seasonal differencing and seasonal differencing
+
+**Non seasonal first-order differencing:** $Y'_t=Y_t - Y_{t-1}$
+
+<!--Miss one observation-->
+
+**Non seasonal second-order differencing:** $Y''_t=Y'_t - Y'_{t-1}$
+
+<!--Miss two observations-->
+
+**Seasonal differencing:** $Y_t - Y_{t-m}$
+
+<!--To get rid from prominent seasonal components. -->
+
+- For monthly, $m=12$, for quarterly, $m=4$.
+
+<!--We will loosefirst 12 observations-->
+
+
+- Seasonally differenced series will have $T-m$ observations.
+<!--Usually we do not consider differencing more than twice. -->
+
+> There are times differencing once is not enough. However, in practice,it is almost never necessary to go beyond second-order differencing.
+<!--Even the second-order differencing is very rare.-->
+
+## ACF of log-transformation series
+
+```{python}
+plot_acf(airpassenger['naturallog'], lags=50)
+```
+
+## Take difference series
+
+```{python}
+airpassenger['naturalloglag12'] = airpassenger['naturallog'].diff(12)
+airpassenger.head(13)
+```
+
+## Take difference series
+
+```{python}
+#| echo: true
+airpassenger['naturalloglag12'] = airpassenger['naturallog'].diff(12)
+airpassenger.tail(13)
+```
+
+## ACF - diff(log(data), 12)
+
+```{python}
+plot_acf(airpassenger['naturalloglag12'].dropna())
+plt.show()
+```
+
+## First differencing on diff(log(data), 12)
+
+```{python}
+#| echo: true
+airpassenger['naturalloglag12diff'] = airpassenger['naturallog'].diff(12).diff()
+plot_acf(airpassenger['naturalloglag12diff'].dropna())
+plt.show()
+```
+
+## First differencing on diff(log(data), 12)
+
+```{python}
+#| echo: true
+airpassenger['naturalloglag12diff'] = airpassenger['naturallog'].diff(12).diff()
+plot_pacf(airpassenger['naturalloglag12diff'].dropna())
+plt.show()
+```
+
+# Step 4: Examine the ACF/PACF to identify a suitable model
+
+## AR(p)
+
+- ACF dies out in an exponential or damped
+sine-wave manner.
+
+- there is a significant spike at lag $p$ in PACF, but
+none beyond $p$.
+
+## MA(q)
+
+- ACF has all zero spikes beyond the $q^{th}$ spike.
+
+- PACF dies out in an exponential or damped
+sine-wave manner.
+
+## Seasonal components
+
+- The seasonal part of an AR or MA model will be seen
+in the seasonal lags of the PACF and ACF.
+
+
+## ARIMA(0,0,0)(0,0,1)12 will show
+ 
+  - a spike at lag 12 in the ACF but no other significant spikes.
+
+  - The PACF will show exponential decay in the seasonal lags  12, 24, 36, . . . .
+  
+## ARIMA(0,0,0)(1,0,0)12 will show
+
+  - exponential decay in the seasonal lags of the ACF.
+    
+  - a single significant spike at lag 12 in the PACF.
+
+## Step 4: Examine the ACF/PACF to identify a suitable model (cont.)
+
+- $d=1$ and $D=1$ (from step 3)
+
+- Significant spike at lag 1 in ACF suggests
+non-seasonal MA(1) component.
+
+- Significant spike at lag 12 in ACF suggests seasonal
+MA(1) component.
+
+- Initial candidate model: $ARIMA(0,1,1)(0,1,1)_{12}$.
+
+- By analogous logic applied to the PACF, we could also have started with $ARIMA(1,1,0)(1,1,0)_{12}$.
+  
+## Models   
+  
+**Initial model:**
+
+$ARIMA(0,1,1)(0,1,1)_{12}$
+
+$ARIMA(1,1,0)(1,1,0)_{12}$
+
+**Try some variations of the initial model:**
+
+$ARIMA(0,1,1)(1,1,1)_{12}$
+
+$ARIMA(1,1,1)(1,1,0)_{12}$
+
+$ARIMA(1,1,1)(1,1,1)_{12}$
+
+##
+
+Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.
+
+$ARIMA(3,1,1)(1,1,1)_{12}$
+
+$ARIMA(1,1,3)(1,1,1)_{12}$
+
+$ARIMA(3,1,3)(1,1,1)_{12}$
