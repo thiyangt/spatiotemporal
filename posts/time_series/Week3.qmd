@@ -496,6 +496,126 @@ plot_pacf(y_train.naturallog.diff12.diff.dropna(), lags=50)
 plt.show()
 ```
 
+## Testing for nonstationarity for the presence of unit roots
+
+- Dickey and Fuller (DF) test
+
+- Augmented DF test
+
+- Phillips and Perron (PP) nonparametric test
+
+- Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test
+
+## KPSS test
+H0: Series is level or trend stationary.
+
+H1: Series is not stationary.
+
+## KPSS test
+
+```{python}
+#| echo: true
+from statsmodels.tsa.stattools import kpss
+def kpss_test(series, **kw):    
+    statistic, p_value, n_lags, critical_values = kpss(series, **kw)
+    # Format Output
+    print(f'KPSS Statistic: {statistic}')
+    print(f'p-value: {p_value}')
+    print(f'num lags: {n_lags}')
+    print('Critial Values:')
+    for key, value in critical_values.items():
+        print(f'   {key} : {value}')
+    print(f'Result: The series is {"not " if p_value < 0.05 else ""}stationary')
+
+kpss_test(y_train.naturallog)
+
+```
+
+## KPSS test
+
+```{python}
+#| echo: true
+kpss_test(y_train.naturallog.diff12.dropna())
+```
+
+```{python}
+#| echo: true
+kpss_test(y_train.naturallog.diff12.diff.dropna())
+```
+
+## KPSS test
+
+- KPSS test may not necessarily reject the null hypothesis (that the series is level or trend stationary) even if a series is steadily increasing or decreasing.
+
+- The word ‘deterministic’ implies the slope of the trend in the series does not change permanently. That is, even if the series goes through a shock, it tends to regain its original path.
+
+source: https://www.machinelearningplus.com/time-series/kpss-test-for-stationarity/
+
+## KPSS test
+
+
+- By default, it tests for stationarity around a ‘mean’ only.
+
+- To turn ON the stationarity testing around a trend, you need to explicitly pass the regression='ct' parameter to the kpss
+
+```{python}
+#| echo: true
+kpss_test(y_train.naturallog.diff12.dropna(), regression='ct')
+```
+
+```{python}
+#| echo: true
+kpss_test(y_train.naturallog.diff12.diff.dropna())
+```
+
+## ADF test
+
+```{python}
+#| echo: true
+from statsmodels.tsa.stattools import adfuller
+
+def adf_test(series):
+    result = adfuller(series, autolag='AIC')
+    print(f'ADF Statistic: {result[0]}')
+    print(f'p-value: {result[1]}')
+    for key, value in result[4].items():
+        print('Critial Values:')
+        print(f'   {key}, {value}')
+
+series = df.loc[:, 'value'].values
+
+
+```
+
+H0: Series is not stationary
+
+H1: Series is stationary
+
+## ADF test
+
+```{python}
+#| echo: true
+adf_test(y_train.naturallog)
+```
+
+```{python}
+#| echo: true
+adf_test(y_train.naturallog.diff12.dropna())
+```
+
+```{python}
+#| echo: true
+adf_test(y_train.naturallog.diff12.diff.dropna())
+```
+
+## KPSS vs ADF test
+
+If a series is stationary according to the KPSS test by setting regression='ct' and is not stationary according to the ADF test, it means the series is stationary around a deterministic trend.
+
+Further reading: 
+
+Kwiatkowski, D.; Phillips, P. C. B.; Schmidt, P.; Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. Journal of Econometrics, 54 (1-3): 159-178.
+
 # Step 5: Examine the ACF/PACF to identify a suitable model
 
 ## AR(p)
@@ -580,8 +700,8 @@ $ARIMA(3,1,3)(1,1,1)_{12}$
 #| echo: true
 from sktime.forecasting.arima import ARIMA
 forecaster1 = ARIMA(  
-    order=(0, 1, 1),
-    seasonal_order=(0, 1, 1, 12),
+    order=(1, 1, 0),
+    seasonal_order=(1, 1, 0, 12),
     suppress_warnings=True)
 forecaster1.fit(y_train.naturallog)    
 ```
@@ -632,6 +752,7 @@ plot_acf(residual.dropna(), lags=50)
 ## Plot residuals (cont.)
 
 ```{python}
+#| echo: true
 import matplotlib.pyplot as plt
 import numpy as np
 plt.hist(residual)
@@ -639,6 +760,18 @@ plt.show()
 ```
 
 Your turn: remove the outlier and draw the histogram
+
+## Ljung-Box Test
+
+H0: Residuals are not serially correlated.
+
+H1: Residuals are serially correlated.
+
+```{python}
+import statsmodels.api as sm
+sm.stats.acorr_ljungbox(residual.dropna(), lags=[20], return_df=True)
+```
+
 
 ## Step 7: Generate forecasts
 
@@ -678,3 +811,26 @@ mean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric=False)
 ## Your Turn
 
 Fit other variants of ARIMA models and identify the best ARIMA model for the series.
+
+## Modelling steps
+
+1. Plot the data.
+
+2. If necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.
+
+3. If the data are non-stationary, take first differences of the data until the data are stationary.
+
+4. Examine the ACF/PACF to identify a suitable model.
+
+5. Try your chosen model(s), and use the AICc to search for a better model.
+
+## Modelling steps (cont.)
+
+6. Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.
+
+7. Once the residuals look like white noise, calculate forecasts.
+
+
+
+Source: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos
+

@@ -634,7 +634,7 @@
     "href": "posts/time_series/Week3.html#difference-series",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Difference series",
-    "text": "Difference series\n\n\n\n\n\n\n  \n    \n      \n      Values\n      Lag 1\n      Lag 2\n    \n  \n  \n    \n      0\n      -0.184446\n      NaN\n      NaN\n    \n    \n      1\n      -0.471474\n      -0.287027\n      NaN\n    \n    \n      2\n      0.503277\n      0.974750\n      1.261777\n    \n    \n      3\n      -0.407833\n      -0.911109\n      -1.885859\n    \n    \n      4\n      0.920545\n      1.328378\n      2.239487\n    \n    \n      ...\n      ...\n      ...\n      ...\n    \n    \n      95\n      16.172532\n      -2.584427\n      -3.001353\n    \n    \n      96\n      16.204228\n      0.031696\n      2.616123\n    \n    \n      97\n      16.100783\n      -0.103446\n      -0.135142\n    \n    \n      98\n      14.407644\n      -1.693139\n      -1.589693\n    \n    \n      99\n      13.876872\n      -0.530772\n      1.162367\n    \n  \n\n100 rows × 3 columns"
+    "text": "Difference series\n\n\n\n\n\n\n  \n    \n      \n      Values\n      Lag 1\n      Lag 2\n    \n  \n  \n    \n      0\n      0.138088\n      NaN\n      NaN\n    \n    \n      1\n      -0.752350\n      -0.890438\n      NaN\n    \n    \n      2\n      0.449339\n      1.201689\n      2.092127\n    \n    \n      3\n      1.625002\n      1.175663\n      -0.026026\n    \n    \n      4\n      1.149277\n      -0.475725\n      -1.651387\n    \n    \n      ...\n      ...\n      ...\n      ...\n    \n    \n      95\n      -7.914790\n      0.768559\n      2.291945\n    \n    \n      96\n      -7.822851\n      0.091939\n      -0.676620\n    \n    \n      97\n      -7.561104\n      0.261747\n      0.169808\n    \n    \n      98\n      -7.702713\n      -0.141608\n      -0.403355\n    \n    \n      99\n      -7.326441\n      0.376272\n      0.517880\n    \n  \n\n100 rows × 3 columns"
   },
   {
     "objectID": "posts/time_series/Week3.html#plot-lag-1-series",
@@ -676,14 +676,14 @@
     "href": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Monthly Airline Passenger Numbers 1949-1960",
-    "text": "Monthly Airline Passenger Numbers 1949-1960\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nfrom datetime import datetime\nimport plotnine\nfrom plotnine import *\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (300356657)>"
+    "text": "Monthly Airline Passenger Numbers 1949-1960\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nfrom datetime import datetime\nimport plotnine\nfrom plotnine import *\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (329317690)>"
   },
   {
     "objectID": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960---log",
     "href": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960---log",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Monthly Airline Passenger Numbers 1949-1960 - log",
-    "text": "Monthly Airline Passenger Numbers 1949-1960 - log\n\nimport numpy as np\nairpassenger['naturallog'] = np.log(airpassenger['#Passengers']) \nggplot(airpassenger, aes(x='Month', y='naturallog'))+geom_line()\n\n\n<ggplot: (335882719)>"
+    "text": "Monthly Airline Passenger Numbers 1949-1960 - log\n\nimport numpy as np\nairpassenger['naturallog'] = np.log(airpassenger['#Passengers']) \nggplot(airpassenger, aes(x='Month', y='naturallog'))+geom_line()\n\n\n<ggplot: (326073878)>"
   },
   {
     "objectID": "posts/time_series/Week3.html#box-cox-transformation",
@@ -872,14 +872,14 @@
     "href": "posts/time_series/Week3.html#fitting-arima-models",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Fitting ARIMA models",
-    "text": "Fitting ARIMA models\n\nfrom sktime.forecasting.arima import ARIMA\nforecaster1 = ARIMA(  \n    order=(0, 1, 1),\n    seasonal_order=(0, 1, 1, 12),\n    suppress_warnings=True)\nforecaster1.fit(y_train.naturallog)    \n\nARIMA(order=(0, 1, 1), seasonal_order=(0, 1, 1, 12), suppress_warnings=True)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.ARIMAARIMA(order=(0, 1, 1), seasonal_order=(0, 1, 1, 12), suppress_warnings=True)"
+    "text": "Fitting ARIMA models\n\nfrom sktime.forecasting.arima import ARIMA\nforecaster1 = ARIMA(  \n    order=(1, 1, 0),\n    seasonal_order=(1, 1, 0, 12),\n    suppress_warnings=True)\nforecaster1.fit(y_train.naturallog)    \n\nARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.ARIMAARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)"
   },
   {
     "objectID": "posts/time_series/Week3.html#back-transformation",
     "href": "posts/time_series/Week3.html#back-transformation",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Back transformation",
-    "text": "Back transformation\n\ny_pred_1.exp = np.exp(y_pred_1)\ny_pred_1.exp\n\n1960-01    419.347465\n1960-02    398.944005\n1960-03    466.622813\n1960-04    454.460279\n1960-05    473.347301\n1960-06    547.225107\n1960-07    622.369714\n1960-08    630.335278\n1960-09    526.890634\n1960-10    462.430506\n1960-11    406.765291\n1960-12    452.455879\nFreq: M, dtype: float64"
+    "text": "Back transformation\n\ny_pred_1.exp = np.exp(y_pred_1)\ny_pred_1.exp\n\n1960-01    418.835520\n1960-02    396.274338\n1960-03    461.142677\n1960-04    447.105543\n1960-05    470.698677\n1960-06    545.118980\n1960-07    624.938414\n1960-08    640.159214\n1960-09    521.990600\n1960-10    461.329316\n1960-11    404.912933\n1960-12    447.213408\nFreq: M, dtype: float64"
   },
   {
     "objectID": "posts/time_series/Week3.html#plot-training-test-and-forecasts",
@@ -893,7 +893,7 @@
     "href": "posts/time_series/Week3.html#evaluation",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Evaluation",
-    "text": "Evaluation\n\nfrom sktime.performance_metrics.forecasting import \\\n    mean_absolute_percentage_error\nmean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric=False)\n\n0.029239695342961447"
+    "text": "Evaluation\n\nfrom sktime.performance_metrics.forecasting import \\\n    mean_absolute_percentage_error\nmean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric=False)\n\n0.027756916452706674"
   },
   {
     "objectID": "posts/time_series/Week3.html#your-turn",
@@ -1327,21 +1327,21 @@
     "href": "posts/time_series/Week3.html#step-7-generate-forecasts",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Step 7: Generate forecasts",
-    "text": "Step 7: Generate forecasts\n\ny_pred_1 = forecaster1.predict(fh)\ny_pred_1\n\n1960-01    6.038700\n1960-02    5.988821\n1960-03    6.145521\n1960-04    6.119111\n1960-05    6.159829\n1960-06    6.304860\n1960-07    6.433534\n1960-08    6.446252\n1960-09    6.266993\n1960-10    6.136496\n1960-11    6.008236\n1960-12    6.114690\nFreq: M, dtype: float64"
+    "text": "Step 7: Generate forecasts\n\ny_pred_1 = forecaster1.predict(fh)\ny_pred_1\n\n1960-01    6.037478\n1960-02    5.982107\n1960-03    6.133707\n1960-04    6.102795\n1960-05    6.154218\n1960-06    6.301004\n1960-07    6.437653\n1960-08    6.461717\n1960-09    6.257650\n1960-10    6.134112\n1960-11    6.003672\n1960-12    6.103036\nFreq: M, dtype: float64"
   },
   {
     "objectID": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
     "href": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Obtain predictions for the training period",
-    "text": "Obtain predictions for the training period\n\ny_pred_train = forecaster1.predict(fhtrain)\ny_pred_train\n\n1949-01         NaN\n1949-02    4.718511\n1949-03    4.770696\n1949-04    4.882814\n1949-05    4.859824\n             ...   \n1959-08    6.305147\n1959-09    6.146705\n1959-10    6.009102\n1959-11    5.871977\n1959-12    5.986708\nFreq: M, Length: 132, dtype: float64"
+    "text": "Obtain predictions for the training period\n\ny_pred_train = forecaster1.predict(fhtrain)\ny_pred_train\n\n1949-01         NaN\n1949-02    4.718760\n1949-03    4.770946\n1949-04    4.883063\n1949-05    4.860073\n             ...   \n1959-08    6.310106\n1959-09    6.138659\n1959-10    6.004945\n1959-11    5.869054\n1959-12    5.974289\nFreq: M, Length: 132, dtype: float64"
   },
   {
     "objectID": "posts/time_series/Week3.html#obtain-residual-series",
     "href": "posts/time_series/Week3.html#obtain-residual-series",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Obtain residual series",
-    "text": "Obtain residual series\n\nresidual = y_train.naturallog - y_pred_train\nresidual\n\n1949-01         NaN\n1949-02    0.052174\n1949-03    0.112106\n1949-04   -0.023001\n1949-05   -0.064034\n             ...   \n1959-08    0.021002\n1959-09   -0.008978\n1959-10   -0.000288\n1959-11    0.019668\n1959-12    0.017179\nFreq: M, Length: 132, dtype: float64"
+    "text": "Obtain residual series\n\nresidual = y_train.naturallog - y_pred_train\nresidual\n\n1949-01         NaN\n1949-02    0.051925\n1949-03    0.111856\n1949-04   -0.023251\n1949-05   -0.064283\n             ...   \n1959-08    0.016043\n1959-09   -0.000931\n1959-10    0.003868\n1959-11    0.022590\n1959-12    0.029598\nFreq: M, Length: 132, dtype: float64"
   },
   {
     "objectID": "posts/time_series/Week3.html#plot-residuals",
@@ -1362,6 +1362,104 @@
     "href": "posts/time_series/Week3.html#plot-residuals-cont.-1",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Plot residuals (cont.)",
-    "text": "Plot residuals (cont.)\n\nYour turn: remove the outlier and draw the histogram"
+    "text": "Plot residuals (cont.)\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nplt.hist(residual)\nplt.show()\n\n\nYour turn: remove the outlier and draw the histogram"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#modelling-steps",
+    "href": "posts/time_series/Week3.html#modelling-steps",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Modelling steps",
+    "text": "Modelling steps\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\nIf the data are non-stationary, take first differences of the data until the data are stationary.\nExamine the ACF/PACF to identify a suitable model.\nTry your chosen model(s), and use the AICc to search for a better model."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#testing-for-nonstationarity-for-the-presence-of-unit-roots",
+    "href": "posts/time_series/Week3.html#testing-for-nonstationarity-for-the-presence-of-unit-roots",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Testing for nonstationarity for the presence of unit roots",
+    "text": "Testing for nonstationarity for the presence of unit roots\n\nDickey and Fuller (DF) test\nAugmented DF test\nPhillips and Perron (PP) nonparametric test\nKwiatkowski-Phillips-Schmidt-Shin (KPSS) test"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test",
+    "href": "posts/time_series/Week3.html#kpss-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\nH0: Series is level or trend stationary.\nH1: Series is not stationary."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-1",
+    "href": "posts/time_series/Week3.html#kpss-test-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nfrom statsmodels.tsa.stattools import kpss\ndef kpss_test(series, **kw):    \n    statistic, p_value, n_lags, critical_values = kpss(series, **kw)\n    # Format Output\n    print(f'KPSS Statistic: {statistic}')\n    print(f'p-value: {p_value}')\n    print(f'num lags: {n_lags}')\n    print('Critial Values:')\n    for key, value in critical_values.items():\n        print(f'   {key} : {value}')\n    print(f'Result: The series is {\"not \" if p_value < 0.05 else \"\"}stationary')\n\nkpss_test(y_train.naturallog)\n\nKPSS Statistic: 1.9204939010623039\np-value: 0.01\nnum lags: 6\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is not stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-2",
+    "href": "posts/time_series/Week3.html#kpss-test-2",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nkpss_test(y_train.naturallog.diff12.dropna())\n\nKPSS Statistic: 0.29885781439314946\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-3",
+    "href": "posts/time_series/Week3.html#kpss-test-3",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nKPSS test may not necessarily reject the null hypothesis (that the series is level or trend stationary) even if a series is steadily increasing or decreasing.\nThe word ‘deterministic’ implies the slope of the trend in the series does not change permanently. That is, even if the series goes through a shock, it tends to regain its original path.\n\nsource: https://www.machinelearningplus.com/time-series/kpss-test-for-stationarity/"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#example",
+    "href": "posts/time_series/Week3.html#example",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Example",
+    "text": "Example\n\nkpss_test(y_train.naturallog.diff12.dropna(), regression='ct')\n\nKPSS Statistic: 0.0760056301424143\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.119\n   5% : 0.146\n   2.5% : 0.176\n   1% : 0.216\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-4",
+    "href": "posts/time_series/Week3.html#kpss-test-4",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nBy default, it tests for stationarity around a ‘mean’ only.\nTo turn ON the stationarity testing around a trend, you need to explicitly pass the regression=‘ct’ parameter to the kpss\n\n\nkpss_test(y_train.naturallog.diff12.dropna(), regression='ct')\n\nKPSS Statistic: 0.0760056301424143\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.119\n   5% : 0.146\n   2.5% : 0.176\n   1% : 0.216\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#adf-test",
+    "href": "posts/time_series/Week3.html#adf-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ADF test",
+    "text": "ADF test\n\nfrom statsmodels.tsa.stattools import adfuller\n\ndef adf_test(series):\n    result = adfuller(series, autolag='AIC')\n    print(f'ADF Statistic: {result[0]}')\n    print(f'p-value: {result[1]}')\n    for key, value in result[4].items():\n        print('Critial Values:')\n        print(f'   {key}, {value}')\n\nseries = df.loc[:, 'value'].values\n\nH0: Series is not stationary\nH1: Series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#adf-test-1",
+    "href": "posts/time_series/Week3.html#adf-test-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "ADF test",
+    "text": "ADF test\n\nadf_test(y_train.naturallog)\n\nADF Statistic: -1.3176112021439967\np-value: 0.6210771494355872\nCritial Values:\n   1%, -3.4870216863700767\nCritial Values:\n   5%, -2.8863625166643136\nCritial Values:\n   10%, -2.580009026141913\n\n\n\nadf_test(y_train.naturallog.diff12.dropna())\n\nADF Statistic: -2.5844902417566793\np-value: 0.09624537566648711\nCritial Values:\n   1%, -3.492995948509562\nCritial Values:\n   5%, -2.888954648057252\nCritial Values:\n   10%, -2.58139291903223\n\n\n\nadf_test(y_train.naturallog.diff12.diff.dropna())\n\nADF Statistic: -4.08727195454389\np-value: 0.0010165214009067135\nCritial Values:\n   1%, -3.4936021509366793\nCritial Values:\n   5%, -2.8892174239808703\nCritial Values:\n   10%, -2.58153320754717"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-vs-adf-test",
+    "href": "posts/time_series/Week3.html#kpss-vs-adf-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS vs ADF test",
+    "text": "KPSS vs ADF test\nIf a series is stationary according to the KPSS test by setting regression=‘ct’ and is not stationary according to the ADF test, it means the series is stationary around a deterministic trend.\nFurther reading:\nKwiatkowski, D.; Phillips, P. C. B.; Schmidt, P.; Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. Journal of Econometrics, 54 (1-3): 159-178."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#ljung-box-test",
+    "href": "posts/time_series/Week3.html#ljung-box-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Ljung-Box Test",
+    "text": "Ljung-Box Test\nH0: Residuals are not serially correlated.\nH1: Residuals are serially correlated.\n\n\n\n\n\n\n  \n    \n      \n      lb_stat\n      lb_pvalue\n    \n  \n  \n    \n      20\n      3.984776\n      0.999955"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#section-4",
+    "href": "posts/time_series/Week3.html#section-4",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\n\n7.Once the residuals look like white noise, calculate forecasts.\nSource: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#modelling-steps-cont.",
+    "href": "posts/time_series/Week3.html#modelling-steps-cont.",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Modelling steps (cont.)",
+    "text": "Modelling steps (cont.)\n\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts.\n\nSource: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos"
   }
 ]
