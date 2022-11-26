@@ -392,6 +392,209 @@
     "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
   },
   {
+    "objectID": "posts/time_series/Week4b.html#packages",
+    "href": "posts/time_series/Week4b.html#packages",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "packages",
+    "text": "packages\n\nimport plotnine\nimport geopandas as gpd\nimport pandas as pd"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#geospatial-data-about-the-whole-world",
+    "href": "posts/time_series/Week4b.html#geospatial-data-about-the-whole-world",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Geospatial data about the whole world",
+    "text": "Geospatial data about the whole world\n\nworld = gpd.read_file(gpd.datasets.get_path(\"naturalearth_lowres\"))\nprint(\"Geometry Column Name : \", world.geometry.name)\nprint(\"Dataset Size : \", world.shape)\nworld.head()\n\nGeometry Column Name :  geometry\nDataset Size :  (177, 6)\n\n\n\n\n\n\n  \n    \n      \n      pop_est\n      continent\n      name\n      iso_a3\n      gdp_md_est\n      geometry\n    \n  \n  \n    \n      0\n      920938\n      Oceania\n      Fiji\n      FJI\n      8374.0\n      MULTIPOLYGON (((180.00000 -16.06713, 180.00000...\n    \n    \n      1\n      53950935\n      Africa\n      Tanzania\n      TZA\n      150600.0\n      POLYGON ((33.90371 -0.95000, 34.07262 -1.05982...\n    \n    \n      2\n      603253\n      Africa\n      W. Sahara\n      ESH\n      906.5\n      POLYGON ((-8.66559 27.65643, -8.66512 27.58948...\n    \n    \n      3\n      35623680\n      North America\n      Canada\n      CAN\n      1674000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -122.9742...\n    \n    \n      4\n      326625791\n      North America\n      United States of America\n      USA\n      18560000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -120.0000..."
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#us-states-geo-json",
+    "href": "posts/time_series/Week4b.html#us-states-geo-json",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "US States Geo JSON",
+    "text": "US States Geo JSON\n\nus_states_geo = gpd.read_file(\"us-states.json\")\n\nus_states_geo.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0..."
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#work-happiness-data",
+    "href": "posts/time_series/Week4b.html#work-happiness-data",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Work happiness data",
+    "text": "Work happiness data\n\nworld_happiness = pd.read_csv(\"world_happiness_2019.csv\")\nprint(\"Dataset Size : \",world_happiness.shape)\nworld_happiness.head()\n\nDataset Size :  (156, 9)\n\n\n\n\n\n\n  \n    \n      \n      Overall rank\n      Country or region\n      Score\n      GDP per capita\n      Social support\n      Healthy life expectancy\n      Freedom to make life choices\n      Generosity\n      Perceptions of corruption\n    \n  \n  \n    \n      0\n      1\n      Finland\n      7.769\n      1.340\n      1.587\n      0.986\n      0.596\n      0.153\n      0.393\n    \n    \n      1\n      2\n      Denmark\n      7.600\n      1.383\n      1.573\n      0.996\n      0.592\n      0.252\n      0.410\n    \n    \n      2\n      3\n      Norway\n      7.554\n      1.488\n      1.582\n      1.028\n      0.603\n      0.271\n      0.341\n    \n    \n      3\n      4\n      Iceland\n      7.494\n      1.380\n      1.624\n      1.026\n      0.591\n      0.354\n      0.118\n    \n    \n      4\n      5\n      Netherlands\n      7.488\n      1.396\n      1.522\n      0.999\n      0.557\n      0.322\n      0.298\n    \n  \n\n\n\n\nData:https://github.com/sunny2309/datasets"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#merge-data",
+    "href": "posts/time_series/Week4b.html#merge-data",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Merge data",
+    "text": "Merge data\n\nworld_total_data = world.merge(world_happiness, left_on=\"name\", right_on=\"Country or region\")\nworld_total_data.head()\n\n\n\n\n\n  \n    \n      \n      pop_est\n      continent\n      name\n      iso_a3\n      gdp_md_est\n      geometry\n      Overall rank\n      Country or region\n      Score\n      GDP per capita\n      Social support\n      Healthy life expectancy\n      Freedom to make life choices\n      Generosity\n      Perceptions of corruption\n    \n  \n  \n    \n      0\n      53950935\n      Africa\n      Tanzania\n      TZA\n      150600.0\n      POLYGON ((33.90371 -0.95000, 34.07262 -1.05982...\n      153\n      Tanzania\n      3.231\n      0.476\n      0.885\n      0.499\n      0.417\n      0.276\n      0.147\n    \n    \n      1\n      35623680\n      North America\n      Canada\n      CAN\n      1674000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -122.9742...\n      9\n      Canada\n      7.278\n      1.365\n      1.505\n      1.039\n      0.584\n      0.285\n      0.308\n    \n    \n      2\n      326625791\n      North America\n      United States of America\n      USA\n      18560000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -120.0000...\n      19\n      United States of America\n      6.892\n      1.433\n      1.457\n      0.874\n      0.454\n      0.280\n      0.128\n    \n    \n      3\n      18556698\n      Asia\n      Kazakhstan\n      KAZ\n      460700.0\n      POLYGON ((87.35997 49.21498, 86.59878 48.54918...\n      60\n      Kazakhstan\n      5.809\n      1.173\n      1.508\n      0.729\n      0.410\n      0.146\n      0.096\n    \n    \n      4\n      29748859\n      Asia\n      Uzbekistan\n      UZB\n      202300.0\n      POLYGON ((55.96819 41.30864, 55.92892 44.99586...\n      41\n      Uzbekistan\n      6.174\n      0.745\n      1.529\n      0.756\n      0.631\n      0.322\n      0.240"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#world-happiness-choropleth-map",
+    "href": "posts/time_series/Week4b.html#world-happiness-choropleth-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "World Happiness Choropleth Map",
+    "text": "World Happiness Choropleth Map\n\nfrom plotnine import ggplot, geom_map, aes, scale_fill_cmap, theme, labs\n\nchart = ggplot(data=world_total_data, mapping=aes(fill=\"Score\"))\nmap_proj = geom_map()\nlabels = labs(title=\"World Happiness Score Choropleth Map\")\ntheme_details = theme(figure_size=(12,6))\ncolormap = scale_fill_cmap(cmap_name=\"Blues\")\n\nworld_happiness_choropleth = chart + map_proj + labels + theme_details + colormap\n\nworld_happiness_choropleth\n\n\n<ggplot: (392175624)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section",
+    "href": "posts/time_series/Week4b.html#section",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (394305940)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map",
+    "href": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "World Healthy Life Expectancy Choropleth Map",
+    "text": "World Healthy Life Expectancy Choropleth Map\n\nfrom plotnine import scale_color_cmap\n\nchart = ggplot(data=world_total_data, mapping=aes(fill=\"Healthy life expectancy\", color=\"Healthy life expectancy\"))\nmap_proj = geom_map()\nlabels = labs(title=\"World Healthy Life Expectancy Choropleth Map\")\ntheme_details = theme(figure_size=(12,6))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdYlGn\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdYlGn\")\n\nworld_happiness_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap\n\nworld_happiness_choropleth\n\n\n<ggplot: (-9223372036455894058)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map-1",
+    "href": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map-1",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "World Healthy Life Expectancy Choropleth Map",
+    "text": "World Healthy Life Expectancy Choropleth Map\n\n\n\n<ggplot: (-9223372036461730872)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#map-for-asia",
+    "href": "posts/time_series/Week4b.html#map-for-asia",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Map for ASIA",
+    "text": "Map for ASIA\n\nasia_data = world_total_data[world_total_data[\"continent\"] == 'Asia']\n\nchart = ggplot(data=asia_data, mapping=aes(fill=\"Freedom to make life choices\", color=\"Freedom to make life choices\"))\nmap_proj = geom_map()\nlabels = labs(title=\"Asia freedom to make life choices Choropleth Map\")\ntheme_details = theme(figure_size=(10,7))\nfill_colormap = scale_fill_cmap(cmap_name=\"PiYG\")\ncolor_colormap = scale_color_cmap(cmap_name=\"PiYG\")\n\nasia_happiness_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap\n\nasia_happiness_choropleth\n\n\n<ggplot: (-9223372036462133325)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-1",
+    "href": "posts/time_series/Week4b.html#section-1",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (393282831)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#us-states-population-2018-choropleth-map",
+    "href": "posts/time_series/Week4b.html#us-states-population-2018-choropleth-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "US States Population 2018 Choropleth Map",
+    "text": "US States Population 2018 Choropleth Map\n\nus_state_pop = pd.read_csv(\"State Populations.csv\")\nus_state_pop.head()\n\n\n\n\n\n  \n    \n      \n      State\n      2018 Population\n    \n  \n  \n    \n      0\n      California\n      39776830\n    \n    \n      1\n      Texas\n      28704330\n    \n    \n      2\n      Florida\n      21312211\n    \n    \n      3\n      New York\n      19862512\n    \n    \n      4\n      Pennsylvania\n      12823989"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#merge-data-1",
+    "href": "posts/time_series/Week4b.html#merge-data-1",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Merge data",
+    "text": "Merge data\n\nus_states_pop = us_states_geo.merge(us_state_pop, left_on=\"name\", right_on=\"State\")\n\nus_states_pop.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n      State\n      2018 Population\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n      Alabama\n      4888949\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n      Alaska\n      738068\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n      Arizona\n      7123898\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n      Arkansas\n      3020327\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0...\n      California\n      39776830"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#us-population",
+    "href": "posts/time_series/Week4b.html#us-population",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "US population",
+    "text": "US population\n\nfrom plotnine import scale_color_cmap, xlim, ylim, element_rect\n\nchart = ggplot()\nmap_proj = geom_map(data=us_states_pop, mapping=aes(fill=\"2018 Population\", color=\"2018 Population\"))\nlabels = labs(title=\"US 2018 Population Choropleth Map\")\ntheme_details = theme(figure_size=(10,6), panel_background=element_rect(fill=\"snow\"))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdYlBu\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdYlBu\")\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nus_pop_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap + xlimit + ylimit\n\nus_pop_choropleth\n\n\n<ggplot: (394295353)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-2",
+    "href": "posts/time_series/Week4b.html#section-2",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (-9223372036453558058)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#starbucks-store-count-per-us-states",
+    "href": "posts/time_series/Week4b.html#starbucks-store-count-per-us-states",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Starbucks Store Count Per US States",
+    "text": "Starbucks Store Count Per US States\n\nstarbucks_stores = pd.read_csv(\"starbucks_store_locations.csv\")\n\nstarbucks_stores.head()\n\n\n\n\n\n  \n    \n      \n      Brand\n      Store Number\n      Store Name\n      Ownership Type\n      Street Address\n      City\n      State/Province\n      Country\n      Postcode\n      Phone Number\n      Timezone\n      Longitude\n      Latitude\n    \n  \n  \n    \n      0\n      Starbucks\n      47370-257954\n      Meritxell, 96\n      Licensed\n      Av. Meritxell, 96\n      Andorra la Vella\n      7\n      AD\n      AD500\n      376818720\n      GMT+1:00 Europe/Andorra\n      1.53\n      42.51\n    \n    \n      1\n      Starbucks\n      22331-212325\n      Ajman Drive Thru\n      Licensed\n      1 Street 69, Al Jarf\n      Ajman\n      AJ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      55.47\n      25.42\n    \n    \n      2\n      Starbucks\n      47089-256771\n      Dana Mall\n      Licensed\n      Sheikh Khalifa Bin Zayed St.\n      Ajman\n      AJ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      55.47\n      25.39\n    \n    \n      3\n      Starbucks\n      22126-218024\n      Twofour 54\n      Licensed\n      Al Salam Street\n      Abu Dhabi\n      AZ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      54.38\n      24.48\n    \n    \n      4\n      Starbucks\n      17127-178586\n      Al Ain Tower\n      Licensed\n      Khaldiya Area, Abu Dhabi Island\n      Abu Dhabi\n      AZ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      54.54\n      24.51"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#extract-us-data",
+    "href": "posts/time_series/Week4b.html#extract-us-data",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Extract US data",
+    "text": "Extract US data\n\nus_stores = starbucks_stores[starbucks_stores.Country==\"US\"]\nus_stores_statewise_cnt = us_stores.groupby(\"State/Province\").count()[[\"Store Name\"]].rename(columns={\"Store Name\":\"Count\"})\nus_stores_statewise_cnt = us_stores_statewise_cnt.reset_index()\nus_stores_statewise_cnt.head()\n\n\n\n\n\n  \n    \n      \n      State/Province\n      Count\n    \n  \n  \n    \n      0\n      AK\n      49\n    \n    \n      1\n      AL\n      85\n    \n    \n      2\n      AR\n      55\n    \n    \n      3\n      AZ\n      488\n    \n    \n      4\n      CA\n      2821"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#merge-data-2",
+    "href": "posts/time_series/Week4b.html#merge-data-2",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Merge data",
+    "text": "Merge data\n\nus_stores_statewise = us_states_geo.merge(us_stores_statewise_cnt, left_on=\"id\", right_on=\"State/Province\")\n\nus_stores_statewise.head()\nid  \n\n<function id(obj, /)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#map",
+    "href": "posts/time_series/Week4b.html#map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Map",
+    "text": "Map\n\nfrom plotnine import scale_color_cmap, xlim, ylim, element_rect\n\nchart = ggplot()\nmap_proj = geom_map(data=us_stores_statewise, mapping=aes(fill=\"Count\", color=\"Count\"))\nlabels = labs(title=\"Starbucks US Stores Choropleth Map\")\ntheme_details = theme(figure_size=(10,6), panel_background=element_rect(fill=\"#a3ccff\"))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdBu\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdBu\")\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nus_stores_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap + xlimit + ylimit\n\nus_stores_choropleth\n\n\n<ggplot: (-9223372036461897535)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-3",
+    "href": "posts/time_series/Week4b.html#section-3",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (398881649)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#scatter-map",
+    "href": "posts/time_series/Week4b.html#scatter-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Scatter map",
+    "text": "Scatter map\n\n\n\n<ggplot: (398265871)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-4",
+    "href": "posts/time_series/Week4b.html#section-4",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (395230777)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#us-scatter-map",
+    "href": "posts/time_series/Week4b.html#us-scatter-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "US scatter map",
+    "text": "US scatter map\n\nchart = ggplot(data=us_states_geo)\nmap_proj = geom_map(fill=\"white\", color=\"lightgrey\")\nlabels = labs(title=\"US Starbucks Stores Map\")\ntheme_details = theme(figure_size=(12,6.5))\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nscatter_points = geom_point(data=us_stores.dropna(),\n                            mapping=aes(x=\"Longitude\", y=\"Latitude\"),\n                            color=\"tomato\", alpha=0.3, size=1)\n\nus_starbucks_stores = chart + map_proj + labels + theme_details + xlimit + ylimit + scatter_points\n\nus_starbucks_stores\n\n\n<ggplot: (392924217)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-5",
+    "href": "posts/time_series/Week4b.html#section-5",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (283269412)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#store-count-per-us-states-bubble-map",
+    "href": "posts/time_series/Week4b.html#store-count-per-us-states-bubble-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Store Count per US States Bubble Map",
+    "text": "Store Count per US States Bubble Map\n\ndef calculate_center(df):\n    \"\"\"\n    Calculate the centre of a geometry\n\n    This method first converts to a planar crs, gets the centroid\n    then converts back to the original crs. This gives a more\n    accurate\n    \"\"\"\n    original_crs = df.crs\n    planar_crs = 'EPSG:3857'\n    return df['geometry'].to_crs(planar_crs).centroid.to_crs(original_crs)\n\nus_stores_statewise[\"center\"] = calculate_center(us_stores_statewise)\nus_stores_statewise[\"x\"] = [val.x for val in us_stores_statewise.center]\nus_stores_statewise[\"x2\"] = [val.x+2.2 for val in us_stores_statewise.center]\nus_stores_statewise[\"y\"] = [val.y for val in us_stores_statewise.center]"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-6",
+    "href": "posts/time_series/Week4b.html#section-6",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "us_stores_statewise.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n      State/Province\n      Count\n      center\n      x\n      x2\n      y\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n      AL\n      85\n      POINT (-86.82705 32.81439)\n      -86.827048\n      -84.627048\n      32.814386\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n      AK\n      49\n      POINT (-152.52500 65.00297)\n      -152.525004\n      -150.325004\n      65.002968\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n      AZ\n      488\n      POINT (-111.66516 34.33632)\n      -111.665157\n      -109.465157\n      34.336315\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n      AR\n      55\n      POINT (-92.43914 34.91573)\n      -92.439137\n      -90.239137\n      34.915733\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0...\n      CA\n      2821\n      POINT (-119.68388 37.38770)\n      -119.683878\n      -117.483878\n      37.387697"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#bubble-map",
+    "href": "posts/time_series/Week4b.html#bubble-map",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Bubble map",
+    "text": "Bubble map\n\nfrom plotnine import geom_text\n\nchart = ggplot(data=us_states_geo)\nmap_proj = geom_map(fill=\"white\", color=\"lightgrey\")\nlabels = labs(x=\"Longitude\", y=\"Latitude\", title=\"US Starbucks Stores Count Bubble Map\", size=\"Store Count\")\ntheme_details = theme(figure_size=(12,6.5))\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nscatter_points = geom_point(data=us_stores_statewise.dropna(),\n                            mapping=aes(x=\"x\", y=\"y\", size=\"Count\"),\n                            color=\"tomato\", alpha=0.7)\n\ntexts = geom_text(data=us_stores_statewise.dropna(),\n                            mapping=aes(x=\"x2\", y=\"y\", label=\"State/Province\"),\n                            color=\"black\", size=8)\n\nus_starbucks_stores = chart + map_proj + labels + theme_details + xlimit + ylimit + scatter_points + texts\n\nus_starbucks_stores\n\n\n<ggplot: (396069461)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#section-7",
+    "href": "posts/time_series/Week4b.html#section-7",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "",
+    "text": "<ggplot: (-9223372036454627026)>"
+  },
+  {
+    "objectID": "posts/time_series/Week4b.html#source",
+    "href": "posts/time_series/Week4b.html#source",
+    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
+    "section": "Source",
+    "text": "Source\nhttps://coderzcolumn.com/tutorials/data-science/maps-using-plotnine-choropleth-scatter-bubble-maps"
+  },
+  {
     "objectID": "posts/time_series/index.html",
     "href": "posts/time_series/index.html",
     "title": "Reading Materials",
@@ -1120,6 +1323,27 @@
     "text": "Plotting values\n\ny_test.naturallog = np.log(y_test)\nfrom sktime.utils import plotting\n\n# also requires predictions\ny_pred = forecaster.predict()\n\nfig, ax = plotting.plot_series(y_train.naturallog, y_pred, labels=[\"y\", \"y_pred\"])\nax.fill_between(\n    ax.get_lines()[-1].get_xdata(),\n    y_pred_ints[\"Coverage\"][coverage][\"lower\"],\n    y_pred_ints[\"Coverage\"][coverage][\"upper\"],\n    alpha=0.2,\n    color=ax.get_lines()[-1].get_c(),\n    label=f\"{coverage}% prediction intervals\",\n)\nax.legend();"
   },
   {
+    "objectID": "posts/time_series/Week4.html#what-is-happening-under-the-hood-of-autoarima",
+    "href": "posts/time_series/Week4.html#what-is-happening-under-the-hood-of-autoarima",
+    "title": "Week 4A: AutoARIMA",
+    "section": "What is happening under the hood of AutoARIMA?",
+    "text": "What is happening under the hood of AutoARIMA?\nStep 1: Select the number of differences d and D via unit root tests and strength of seasonality measure.\nStep 2: Try four possible models to start with:"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#section-1",
+    "href": "posts/time_series/Week4.html#section-1",
+    "title": "Week 4A: AutoARIMA",
+    "section": "",
+    "text": "\\(ARIMA(2, d, 2)\\) if \\(m = 1\\) and \\(ARIMA(2, d, 2)(1, D, 1)_m\\) if \\(m > 1\\).\n\\(ARIMA(0, d, 0)\\) if \\(m = 1\\) and \\(ARIMA(0, d, 0)(0, D, 0)_m\\) if \\(m > 1\\).\n\\(ARIMA(1, d, 0)\\) if \\(m = 1\\) and \\(ARIMA(1, d, 0)(1, D, 0)_m\\) if \\(m > 1\\).\n\\(ARIMA(0, d, 1)\\) if \\(m = 1\\) and \\(ARIMA(0, d, 1)(0, D, 1)_m\\) if \\(m > 1\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#section-2",
+    "href": "posts/time_series/Week4.html#section-2",
+    "title": "Week 4A: AutoARIMA",
+    "section": "",
+    "text": "Step 3: Select the model with the smallest AICc from step 2. This becomes the current model.\nStep 4: Consider up to 13 variations on the current model:\n\nVary one of \\(p, q, P\\) and \\(Q\\) from the current model by \\(\\pm 1\\).\n\\(p, q\\) both vary from the current model by \\(\\pm 1\\).\n\\(P, Q\\) both vary from the current model by \\(\\pm 1\\).\nInclude or exclude the constant term from the current model. Repeat step 4 until no lower AICc can be found."
+  },
+  {
     "objectID": "posts/quarto/1_intro.html#section-3",
     "href": "posts/quarto/1_intro.html#section-3",
     "title": "Week 1A: Data Visualization: Grammar of Graphics",
@@ -1531,208 +1755,5 @@
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
     "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#packages",
-    "href": "posts/time_series/Week4b.html#packages",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "packages",
-    "text": "packages\n\nimport plotnine\nimport geopandas as gpd\nimport pandas as pd"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#source",
-    "href": "posts/time_series/Week4b.html#source",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Source",
-    "text": "Source\nhttps://coderzcolumn.com/tutorials/data-science/maps-using-plotnine-choropleth-scatter-bubble-maps"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#us-states-geo-json",
-    "href": "posts/time_series/Week4b.html#us-states-geo-json",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "US States Geo JSON",
-    "text": "US States Geo JSON\n\nus_states_geo = gpd.read_file(\"us-states.json\")\n\nus_states_geo.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0..."
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#geospatial-data-about-the-whole-world",
-    "href": "posts/time_series/Week4b.html#geospatial-data-about-the-whole-world",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Geospatial data about the whole world",
-    "text": "Geospatial data about the whole world\n\nworld = gpd.read_file(gpd.datasets.get_path(\"naturalearth_lowres\"))\nprint(\"Geometry Column Name : \", world.geometry.name)\nprint(\"Dataset Size : \", world.shape)\nworld.head()\n\nGeometry Column Name :  geometry\nDataset Size :  (177, 6)\n\n\n\n\n\n\n  \n    \n      \n      pop_est\n      continent\n      name\n      iso_a3\n      gdp_md_est\n      geometry\n    \n  \n  \n    \n      0\n      920938\n      Oceania\n      Fiji\n      FJI\n      8374.0\n      MULTIPOLYGON (((180.00000 -16.06713, 180.00000...\n    \n    \n      1\n      53950935\n      Africa\n      Tanzania\n      TZA\n      150600.0\n      POLYGON ((33.90371 -0.95000, 34.07262 -1.05982...\n    \n    \n      2\n      603253\n      Africa\n      W. Sahara\n      ESH\n      906.5\n      POLYGON ((-8.66559 27.65643, -8.66512 27.58948...\n    \n    \n      3\n      35623680\n      North America\n      Canada\n      CAN\n      1674000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -122.9742...\n    \n    \n      4\n      326625791\n      North America\n      United States of America\n      USA\n      18560000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -120.0000..."
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#work-happiness-data",
-    "href": "posts/time_series/Week4b.html#work-happiness-data",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Work happiness data",
-    "text": "Work happiness data\n\nworld_happiness = pd.read_csv(\"world_happiness_2019.csv\")\nprint(\"Dataset Size : \",world_happiness.shape)\nworld_happiness.head()\n\nDataset Size :  (156, 9)\n\n\n\n\n\n\n  \n    \n      \n      Overall rank\n      Country or region\n      Score\n      GDP per capita\n      Social support\n      Healthy life expectancy\n      Freedom to make life choices\n      Generosity\n      Perceptions of corruption\n    \n  \n  \n    \n      0\n      1\n      Finland\n      7.769\n      1.340\n      1.587\n      0.986\n      0.596\n      0.153\n      0.393\n    \n    \n      1\n      2\n      Denmark\n      7.600\n      1.383\n      1.573\n      0.996\n      0.592\n      0.252\n      0.410\n    \n    \n      2\n      3\n      Norway\n      7.554\n      1.488\n      1.582\n      1.028\n      0.603\n      0.271\n      0.341\n    \n    \n      3\n      4\n      Iceland\n      7.494\n      1.380\n      1.624\n      1.026\n      0.591\n      0.354\n      0.118\n    \n    \n      4\n      5\n      Netherlands\n      7.488\n      1.396\n      1.522\n      0.999\n      0.557\n      0.322\n      0.298\n    \n  \n\n\n\n\nData:https://github.com/sunny2309/datasets"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#merge-data",
-    "href": "posts/time_series/Week4b.html#merge-data",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Merge data",
-    "text": "Merge data\n\nworld_total_data = world.merge(world_happiness, left_on=\"name\", right_on=\"Country or region\")\nworld_total_data.head()\n\n\n\n\n\n  \n    \n      \n      pop_est\n      continent\n      name\n      iso_a3\n      gdp_md_est\n      geometry\n      Overall rank\n      Country or region\n      Score\n      GDP per capita\n      Social support\n      Healthy life expectancy\n      Freedom to make life choices\n      Generosity\n      Perceptions of corruption\n    \n  \n  \n    \n      0\n      53950935\n      Africa\n      Tanzania\n      TZA\n      150600.0\n      POLYGON ((33.90371 -0.95000, 34.07262 -1.05982...\n      153\n      Tanzania\n      3.231\n      0.476\n      0.885\n      0.499\n      0.417\n      0.276\n      0.147\n    \n    \n      1\n      35623680\n      North America\n      Canada\n      CAN\n      1674000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -122.9742...\n      9\n      Canada\n      7.278\n      1.365\n      1.505\n      1.039\n      0.584\n      0.285\n      0.308\n    \n    \n      2\n      326625791\n      North America\n      United States of America\n      USA\n      18560000.0\n      MULTIPOLYGON (((-122.84000 49.00000, -120.0000...\n      19\n      United States of America\n      6.892\n      1.433\n      1.457\n      0.874\n      0.454\n      0.280\n      0.128\n    \n    \n      3\n      18556698\n      Asia\n      Kazakhstan\n      KAZ\n      460700.0\n      POLYGON ((87.35997 49.21498, 86.59878 48.54918...\n      60\n      Kazakhstan\n      5.809\n      1.173\n      1.508\n      0.729\n      0.410\n      0.146\n      0.096\n    \n    \n      4\n      29748859\n      Asia\n      Uzbekistan\n      UZB\n      202300.0\n      POLYGON ((55.96819 41.30864, 55.92892 44.99586...\n      41\n      Uzbekistan\n      6.174\n      0.745\n      1.529\n      0.756\n      0.631\n      0.322\n      0.240"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#world-happiness-choropleth-map",
-    "href": "posts/time_series/Week4b.html#world-happiness-choropleth-map",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "World Happiness Choropleth Map",
-    "text": "World Happiness Choropleth Map\n\nfrom plotnine import ggplot, geom_map, aes, scale_fill_cmap, theme, labs\n\nchart = ggplot(data=world_total_data, mapping=aes(fill=\"Score\"))\nmap_proj = geom_map()\nlabels = labs(title=\"World Happiness Score Choropleth Map\")\ntheme_details = theme(figure_size=(12,6))\ncolormap = scale_fill_cmap(cmap_name=\"Blues\")\n\nworld_happiness_choropleth = chart + map_proj + labels + theme_details + colormap\n\nworld_happiness_choropleth\n\n\n<ggplot: (392175624)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map",
-    "href": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "World Healthy Life Expectancy Choropleth Map",
-    "text": "World Healthy Life Expectancy Choropleth Map\n\nfrom plotnine import scale_color_cmap\n\nchart = ggplot(data=world_total_data, mapping=aes(fill=\"Healthy life expectancy\", color=\"Healthy life expectancy\"))\nmap_proj = geom_map()\nlabels = labs(title=\"World Healthy Life Expectancy Choropleth Map\")\ntheme_details = theme(figure_size=(12,6))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdYlGn\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdYlGn\")\n\nworld_happiness_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap\n\nworld_happiness_choropleth\n\n\n<ggplot: (-9223372036455894058)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#map-for-asia",
-    "href": "posts/time_series/Week4b.html#map-for-asia",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Map for ASIA",
-    "text": "Map for ASIA\n\nasia_data = world_total_data[world_total_data[\"continent\"] == 'Asia']\n\nchart = ggplot(data=asia_data, mapping=aes(fill=\"Freedom to make life choices\", color=\"Freedom to make life choices\"))\nmap_proj = geom_map()\nlabels = labs(title=\"Asia freedom to make life choices Choropleth Map\")\ntheme_details = theme(figure_size=(10,7))\nfill_colormap = scale_fill_cmap(cmap_name=\"PiYG\")\ncolor_colormap = scale_color_cmap(cmap_name=\"PiYG\")\n\nasia_happiness_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap\n\nasia_happiness_choropleth\n\n\n<ggplot: (-9223372036462133325)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#section",
-    "href": "posts/time_series/Week4b.html#section",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "",
-    "text": "<ggplot: (394305940)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map-1",
-    "href": "posts/time_series/Week4b.html#world-healthy-life-expectancy-choropleth-map-1",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "World Healthy Life Expectancy Choropleth Map",
-    "text": "World Healthy Life Expectancy Choropleth Map\n\n\n\n<ggplot: (-9223372036461730872)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#section-1",
-    "href": "posts/time_series/Week4b.html#section-1",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "",
-    "text": "<ggplot: (393282831)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#us-states-population-2018-choropleth-map",
-    "href": "posts/time_series/Week4b.html#us-states-population-2018-choropleth-map",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "US States Population 2018 Choropleth Map",
-    "text": "US States Population 2018 Choropleth Map\n\nus_state_pop = pd.read_csv(\"State Populations.csv\")\nus_state_pop.head()\n\n\n\n\n\n  \n    \n      \n      State\n      2018 Population\n    \n  \n  \n    \n      0\n      California\n      39776830\n    \n    \n      1\n      Texas\n      28704330\n    \n    \n      2\n      Florida\n      21312211\n    \n    \n      3\n      New York\n      19862512\n    \n    \n      4\n      Pennsylvania\n      12823989"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#merge-data-1",
-    "href": "posts/time_series/Week4b.html#merge-data-1",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Merge data",
-    "text": "Merge data\n\nus_states_pop = us_states_geo.merge(us_state_pop, left_on=\"name\", right_on=\"State\")\n\nus_states_pop.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n      State\n      2018 Population\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n      Alabama\n      4888949\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n      Alaska\n      738068\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n      Arizona\n      7123898\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n      Arkansas\n      3020327\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0...\n      California\n      39776830"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#us-population",
-    "href": "posts/time_series/Week4b.html#us-population",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "US population",
-    "text": "US population\n\nfrom plotnine import scale_color_cmap, xlim, ylim, element_rect\n\nchart = ggplot()\nmap_proj = geom_map(data=us_states_pop, mapping=aes(fill=\"2018 Population\", color=\"2018 Population\"))\nlabels = labs(title=\"US 2018 Population Choropleth Map\")\ntheme_details = theme(figure_size=(10,6), panel_background=element_rect(fill=\"snow\"))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdYlBu\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdYlBu\")\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nus_pop_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap + xlimit + ylimit\n\nus_pop_choropleth\n\n\n<ggplot: (394295353)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#section-2",
-    "href": "posts/time_series/Week4b.html#section-2",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "",
-    "text": "<ggplot: (-9223372036453558058)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#starbucks-store-count-per-us-states",
-    "href": "posts/time_series/Week4b.html#starbucks-store-count-per-us-states",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Starbucks Store Count Per US States",
-    "text": "Starbucks Store Count Per US States\n\nstarbucks_stores = pd.read_csv(\"starbucks_store_locations.csv\")\n\nstarbucks_stores.head()\n\n\n\n\n\n  \n    \n      \n      Brand\n      Store Number\n      Store Name\n      Ownership Type\n      Street Address\n      City\n      State/Province\n      Country\n      Postcode\n      Phone Number\n      Timezone\n      Longitude\n      Latitude\n    \n  \n  \n    \n      0\n      Starbucks\n      47370-257954\n      Meritxell, 96\n      Licensed\n      Av. Meritxell, 96\n      Andorra la Vella\n      7\n      AD\n      AD500\n      376818720\n      GMT+1:00 Europe/Andorra\n      1.53\n      42.51\n    \n    \n      1\n      Starbucks\n      22331-212325\n      Ajman Drive Thru\n      Licensed\n      1 Street 69, Al Jarf\n      Ajman\n      AJ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      55.47\n      25.42\n    \n    \n      2\n      Starbucks\n      47089-256771\n      Dana Mall\n      Licensed\n      Sheikh Khalifa Bin Zayed St.\n      Ajman\n      AJ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      55.47\n      25.39\n    \n    \n      3\n      Starbucks\n      22126-218024\n      Twofour 54\n      Licensed\n      Al Salam Street\n      Abu Dhabi\n      AZ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      54.38\n      24.48\n    \n    \n      4\n      Starbucks\n      17127-178586\n      Al Ain Tower\n      Licensed\n      Khaldiya Area, Abu Dhabi Island\n      Abu Dhabi\n      AZ\n      AE\n      NaN\n      NaN\n      GMT+04:00 Asia/Dubai\n      54.54\n      24.51"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#extract-us-data",
-    "href": "posts/time_series/Week4b.html#extract-us-data",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Extract US data",
-    "text": "Extract US data\n\nus_stores = starbucks_stores[starbucks_stores.Country==\"US\"]\nus_stores_statewise_cnt = us_stores.groupby(\"State/Province\").count()[[\"Store Name\"]].rename(columns={\"Store Name\":\"Count\"})\nus_stores_statewise_cnt = us_stores_statewise_cnt.reset_index()\nus_stores_statewise_cnt.head()\n\n\n\n\n\n  \n    \n      \n      State/Province\n      Count\n    \n  \n  \n    \n      0\n      AK\n      49\n    \n    \n      1\n      AL\n      85\n    \n    \n      2\n      AR\n      55\n    \n    \n      3\n      AZ\n      488\n    \n    \n      4\n      CA\n      2821"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#merge-data-2",
-    "href": "posts/time_series/Week4b.html#merge-data-2",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Merge data",
-    "text": "Merge data\n\nus_stores_statewise = us_states_geo.merge(us_stores_statewise_cnt, left_on=\"id\", right_on=\"State/Province\")\n\nus_stores_statewise.head()\nid  \n\n<function id(obj, /)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#map",
-    "href": "posts/time_series/Week4b.html#map",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Map",
-    "text": "Map\n\nfrom plotnine import scale_color_cmap, xlim, ylim, element_rect\n\nchart = ggplot()\nmap_proj = geom_map(data=us_stores_statewise, mapping=aes(fill=\"Count\", color=\"Count\"))\nlabels = labs(title=\"Starbucks US Stores Choropleth Map\")\ntheme_details = theme(figure_size=(10,6), panel_background=element_rect(fill=\"#a3ccff\"))\nfill_colormap = scale_fill_cmap(cmap_name=\"RdBu\")\ncolor_colormap = scale_color_cmap(cmap_name=\"RdBu\")\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nus_stores_choropleth = chart + map_proj + labels + theme_details + fill_colormap + color_colormap + xlimit + ylimit\n\nus_stores_choropleth\n\n\n<ggplot: (-9223372036461897535)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#section-3",
-    "href": "posts/time_series/Week4b.html#section-3",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "",
-    "text": "<ggplot: (398881649)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#scatter-map",
-    "href": "posts/time_series/Week4b.html#scatter-map",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Scatter map",
-    "text": "Scatter map\n\n\n\n<ggplot: (398265871)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#section-4",
-    "href": "posts/time_series/Week4b.html#section-4",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "",
-    "text": "<ggplot: (395230777)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#us-scatter-map",
-    "href": "posts/time_series/Week4b.html#us-scatter-map",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "US scatter map",
-    "text": "US scatter map\n\nchart = ggplot(data=us_states_geo)\nmap_proj = geom_map(fill=\"white\", color=\"lightgrey\")\nlabels = labs(title=\"US Starbucks Stores Map\")\ntheme_details = theme(figure_size=(12,6.5))\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nscatter_points = geom_point(data=us_stores.dropna(),\n                            mapping=aes(x=\"Longitude\", y=\"Latitude\"),\n                            color=\"tomato\", alpha=0.3, size=1)\n\nus_starbucks_stores = chart + map_proj + labels + theme_details + xlimit + ylimit + scatter_points\n\nus_starbucks_stores\n\n\n<ggplot: (392924217)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#section-5",
-    "href": "posts/time_series/Week4b.html#section-5",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "",
-    "text": "<ggplot: (283269412)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#store-count-per-us-states-bubble-map",
-    "href": "posts/time_series/Week4b.html#store-count-per-us-states-bubble-map",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Store Count per US States Bubble Map",
-    "text": "Store Count per US States Bubble Map\n\ndef calculate_center(df):\n    \"\"\"\n    Calculate the centre of a geometry\n\n    This method first converts to a planar crs, gets the centroid\n    then converts back to the original crs. This gives a more\n    accurate\n    \"\"\"\n    original_crs = df.crs\n    planar_crs = 'EPSG:3857'\n    return df['geometry'].to_crs(planar_crs).centroid.to_crs(original_crs)\n\nus_stores_statewise[\"center\"] = calculate_center(us_stores_statewise)\nus_stores_statewise[\"x\"] = [val.x for val in us_stores_statewise.center]\nus_stores_statewise[\"x2\"] = [val.x+2.2 for val in us_stores_statewise.center]\nus_stores_statewise[\"y\"] = [val.y for val in us_stores_statewise.center]"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#bubble-map",
-    "href": "posts/time_series/Week4b.html#bubble-map",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "Bubble map",
-    "text": "Bubble map\n\nfrom plotnine import geom_text\n\nchart = ggplot(data=us_states_geo)\nmap_proj = geom_map(fill=\"white\", color=\"lightgrey\")\nlabels = labs(x=\"Longitude\", y=\"Latitude\", title=\"US Starbucks Stores Count Bubble Map\", size=\"Store Count\")\ntheme_details = theme(figure_size=(12,6.5))\nxlimit = xlim(-170,-60)\nylimit = ylim(25, 72)\n\nscatter_points = geom_point(data=us_stores_statewise.dropna(),\n                            mapping=aes(x=\"x\", y=\"y\", size=\"Count\"),\n                            color=\"tomato\", alpha=0.7)\n\ntexts = geom_text(data=us_stores_statewise.dropna(),\n                            mapping=aes(x=\"x2\", y=\"y\", label=\"State/Province\"),\n                            color=\"black\", size=8)\n\nus_starbucks_stores = chart + map_proj + labels + theme_details + xlimit + ylimit + scatter_points + texts\n\nus_starbucks_stores\n\n\n<ggplot: (396069461)>"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#section-6",
-    "href": "posts/time_series/Week4b.html#section-6",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "",
-    "text": "us_stores_statewise.head()\n\n\n\n\n\n  \n    \n      \n      id\n      name\n      geometry\n      State/Province\n      Count\n      center\n      x\n      x2\n      y\n    \n  \n  \n    \n      0\n      AL\n      Alabama\n      POLYGON ((-87.35930 35.00118, -85.60667 34.984...\n      AL\n      85\n      POINT (-86.82705 32.81439)\n      -86.827048\n      -84.627048\n      32.814386\n    \n    \n      1\n      AK\n      Alaska\n      MULTIPOLYGON (((-131.60202 55.11798, -131.5691...\n      AK\n      49\n      POINT (-152.52500 65.00297)\n      -152.525004\n      -150.325004\n      65.002968\n    \n    \n      2\n      AZ\n      Arizona\n      POLYGON ((-109.04250 37.00026, -109.04798 31.3...\n      AZ\n      488\n      POINT (-111.66516 34.33632)\n      -111.665157\n      -109.465157\n      34.336315\n    \n    \n      3\n      AR\n      Arkansas\n      POLYGON ((-94.47384 36.50186, -90.15254 36.496...\n      AR\n      55\n      POINT (-92.43914 34.91573)\n      -92.439137\n      -90.239137\n      34.915733\n    \n    \n      4\n      CA\n      California\n      POLYGON ((-123.23326 42.00619, -122.37885 42.0...\n      CA\n      2821\n      POINT (-119.68388 37.38770)\n      -119.683878\n      -117.483878\n      37.387697"
-  },
-  {
-    "objectID": "posts/time_series/Week4b.html#section-7",
-    "href": "posts/time_series/Week4b.html#section-7",
-    "title": "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)",
-    "section": "",
-    "text": "<ggplot: (-9223372036454627026)>"
   }
 ]

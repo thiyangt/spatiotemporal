@@ -137,4 +137,59 @@ ax.legend();
 
 ```
 
+##
+
+```{python}
+
+y_test.naturallog = np.log(y_test)
+from sktime.utils import plotting
+
+# also requires predictions
+y_pred = forecaster.predict()
+
+fig, ax = plotting.plot_series(y_train.naturallog, y_pred, labels=["y", "y_pred"])
+ax.fill_between(
+    ax.get_lines()[-1].get_xdata(),
+    y_pred_ints["Coverage"][coverage]["lower"],
+    y_pred_ints["Coverage"][coverage]["upper"],
+    alpha=0.2,
+    color=ax.get_lines()[-1].get_c(),
+    label=f"{coverage}% prediction intervals",
+)
+ax.legend();
+
+```
+
+## What is happening under the hood of AutoARIMA?
+
+
+**Step 1:** Select the number of differences d and D via unit root tests and strength of seasonality measure.
+
+
+**Step 2:** Try four possible models to start with:
+
+##
+
+i) $ARIMA(2, d, 2)$ if $m = 1$ and $ARIMA(2, d, 2)(1, D, 1)_m$ if $m > 1$.
+
+ii) $ARIMA(0, d, 0)$ if $m = 1$ and $ARIMA(0, d, 0)(0, D, 0)_m$ if $m > 1$.
+
+iii) $ARIMA(1, d, 0)$ if $m = 1$ and $ARIMA(1, d, 0)(1, D, 0)_m$ if $m > 1$.
+
+iv) $ARIMA(0, d, 1)$ if $m = 1$ and $ARIMA(0, d, 1)(0, D, 1)_m$ if $m > 1$.
+
+## 
+
+**Step 3:** Select the model with the smallest AICc from step 2. This becomes the current model.
+
+
+**Step 4:** Consider up to 13 variations on the current model:
+
+i) Vary one of $p, q, P$ and $Q$ from the current model by $\pm 1$.
+
+ii) $p, q$ both vary from the current model by $\pm 1$.
+
+iii) $P, Q$ both vary from the current model by $\pm 1$.
+
+iv) Include or exclude the constant term from the current model. Repeat step 4 until no lower AICc can be found. 
 
