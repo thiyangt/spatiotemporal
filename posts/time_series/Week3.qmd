@@ -357,10 +357,35 @@ Stationary series:
 ##
 
 ```{python}
-ggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()
+from sktime.datasets import load_airline
+from sktime.utils.plotting import plot_series
+y = load_airline()
+plot_series(y)
+```
+
+## Step 2: Split time series into training and test
+
+Specify the forecast horizon
+
+```{python}
+#| echo: true
+import numpy as np
+import pandas as pd
+from sktime.forecasting.base import ForecastingHorizon
+fh = ForecastingHorizon(
+    pd.PeriodIndex(pd.date_range("1960-01", periods=12, freq="M")), is_relative=False
+)
+fh
 
 ```
 
+## Plot training and test series
+
+```{python}
+from sktime.forecasting.model_selection import temporal_train_test_split
+y_train, y_test = temporal_train_test_split(y, fh=fh)
+plot_series(y_train, y_test, labels=["y_train", "y_test"])
+```
 
 ##
 
@@ -368,18 +393,19 @@ ggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()
 
 2. Need differencing?
 
-## Step 2: Apply transformations
+## Step 3: Apply transformations
 
 ```{python}
 #| echo: true
 import numpy as np
-airpassenger['naturallog'] = np.log(airpassenger['#Passengers']) 
+y_train.naturallog = np.log(y_train) 
+plot_series(y_train.naturallog)
 ```
 
-## Step 3: Take difference series
+## Step 4: Take difference series
 
 **Identifying non-stationarity by looking at plots**
-
+  
 - Time series plot
 
 - The ACF of stationary data drops to zero relatively quickly.
@@ -416,50 +442,54 @@ airpassenger['naturallog'] = np.log(airpassenger['#Passengers'])
 ## ACF of log-transformation series
 
 ```{python}
-plot_acf(airpassenger['naturallog'], lags=50)
+#| echo: true
+plot_acf(y_train.naturallog, lags=50)
 ```
 
-## Take difference series
-
-```{python}
-airpassenger['naturalloglag12'] = airpassenger['naturallog'].diff(12)
-airpassenger.head(13)
-```
-
-## Take difference series
+## Take seasonal difference series
 
 ```{python}
 #| echo: true
-airpassenger['naturalloglag12'] = airpassenger['naturallog'].diff(12)
-airpassenger.tail(13)
+y_train.naturallog.diff12 = y_train.naturallog.diff(12)
+y_train.naturallog.diff12
 ```
+
+## Take seasonal difference series (cont.)
+
+```{python}
+#| echo: true
+y_train.naturallog.diff12.head(20)
+```
+
+
 
 ## ACF - diff(log(data), 12)
 
 ```{python}
-plot_acf(airpassenger['naturalloglag12'].dropna())
+#| echo: true
+plot_acf(y_train.naturallog.diff12.dropna(), lags=50)
 plt.show()
 ```
 
-## First differencing on diff(log(data), 12)
+## ACF - First differencing on diff(log(data), 12)
 
 ```{python}
 #| echo: true
-airpassenger['naturalloglag12diff'] = airpassenger['naturallog'].diff(12).diff()
-plot_acf(airpassenger['naturalloglag12diff'].dropna())
+y_train.naturallog.diff12.diff = y_train.naturallog.diff12.diff()
+plot_acf(y_train.naturallog.diff12.diff.dropna(), lags=50)
 plt.show()
 ```
 
-## First differencing on diff(log(data), 12)
+## PACF - First differencing on diff(log(data), 12)
+
 
 ```{python}
 #| echo: true
-airpassenger['naturalloglag12diff'] = airpassenger['naturallog'].diff(12).diff()
-plot_pacf(airpassenger['naturalloglag12diff'].dropna())
+plot_pacf(y_train.naturallog.diff12.diff.dropna(), lags=50)
 plt.show()
 ```
 
-# Step 4: Examine the ACF/PACF to identify a suitable model
+# Step 5: Examine the ACF/PACF to identify a suitable model
 
 ## AR(p)
 
@@ -494,9 +524,10 @@ in the seasonal lags of the PACF and ACF.
     
   - a single significant spike at lag 12 in the PACF.
 
-## Step 4: Examine the ACF/PACF to identify a suitable model (cont.)
 
-- $d=1$ and $D=1$ (from step 3)
+## Step 5: Examine the ACF/PACF to identify a suitable model (cont.)
+
+- $d=1$ and $D=1$ (from step 4)
 
 - Significant spike at lag 1 in ACF suggests
 non-seasonal MA(1) component.
@@ -526,6 +557,8 @@ $ARIMA(1,1,1)(1,1,1)_{12}$
 
 ##
 
+**Try some variations**
+
 Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.
 
 $ARIMA(3,1,1)(1,1,1)_{12}$
@@ -533,3 +566,47 @@ $ARIMA(3,1,1)(1,1,1)_{12}$
 $ARIMA(1,1,3)(1,1,1)_{12}$
 
 $ARIMA(3,1,3)(1,1,1)_{12}$
+
+## Fitting ARIMA models
+
+```{python}
+#| echo: true
+from sktime.forecasting.arima import ARIMA
+forecaster1 = ARIMA(  
+    order=(0, 1, 1),
+    seasonal_order=(0, 1, 1, 12),
+    suppress_warnings=True)
+forecaster1.fit(y_train.naturallog)    
+y_pred_1 = forecaster1.predict(fh)
+y_pred_1
+
+```
+
+## Back transformation
+
+```{python}
+#| echo: true
+y_pred_1.exp = np.exp(y_pred_1)
+y_pred_1.exp
+```
+
+## Plot training, test, and forecasts
+
+```{python}
+#| echo: true
+plot_series(y_train, y_test, y_pred_1.exp, labels=["y_train", "y_test", "y_forecast"])
+
+```
+
+## Evaluation
+
+```{python}
+#| echo: true
+from sktime.performance_metrics.forecasting import \
+    mean_absolute_percentage_error
+mean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric=False)
+```
+
+## Your Turn
+
+Fit other variants of ARIMA models and identify the best ARIMA model for the series.

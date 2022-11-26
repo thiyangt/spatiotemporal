@@ -526,7 +526,7 @@
 <section id="difference-series" class="slide level2">
 <h2>Difference series</h2>
 <div class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="78">
+<div class="cell-output cell-output-display" data-execution_count="33">
 
 <div>
 <style scoped="">
@@ -554,33 +554,33 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.575475</td>
+      <td>-0.316111</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.734250</td>
-      <td>0.158775</td>
+      <td>-0.574021</td>
+      <td>-0.257911</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.421905</td>
-      <td>-0.312345</td>
-      <td>-0.471119</td>
+      <td>-0.147831</td>
+      <td>0.426191</td>
+      <td>0.684101</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.687995</td>
-      <td>1.266089</td>
-      <td>1.578434</td>
+      <td>0.290161</td>
+      <td>0.437992</td>
+      <td>0.011801</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>3.681683</td>
-      <td>0.993688</td>
-      <td>-0.272401</td>
+      <td>-0.206828</td>
+      <td>-0.496989</td>
+      <td>-0.934980</td>
     </tr>
     <tr>
       <th>...</th>
@@ -590,33 +590,33 @@
     </tr>
     <tr>
       <th>95</th>
-      <td>2.349565</td>
-      <td>1.680868</td>
-      <td>3.185980</td>
+      <td>-5.666834</td>
+      <td>-2.046852</td>
+      <td>-2.416976</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>2.445324</td>
-      <td>0.095759</td>
-      <td>-1.585109</td>
+      <td>-5.044906</td>
+      <td>0.621928</td>
+      <td>2.668780</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>1.766177</td>
-      <td>-0.679147</td>
-      <td>-0.774905</td>
+      <td>-5.115827</td>
+      <td>-0.070921</td>
+      <td>-0.692849</td>
     </tr>
     <tr>
       <th>98</th>
-      <td>3.590430</td>
-      <td>1.824253</td>
-      <td>2.503399</td>
+      <td>-4.039724</td>
+      <td>1.076103</td>
+      <td>1.147024</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>4.399019</td>
-      <td>0.808589</td>
-      <td>-1.015664</td>
+      <td>-4.663474</td>
+      <td>-0.623750</td>
+      <td>-1.699853</td>
     </tr>
   </tbody>
 </table>
@@ -697,8 +697,8 @@
 <span id="cb5-5"><a href="#cb5-5"></a>airpassenger[<span class="st">'Month'</span>]<span class="op">=</span> pd.to_datetime(airpassenger[<span class="st">'Month'</span>])</span>
 <span id="cb5-6"><a href="#cb5-6"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'#Passengers'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="cell-output cell-output-display" data-execution_count="83">
-<pre><code>&lt;ggplot: (335246065)&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>&lt;ggplot: (335576854)&gt;</code></pre>
 </div>
 </div>
 <img data-src="Week3_files/figure-revealjs/cell-12-output-1.png" class="r-stretch"></section>
@@ -709,8 +709,8 @@
 <span id="cb7-2"><a href="#cb7-2"></a>airpassenger[<span class="st">'naturallog'</span>] <span class="op">=</span> np.log(airpassenger[<span class="st">'#Passengers'</span>]) </span>
 <span id="cb7-3"><a href="#cb7-3"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'naturallog'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="cell-output cell-output-display" data-execution_count="84">
-<pre><code>&lt;ggplot: (334789051)&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>&lt;ggplot: (335535231)&gt;</code></pre>
 </div>
 </div>
 <img data-src="Week3_files/figure-revealjs/cell-13-output-1.png" class="r-stretch"></section>
@@ -745,13 +745,13 @@
 <h2>Box-Cox transformation: Exploring the output</h2>
 <div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>fitted_lambda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="86">
+<div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>0.14802265137037945</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>y2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="87">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>array([ 6.82749005,  6.93282224,  7.16189151,  7.11461078,  6.98378687,
         7.20826542,  7.39959794,  7.39959794,  7.22352834,  6.94993188,
         6.67930112,  6.93282224,  6.88074148,  7.0663838 ,  7.29843847,
@@ -817,12 +817,41 @@
 <section id="section-1" class="slide level2">
 <h2></h2>
 <div class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
 
-<div class="cell-output cell-output-display" data-execution_count="88">
-<pre><code>&lt;ggplot: (330176250)&gt;</code></pre>
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-17-output-2.png" class="r-stretch"></section>
+<section id="step-2-split-time-series-into-training-and-test" class="slide level2">
+<h2>Step 2: Split time series into training and test</h2>
+<p>Specify the forecast horizon</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="im">from</span> sktime.forecasting.base <span class="im">import</span> ForecastingHorizon</span>
+<span id="cb15-4"><a href="#cb15-4"></a>fh <span class="op">=</span> ForecastingHorizon(</span>
+<span id="cb15-5"><a href="#cb15-5"></a>    pd.PeriodIndex(pd.date_range(<span class="st">"1960-01"</span>, periods<span class="op">=</span><span class="dv">12</span>, freq<span class="op">=</span><span class="st">"M"</span>)), is_relative<span class="op">=</span><span class="va">False</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>)</span>
+<span id="cb15-7"><a href="#cb15-7"></a>fh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>ForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',
+             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],
+            dtype='period[M]', is_relative=False)</code></pre>
 </div>
 </div>
-<img data-src="Week3_files/figure-revealjs/cell-17-output-1.png" class="r-stretch"></section>
+</section>
+<section id="plot-training-and-test-series" class="slide level2">
+<h2>Plot training and test series</h2>
+<div class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-19-output-2.png" class="r-stretch"></section>
 <section id="section-2" class="slide level2">
 <h2></h2>
 <ol type="1">
@@ -830,15 +859,21 @@
 <li><p>Need differencing?</p></li>
 </ol>
 </section>
-<section id="step-2-apply-transformations" class="slide level2">
-<h2>Step 2: Apply transformations</h2>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-2"><a href="#cb15-2"></a>airpassenger[<span class="st">'naturallog'</span>] <span class="op">=</span> np.log(airpassenger[<span class="st">'#Passengers'</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="step-3-apply-transformations" class="slide level2">
+<h2>Step 3: Apply transformations</h2>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2"></a>y_train.naturallog <span class="op">=</span> np.log(y_train) </span>
+<span id="cb18-3"><a href="#cb18-3"></a>plot_series(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
 </div>
-</section>
-<section id="step-3-take-difference-series" class="slide level2">
-<h2>Step 3: Take difference series</h2>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-20-output-2.png" class="r-stretch"></section>
+<section id="step-4-take-difference-series" class="slide level2">
+<h2>Step 4: Take difference series</h2>
 <p><strong>Identifying non-stationarity by looking at plots</strong></p>
 <ul>
 <li><p>Time series plot</p></li>
@@ -868,296 +903,94 @@
 </section>
 <section id="acf-of-log-transformation-series" class="slide level2">
 <h2>ACF of log-transformation series</h2>
-<div class="cell" data-execution_count="18">
-<div class="cell-output cell-output-display" data-execution_count="90">
-<p><img data-src="Week3_files/figure-revealjs/cell-19-output-1.png"></p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>plot_acf(y_train.naturallog, lags<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<p><img data-src="Week3_files/figure-revealjs/cell-21-output-1.png"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img data-src="Week3_files/figure-revealjs/cell-19-output-2.png"></p>
+<p><img data-src="Week3_files/figure-revealjs/cell-21-output-2.png"></p>
 </div>
 </div>
 </section>
-<section id="take-difference-series" class="slide level2">
-<h2>Take difference series</h2>
-<div class="cell" data-execution_count="19">
-<div class="cell-output cell-output-display" data-execution_count="91">
-
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Month</th>
-      <th>#Passengers</th>
-      <th>naturallog</th>
-      <th>naturalloglag12</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1949-01-01</td>
-      <td>112</td>
-      <td>4.718499</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1949-02-01</td>
-      <td>118</td>
-      <td>4.770685</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1949-03-01</td>
-      <td>132</td>
-      <td>4.882802</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1949-04-01</td>
-      <td>129</td>
-      <td>4.859812</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1949-05-01</td>
-      <td>121</td>
-      <td>4.795791</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1949-06-01</td>
-      <td>135</td>
-      <td>4.905275</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1949-07-01</td>
-      <td>148</td>
-      <td>4.997212</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1949-08-01</td>
-      <td>148</td>
-      <td>4.997212</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1949-09-01</td>
-      <td>136</td>
-      <td>4.912655</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>1949-10-01</td>
-      <td>119</td>
-      <td>4.779123</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>1949-11-01</td>
-      <td>104</td>
-      <td>4.644391</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>1949-12-01</td>
-      <td>118</td>
-      <td>4.770685</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>1950-01-01</td>
-      <td>115</td>
-      <td>4.744932</td>
-      <td>0.026433</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<section id="take-seasonal-difference-series" class="slide level2">
+<h2>Take seasonal difference series</h2>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>y_train.naturallog.diff12 <span class="op">=</span> y_train.naturallog.diff(<span class="dv">12</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>y_train.naturallog.diff12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>1949-01         NaN
+1949-02         NaN
+1949-03         NaN
+1949-04         NaN
+1949-05         NaN
+             ...   
+1959-08    0.101591
+1959-09    0.136312
+1959-10    0.125491
+1959-11    0.155072
+1959-12    0.183804
+Freq: M, Name: Number of airline passengers, Length: 132, dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="take-difference-series-1" class="slide level2">
-<h2>Take difference series</h2>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>airpassenger[<span class="st">'naturalloglag12'</span>] <span class="op">=</span> airpassenger[<span class="st">'naturallog'</span>].diff(<span class="dv">12</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>airpassenger.tail(<span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="92">
-
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Month</th>
-      <th>#Passengers</th>
-      <th>naturallog</th>
-      <th>naturalloglag12</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>131</th>
-      <td>1959-12-01</td>
-      <td>405</td>
-      <td>6.003887</td>
-      <td>0.183804</td>
-    </tr>
-    <tr>
-      <th>132</th>
-      <td>1960-01-01</td>
-      <td>417</td>
-      <td>6.033086</td>
-      <td>0.146982</td>
-    </tr>
-    <tr>
-      <th>133</th>
-      <td>1960-02-01</td>
-      <td>391</td>
-      <td>5.968708</td>
-      <td>0.133897</td>
-    </tr>
-    <tr>
-      <th>134</th>
-      <td>1960-03-01</td>
-      <td>419</td>
-      <td>6.037871</td>
-      <td>0.031518</td>
-    </tr>
-    <tr>
-      <th>135</th>
-      <td>1960-04-01</td>
-      <td>461</td>
-      <td>6.133398</td>
-      <td>0.151984</td>
-    </tr>
-    <tr>
-      <th>136</th>
-      <td>1960-05-01</td>
-      <td>472</td>
-      <td>6.156979</td>
-      <td>0.116724</td>
-    </tr>
-    <tr>
-      <th>137</th>
-      <td>1960-06-01</td>
-      <td>535</td>
-      <td>6.282267</td>
-      <td>0.125288</td>
-    </tr>
-    <tr>
-      <th>138</th>
-      <td>1960-07-01</td>
-      <td>622</td>
-      <td>6.432940</td>
-      <td>0.126665</td>
-    </tr>
-    <tr>
-      <th>139</th>
-      <td>1960-08-01</td>
-      <td>606</td>
-      <td>6.406880</td>
-      <td>0.080731</td>
-    </tr>
-    <tr>
-      <th>140</th>
-      <td>1960-09-01</td>
-      <td>508</td>
-      <td>6.230481</td>
-      <td>0.092754</td>
-    </tr>
-    <tr>
-      <th>141</th>
-      <td>1960-10-01</td>
-      <td>461</td>
-      <td>6.133398</td>
-      <td>0.124585</td>
-    </tr>
-    <tr>
-      <th>142</th>
-      <td>1960-11-01</td>
-      <td>390</td>
-      <td>5.966147</td>
-      <td>0.074503</td>
-    </tr>
-    <tr>
-      <th>143</th>
-      <td>1960-12-01</td>
-      <td>432</td>
-      <td>6.068426</td>
-      <td>0.064539</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<section id="take-seasonal-difference-series-cont." class="slide level2">
+<h2>Take seasonal difference series (cont.)</h2>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>y_train.naturallog.diff12.head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>1949-01         NaN
+1949-02         NaN
+1949-03         NaN
+1949-04         NaN
+1949-05         NaN
+1949-06         NaN
+1949-07         NaN
+1949-08         NaN
+1949-09         NaN
+1949-10         NaN
+1949-11         NaN
+1949-12         NaN
+1950-01    0.026433
+1950-02    0.065597
+1950-03    0.065958
+1950-04    0.045462
+1950-05    0.032523
+1950-06    0.098672
+1950-07    0.138586
+1950-08    0.138586
+Freq: M, Name: Number of airline passengers, dtype: float64</code></pre>
 </div>
 </div>
 </section>
 <section id="acf---difflogdata-12" class="slide level2">
 <h2>ACF - diff(log(data), 12)</h2>
-
-<img data-src="Week3_files/figure-revealjs/cell-22-output-1.png" class="r-stretch"></section>
-<section id="first-differencing-on-difflogdata-12" class="slide level2">
-<h2>First differencing on diff(log(data), 12)</h2>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>airpassenger[<span class="st">'naturalloglag12diff'</span>] <span class="op">=</span> airpassenger[<span class="st">'naturallog'</span>].diff(<span class="dv">12</span>).diff()</span>
-<span id="cb17-2"><a href="#cb17-2"></a>plot_acf(airpassenger[<span class="st">'naturalloglag12diff'</span>].dropna())</span>
-<span id="cb17-3"><a href="#cb17-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="Week3_files/figure-revealjs/cell-23-output-1.png" class="r-stretch"></section>
-<section id="first-differencing-on-difflogdata-12-1" class="slide level2">
-<h2>First differencing on diff(log(data), 12)</h2>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>airpassenger[<span class="st">'naturalloglag12diff'</span>] <span class="op">=</span> airpassenger[<span class="st">'naturallog'</span>].diff(<span class="dv">12</span>).diff()</span>
-<span id="cb18-2"><a href="#cb18-2"></a>plot_pacf(airpassenger[<span class="st">'naturalloglag12diff'</span>].dropna())</span>
-<span id="cb18-3"><a href="#cb18-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>plot_acf(y_train.naturallog.diff12.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Week3_files/figure-revealjs/cell-24-output-1.png" class="r-stretch"></section></section>
+<img data-src="Week3_files/figure-revealjs/cell-24-output-1.png" class="r-stretch"></section>
+<section id="acf---first-differencing-on-difflogdata-12" class="slide level2">
+<h2>ACF - First differencing on diff(log(data), 12)</h2>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>y_train.naturallog.diff12.diff <span class="op">=</span> y_train.naturallog.diff12.diff()</span>
+<span id="cb26-2"><a href="#cb26-2"></a>plot_acf(y_train.naturallog.diff12.diff.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-25-output-1.png" class="r-stretch"></section>
+<section id="pacf---first-differencing-on-difflogdata-12" class="slide level2">
+<h2>PACF - First differencing on diff(log(data), 12)</h2>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>plot_pacf(y_train.naturallog.diff12.diff.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-26-output-1.png" class="r-stretch"></section></section>
 <section>
-<section id="step-4-examine-the-acfpacf-to-identify-a-suitable-model" class="title-slide slide level1 center">
-<h1>Step 4: Examine the ACF/PACF to identify a suitable model</h1>
+<section id="step-5-examine-the-acfpacf-to-identify-a-suitable-model" class="title-slide slide level1 center">
+<h1>Step 5: Examine the ACF/PACF to identify a suitable model</h1>
 
 </section>
 <section id="arp" class="slide level2">
@@ -1194,10 +1027,10 @@
 <li><p>a single significant spike at lag 12 in the PACF.</p></li>
 </ul>
 </section>
-<section id="step-4-examine-the-acfpacf-to-identify-a-suitable-model-cont." class="slide level2">
-<h2>Step 4: Examine the ACF/PACF to identify a suitable model (cont.)</h2>
+<section id="step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont." class="slide level2">
+<h2>Step 5: Examine the ACF/PACF to identify a suitable model (cont.)</h2>
 <ul>
-<li><p><span class="math inline">\(d=1\)</span> and <span class="math inline">\(D=1\)</span> (from step 3)</p></li>
+<li><p><span class="math inline">\(d=1\)</span> and <span class="math inline">\(D=1\)</span> (from step 4)</p></li>
 <li><p>Significant spike at lag 1 in ACF suggests non-seasonal MA(1) component.</p></li>
 <li><p>Significant spike at lag 12 in ACF suggests seasonal MA(1) component.</p></li>
 <li><p>Initial candidate model: <span class="math inline">\(ARIMA(0,1,1)(0,1,1)_{12}\)</span>.</p></li>
@@ -1216,10 +1049,87 @@
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
+<p><strong>Try some variations</strong></p>
 <p>Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.</p>
 <p><span class="math inline">\(ARIMA(3,1,1)(1,1,1)_{12}\)</span></p>
 <p><span class="math inline">\(ARIMA(1,1,3)(1,1,1)_{12}\)</span></p>
 <p><span class="math inline">\(ARIMA(3,1,3)(1,1,1)_{12}\)</span></p>
+</section>
+<section id="fitting-arima-models" class="slide level2">
+<h2>Fitting ARIMA models</h2>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">from</span> sktime.forecasting.arima <span class="im">import</span> ARIMA</span>
+<span id="cb28-2"><a href="#cb28-2"></a>forecaster1 <span class="op">=</span> ARIMA(  </span>
+<span id="cb28-3"><a href="#cb28-3"></a>    order<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb28-4"><a href="#cb28-4"></a>    seasonal_order<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">12</span>),</span>
+<span id="cb28-5"><a href="#cb28-5"></a>    suppress_warnings<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb28-6"><a href="#cb28-6"></a>forecaster1.fit(y_train.naturallog)    </span>
+<span id="cb28-7"><a href="#cb28-7"></a>y_pred_1 <span class="op">=</span> forecaster1.predict(fh)</span>
+<span id="cb28-8"><a href="#cb28-8"></a>y_pred_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>1960-01    6.038700
+1960-02    5.988821
+1960-03    6.145521
+1960-04    6.119111
+1960-05    6.159829
+1960-06    6.304860
+1960-07    6.433534
+1960-08    6.446252
+1960-09    6.266993
+1960-10    6.136496
+1960-11    6.008236
+1960-12    6.114690
+Freq: M, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="back-transformation" class="slide level2">
+<h2>Back transformation</h2>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>y_pred_1.exp <span class="op">=</span> np.exp(y_pred_1)</span>
+<span id="cb30-2"><a href="#cb30-2"></a>y_pred_1.exp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>1960-01    419.347465
+1960-02    398.944005
+1960-03    466.622813
+1960-04    454.460279
+1960-05    473.347301
+1960-06    547.225107
+1960-07    622.369714
+1960-08    630.335278
+1960-09    526.890634
+1960-10    462.430506
+1960-11    406.765291
+1960-12    452.455879
+Freq: M, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-training-test-and-forecasts" class="slide level2">
+<h2>Plot training, test, and forecasts</h2>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>plot_series(y_train, y_test, y_pred_1.exp, labels<span class="op">=</span>[<span class="st">"y_train"</span>, <span class="st">"y_test"</span>, <span class="st">"y_forecast"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-29-output-2.png" class="r-stretch"></section>
+<section id="evaluation" class="slide level2">
+<h2>Evaluation</h2>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="im">from</span> sktime.performance_metrics.forecasting <span class="im">import</span> <span class="op">\</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>    mean_absolute_percentage_error</span>
+<span id="cb34-3"><a href="#cb34-3"></a>mean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<pre><code>0.029239695342961447</code></pre>
+</div>
+</div>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your Turn</h2>
+<p>Fit other variants of ARIMA models and identify the best ARIMA model for the series.</p>
 
 <div class="footer footer-default">
 
