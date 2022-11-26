@@ -1,0 +1,11 @@
+{
+  "hash": "8299234c6d049195cb4e5bb8facf5b9e",
+  "result": {
+    "markdown": "---\ntitle: 'Week 3: More on time series'\nformat:\n  revealjs:\n    slide-number: true\n    show-slide-number: all\n---\n\n",
+    "supporting": [
+      "Week4_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

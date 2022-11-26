@@ -46,6 +46,8 @@ where $\epsilon_t \sim iid(0, \sigma^2)$, $t = 1, 2, ...T$
 
 Mean of the process is time dependent, but the variance of the process is constant.
 
+A trend is deterministic if it is a nonrandom function of time.
+
 ## Non-Stationary Time Series (cont.)
 
 **2. Random walk** 
@@ -55,6 +57,10 @@ $$Y_t = Y_{t-1} + \epsilon_t$$
 - Random walk has a stochastic trend.
 
 - Model behind naive method.
+
+A trend is said to be stochastic if it is a random function of time.
+
+
 
 ## Non-Stationary Time Series (cont.)
 
@@ -357,6 +363,7 @@ Stationary series:
 ##
 
 ```{python}
+from sktime import *
 from sktime.datasets import load_airline
 from sktime.utils.plotting import plot_series
 y = load_airline()
@@ -577,6 +584,67 @@ forecaster1 = ARIMA(
     seasonal_order=(0, 1, 1, 12),
     suppress_warnings=True)
 forecaster1.fit(y_train.naturallog)    
+```
+
+
+## Step 6: Check residual series
+
+```{python}
+#| echo: true
+fhtrain = ForecastingHorizon(
+    pd.PeriodIndex(pd.period_range(start='1949-01', end='1959-12', freq='M')), is_relative=False
+)
+fhtrain
+
+```
+
+## Obtain predictions for the training period
+
+```{python}
+#| echo: true
+y_pred_train = forecaster1.predict(fhtrain)
+y_pred_train
+
+```
+
+## Obtain residual series
+
+```{python}
+#| echo: true
+residual = y_train.naturallog - y_pred_train
+residual
+```
+
+## Plot residuals
+
+```{python}
+#| echo: true
+plot_series(residual)
+```
+
+## Plot residuals (cont.)
+
+```{python}
+#| echo: true
+plot_acf(residual.dropna(), lags=50)
+```
+
+## Plot residuals (cont.)
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+plt.hist(residual)
+plt.show()
+```
+
+Your turn: remove the outlier and draw the histogram
+
+## Step 7: Generate forecasts
+
+
+```{python}
+#| echo: true
 y_pred_1 = forecaster1.predict(fh)
 y_pred_1
 

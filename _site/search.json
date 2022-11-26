@@ -571,14 +571,14 @@
     "href": "posts/time_series/Week3.html#non-stationary-time-series",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Non-Stationary Time Series",
-    "text": "Non-Stationary Time Series\n1. Deterministic trend\n\\[Y_t  = f(t) + \\epsilon_t\\]\nwhere \\(\\epsilon_t \\sim iid(0, \\sigma^2)\\), \\(t = 1, 2, ...T\\)\nMean of the process is time dependent, but the variance of the process is constant."
+    "text": "Non-Stationary Time Series\n1. Deterministic trend\n\\[Y_t  = f(t) + \\epsilon_t\\]\nwhere \\(\\epsilon_t \\sim iid(0, \\sigma^2)\\), \\(t = 1, 2, ...T\\)\nMean of the process is time dependent, but the variance of the process is constant.\nA trend is deterministic if it is a nonrandom function of time."
   },
   {
     "objectID": "posts/time_series/Week3.html#non-stationary-time-series-cont.",
     "href": "posts/time_series/Week3.html#non-stationary-time-series-cont.",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Non-Stationary Time Series (cont.)",
-    "text": "Non-Stationary Time Series (cont.)\n2. Random walk\n\\[Y_t = Y_{t-1} + \\epsilon_t\\]\n\nRandom walk has a stochastic trend.\nModel behind naive method."
+    "text": "Non-Stationary Time Series (cont.)\n2. Random walk\n\\[Y_t = Y_{t-1} + \\epsilon_t\\]\n\nRandom walk has a stochastic trend.\nModel behind naive method.\n\nA trend is said to be stochastic if it is a random function of time."
   },
   {
     "objectID": "posts/time_series/Week3.html#non-stationary-time-series-cont.-1",
@@ -634,7 +634,7 @@
     "href": "posts/time_series/Week3.html#difference-series",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Difference series",
-    "text": "Difference series\n\n\n\n\n\n\n  \n    \n      \n      Values\n      Lag 1\n      Lag 2\n    \n  \n  \n    \n      0\n      -0.316111\n      NaN\n      NaN\n    \n    \n      1\n      -0.574021\n      -0.257911\n      NaN\n    \n    \n      2\n      -0.147831\n      0.426191\n      0.684101\n    \n    \n      3\n      0.290161\n      0.437992\n      0.011801\n    \n    \n      4\n      -0.206828\n      -0.496989\n      -0.934980\n    \n    \n      ...\n      ...\n      ...\n      ...\n    \n    \n      95\n      -5.666834\n      -2.046852\n      -2.416976\n    \n    \n      96\n      -5.044906\n      0.621928\n      2.668780\n    \n    \n      97\n      -5.115827\n      -0.070921\n      -0.692849\n    \n    \n      98\n      -4.039724\n      1.076103\n      1.147024\n    \n    \n      99\n      -4.663474\n      -0.623750\n      -1.699853\n    \n  \n\n100 rows × 3 columns"
+    "text": "Difference series\n\n\n\n\n\n\n  \n    \n      \n      Values\n      Lag 1\n      Lag 2\n    \n  \n  \n    \n      0\n      -0.184446\n      NaN\n      NaN\n    \n    \n      1\n      -0.471474\n      -0.287027\n      NaN\n    \n    \n      2\n      0.503277\n      0.974750\n      1.261777\n    \n    \n      3\n      -0.407833\n      -0.911109\n      -1.885859\n    \n    \n      4\n      0.920545\n      1.328378\n      2.239487\n    \n    \n      ...\n      ...\n      ...\n      ...\n    \n    \n      95\n      16.172532\n      -2.584427\n      -3.001353\n    \n    \n      96\n      16.204228\n      0.031696\n      2.616123\n    \n    \n      97\n      16.100783\n      -0.103446\n      -0.135142\n    \n    \n      98\n      14.407644\n      -1.693139\n      -1.589693\n    \n    \n      99\n      13.876872\n      -0.530772\n      1.162367\n    \n  \n\n100 rows × 3 columns"
   },
   {
     "objectID": "posts/time_series/Week3.html#plot-lag-1-series",
@@ -649,6 +649,13 @@
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "ACF Lag 1 series",
     "text": "ACF Lag 1 series"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#example-2",
+    "href": "posts/time_series/Week3.html#example-2",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Example 2",
+    "text": "Example 2\n\nimport numpy as np, pandas as pd\nfrom statsmodels.graphics.tsaplots import plot_acf, plot_pacf\nimport matplotlib.pyplot as plt\nplt.rcParams.update({'figure.figsize':(9,7), 'figure.dpi':120})\n\n# Import data\ndf = pd.read_csv('wwwusage.csv', names=['value'], header=0)\n\n# Original Series\nfig, axes = plt.subplots(2, 2, sharex=True)\naxes[0, 0].plot(df.value); axes[0, 0].set_title('Original Series')\nplot_acf(df.value, ax=axes[0, 1], lags=np.arange(len(df)))\n\n# 1st Differencing\naxes[1, 0].plot(df.value.diff()); axes[1, 0].set_title('1st Order Differencing')\nplot_acf(df.value.diff().dropna(), ax=axes[1, 1], lags=np.arange(len(df) - 1))\nplt.show()"
   },
   {
     "objectID": "posts/time_series/Week3.html#nd-order-differencing",
@@ -669,14 +676,14 @@
     "href": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Monthly Airline Passenger Numbers 1949-1960",
-    "text": "Monthly Airline Passenger Numbers 1949-1960\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nfrom datetime import datetime\nimport plotnine\nfrom plotnine import *\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (335576854)>"
+    "text": "Monthly Airline Passenger Numbers 1949-1960\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nfrom datetime import datetime\nimport plotnine\nfrom plotnine import *\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n<ggplot: (300356657)>"
   },
   {
     "objectID": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960---log",
     "href": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960---log",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "Monthly Airline Passenger Numbers 1949-1960 - log",
-    "text": "Monthly Airline Passenger Numbers 1949-1960 - log\n\nimport numpy as np\nairpassenger['naturallog'] = np.log(airpassenger['#Passengers']) \nggplot(airpassenger, aes(x='Month', y='naturallog'))+geom_line()\n\n\n<ggplot: (335535231)>"
+    "text": "Monthly Airline Passenger Numbers 1949-1960 - log\n\nimport numpy as np\nairpassenger['naturallog'] = np.log(airpassenger['#Passengers']) \nggplot(airpassenger, aes(x='Month', y='naturallog'))+geom_line()\n\n\n<ggplot: (335882719)>"
   },
   {
     "objectID": "posts/time_series/Week3.html#box-cox-transformation",
@@ -693,6 +700,13 @@
     "text": "Box-Cox transformation\n\n# import modules\nimport numpy as np\nfrom scipy import stats\n \ny2,fitted_lambda = stats.boxcox(airpassenger['#Passengers'])"
   },
   {
+    "objectID": "posts/time_series/Week3.html#box-cox-transformation-exploring-the-output",
+    "href": "posts/time_series/Week3.html#box-cox-transformation-exploring-the-output",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Box-Cox transformation: Exploring the output",
+    "text": "Box-Cox transformation: Exploring the output\n\nfitted_lambda\n\n0.14802265137037945\n\n\n\ny2\n\narray([ 6.82749005,  6.93282224,  7.16189151,  7.11461078,  6.98378687,\n        7.20826542,  7.39959794,  7.39959794,  7.22352834,  6.94993188,\n        6.67930112,  6.93282224,  6.88074148,  7.0663838 ,  7.29843847,\n        7.20826542,  7.05009066,  7.41371485,  7.69297755,  7.69297755,\n        7.53726005,  7.17744836,  6.86312389,  7.28363955,  7.35675408,\n        7.42775127,  7.791663  ,  7.6033268 ,  7.71801394,  7.791663  ,\n        8.03379957,  8.03379957,  7.86322651,  7.59025293,  7.3711186 ,\n        7.64214252,  7.70552693,  7.81574285,  7.96693012,  7.82769741,\n        7.85143867,  8.23478523,  8.35415797,  8.46833738,  8.14152446,\n        7.94424651,  7.71801394,  7.97819691,  8.00058286,  8.00058286,\n        8.41186604,  8.40233549,  8.34441554,  8.47763304,  8.66568618,\n        8.73398286,  8.42136224,  8.16254066,  7.81574285,  8.05570781,\n        8.08822445,  7.90983871,  8.40233549,  8.32482145,  8.39277032,\n        8.66568618,  8.97573698,  8.90544371,  8.62209995,  8.34441554,\n        8.0774311 ,  8.34441554,  8.46833738,  8.38317027,  8.69150146,\n        8.70857469,  8.71707079,  9.07418456,  9.41661628,  9.30252389,\n        9.05177744,  8.75078932,  8.42136224,  8.78409104,  8.83328615,\n        8.77580407,  9.08902184,  9.0592668 ,  9.0964106 ,  9.48162515,\n        9.72179099,  9.67415098,  9.35679401,  9.00640692,  8.72554012,\n        9.00640692,  9.07418456,  8.96801544,  9.36350433,  9.30936559,\n        9.35679401,  9.77445522, 10.01359054, 10.02424732,  9.66813973,\n        9.30252389,  8.9987716 ,  9.22613489,  9.25415593,  9.0964106 ,\n        9.40343224,  9.30936559,  9.41003199,  9.84886109, 10.14918625,\n       10.21968352,  9.66813973,  9.38353935,  9.03673716,  9.23316669,\n        9.390186  ,  9.26806127,  9.68014959,  9.61958794,  9.76283534,\n       10.05072014, 10.426264  , 10.4768849 , 10.00289463,  9.68613564,\n        9.40343224,  9.67415098,  9.74531682,  9.58881702,  9.75700771,\n        9.99215929, 10.05072014, 10.36531089, 10.75145254, 10.68404894,\n       10.23457308,  9.99215929,  9.58262264,  9.83186035])"
+  },
+  {
     "objectID": "posts/time_series/Week3.html#armap-q-model",
     "href": "posts/time_series/Week3.html#armap-q-model",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
@@ -707,6 +721,27 @@
     "text": "ARIMA(p, d, q) model\nDifferencing –> ARMA\nStep 1: Differencing\n\\[Y'_t = (1-B)^dY_t\\]\nStep 2: ARMA\n\\[Y'_t=c+\\phi_1Y'_{t-1}+...+\\phi_p Y'_{t-p}+ \\theta_1\\epsilon_{t-1}+...+\\theta_q\\epsilon_{t-q}+\\epsilon_t\\]"
   },
   {
+    "objectID": "posts/time_series/Week3.html#section-1",
+    "href": "posts/time_series/Week3.html#section-1",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "(<Figure size 1920x480 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-2-split-time-series-into-training-and-test",
+    "href": "posts/time_series/Week3.html#step-2-split-time-series-into-training-and-test",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 2: Split time series into training and test",
+    "text": "Step 2: Split time series into training and test\nSpecify the forecast horizon\n\nimport numpy as np\nimport pandas as pd\nfrom sktime.forecasting.base import ForecastingHorizon\nfh = ForecastingHorizon(\n    pd.PeriodIndex(pd.date_range(\"1960-01\", periods=12, freq=\"M\")), is_relative=False\n)\nfh\n\nForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',\n             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],\n            dtype='period[M]', is_relative=False)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-training-and-test-series",
+    "href": "posts/time_series/Week3.html#plot-training-and-test-series",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot training and test series",
+    "text": "Plot training and test series\n\n\n(<Figure size 1920x480 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
+  },
+  {
     "objectID": "posts/time_series/Week3.html#section-2",
     "href": "posts/time_series/Week3.html#section-2",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
@@ -714,25 +749,18 @@
     "text": "Need transformations?\nNeed differencing?"
   },
   {
-    "objectID": "posts/time_series/Week3.html#section-3",
-    "href": "posts/time_series/Week3.html#section-3",
+    "objectID": "posts/time_series/Week3.html#step-3-apply-transformations",
+    "href": "posts/time_series/Week3.html#step-3-apply-transformations",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "",
-    "text": "Try some variations\nBoth the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.\n\\(ARIMA(3,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,3)(1,1,1)_{12}\\)\n\\(ARIMA(3,1,3)(1,1,1)_{12}\\)"
+    "section": "Step 3: Apply transformations",
+    "text": "Step 3: Apply transformations\n\nimport numpy as np\ny_train.naturallog = np.log(y_train) \nplot_series(y_train.naturallog)\n\n(<Figure size 1920x480 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
   },
   {
-    "objectID": "posts/time_series/Week3.html#step-2-apply-transformations",
-    "href": "posts/time_series/Week3.html#step-2-apply-transformations",
+    "objectID": "posts/time_series/Week3.html#step-4-take-difference-series",
+    "href": "posts/time_series/Week3.html#step-4-take-difference-series",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 2: Apply transformations",
-    "text": "Step 2: Apply transformations\n\nimport numpy as np\nairpassenger['naturallog'] = np.log(airpassenger['#Passengers'])"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#step-3-take-difference-series",
-    "href": "posts/time_series/Week3.html#step-3-take-difference-series",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 3: Take difference series",
-    "text": "Step 3: Take difference series\nIdentifying non-stationarity by looking at plots\n\nTime series plot\nThe ACF of stationary data drops to zero relatively quickly.\nThe ACF of non-stationary data decreases slowly.\nFor non-stationary data, the value of \\(r_1\\) is often large and positive."
+    "section": "Step 4: Take difference series",
+    "text": "Step 4: Take difference series\nIdentifying non-stationarity by looking at plots\n\nTime series plot\nThe ACF of stationary data drops to zero relatively quickly.\nThe ACF of non-stationary data decreases slowly.\nFor non-stationary data, the value of \\(r_1\\) is often large and positive."
   },
   {
     "objectID": "posts/time_series/Week3.html#non-seasonal-differencing-and-seasonal-differencing",
@@ -749,18 +777,18 @@
     "text": "ACF of log-transformation series\n\nplot_acf(y_train.naturallog, lags=50)"
   },
   {
-    "objectID": "posts/time_series/Week3.html#take-difference-series",
-    "href": "posts/time_series/Week3.html#take-difference-series",
+    "objectID": "posts/time_series/Week3.html#take-seasonal-difference-series",
+    "href": "posts/time_series/Week3.html#take-seasonal-difference-series",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Take difference series",
-    "text": "Take difference series\n\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n      naturallog\n      naturalloglag12\n    \n  \n  \n    \n      0\n      1949-01-01\n      112\n      4.718499\n      NaN\n    \n    \n      1\n      1949-02-01\n      118\n      4.770685\n      NaN\n    \n    \n      2\n      1949-03-01\n      132\n      4.882802\n      NaN\n    \n    \n      3\n      1949-04-01\n      129\n      4.859812\n      NaN\n    \n    \n      4\n      1949-05-01\n      121\n      4.795791\n      NaN\n    \n    \n      5\n      1949-06-01\n      135\n      4.905275\n      NaN\n    \n    \n      6\n      1949-07-01\n      148\n      4.997212\n      NaN\n    \n    \n      7\n      1949-08-01\n      148\n      4.997212\n      NaN\n    \n    \n      8\n      1949-09-01\n      136\n      4.912655\n      NaN\n    \n    \n      9\n      1949-10-01\n      119\n      4.779123\n      NaN\n    \n    \n      10\n      1949-11-01\n      104\n      4.644391\n      NaN\n    \n    \n      11\n      1949-12-01\n      118\n      4.770685\n      NaN\n    \n    \n      12\n      1950-01-01\n      115\n      4.744932\n      0.026433"
+    "section": "Take seasonal difference series",
+    "text": "Take seasonal difference series\n\ny_train.naturallog.diff12 = y_train.naturallog.diff(12)\ny_train.naturallog.diff12\n\n1949-01         NaN\n1949-02         NaN\n1949-03         NaN\n1949-04         NaN\n1949-05         NaN\n             ...   \n1959-08    0.101591\n1959-09    0.136312\n1959-10    0.125491\n1959-11    0.155072\n1959-12    0.183804\nFreq: M, Name: Number of airline passengers, Length: 132, dtype: float64"
   },
   {
-    "objectID": "posts/time_series/Week3.html#take-difference-series-1",
-    "href": "posts/time_series/Week3.html#take-difference-series-1",
+    "objectID": "posts/time_series/Week3.html#take-seasonal-difference-series-cont.",
+    "href": "posts/time_series/Week3.html#take-seasonal-difference-series-cont.",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Take difference series",
-    "text": "Take difference series\n\nairpassenger['naturalloglag12'] = airpassenger['naturallog'].diff(12)\nairpassenger.tail(13)\n\n\n\n\n\n  \n    \n      \n      Month\n      #Passengers\n      naturallog\n      naturalloglag12\n    \n  \n  \n    \n      131\n      1959-12-01\n      405\n      6.003887\n      0.183804\n    \n    \n      132\n      1960-01-01\n      417\n      6.033086\n      0.146982\n    \n    \n      133\n      1960-02-01\n      391\n      5.968708\n      0.133897\n    \n    \n      134\n      1960-03-01\n      419\n      6.037871\n      0.031518\n    \n    \n      135\n      1960-04-01\n      461\n      6.133398\n      0.151984\n    \n    \n      136\n      1960-05-01\n      472\n      6.156979\n      0.116724\n    \n    \n      137\n      1960-06-01\n      535\n      6.282267\n      0.125288\n    \n    \n      138\n      1960-07-01\n      622\n      6.432940\n      0.126665\n    \n    \n      139\n      1960-08-01\n      606\n      6.406880\n      0.080731\n    \n    \n      140\n      1960-09-01\n      508\n      6.230481\n      0.092754\n    \n    \n      141\n      1960-10-01\n      461\n      6.133398\n      0.124585\n    \n    \n      142\n      1960-11-01\n      390\n      5.966147\n      0.074503\n    \n    \n      143\n      1960-12-01\n      432\n      6.068426\n      0.064539"
+    "section": "Take seasonal difference series (cont.)",
+    "text": "Take seasonal difference series (cont.)\n\ny_train.naturallog.diff12.head(20)\n\n1949-01         NaN\n1949-02         NaN\n1949-03         NaN\n1949-04         NaN\n1949-05         NaN\n1949-06         NaN\n1949-07         NaN\n1949-08         NaN\n1949-09         NaN\n1949-10         NaN\n1949-11         NaN\n1949-12         NaN\n1950-01    0.026433\n1950-02    0.065597\n1950-03    0.065958\n1950-04    0.045462\n1950-05    0.032523\n1950-06    0.098672\n1950-07    0.138586\n1950-08    0.138586\nFreq: M, Name: Number of airline passengers, dtype: float64"
   },
   {
     "objectID": "posts/time_series/Week3.html#acf---difflogdata-12",
@@ -770,18 +798,18 @@
     "text": "ACF - diff(log(data), 12)\n\nplot_acf(y_train.naturallog.diff12.dropna(), lags=50)\nplt.show()"
   },
   {
-    "objectID": "posts/time_series/Week3.html#first-differencing-on-difflogdata-12",
-    "href": "posts/time_series/Week3.html#first-differencing-on-difflogdata-12",
+    "objectID": "posts/time_series/Week3.html#acf---first-differencing-on-difflogdata-12",
+    "href": "posts/time_series/Week3.html#acf---first-differencing-on-difflogdata-12",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "First differencing on diff(log(data), 12)",
-    "text": "First differencing on diff(log(data), 12)\n\ny_train.naturallog.diff12.diff = y_train.naturallog.diff12.diff()\nplot_acf(y_train.naturallog.diff12.diff.dropna(), lags=50)\nplt.show()"
+    "section": "ACF - First differencing on diff(log(data), 12)",
+    "text": "ACF - First differencing on diff(log(data), 12)\n\ny_train.naturallog.diff12.diff = y_train.naturallog.diff12.diff()\nplot_acf(y_train.naturallog.diff12.diff.dropna(), lags=50)\nplt.show()"
   },
   {
-    "objectID": "posts/time_series/Week3.html#first-differencing-on-difflogdata-12-1",
-    "href": "posts/time_series/Week3.html#first-differencing-on-difflogdata-12-1",
+    "objectID": "posts/time_series/Week3.html#pacf---first-differencing-on-difflogdata-12",
+    "href": "posts/time_series/Week3.html#pacf---first-differencing-on-difflogdata-12",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "First differencing on diff(log(data), 12)",
-    "text": "First differencing on diff(log(data), 12)\n\nairpassenger['naturalloglag12diff'] = airpassenger['naturallog'].diff(12).diff()\nplot_pacf(airpassenger['naturalloglag12diff'].dropna())\nplt.show()"
+    "section": "PACF - First differencing on diff(log(data), 12)",
+    "text": "PACF - First differencing on diff(log(data), 12)\n\nplot_pacf(y_train.naturallog.diff12.diff.dropna(), lags=50)\nplt.show()"
   },
   {
     "objectID": "posts/time_series/Week3.html#arp",
@@ -819,11 +847,11 @@
     "text": "ARIMA(0,0,0)(1,0,0)12 will show\n\nexponential decay in the seasonal lags of the ACF.\na single significant spike at lag 12 in the PACF."
   },
   {
-    "objectID": "posts/time_series/Week3.html#step-4-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
-    "href": "posts/time_series/Week3.html#step-4-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
+    "objectID": "posts/time_series/Week3.html#step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
+    "href": "posts/time_series/Week3.html#step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 4: Examine the ACF/PACF to identify a suitable model (cont.)",
-    "text": "Step 4: Examine the ACF/PACF to identify a suitable model (cont.)\n\n\\(d=1\\) and \\(D=1\\) (from step 3)\nSignificant spike at lag 1 in ACF suggests non-seasonal MA(1) component.\nSignificant spike at lag 12 in ACF suggests seasonal MA(1) component.\nInitial candidate model: \\(ARIMA(0,1,1)(0,1,1)_{12}\\).\nBy analogous logic applied to the PACF, we could also have started with \\(ARIMA(1,1,0)(1,1,0)_{12}\\)."
+    "section": "Step 5: Examine the ACF/PACF to identify a suitable model (cont.)",
+    "text": "Step 5: Examine the ACF/PACF to identify a suitable model (cont.)\n\n\\(d=1\\) and \\(D=1\\) (from step 4)\nSignificant spike at lag 1 in ACF suggests non-seasonal MA(1) component.\nSignificant spike at lag 12 in ACF suggests seasonal MA(1) component.\nInitial candidate model: \\(ARIMA(0,1,1)(0,1,1)_{12}\\).\nBy analogous logic applied to the PACF, we could also have started with \\(ARIMA(1,1,0)(1,1,0)_{12}\\)."
   },
   {
     "objectID": "posts/time_series/Week3.html#models",
@@ -833,11 +861,46 @@
     "text": "Models\nInitial model:\n\\(ARIMA(0,1,1)(0,1,1)_{12}\\)\n\\(ARIMA(1,1,0)(1,1,0)_{12}\\)\nTry some variations of the initial model:\n\\(ARIMA(0,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,1)(1,1,0)_{12}\\)\n\\(ARIMA(1,1,1)(1,1,1)_{12}\\)"
   },
   {
-    "objectID": "posts/time_series/Week3.html#section-4",
-    "href": "posts/time_series/Week3.html#section-4",
+    "objectID": "posts/time_series/Week3.html#section-3",
+    "href": "posts/time_series/Week3.html#section-3",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
     "section": "",
-    "text": "Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.\n\\(ARIMA(3,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,3)(1,1,1)_{12}\\)\n\\(ARIMA(3,1,3)(1,1,1)_{12}\\)"
+    "text": "Try some variations\nBoth the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.\n\\(ARIMA(3,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,3)(1,1,1)_{12}\\)\n\\(ARIMA(3,1,3)(1,1,1)_{12}\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#fitting-arima-models",
+    "href": "posts/time_series/Week3.html#fitting-arima-models",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Fitting ARIMA models",
+    "text": "Fitting ARIMA models\n\nfrom sktime.forecasting.arima import ARIMA\nforecaster1 = ARIMA(  \n    order=(0, 1, 1),\n    seasonal_order=(0, 1, 1, 12),\n    suppress_warnings=True)\nforecaster1.fit(y_train.naturallog)    \n\nARIMA(order=(0, 1, 1), seasonal_order=(0, 1, 1, 12), suppress_warnings=True)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.ARIMAARIMA(order=(0, 1, 1), seasonal_order=(0, 1, 1, 12), suppress_warnings=True)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#back-transformation",
+    "href": "posts/time_series/Week3.html#back-transformation",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Back transformation",
+    "text": "Back transformation\n\ny_pred_1.exp = np.exp(y_pred_1)\ny_pred_1.exp\n\n1960-01    419.347465\n1960-02    398.944005\n1960-03    466.622813\n1960-04    454.460279\n1960-05    473.347301\n1960-06    547.225107\n1960-07    622.369714\n1960-08    630.335278\n1960-09    526.890634\n1960-10    462.430506\n1960-11    406.765291\n1960-12    452.455879\nFreq: M, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-training-test-and-forecasts",
+    "href": "posts/time_series/Week3.html#plot-training-test-and-forecasts",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot training, test, and forecasts",
+    "text": "Plot training, test, and forecasts\n\nplot_series(y_train, y_test, y_pred_1.exp, labels=[\"y_train\", \"y_test\", \"y_forecast\"])\n\n(<Figure size 1920x480 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#evaluation",
+    "href": "posts/time_series/Week3.html#evaluation",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Evaluation",
+    "text": "Evaluation\n\nfrom sktime.performance_metrics.forecasting import \\\n    mean_absolute_percentage_error\nmean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric=False)\n\n0.029239695342961447"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#your-turn",
+    "href": "posts/time_series/Week3.html#your-turn",
+    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
+    "section": "Your Turn",
+    "text": "Your Turn\nFit other variants of ARIMA models and identify the best ARIMA model for the series."
   },
   {
     "objectID": "posts/quarto/1_intro.html#section-3",
@@ -1250,132 +1313,55 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/time_series/Week3.html#example-2",
-    "href": "posts/time_series/Week3.html#example-2",
+    "objectID": "posts/time_series/Week3.html#step-6-check-residual-series",
+    "href": "posts/time_series/Week3.html#step-6-check-residual-series",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Example 2",
-    "text": "Example 2\n\nimport numpy as np, pandas as pd\nfrom statsmodels.graphics.tsaplots import plot_acf, plot_pacf\nimport matplotlib.pyplot as plt\nplt.rcParams.update({'figure.figsize':(9,7), 'figure.dpi':120})\n\n# Import data\ndf = pd.read_csv('wwwusage.csv', names=['value'], header=0)\n\n# Original Series\nfig, axes = plt.subplots(2, 2, sharex=True)\naxes[0, 0].plot(df.value); axes[0, 0].set_title('Original Series')\nplot_acf(df.value, ax=axes[0, 1], lags=np.arange(len(df)))\n\n# 1st Differencing\naxes[1, 0].plot(df.value.diff()); axes[1, 0].set_title('1st Order Differencing')\nplot_acf(df.value.diff().dropna(), ax=axes[1, 1], lags=np.arange(len(df) - 1))\nplt.show()"
+    "section": "Step 6: Check residual series",
+    "text": "Step 6: Check residual series\n\nfhtrain = ForecastingHorizon(\n    pd.PeriodIndex(pd.period_range(start='1949-01', end='1959-12', freq='M')), is_relative=False\n)\nfhtrain\n\nForecastingHorizon(['1949-01', '1949-02', '1949-03', '1949-04', '1949-05', '1949-06',\n             '1949-07', '1949-08', '1949-09', '1949-10',\n             ...\n             '1959-03', '1959-04', '1959-05', '1959-06', '1959-07', '1959-08',\n             '1959-09', '1959-10', '1959-11', '1959-12'],\n            dtype='period[M]', length=132, is_relative=False)"
   },
   {
-    "objectID": "posts/time_series/Week3.html#section-1",
-    "href": "posts/time_series/Week3.html#section-1",
+    "objectID": "posts/time_series/Week3.html#step-7-generate-forecasts",
+    "href": "posts/time_series/Week3.html#step-7-generate-forecasts",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "",
-    "text": "(<Figure size 1920x480 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
+    "section": "Step 7: Generate forecasts",
+    "text": "Step 7: Generate forecasts\n\ny_pred_1 = forecaster1.predict(fh)\ny_pred_1\n\n1960-01    6.038700\n1960-02    5.988821\n1960-03    6.145521\n1960-04    6.119111\n1960-05    6.159829\n1960-06    6.304860\n1960-07    6.433534\n1960-08    6.446252\n1960-09    6.266993\n1960-10    6.136496\n1960-11    6.008236\n1960-12    6.114690\nFreq: M, dtype: float64"
   },
   {
-    "objectID": "posts/time_series/Week3.html#box-cox-transformation-exploring-the-output",
-    "href": "posts/time_series/Week3.html#box-cox-transformation-exploring-the-output",
+    "objectID": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
+    "href": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Box-Cox transformation: Exploring the output",
-    "text": "Box-Cox transformation: Exploring the output\n\nfitted_lambda\n\n0.14802265137037945\n\n\n\ny2\n\narray([ 6.82749005,  6.93282224,  7.16189151,  7.11461078,  6.98378687,\n        7.20826542,  7.39959794,  7.39959794,  7.22352834,  6.94993188,\n        6.67930112,  6.93282224,  6.88074148,  7.0663838 ,  7.29843847,\n        7.20826542,  7.05009066,  7.41371485,  7.69297755,  7.69297755,\n        7.53726005,  7.17744836,  6.86312389,  7.28363955,  7.35675408,\n        7.42775127,  7.791663  ,  7.6033268 ,  7.71801394,  7.791663  ,\n        8.03379957,  8.03379957,  7.86322651,  7.59025293,  7.3711186 ,\n        7.64214252,  7.70552693,  7.81574285,  7.96693012,  7.82769741,\n        7.85143867,  8.23478523,  8.35415797,  8.46833738,  8.14152446,\n        7.94424651,  7.71801394,  7.97819691,  8.00058286,  8.00058286,\n        8.41186604,  8.40233549,  8.34441554,  8.47763304,  8.66568618,\n        8.73398286,  8.42136224,  8.16254066,  7.81574285,  8.05570781,\n        8.08822445,  7.90983871,  8.40233549,  8.32482145,  8.39277032,\n        8.66568618,  8.97573698,  8.90544371,  8.62209995,  8.34441554,\n        8.0774311 ,  8.34441554,  8.46833738,  8.38317027,  8.69150146,\n        8.70857469,  8.71707079,  9.07418456,  9.41661628,  9.30252389,\n        9.05177744,  8.75078932,  8.42136224,  8.78409104,  8.83328615,\n        8.77580407,  9.08902184,  9.0592668 ,  9.0964106 ,  9.48162515,\n        9.72179099,  9.67415098,  9.35679401,  9.00640692,  8.72554012,\n        9.00640692,  9.07418456,  8.96801544,  9.36350433,  9.30936559,\n        9.35679401,  9.77445522, 10.01359054, 10.02424732,  9.66813973,\n        9.30252389,  8.9987716 ,  9.22613489,  9.25415593,  9.0964106 ,\n        9.40343224,  9.30936559,  9.41003199,  9.84886109, 10.14918625,\n       10.21968352,  9.66813973,  9.38353935,  9.03673716,  9.23316669,\n        9.390186  ,  9.26806127,  9.68014959,  9.61958794,  9.76283534,\n       10.05072014, 10.426264  , 10.4768849 , 10.00289463,  9.68613564,\n        9.40343224,  9.67415098,  9.74531682,  9.58881702,  9.75700771,\n        9.99215929, 10.05072014, 10.36531089, 10.75145254, 10.68404894,\n       10.23457308,  9.99215929,  9.58262264,  9.83186035])"
+    "section": "Obtain predictions for the training period",
+    "text": "Obtain predictions for the training period\n\ny_pred_train = forecaster1.predict(fhtrain)\ny_pred_train\n\n1949-01         NaN\n1949-02    4.718511\n1949-03    4.770696\n1949-04    4.882814\n1949-05    4.859824\n             ...   \n1959-08    6.305147\n1959-09    6.146705\n1959-10    6.009102\n1959-11    5.871977\n1959-12    5.986708\nFreq: M, Length: 132, dtype: float64"
   },
   {
-    "objectID": "posts/time_series/Week3.html#split-time-series-into-training-and-test",
-    "href": "posts/time_series/Week3.html#split-time-series-into-training-and-test",
+    "objectID": "posts/time_series/Week3.html#obtain-residual-series",
+    "href": "posts/time_series/Week3.html#obtain-residual-series",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Split time series into training and test",
-    "text": "Split time series into training and test\nSpecify the forecast horizon\n\nimport numpy as np\nimport pandas as pd\nfrom sktime.forecasting.base import ForecastingHorizon\nfh = ForecastingHorizon(\n    pd.PeriodIndex(pd.date_range(\"1960-01\", periods=12, freq=\"M\")), is_relative=False\n)\nfh\n\nForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',\n             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],\n            dtype='period[M]', is_relative=False)"
+    "section": "Obtain residual series",
+    "text": "Obtain residual series\n\nresidual = y_train.naturallog - y_pred_train\nresidual\n\n1949-01         NaN\n1949-02    0.052174\n1949-03    0.112106\n1949-04   -0.023001\n1949-05   -0.064034\n             ...   \n1959-08    0.021002\n1959-09   -0.008978\n1959-10   -0.000288\n1959-11    0.019668\n1959-12    0.017179\nFreq: M, Length: 132, dtype: float64"
   },
   {
-    "objectID": "posts/time_series/Week3.html#plot-training-and-test-series",
-    "href": "posts/time_series/Week3.html#plot-training-and-test-series",
+    "objectID": "posts/time_series/Week3.html#plot-residuals",
+    "href": "posts/time_series/Week3.html#plot-residuals",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Plot training and test series",
-    "text": "Plot training and test series\n\n\n(<Figure size 1920x480 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
+    "section": "Plot residuals",
+    "text": "Plot residuals\n\nplot_series(residual)\n\n(<Figure size 1920x480 with 1 Axes>, <AxesSubplot: >)"
   },
   {
-    "objectID": "posts/time_series/Week3.html#step-2-split-time-series-into-training-and-test",
-    "href": "posts/time_series/Week3.html#step-2-split-time-series-into-training-and-test",
+    "objectID": "posts/time_series/Week3.html#plot-residuals-cont.",
+    "href": "posts/time_series/Week3.html#plot-residuals-cont.",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 2: Split time series into training and test",
-    "text": "Step 2: Split time series into training and test\nSpecify the forecast horizon\n\nimport numpy as np\nimport pandas as pd\nfrom sktime.forecasting.base import ForecastingHorizon\nfh = ForecastingHorizon(\n    pd.PeriodIndex(pd.date_range(\"1960-01\", periods=12, freq=\"M\")), is_relative=False\n)\nfh\n\nForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',\n             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],\n            dtype='period[M]', is_relative=False)"
+    "section": "Plot residuals (cont.)",
+    "text": "Plot residuals (cont.)\n\nplot_acf(residual.dropna(), lags=50)"
   },
   {
-    "objectID": "posts/time_series/Week3.html#step-3-apply-transformations",
-    "href": "posts/time_series/Week3.html#step-3-apply-transformations",
+    "objectID": "posts/time_series/Week3.html#plot-residuals-cont.-1",
+    "href": "posts/time_series/Week3.html#plot-residuals-cont.-1",
     "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 3: Apply transformations",
-    "text": "Step 3: Apply transformations\n\nimport numpy as np\ny_train.naturallog = np.log(y_train) \nplot_series(y_train.naturallog)\n\n(<Figure size 1920x480 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#step-4-take-difference-series",
-    "href": "posts/time_series/Week3.html#step-4-take-difference-series",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 4: Take difference series",
-    "text": "Step 4: Take difference series\nIdentifying non-stationarity by looking at plots\n\nTime series plot\nThe ACF of stationary data drops to zero relatively quickly.\nThe ACF of non-stationary data decreases slowly.\nFor non-stationary data, the value of \\(r_1\\) is often large and positive."
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#take-seasonal-difference-series",
-    "href": "posts/time_series/Week3.html#take-seasonal-difference-series",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Take seasonal difference series",
-    "text": "Take seasonal difference series\n\ny_train.naturallog.diff12 = y_train.naturallog.diff(12)\ny_train.naturallog.diff12\n\n1949-01         NaN\n1949-02         NaN\n1949-03         NaN\n1949-04         NaN\n1949-05         NaN\n             ...   \n1959-08    0.101591\n1959-09    0.136312\n1959-10    0.125491\n1959-11    0.155072\n1959-12    0.183804\nFreq: M, Name: Number of airline passengers, Length: 132, dtype: float64"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#take-seasonal-difference-series-cont.",
-    "href": "posts/time_series/Week3.html#take-seasonal-difference-series-cont.",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Take seasonal difference series (cont.)",
-    "text": "Take seasonal difference series (cont.)\n\ny_train.naturallog.diff12.head(20)\n\n1949-01         NaN\n1949-02         NaN\n1949-03         NaN\n1949-04         NaN\n1949-05         NaN\n1949-06         NaN\n1949-07         NaN\n1949-08         NaN\n1949-09         NaN\n1949-10         NaN\n1949-11         NaN\n1949-12         NaN\n1950-01    0.026433\n1950-02    0.065597\n1950-03    0.065958\n1950-04    0.045462\n1950-05    0.032523\n1950-06    0.098672\n1950-07    0.138586\n1950-08    0.138586\nFreq: M, Name: Number of airline passengers, dtype: float64"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#acf---first-differencing-on-difflogdata-12",
-    "href": "posts/time_series/Week3.html#acf---first-differencing-on-difflogdata-12",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "ACF - First differencing on diff(log(data), 12)",
-    "text": "ACF - First differencing on diff(log(data), 12)\n\ny_train.naturallog.diff12.diff = y_train.naturallog.diff12.diff()\nplot_acf(y_train.naturallog.diff12.diff.dropna(), lags=50)\nplt.show()"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#pacf---first-differencing-on-difflogdata-12",
-    "href": "posts/time_series/Week3.html#pacf---first-differencing-on-difflogdata-12",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "PACF - First differencing on diff(log(data), 12)",
-    "text": "PACF - First differencing on diff(log(data), 12)\n\nplot_pacf(y_train.naturallog.diff12.diff.dropna(), lags=50)\nplt.show()"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
-    "href": "posts/time_series/Week3.html#step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Step 5: Examine the ACF/PACF to identify a suitable model (cont.)",
-    "text": "Step 5: Examine the ACF/PACF to identify a suitable model (cont.)\n\n\\(d=1\\) and \\(D=1\\) (from step 4)\nSignificant spike at lag 1 in ACF suggests non-seasonal MA(1) component.\nSignificant spike at lag 12 in ACF suggests seasonal MA(1) component.\nInitial candidate model: \\(ARIMA(0,1,1)(0,1,1)_{12}\\).\nBy analogous logic applied to the PACF, we could also have started with \\(ARIMA(1,1,0)(1,1,0)_{12}\\)."
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#fitting-arima-models",
-    "href": "posts/time_series/Week3.html#fitting-arima-models",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Fitting ARIMA models",
-    "text": "Fitting ARIMA models\n\nfrom sktime.forecasting.arima import ARIMA\nforecaster1 = ARIMA(  \n    order=(0, 1, 1),\n    seasonal_order=(0, 1, 1, 12),\n    suppress_warnings=True)\nforecaster1.fit(y_train.naturallog)    \ny_pred_1 = forecaster1.predict(fh)\ny_pred_1\n\n1960-01    6.038700\n1960-02    5.988821\n1960-03    6.145521\n1960-04    6.119111\n1960-05    6.159829\n1960-06    6.304860\n1960-07    6.433534\n1960-08    6.446252\n1960-09    6.266993\n1960-10    6.136496\n1960-11    6.008236\n1960-12    6.114690\nFreq: M, dtype: float64"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#back-transformation",
-    "href": "posts/time_series/Week3.html#back-transformation",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Back transformation",
-    "text": "Back transformation\n\ny_pred_1.exp = np.exp(y_pred_1)\ny_pred_1.exp\n\n1960-01    419.347465\n1960-02    398.944005\n1960-03    466.622813\n1960-04    454.460279\n1960-05    473.347301\n1960-06    547.225107\n1960-07    622.369714\n1960-08    630.335278\n1960-09    526.890634\n1960-10    462.430506\n1960-11    406.765291\n1960-12    452.455879\nFreq: M, dtype: float64"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#plot-training-test-and-forecasts",
-    "href": "posts/time_series/Week3.html#plot-training-test-and-forecasts",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Plot training, test, and forecasts",
-    "text": "Plot training, test, and forecasts\n\nplot_series(y_train, y_test, y_pred_1.exp, labels=[\"y_train\", \"y_test\", \"y_forecast\"])\n\n(<Figure size 1920x480 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#evaluation",
-    "href": "posts/time_series/Week3.html#evaluation",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Evaluation",
-    "text": "Evaluation\n\nfrom sktime.performance_metrics.forecasting import \\\n    mean_absolute_percentage_error\nmean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric=False)\n\n0.029239695342961447"
-  },
-  {
-    "objectID": "posts/time_series/Week3.html#your-turn",
-    "href": "posts/time_series/Week3.html#your-turn",
-    "title": "Week 3: AR/ MA/ ARMA/ ARIMA",
-    "section": "Your Turn",
-    "text": "Your Turn\nFit other variants of ARIMA models and identify the best ARIMA model for the series."
+    "section": "Plot residuals (cont.)",
+    "text": "Plot residuals (cont.)\n\nYour turn: remove the outlier and draw the histogram"
   }
 ]

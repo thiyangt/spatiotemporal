@@ -429,6 +429,7 @@
 <p><span class="math display">\[Y_t  = f(t) + \epsilon_t\]</span></p>
 <p>where <span class="math inline">\(\epsilon_t \sim iid(0, \sigma^2)\)</span>, <span class="math inline">\(t = 1, 2, ...T\)</span></p>
 <p>Mean of the process is time dependent, but the variance of the process is constant.</p>
+<p>A trend is deterministic if it is a nonrandom function of time.</p>
 </section>
 <section id="non-stationary-time-series-cont." class="slide level2">
 <h2>Non-Stationary Time Series (cont.)</h2>
@@ -438,6 +439,7 @@
 <li><p>Random walk has a stochastic trend.</p></li>
 <li><p>Model behind naive method.</p></li>
 </ul>
+<p>A trend is said to be stochastic if it is a random function of time.</p>
 </section>
 <section id="non-stationary-time-series-cont.-1" class="slide level2">
 <h2>Non-Stationary Time Series (cont.)</h2>
@@ -511,7 +513,7 @@
 <span id="cb2-3"><a href="#cb2-3"></a>plt.plot(rw)</span>
 <span id="cb2-4"><a href="#cb2-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img data-src="Week3_files/figure-revealjs/cell-4-output-1.png" width="792" height="411"></p>
+<p><img data-src="Week3_files/figure-revealjs/cell-4-output-1.png" width="802" height="411"></p>
 </div>
 </div>
 </section>
@@ -526,7 +528,7 @@
 <section id="difference-series" class="slide level2">
 <h2>Difference series</h2>
 <div class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="36">
 
 <div>
 <style scoped="">
@@ -554,33 +556,33 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>-0.316111</td>
+      <td>-0.184446</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.574021</td>
-      <td>-0.257911</td>
+      <td>-0.471474</td>
+      <td>-0.287027</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-0.147831</td>
-      <td>0.426191</td>
-      <td>0.684101</td>
+      <td>0.503277</td>
+      <td>0.974750</td>
+      <td>1.261777</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.290161</td>
-      <td>0.437992</td>
-      <td>0.011801</td>
+      <td>-0.407833</td>
+      <td>-0.911109</td>
+      <td>-1.885859</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-0.206828</td>
-      <td>-0.496989</td>
-      <td>-0.934980</td>
+      <td>0.920545</td>
+      <td>1.328378</td>
+      <td>2.239487</td>
     </tr>
     <tr>
       <th>...</th>
@@ -590,33 +592,33 @@
     </tr>
     <tr>
       <th>95</th>
-      <td>-5.666834</td>
-      <td>-2.046852</td>
-      <td>-2.416976</td>
+      <td>16.172532</td>
+      <td>-2.584427</td>
+      <td>-3.001353</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>-5.044906</td>
-      <td>0.621928</td>
-      <td>2.668780</td>
+      <td>16.204228</td>
+      <td>0.031696</td>
+      <td>2.616123</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>-5.115827</td>
-      <td>-0.070921</td>
-      <td>-0.692849</td>
+      <td>16.100783</td>
+      <td>-0.103446</td>
+      <td>-0.135142</td>
     </tr>
     <tr>
       <th>98</th>
-      <td>-4.039724</td>
-      <td>1.076103</td>
-      <td>1.147024</td>
+      <td>14.407644</td>
+      <td>-1.693139</td>
+      <td>-1.589693</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>-4.663474</td>
-      <td>-0.623750</td>
-      <td>-1.699853</td>
+      <td>13.876872</td>
+      <td>-0.530772</td>
+      <td>1.162367</td>
     </tr>
   </tbody>
 </table>
@@ -697,8 +699,8 @@
 <span id="cb5-5"><a href="#cb5-5"></a>airpassenger[<span class="st">'Month'</span>]<span class="op">=</span> pd.to_datetime(airpassenger[<span class="st">'Month'</span>])</span>
 <span id="cb5-6"><a href="#cb5-6"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'#Passengers'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="cell-output cell-output-display" data-execution_count="38">
-<pre><code>&lt;ggplot: (335576854)&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>&lt;ggplot: (300356657)&gt;</code></pre>
 </div>
 </div>
 <img data-src="Week3_files/figure-revealjs/cell-12-output-1.png" class="r-stretch"></section>
@@ -709,8 +711,8 @@
 <span id="cb7-2"><a href="#cb7-2"></a>airpassenger[<span class="st">'naturallog'</span>] <span class="op">=</span> np.log(airpassenger[<span class="st">'#Passengers'</span>]) </span>
 <span id="cb7-3"><a href="#cb7-3"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'naturallog'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="cell-output cell-output-display" data-execution_count="39">
-<pre><code>&lt;ggplot: (335535231)&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>&lt;ggplot: (335882719)&gt;</code></pre>
 </div>
 </div>
 <img data-src="Week3_files/figure-revealjs/cell-13-output-1.png" class="r-stretch"></section>
@@ -745,13 +747,13 @@
 <h2>Box-Cox transformation: Exploring the output</h2>
 <div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>fitted_lambda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>0.14802265137037945</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>y2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>array([ 6.82749005,  6.93282224,  7.16189151,  7.11461078,  6.98378687,
         7.20826542,  7.39959794,  7.39959794,  7.22352834,  6.94993188,
         6.67930112,  6.93282224,  6.88074148,  7.0663838 ,  7.29843847,
@@ -817,7 +819,7 @@
 <section id="section-1" class="slide level2">
 <h2></h2>
 <div class="cell" data-execution_count="16">
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
  &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
 </div>
@@ -835,7 +837,7 @@
 <span id="cb15-5"><a href="#cb15-5"></a>    pd.PeriodIndex(pd.date_range(<span class="st">"1960-01"</span>, periods<span class="op">=</span><span class="dv">12</span>, freq<span class="op">=</span><span class="st">"M"</span>)), is_relative<span class="op">=</span><span class="va">False</span></span>
 <span id="cb15-6"><a href="#cb15-6"></a>)</span>
 <span id="cb15-7"><a href="#cb15-7"></a>fh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>ForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',
              '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],
             dtype='period[M]', is_relative=False)</code></pre>
@@ -845,7 +847,7 @@
 <section id="plot-training-and-test-series" class="slide level2">
 <h2>Plot training and test series</h2>
 <div class="cell" data-execution_count="18">
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
  &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
 </div>
@@ -865,7 +867,7 @@
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2"></a>y_train.naturallog <span class="op">=</span> np.log(y_train) </span>
 <span id="cb18-3"><a href="#cb18-3"></a>plot_series(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
+<div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
  &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
 </div>
@@ -905,7 +907,7 @@
 <h2>ACF of log-transformation series</h2>
 <div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>plot_acf(y_train.naturallog, lags<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="50">
 <p><img data-src="Week3_files/figure-revealjs/cell-21-output-1.png"></p>
 </div>
 <div class="cell-output cell-output-display">
@@ -918,7 +920,7 @@
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>y_train.naturallog.diff12 <span class="op">=</span> y_train.naturallog.diff(<span class="dv">12</span>)</span>
 <span id="cb21-2"><a href="#cb21-2"></a>y_train.naturallog.diff12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="48">
+<div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>1949-01         NaN
 1949-02         NaN
 1949-03         NaN
@@ -938,7 +940,7 @@ Freq: M, Name: Number of airline passengers, Length: 132, dtype: float64</code><
 <h2>Take seasonal difference series (cont.)</h2>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>y_train.naturallog.diff12.head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>1949-01         NaN
 1949-02         NaN
 1949-03         NaN
@@ -1063,10 +1065,104 @@ Freq: M, Name: Number of airline passengers, dtype: float64</code></pre>
 <span id="cb28-3"><a href="#cb28-3"></a>    order<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
 <span id="cb28-4"><a href="#cb28-4"></a>    seasonal_order<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">12</span>),</span>
 <span id="cb28-5"><a href="#cb28-5"></a>    suppress_warnings<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb28-6"><a href="#cb28-6"></a>forecaster1.fit(y_train.naturallog)    </span>
-<span id="cb28-7"><a href="#cb28-7"></a>y_pred_1 <span class="op">=</span> forecaster1.predict(fh)</span>
-<span id="cb28-8"><a href="#cb28-8"></a>y_pred_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
+<span id="cb28-6"><a href="#cb28-6"></a>forecaster1.fit(y_train.naturallog)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ARIMA(order=(0, 1, 1), seasonal_order=(0, 1, 1, 12), suppress_warnings=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked=""><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">ARIMA</label><div class="sk-toggleable__content"><pre>ARIMA(order=(0, 1, 1), seasonal_order=(0, 1, 1, 12), suppress_warnings=True)</pre></div></div></div></div></div>
+</div>
+</div>
+</section>
+<section id="step-6-check-residual-series" class="slide level2">
+<h2>Step 6: Check residual series</h2>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>fhtrain <span class="op">=</span> ForecastingHorizon(</span>
+<span id="cb29-2"><a href="#cb29-2"></a>    pd.PeriodIndex(pd.period_range(start<span class="op">=</span><span class="st">'1949-01'</span>, end<span class="op">=</span><span class="st">'1959-12'</span>, freq<span class="op">=</span><span class="st">'M'</span>)), is_relative<span class="op">=</span><span class="va">False</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a>fhtrain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>ForecastingHorizon(['1949-01', '1949-02', '1949-03', '1949-04', '1949-05', '1949-06',
+             '1949-07', '1949-08', '1949-09', '1949-10',
+             ...
+             '1959-03', '1959-04', '1959-05', '1959-06', '1959-07', '1959-08',
+             '1959-09', '1959-10', '1959-11', '1959-12'],
+            dtype='period[M]', length=132, is_relative=False)</code></pre>
+</div>
+</div>
+</section>
+<section id="obtain-predictions-for-the-training-period" class="slide level2">
+<h2>Obtain predictions for the training period</h2>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>y_pred_train <span class="op">=</span> forecaster1.predict(fhtrain)</span>
+<span id="cb31-2"><a href="#cb31-2"></a>y_pred_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>1949-01         NaN
+1949-02    4.718511
+1949-03    4.770696
+1949-04    4.882814
+1949-05    4.859824
+             ...   
+1959-08    6.305147
+1959-09    6.146705
+1959-10    6.009102
+1959-11    5.871977
+1959-12    5.986708
+Freq: M, Length: 132, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="obtain-residual-series" class="slide level2">
+<h2>Obtain residual series</h2>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>residual <span class="op">=</span> y_train.naturallog <span class="op">-</span> y_pred_train</span>
+<span id="cb33-2"><a href="#cb33-2"></a>residual</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>1949-01         NaN
+1949-02    0.052174
+1949-03    0.112106
+1949-04   -0.023001
+1949-05   -0.064034
+             ...   
+1959-08    0.021002
+1959-09   -0.008978
+1959-10   -0.000288
+1959-11    0.019668
+1959-12    0.017179
+Freq: M, Length: 132, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-residuals" class="slide level2">
+<h2>Plot residuals</h2>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>plot_series(residual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;, &lt;AxesSubplot: &gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-31-output-2.png" class="r-stretch"></section>
+<section id="plot-residuals-cont." class="slide level2">
+<h2>Plot residuals (cont.)</h2>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>plot_acf(residual.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<p><img data-src="Week3_files/figure-revealjs/cell-32-output-1.png"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img data-src="Week3_files/figure-revealjs/cell-32-output-2.png"></p>
+</div>
+</div>
+</section>
+<section id="plot-residuals-cont.-1" class="slide level2">
+<h2>Plot residuals (cont.)</h2>
+
+<img data-src="Week3_files/figure-revealjs/cell-33-output-1.png" class="r-stretch"><p>Your turn: remove the outlier and draw the histogram</p>
+</section>
+<section id="step-7-generate-forecasts" class="slide level2">
+<h2>Step 7: Generate forecasts</h2>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>y_pred_1 <span class="op">=</span> forecaster1.predict(fh)</span>
+<span id="cb38-2"><a href="#cb38-2"></a>y_pred_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>1960-01    6.038700
 1960-02    5.988821
 1960-03    6.145521
@@ -1085,10 +1181,10 @@ Freq: M, dtype: float64</code></pre>
 </section>
 <section id="back-transformation" class="slide level2">
 <h2>Back transformation</h2>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>y_pred_1.exp <span class="op">=</span> np.exp(y_pred_1)</span>
-<span id="cb30-2"><a href="#cb30-2"></a>y_pred_1.exp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="54">
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>y_pred_1.exp <span class="op">=</span> np.exp(y_pred_1)</span>
+<span id="cb40-2"><a href="#cb40-2"></a>y_pred_1.exp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>1960-01    419.347465
 1960-02    398.944005
 1960-03    466.622813
@@ -1107,22 +1203,22 @@ Freq: M, dtype: float64</code></pre>
 </section>
 <section id="plot-training-test-and-forecasts" class="slide level2">
 <h2>Plot training, test, and forecasts</h2>
-<div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>plot_series(y_train, y_test, y_pred_1.exp, labels<span class="op">=</span>[<span class="st">"y_train"</span>, <span class="st">"y_test"</span>, <span class="st">"y_forecast"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>plot_series(y_train, y_test, y_pred_1.exp, labels<span class="op">=</span>[<span class="st">"y_train"</span>, <span class="st">"y_test"</span>, <span class="st">"y_forecast"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
  &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
 </div>
 
 </div>
-<img data-src="Week3_files/figure-revealjs/cell-29-output-2.png" class="r-stretch"></section>
+<img data-src="Week3_files/figure-revealjs/cell-36-output-2.png" class="r-stretch"></section>
 <section id="evaluation" class="slide level2">
 <h2>Evaluation</h2>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="im">from</span> sktime.performance_metrics.forecasting <span class="im">import</span> <span class="op">\</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>    mean_absolute_percentage_error</span>
-<span id="cb34-3"><a href="#cb34-3"></a>mean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="56">
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">from</span> sktime.performance_metrics.forecasting <span class="im">import</span> <span class="op">\</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>    mean_absolute_percentage_error</span>
+<span id="cb44-3"><a href="#cb44-3"></a>mean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
 <pre><code>0.029239695342961447</code></pre>
 </div>
 </div>
