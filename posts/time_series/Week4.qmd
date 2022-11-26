@@ -1,5 +1,5 @@
 ---
-title: "Week 3A: AutoARIMA"
+title: "Week 4: AutoARIMA"
 format:
   revealjs:
     slide-number: true
@@ -7,7 +7,134 @@ format:
 jupyter: python3
 ---
 
-## Auto ARIMA
+## Modelling steps
 
+1. Plot the data.
+
+2. If necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.
+
+~~3. If the data are non-stationary, take first differences of the data until the data are stationary.~~
+
+~~4. Examine the ACF/PACF to identify a suitable model.~~
+
+~~5. Try your chosen model(s), and use the AICc to search for a better model.~~
+
+##  Modelling steps (cont.)
+
+6. Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.
+
+7. Once the residuals look like white noise, calculate forecasts.
+
+## Modelling steps: AutoARIMA
+
+1. Plot the data.
+
+2. If necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.
+
+3. Use AutoARIMA to select a model.
+
+4. Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.
+
+5. Once the residuals look like white noise, calculate forecasts.
+
+## Modeling with Python
+
+```{python}
+#| echo: true
+from sktime import *
+from sktime.datasets import load_airline
+from sktime.utils.plotting import plot_series
+y = load_airline()
+plot_series(y)
+```
+
+## Your turn
+
+Take other important visualizations
+
+## Define forecast horizon
+
+```{python}
+#| echo: true
+import numpy as np
+import pandas as pd
+from sktime.forecasting.base import ForecastingHorizon
+fh = ForecastingHorizon(
+    pd.PeriodIndex(pd.date_range("1960-01", periods=12, freq="M")), is_relative=False
+)
+fh
+
+```
+
+## Split data into training and test
+
+```{python}
+#| echo: true
+from sktime.forecasting.model_selection import temporal_train_test_split
+y_train, y_test = temporal_train_test_split(y, fh=fh)
+
+```
+
+## Define forecaster with sktime
+
+```{python}
+#| echo: true
+from sktime.forecasting.statsforecast import StatsForecastAutoARIMA
+import numpy as np
+forecaster = StatsForecastAutoARIMA(  
+    sp=12,  max_p=2, max_q=2
+)
+y_train.naturallog = np.log(y_train)
+forecaster.fit(y_train.naturallog)
+```
+
+sp: Number of observations per unit of time.
+
+Help: https://www.sktime.org/en/stable/api_reference/auto_generated/sktime.forecasting.statsforecast.StatsForecastAutoARIMA.html
+
+## Your turn
+
+Preferm residual analysis
+
+## Obtain predictions for the training period
+
+```{python}
+#| echo: true
+y_pred = forecaster.predict(fh)
+y_pred 
+
+```
+
+## Prediction intervals
+
+```{python}
+#| echo: true
+coverage = 0.9
+y_pred_ints = forecaster.predict_interval(coverage=coverage)
+y_pred_ints
+```
+
+## Plotting values
+
+```{python}
+#| echo: true
+y_test.naturallog = np.log(y_test)
+from sktime.utils import plotting
+
+# also requires predictions
+y_pred = forecaster.predict()
+
+fig, ax = plotting.plot_series(y_train.naturallog, y_pred, labels=["y", "y_pred"])
+ax.fill_between(
+    ax.get_lines()[-1].get_xdata(),
+    y_pred_ints["Coverage"][coverage]["lower"],
+    y_pred_ints["Coverage"][coverage]["upper"],
+    alpha=0.2,
+    color=ax.get_lines()[-1].get_c(),
+    label=f"{coverage}% prediction intervals",
+)
+ax.legend();
+
+```
 
 

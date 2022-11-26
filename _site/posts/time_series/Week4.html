@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.253">
 
-  <title>Spatio-Temporal Data Analysis - Week 3: More on time series</title>
+  <title>Spatio-Temporal Data Analysis - Week 4: AutoARIMA</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -27,6 +27,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -317,20 +381,264 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 3: More on time series</h1>
+  <h1 class="title">Week 4: AutoARIMA</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section class="slide level2">
+<section id="modelling-steps" class="slide level2">
+<h2>Modelling steps</h2>
+<ol type="1">
+<li><p>Plot the data.</p></li>
+<li><p>If necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.</p></li>
+</ol>
+<p><del>3. If the data are non-stationary, take first differences of the data until the data are stationary.</del></p>
+<p><del>4. Examine the ACF/PACF to identify a suitable model.</del></p>
+<p><del>5. Try your chosen model(s), and use the AICc to search for a better model.</del></p>
+</section>
+<section id="modelling-steps-cont." class="slide level2">
+<h2>Modelling steps (cont.)</h2>
+<ol start="6" type="1">
+<li><p>Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.</p></li>
+<li><p>Once the residuals look like white noise, calculate forecasts.</p></li>
+</ol>
+</section>
+<section id="modelling-steps-autoarima" class="slide level2">
+<h2>Modelling steps: AutoARIMA</h2>
+<ol type="1">
+<li><p>Plot the data.</p></li>
+<li><p>If necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.</p></li>
+<li><p>Use AutoARIMA to select a model.</p></li>
+<li><p>Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.</p></li>
+<li><p>Once the residuals look like white noise, calculate forecasts.</p></li>
+</ol>
+</section>
+<section id="modeling-with-python" class="slide level2">
+<h2>Modeling with Python</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> sktime <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> sktime.datasets <span class="im">import</span> load_airline</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> sktime.utils.plotting <span class="im">import</span> plot_series</span>
+<span id="cb1-4"><a href="#cb1-4"></a>y <span class="op">=</span> load_airline()</span>
+<span id="cb1-5"><a href="#cb1-5"></a>plot_series(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="105">
+<pre><code>(&lt;Figure size 1536x384 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img data-src="Week4_files/figure-revealjs/cell-2-output-2.png" width="1263" height="337"></p>
+</div>
+</div>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<p>Take other important visualizations</p>
+</section>
+<section id="define-forecast-horizon" class="slide level2">
+<h2>Define forecast horizon</h2>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="im">from</span> sktime.forecasting.base <span class="im">import</span> ForecastingHorizon</span>
+<span id="cb3-4"><a href="#cb3-4"></a>fh <span class="op">=</span> ForecastingHorizon(</span>
+<span id="cb3-5"><a href="#cb3-5"></a>    pd.PeriodIndex(pd.date_range(<span class="st">"1960-01"</span>, periods<span class="op">=</span><span class="dv">12</span>, freq<span class="op">=</span><span class="st">"M"</span>)), is_relative<span class="op">=</span><span class="va">False</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>fh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="106">
+<pre><code>ForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',
+             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],
+            dtype='period[M]', is_relative=False)</code></pre>
+</div>
+</div>
+</section>
+<section id="split-data-into-training-and-test" class="slide level2">
+<h2>Split data into training and test</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> sktime.forecasting.model_selection <span class="im">import</span> temporal_train_test_split</span>
+<span id="cb5-2"><a href="#cb5-2"></a>y_train, y_test <span class="op">=</span> temporal_train_test_split(y, fh<span class="op">=</span>fh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="define-forecaster-with-sktime" class="slide level2">
+<h2>Define forecaster with sktime</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> sktime.forecasting.statsforecast <span class="im">import</span> StatsForecastAutoARIMA</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="#cb6-3"></a>forecaster <span class="op">=</span> StatsForecastAutoARIMA(  </span>
+<span id="cb6-4"><a href="#cb6-4"></a>    sp<span class="op">=</span><span class="dv">12</span>,  max_p<span class="op">=</span><span class="dv">2</span>, max_q<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>y_train.naturallog <span class="op">=</span> np.log(y_train)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>forecaster.fit(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="108">
+<style>#sk-container-id-16 {color: black;background-color: white;}#sk-container-id-16 pre{padding: 0;}#sk-container-id-16 div.sk-toggleable {background-color: white;}#sk-container-id-16 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-16 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-16 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-16 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-16 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-16 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-16 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-16 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-16 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-16 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-16 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-16 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-16 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-16 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-16 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-16 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-16 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-16 div.sk-item {position: relative;z-index: 1;}#sk-container-id-16 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-16 div.sk-item::before, #sk-container-id-16 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-16 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-16 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-16 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-16 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-16 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-16 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-16 div.sk-label-container {text-align: center;}#sk-container-id-16 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-16 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-16" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>StatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-16" type="checkbox" checked=""><label for="sk-estimator-id-16" class="sk-toggleable__label sk-toggleable__label-arrow">StatsForecastAutoARIMA</label><div class="sk-toggleable__content"><pre>StatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)</pre></div></div></div></div></div>
+</div>
+</div>
+<p>sp: Number of observations per unit of time.</p>
+<p>Help: https://www.sktime.org/en/stable/api_reference/auto_generated/sktime.forecasting.statsforecast.StatsForecastAutoARIMA.html</p>
+</section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your turn</h2>
+<p>Preferm residual analysis</p>
+</section>
+<section id="obtain-predictions-for-the-training-period" class="slide level2">
+<h2>Obtain predictions for the training period</h2>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>y_pred <span class="op">=</span> forecaster.predict(fh)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>y_pred </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="109">
+<pre><code>1960-01    6.038882
+1960-02    5.989590
+1960-03    6.146032
+1960-04    6.119674
+1960-05    6.159455
+1960-06    6.304701
+1960-07    6.432675
+1960-08    6.444805
+1960-09    6.266803
+1960-10    6.136178
+1960-11    6.007715
+1960-12    6.114486
+Freq: M, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="prediction-intervals" class="slide level2">
+<h2>Prediction intervals</h2>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>coverage <span class="op">=</span> <span class="fl">0.9</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>y_pred_ints <span class="op">=</span> forecaster.predict_interval(coverage<span class="op">=</span>coverage)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>y_pred_ints</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="110">
 
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">Coverage</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">0.9</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>lower</th>
+      <th>upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1960-01</th>
+      <td>5.978520</td>
+      <td>6.099244</td>
+    </tr>
+    <tr>
+      <th>1960-02</th>
+      <td>5.916820</td>
+      <td>6.062361</td>
+    </tr>
+    <tr>
+      <th>1960-03</th>
+      <td>6.062679</td>
+      <td>6.229384</td>
+    </tr>
+    <tr>
+      <th>1960-04</th>
+      <td>6.026940</td>
+      <td>6.212408</td>
+    </tr>
+    <tr>
+      <th>1960-05</th>
+      <td>6.058205</td>
+      <td>6.260705</td>
+    </tr>
+    <tr>
+      <th>1960-06</th>
+      <td>6.195598</td>
+      <td>6.413804</td>
+    </tr>
+    <tr>
+      <th>1960-07</th>
+      <td>6.316247</td>
+      <td>6.549103</td>
+    </tr>
+    <tr>
+      <th>1960-08</th>
+      <td>6.321487</td>
+      <td>6.568124</td>
+    </tr>
+    <tr>
+      <th>1960-09</th>
+      <td>6.136959</td>
+      <td>6.396648</td>
+    </tr>
+    <tr>
+      <th>1960-10</th>
+      <td>6.000121</td>
+      <td>6.272235</td>
+    </tr>
+    <tr>
+      <th>1960-11</th>
+      <td>5.865717</td>
+      <td>6.149713</td>
+    </tr>
+    <tr>
+      <th>1960-12</th>
+      <td>5.966786</td>
+      <td>6.262187</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-values" class="slide level2">
+<h2>Plotting values</h2>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>y_test.naturallog <span class="op">=</span> np.log(y_test)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">from</span> sktime.utils <span class="im">import</span> plotting</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># also requires predictions</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>y_pred <span class="op">=</span> forecaster.predict()</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>fig, ax <span class="op">=</span> plotting.plot_series(y_train.naturallog, y_pred, labels<span class="op">=</span>[<span class="st">"y"</span>, <span class="st">"y_pred"</span>])</span>
+<span id="cb10-8"><a href="#cb10-8"></a>ax.fill_between(</span>
+<span id="cb10-9"><a href="#cb10-9"></a>    ax.get_lines()[<span class="op">-</span><span class="dv">1</span>].get_xdata(),</span>
+<span id="cb10-10"><a href="#cb10-10"></a>    y_pred_ints[<span class="st">"Coverage"</span>][coverage][<span class="st">"lower"</span>],</span>
+<span id="cb10-11"><a href="#cb10-11"></a>    y_pred_ints[<span class="st">"Coverage"</span>][coverage][<span class="st">"upper"</span>],</span>
+<span id="cb10-12"><a href="#cb10-12"></a>    alpha<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb10-13"><a href="#cb10-13"></a>    color<span class="op">=</span>ax.get_lines()[<span class="op">-</span><span class="dv">1</span>].get_c(),</span>
+<span id="cb10-14"><a href="#cb10-14"></a>    label<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>coverage<span class="sc">}</span><span class="ss">% prediction intervals"</span>,</span>
+<span id="cb10-15"><a href="#cb10-15"></a>)</span>
+<span id="cb10-16"><a href="#cb10-16"></a>ax.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img data-src="Week4_files/figure-revealjs/cell-8-output-1.png" width="1267" height="337"></p>
+</div>
+</div>
 
 <div class="footer footer-default">
 
