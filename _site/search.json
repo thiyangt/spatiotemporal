@@ -1313,7 +1313,7 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/time_series/Week3.html#step-6-check-residual-series",
@@ -1465,56 +1465,56 @@
   {
     "objectID": "posts/time_series/Week4.html#modelling-steps",
     "href": "posts/time_series/Week4.html#modelling-steps",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Modelling steps",
     "text": "Modelling steps\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\n\n3. If the data are non-stationary, take first differences of the data until the data are stationary.\n4. Examine the ACF/PACF to identify a suitable model.\n5. Try your chosen model(s), and use the AICc to search for a better model."
   },
   {
     "objectID": "posts/time_series/Week4.html#modelling-steps-cont.",
     "href": "posts/time_series/Week4.html#modelling-steps-cont.",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Modelling steps (cont.)",
     "text": "Modelling steps (cont.)\n\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts."
   },
   {
     "objectID": "posts/time_series/Week4.html#modeling-with-python",
     "href": "posts/time_series/Week4.html#modeling-with-python",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Modeling with Python",
     "text": "Modeling with Python\n\nfrom sktime import *\nfrom sktime.datasets import load_airline\nfrom sktime.utils.plotting import plot_series\ny = load_airline()\nplot_series(y)\n\n(<Figure size 1536x384 with 1 Axes>,\n <AxesSubplot: ylabel='Number of airline passengers'>)"
   },
   {
     "objectID": "posts/time_series/Week4.html#your-turn",
     "href": "posts/time_series/Week4.html#your-turn",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Your turn",
     "text": "Your turn\nTake other important visualizations"
   },
   {
     "objectID": "posts/time_series/Week4.html#define-forecast-horizon",
     "href": "posts/time_series/Week4.html#define-forecast-horizon",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Define forecast horizon",
     "text": "Define forecast horizon\n\nimport numpy as np\nimport pandas as pd\nfrom sktime.forecasting.base import ForecastingHorizon\nfh = ForecastingHorizon(\n    pd.PeriodIndex(pd.date_range(\"1960-01\", periods=12, freq=\"M\")), is_relative=False\n)\nfh\n\nForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',\n             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],\n            dtype='period[M]', is_relative=False)"
   },
   {
     "objectID": "posts/time_series/Week4.html#split-data-into-training-and-test",
     "href": "posts/time_series/Week4.html#split-data-into-training-and-test",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Split data into training and test",
     "text": "Split data into training and test\n\nfrom sktime.forecasting.model_selection import temporal_train_test_split\ny_train, y_test = temporal_train_test_split(y, fh=fh)"
   },
   {
     "objectID": "posts/time_series/Week4.html#define-forecaster-with-sktime",
     "href": "posts/time_series/Week4.html#define-forecaster-with-sktime",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Define forecaster with sktime",
     "text": "Define forecaster with sktime\n\nfrom sktime.forecasting.statsforecast import StatsForecastAutoARIMA\nimport numpy as np\nforecaster = StatsForecastAutoARIMA(  \n    sp=12,  max_p=2, max_q=2\n)\ny_train.naturallog = np.log(y_train)\nforecaster.fit(y_train.naturallog)\n\nStatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.StatsForecastAutoARIMAStatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)\n\n\nsp: Number of observations per unit of time.\nHelp: https://www.sktime.org/en/stable/api_reference/auto_generated/sktime.forecasting.statsforecast.StatsForecastAutoARIMA.html"
   },
   {
     "objectID": "posts/time_series/Week4.html#your-turn-1",
     "href": "posts/time_series/Week4.html#your-turn-1",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Your turn",
     "text": "Your turn\nPreferm residual analysis"
   },
@@ -1528,7 +1528,7 @@
   {
     "objectID": "posts/time_series/Week4.html#obtain-predictions-for-the-training-period",
     "href": "posts/time_series/Week4.html#obtain-predictions-for-the-training-period",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Obtain predictions for the training period",
     "text": "Obtain predictions for the training period\n\ny_pred = forecaster.predict(fh)\ny_pred \n\n1960-01    6.038882\n1960-02    5.989590\n1960-03    6.146032\n1960-04    6.119674\n1960-05    6.159455\n1960-06    6.304701\n1960-07    6.432675\n1960-08    6.444805\n1960-09    6.266803\n1960-10    6.136178\n1960-11    6.007715\n1960-12    6.114486\nFreq: M, dtype: float64"
   },
@@ -1542,21 +1542,21 @@
   {
     "objectID": "posts/time_series/Week4.html#prediction-intervals",
     "href": "posts/time_series/Week4.html#prediction-intervals",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Prediction intervals",
     "text": "Prediction intervals\n\ncoverage = 0.9\ny_pred_ints = forecaster.predict_interval(coverage=coverage)\ny_pred_ints\n\n\n\n\n\n  \n    \n      \n      Coverage\n    \n    \n      \n      0.9\n    \n    \n      \n      lower\n      upper\n    \n  \n  \n    \n      1960-01\n      5.978520\n      6.099244\n    \n    \n      1960-02\n      5.916820\n      6.062361\n    \n    \n      1960-03\n      6.062679\n      6.229384\n    \n    \n      1960-04\n      6.026940\n      6.212408\n    \n    \n      1960-05\n      6.058205\n      6.260705\n    \n    \n      1960-06\n      6.195598\n      6.413804\n    \n    \n      1960-07\n      6.316247\n      6.549103\n    \n    \n      1960-08\n      6.321487\n      6.568124\n    \n    \n      1960-09\n      6.136959\n      6.396648\n    \n    \n      1960-10\n      6.000121\n      6.272235\n    \n    \n      1960-11\n      5.865717\n      6.149713\n    \n    \n      1960-12\n      5.966786\n      6.262187"
   },
   {
     "objectID": "posts/time_series/Week4.html#plotting-values",
     "href": "posts/time_series/Week4.html#plotting-values",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Plotting values",
     "text": "Plotting values\n\ny_test.naturallog = np.log(y_test)\nfrom sktime.utils import plotting\n\n# also requires predictions\ny_pred = forecaster.predict()\n\nfig, ax = plotting.plot_series(y_train.naturallog, y_pred, labels=[\"y\", \"y_pred\"])\nax.fill_between(\n    ax.get_lines()[-1].get_xdata(),\n    y_pred_ints[\"Coverage\"][coverage][\"lower\"],\n    y_pred_ints[\"Coverage\"][coverage][\"upper\"],\n    alpha=0.2,\n    color=ax.get_lines()[-1].get_c(),\n    label=f\"{coverage}% prediction intervals\",\n)\nax.legend();"
   },
   {
     "objectID": "posts/time_series/Week4.html#modelling-steps-autoarima",
     "href": "posts/time_series/Week4.html#modelling-steps-autoarima",
-    "title": "Week 4: AutoARIMA",
+    "title": "Week 4A: AutoARIMA",
     "section": "Modelling steps: AutoARIMA",
     "text": "Modelling steps: AutoARIMA\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\nUse AutoARIMA to select a model.\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts."
   }
