@@ -1,0 +1,64 @@
+---
+title: "Week 5C: Coordinate Reference System"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+---
+
+# Coordinate Reference System (CRS)
+
+A coordinate reference system (CRS) refers to the way in which spatial data that represent the earth’s surface (which is round / 3 dimensional) are flattened so that you can “Draw” them on a 2-dimensional surface.
+
+Source: [here](https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/intro-to-coordinate-reference-systems/#:~:text=(~500%20MB)-,Intro%20to%20Coordinate%20Reference%20Systems,on%20a%202%2Ddimensional%20surface.)
+
+# Maps of the United States in Different CRS
+
+![](us.jpeg)
+
+source: https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/intro-to-coordinate-reference-systems/#:~:text=(~500%20MB)-,Intro%20to%20Coordinate%20Reference%20Systems,on%20a%202%2Ddimensional%20surface.
+
+# Human head projections using different CRS
+
+![](head.jpeg)
+
+source: https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/intro-to-coordinate-reference-systems/#:~:text=(~500%20MB)-,Intro%20to%20Coordinate%20Reference%20Systems,on%20a%202%2Ddimensional%20surface.
+
+# Coordinate system
+
+This system consists of an X and a Y value located within a 2 (or more) - dimensional space.
+
+![](cs.png)
+
+# Globe to Plane
+
+**What do we want to plot?**
+
+Globe - 3D Space
+
+**Where do we plot?**
+
+Computer screen or paper - 2D Space
+
+To define the location of objects on the Earth, which is round, we need a **coordinate system** that adapts to the Earth’s shape.
+
+# Components of CRS
+
+- Coordinate system: X, Y grid to define a point located in space
+
+- Horizontal and vertical units
+
+# Why multiple CRS?
+
+To optimize to best represent the
+
+- shape and/or
+
+- scale / distance and/or
+
+- area
+
+# Why CRS is important?
+
+Source: [click here](https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/intro-to-coordinate-reference-systems/)
