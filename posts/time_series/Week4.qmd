@@ -1,5 +1,5 @@
 ---
-title: "Week 4A: AutoARIMA"
+title: "Week 5A: AutoARIMA"
 format:
   revealjs:
     slide-number: true

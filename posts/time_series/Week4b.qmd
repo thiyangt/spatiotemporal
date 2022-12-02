@@ -1,5 +1,5 @@
 ---
-title: "Week 4B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)"
+title: "Week 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)"
 format:
   revealjs:
     slide-number: true

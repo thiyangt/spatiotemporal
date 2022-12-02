@@ -1,5 +1,5 @@
 ---
-title: "Week 3: AR/ MA/ ARMA/ ARIMA"
+title: "Week 3-4: AR/ MA/ ARMA/ ARIMA"
 format:
   revealjs:
     slide-number: true
