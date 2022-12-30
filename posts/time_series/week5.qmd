@@ -62,3 +62,22 @@ To optimize to best represent the
 # Why CRS is important?
 
 Source: [click here](https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/intro-to-coordinate-reference-systems/)
+
+# Common spatial data formats
+
+- CSV
+
+- Shapefiles
+
+- GeoJSON
+
+# Shapefiles
+
+Comprised of several different files, which have the same filename but different extensions. 
+
+   `.shp` file contains the geometries; 
+   
+   `.prj` file contains the projection information; 
+   
+   `.dbf` file contains additional data associated with the geometries (There may be other files as well).
+

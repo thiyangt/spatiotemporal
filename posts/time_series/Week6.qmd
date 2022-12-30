@@ -1,0 +1,348 @@
+---
+title: "Week 6: Spatial data analysis: Introduction to kriging"
+format:
+  revealjs:
+    slide-number: true
+    show-slide-number: all 
+---
+
+## Interpolation
+
+How to estimate unknown values at specific
+locations?
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+x <-  1:10
+y <- c(1, 4, 5, 3, 2, 8, 9, 4, 8, 2)
+z <- factor(c(1, 1, 1, 0, 1, 0, 0, 1, 1,1))
+df <- data.frame(x=x, y=y, z=z)
+ggplot(df, aes(x=x, y=y, col=z)) + geom_point(size=3) + coord_fixed()
+```
+
+## Spatial Interpolation Methods
+
+- Inverse Distance Weighting (IDW)
+
+- Trend surface analysis
+
+- Kriging
+
+- Nearest neighbours: Thiessen polygons (Voronoi diagram)
+
+- Triangulated Irregular Network (TIN)
+
+
+## Example
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{r, comment=NA, echo=FALSE}
+location <- 1:5
+x <- c(2, 3, 9, 6, 5)
+y <- c(2, 7, 9, 5, 3)
+z <- c(10, 11, 15, 9, 8)
+d_5_5 <- sqrt((x - 5)^2 + (y-5)^2)
+df1 <- data.frame(x=x, y=y, z=z, d55=d_5_5)
+knitr::kable(df1)
+```
+
+:::
+
+::: {.column width="60%"}
+
+```{r, comment=NA, echo=FALSE}
+ggplot(df1, aes(x=x, y=y, col=z)) + geom_point(size=3) + coord_fixed()
+```
+
+:::
+
+::::
+
+We want to find z value at x=5, y=5.
+
+## Inverse Distance Weighting (IDW)
+
+$$Z_p = \frac{\sum_{i=1}^{n}Z_i W_i}{\sum_{i=1}^{n}W_i}$$
+
+Where,
+
+$Z_p$ = interpolated value at the grid node
+
+$Z_i$ = $z_i$ value at location $(x_i, y_i)$
+
+$W_i$ = weighting function
+
+$n$ = number of sample points
+
+Usually, $\sum_{i=1}^n w_i = 1$
+
+## IDW - weights
+
+Weights - based on distance from each of the known points ($i$) to the point we want to estimate ($k$)
+
+Point $i$ to point $k$ weight is
+
+$$w_i = \frac{\frac{1}{d_{ik}}}{\sum_{i=1}^n\frac{1}{d_{ik}}}$$
+
+## Example (cont.)
+
+```{r, echo=FALSE}
+df1$inv_dis <- 1/d_5_5
+df1$weight <- df1$inv_dis/sum(df1$inv_dis)
+knitr::kable(df1)
+```
+
+Predicted value at (5, 5)
+
+$$z(5, 5) = 10\times 0.104 + 11 \times 0.156 + 15 \times 0.078 + 9 \times 0.441 + 8 \times 0.220$$
+
+## Trend Surface Analysis
+
+$Z = \beta_o + \beta_1 X + \beta_2 Y + \epsilon$
+
+$Z$ is the observational data, and $X$ and $Y$ are the geographic coordinates of locations where the observations are made.
+
+```{r, comment=NA, message=FALSE, warning=FALSE, echo=FALSE}
+library(scatterplot3d)
+# Input data
+x <- c(1.9,0.8,1.1,0.1,-0.1,4.4,4.6,1.6,5.5,3.4)
+y <- c(66, 62, 64, 61, 63, 70, 68, 62, 68, 66)
+z <- c(0.7,-1.0,-0.2,-1.2,-0.1,3.4,0.0,0.8,3.7,2.0)
+dataset = cbind.data.frame(x,y,z)
+scatterplot3d(x,y,z)
+```
+
+## Trend Surface Analysis (cont.)
+
+$Z = \beta_o + \beta_1 X + \beta_2 Y + \epsilon$
+
+$Z$ is the observational data, and $X$ and $Y$ are the geographic coordinates of locations where the observations are made.
+
+```{r, comment=NA, message=FALSE, warning=FALSE, echo=FALSE}
+y_hat <- c(0.78901682, -0.39652923,  0.08373144, -0.88418673, -0.62895076,  2.60463202,  2.34939604,
+ -0.03648971,  2.75444050,  1.46409091)
+plot3d <- scatterplot3d(x,y,z,
+angle=55, scale.y=0.7, pch=16, color ="red", main ="Regression Plane")
+my.lm<- lm(z ~ x + y,data=dataset)
+plot3d$plane3d(my.lm, lty.box = "solid")
+#plot3d$points3d(x1,x2,y_hat,col="blue", type="h", pch=16)
+```
+
+## Kriging
+
+**Step 1:**
+
+The spatial covariance structure of the sampled points is determined by fitting a variogram.
+
+**Step 2:**
+
+Weights are derived from this covariance structure are used to interpolate values for unsampled points or blocks across the spatial field.
+
+##
+
+"Kriging will in general not be more effective than simpler methods of interpolation if there is little spatial autocorrelation among the sampled data points (that is, if the values do not co-vary in space). If there is at least moderate spatial autocorrelation, however, kriging can be a helpful method to preserve spatial variability that would be lost using a simpler method (for an example, see Auchincloss 2007, below)."
+
+Source: https://www.publichealth.columbia.edu/research/population-health-methods/kriging-interpolation#:~:text=Kriging%20can%20be%20understood%20as,blocks%20across%20the%20spatial%20field.
+
+## Variogram
+
+Shows how the dependence changes with distance.
+
+The dependence across space of a randomfield $Z$ is assessed using a variogram $\gamma$:
+
+$$\gamma(h)=\frac{1}{2}E[z(s)-z(s+h)]^2$$
+
+## Empirical estimator of variogram (Matheron estimator)
+
+$$\hat{\gamma}(h) = \frac{1}{2|N_h|}\sum_{(i, j)\epsilon N_h}(z(s_i)-z(s_j))^2$$
+while $N_h$  stands for the number of pair observations $(i,j)$ separated by a spatial distance $h$. 
+
+The terms $z(s_i)$ and $z(s_j)$ are the attribute values of observations $i$ and $j$ respectively.
+
+## There are other estimators
+
+Cressie-Hawkins:  which is more robust to extreme values. 
+
+Other robust estimators: 
+
+- Dowd 
+
+- Genton
+
+## Variogram: illustration
+
+Step 1:
+
+We compute sample values $z$ at a pair of points with:
+
+$$\frac{[z(x+h) - z(x)]^2}{2}$$
+
+## 
+
+![](dist_diff_plot.webp)
+
+distance (lag):  Euclidean distance
+
+Source: https://scikit-gstat.readthedocs.io/en/latest/userguide/variogram.html
+
+##
+
+![](var1.png)
+
+Source: https://scikit-gstat.readthedocs.io/en/latest/userguide/variogram.html
+
+## scikit-gstat: Different methods for binning distance data
+
+- even - evenly spaced bins
+
+- uniform - same sample sized bins
+
+- sturges - derive number of bins by Sturge’s rule
+
+- scott - derive number of bins by Scotts’s rule
+
+- sqrt - derive number of bins by sqaureroot rule
+
+- doane - derive number of bins by Doane’s rule
+
+- fd - derive number of bins by Freedmann-Diaconis estimator
+
+
+## scikit-gstat: Different methods for binning distance data (cont.)
+
+
+- kmeans - derive bins by K-Means clustering
+
+- ward - derive bins by hierachical clustering and Ward’s criterion
+
+- stable_entropy - derive bins from stable entropy setting
+
+## 
+
+![](compare_estimators.png)
+
+Source: https://scikit-gstat.readthedocs.io/en/latest/userguide/variogram.html
+
+## Variogram models
+
+- Model the empirically observed and calculated experimental variogram with a proper mathematical function. 
+
+- We need to define a function that takes a distance value and returns a semi-variance value
+
+## Different variogram models
+
+![](vari.png)
+
+Source: https://mycourses.aalto.fi/pluginfile.php/1265858/course/section/161436/Lecture%204%20Introduction%20to%20kriging.pdf
+
+## Parameters need to describe a variogram
+
+- Lag – The distance between sampling pairs
+
+- Sill – The value where the semivariogram first flattens off, the maximum level of semivariance.
+
+- Range – The point where the semivariogram
+reaches the sill on the lag-axis. Sample points that are farther apart than range are not spatially autocorrelated.
+
+- Nugget – The value of the variogram with 0 lag; errors in measurements
+
+##
+
+Sill, range and nugget define the variogram model
+
+## Variogram models
+
+Click here: https://scikit-gstat.readthedocs.io/en/latest/userguide/variogram.html
+
+## The steps in kriging
+
+1. Describe the spatial variation with variogram
+
+2. Summarize the variation with a mathematical function
+
+3. Use the function to determine interpolation weights
+
+With the weights calculated, interpolation is the same as with IDW
+
+Advantage: Kriging also produces kriging variance which can be used for estimating the uncertainty of the interpolation
+
+## In-class explanation
+
+![](krig.png)
+
+Source:https://link.springer.com/chapter/10.1007/978-3-030-17860-4_16
+
+$C$ - variogram function
+
+## Kriging assumptions
+
+**Stationarity:**  The process "looks" the same at each location. Mean and variance do not change over space.
+
+
+Therefore, parameters (such as the overall mean of the values, and the range and sill of the variogram) do not vary across the study space. The same variogram model is assumed to be valid across the study space.
+
+
+## Kriging assumptions (cont.)
+
+**Isotropy** – uniformity in all directions
+
+The dependence between locations is determined only by their separating distance neglecting the direction.
+
+## Different types of kriging
+
+– Ordinary
+
+– Simple
+
+– Universal
+
+– Block
+
+– Indicator
+
+– Co-kriging
+
+## Ordinary kriging
+
+- Assume data have a constant mean (no trend) and the mean value is not known in advance
+
+## Simple kriging
+
+- mean is a known constant, i.e. average
+of the entire data set
+
+
+## Universal kriging
+
+- Relaxes the assumption of stationarity by allowing the mean of the values to differ in a deterministic way in different locations (e.g. through some kind of spatial trend), while only the variance is held constant across the entire field. This second-order stationarity (sometimes called “weak stationarity”) is often a pertinent assumption with environmental exposures.
+
+
+## Block kriging
+
+Estimates averaged values over gridded “blocks” rather than single points. These blocks often have smaller prediction errors than are seen for individual points.
+
+## Indicator kriging
+
+- Used when the interpolated value is binary
+
+
+## Methods of evaluation
+
+- Cross-validation method leave-one-out:
+
+1. Drop one input point out of the model
+
+2. Interpolate the surface with kriging
+
+3. Compare measured (i.e. observed) value and
+predicted (i.e. from kriging) value
+
+4. Calculate error measures
+
+## Acknowledgement
+
+The content of the slides are based on
+
