@@ -833,6 +833,34 @@
     "text": "Maharaj distance\n\nFor the class of invertible and stationary ARMA processes\nBased on hypotheses testing to determine whether or not two time series have significantly different generating processes\nTwo dissimilarity measures: one is based on test statistics, other one is based on the associated p-value"
   },
   {
+    "objectID": "posts/time_series/week8b.html#data",
+    "href": "posts/time_series/week8b.html#data",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Data",
+    "text": "Data\n\ndf = pd.read_csv(\"AirPassengers.csv\", index_col=0)\ndf.index = pd.to_datetime(df.index)\ny = df[\"#Passengers\"]\ny.name = \"n_passengers\"\n\ny.plot(title=\"Airline passengers\");"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-4",
+    "href": "posts/time_series/week8b.html#section-4",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "",
+    "text": "seasonal_decomp = seasonal_decompose(y, model=\"additive\")\nseasonal_decomp.plot();"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-5",
+    "href": "posts/time_series/week8b.html#section-5",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "",
+    "text": "seasonal_decomp = seasonal_decompose(y, model=\"multiplicative\")\nseasonal_decomp.plot();"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#time-series-features",
+    "href": "posts/time_series/week8b.html#time-series-features",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Time series features",
+    "text": "Time series features\nTalagala, T. S., Hyndman, R. J., & Athanasopoulos, G. (2018). Meta-learning how to forecast time series. Monash Econometrics and Business Statistics Working Papers, 6(18), 16.\nhttps://www.monash.edu/business/ebs/research/publications/ebs/wp06-2018.pdf"
+  },
+  {
     "objectID": "posts/time_series/index.html",
     "href": "posts/time_series/index.html",
     "title": "Reading Materials",
@@ -2252,33 +2280,5 @@
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
     "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#data",
-    "href": "posts/time_series/week8b.html#data",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Data",
-    "text": "Data\n\ndf = pd.read_csv(\"AirPassengers.csv\", index_col=0)\ndf.index = pd.to_datetime(df.index)\ny = df[\"#Passengers\"]\ny.name = \"n_passengers\"\n\ny.plot(title=\"Airline passengers\");"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#section-4",
-    "href": "posts/time_series/week8b.html#section-4",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "",
-    "text": "seasonal_decomp = seasonal_decompose(y, model=\"additive\")\nseasonal_decomp.plot();"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#section-5",
-    "href": "posts/time_series/week8b.html#section-5",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "",
-    "text": "seasonal_decomp = seasonal_decompose(y, model=\"multiplicative\")\nseasonal_decomp.plot();"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#time-series-features",
-    "href": "posts/time_series/week8b.html#time-series-features",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Time series features",
-    "text": "Time series features\nTalagala, T. S., Hyndman, R. J., & Athanasopoulos, G. (2018). Meta-learning how to forecast time series. Monash Econometrics and Business Statistics Working Papers, 6(18), 16.\nhttps://www.monash.edu/business/ebs/research/publications/ebs/wp06-2018.pdf"
   }
 ]

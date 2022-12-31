@@ -116,7 +116,7 @@ Source: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and
 ## Multi-step ahead forecast
 
 
-![](cv1.svg)
+![](cv4.svg)
 
 Training set - blue, Test set - red
 
