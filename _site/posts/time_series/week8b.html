@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.253">
 
-  <title>Spatio-Temporal Data Analysis - Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures</title>
+  <title>Spatio-Temporal Data Analysis - Week 8b: Time Series Clustering</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -323,128 +323,92 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures</h1>
+  <h1 class="title">Week 8b: Time Series Clustering</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="loss-function" class="title-slide slide level1 center">
-<h1>Loss function</h1>
+<section id="what-is-time-series-clustering" class="slide level2">
+<h2>What is time series clustering?</h2>
 <ul>
-<li>Function that calculates loss for a single data point</li>
-</ul>
-<p><span class="math inline">\(e_i = y - \hat{y}\)</span></p>
-<p><span class="math inline">\(e_i^2 = (y - \hat{y})^2\)</span></p>
-</section>
-
-<section id="cost-function" class="title-slide slide level1 center">
-<h1>Cost function</h1>
+<li><p>Group <strong>similar</strong> time series</p></li>
+<li><p>What we meant by <strong>similar</strong>?</p>
 <ul>
-<li>Calculates loss for the entire data sets</li>
-</ul>
-<p><span class="math display">\[ME = \frac{1}{n}\sum_{i=1}^n e_i\]</span></p>
-</section>
-
-<section>
-<section id="numeric-outcome-evaluations" class="title-slide slide level1 center">
-<h1>Numeric outcome: Evaluations</h1>
-
-</section>
-<section id="prediction-accuracy-measures-cost-functions" class="slide level2">
-<h2>Prediction accuracy measures (cost functions)</h2>
-<p>Mean Error</p>
-<p><span class="math display">\[ME = \frac{1}{n}\sum_{i=1}^n e_i\]</span></p>
-<ul>
-<li>Error can be both negative and positive. So they can cancel each other during the summation.</li>
-</ul>
-</section>
-<section id="mean-absolute-error-l1-loss" class="slide level2">
-<h2>Mean Absolute Error (L1 loss)</h2>
-<p><span class="math display">\[MAE = \frac{1}{n}\sum_{i=1}^n |e_i|\]</span></p>
-</section>
-<section id="mean-squared-error-l2-loss" class="slide level2">
-<h2>Mean Squared Error (L2 loss)</h2>
-<p><span class="math display">\[MSE = \frac{1}{n}\sum_{i=1}^n e^2_i\]</span></p>
-</section>
-<section id="mean-percentage-error" class="slide level2">
-<h2>Mean Percentage Error</h2>
-<p><span class="math display">\[MPE = \frac{1}{n}\sum_{i=1}^n \frac{e_i}{y_i}\]</span></p>
-</section>
-<section id="mean-absolute-percentage-error" class="slide level2">
-<h2>Mean Absolute Percentage Error</h2>
-<p><span class="math display">\[MAPE = \frac{1}{n}\sum_{i=1}^n |\frac{e_i}{y_i}|\]</span></p>
-</section>
-<section id="root-mean-squared-error" class="slide level2">
-<h2>Root Mean Squared Error</h2>
-<p><span class="math display">\[RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n e^2_i}\]</span></p>
-</section>
-<section id="visualizaion-of-error-distribution" class="slide level2">
-<h2>Visualizaion of error distribution</h2>
-<p>Graphical representations reveal more than metrics alone.</p>
-</section>
-<section id="accuracy-measures-on-training-set-vs-test-set" class="slide level2">
-<h2>Accuracy Measures on Training Set vs Test Set</h2>
-<p>Accuracy measure on training set: Tells about the model fit</p>
-<p>Accuracy measure on test set: Model ability to predict new data</p>
-</section>
-<section id="evaluate-classifier-against-benchmarks" class="slide level2">
-<h2>Evaluate Classifier Against Benchmarks</h2>
-<p>Naive approach: approach relies soley on <span class="math inline">\(Y\)</span></p>
-<p>Outcome: Numeric</p>
-<p>Naive Benchmark: Average (<span class="math inline">\(\bar{Y}\)</span>)</p>
-</section>
-<section id="time-series-cross-validation" class="slide level2">
-<h2>Time series cross-validation</h2>
-
-<img data-src="crossvalidation.png" class="r-stretch"><p>Image credit: Professor Rob Hyndman</p>
-</section>
-<section id="loocv" class="slide level2">
-<h2>LOOCV</h2>
-
-<img data-src="loocv.png" class="r-stretch"><p>Blue - Training set</p>
-<p>Orange - Test set</p>
-<p>Not good for time series data. Why?</p>
-</section>
-<section id="evaluation-on-a-rolling-forecasting-origin" class="slide level2">
-<h2>Evaluation on a rolling forecasting origin</h2>
-<ul>
-<li><p>There are a series of test sets, each consisting of a single observation.</p></li>
-<li><p>The corresponding training set consists only of observations that occurred prior to the observation that forms the test set.</p></li>
+<li><p>similar profiles</p></li>
+<li><p>similar features</p></li>
+<li><p>same best forecasting models</p></li>
+<li><p>similar data generating process</p></li>
+</ul></li>
+<li><p>Before clustering think what is the purpose of grouping?</p></li>
 </ul>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-
-<img data-src="cv1.svg" class="r-stretch"><p>Training set - blue, Test set - red</p>
-<p>The forecast accuracy is computed by averaging over the test sets.</p>
-<p>Source: Hyndman, R. J., &amp; Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts.</p>
+<p><img data-src="tclust.png"> Source: Montero, P., &amp; Vilar, J. A. (2015). TSclust: An R package for time series clustering. Journal of Statistical Software, 62, 1-43.</p>
 </section>
-<section id="multi-step-ahead-forecast" class="slide level2">
-<h2>Multi-step ahead forecast</h2>
-
-<img data-src="cv1.svg" class="r-stretch"><p>Training set - blue, Test set - red</p>
-<p>Source: Hyndman, R. J., &amp; Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts.</p>
+<section id="time-series-clustering" class="slide level2">
+<h2>Time Series Clustering</h2>
+<ol type="1">
+<li><p>Model-free approaches</p></li>
+<li><p>Model-based approaches</p></li>
+<li><p>Complexity-based approaches</p></li>
+<li><p>Prediction-based approaches</p></li>
+</ol>
 </section>
-<section id="cross-validation-in-space" class="slide level2">
-<h2>Cross-validation in Space</h2>
-
-<img data-src="space_cv.png" class="r-stretch"><p>Source: Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera‐Arroita, G., … &amp; Dormann, C. F. (2017). Cross‐validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40(8), 913-929</p>
+<section>
+<section id="model-free-approaches" class="title-slide slide level1 center">
+<h1>Model-free approaches</h1>
+<p><span class="math display">\[\textbf{X}_T = (X_1, X_2, ..., X_T)^T\]</span></p>
+<p><span class="math display">\[\textbf{Y}_T = (Y_1, Y_2, ..., Y_T)^T\]</span></p>
 </section>
-<section id="case-1-unbalanced-data" class="slide level2">
-<h2>Case 1: Unbalanced data</h2>
-
-<img data-src="space_cv.png" class="r-stretch"></section>
-<section id="case-2" class="slide level2">
-<h2>Case 2</h2>
-
-<img data-src="scv.png" class="r-stretch"><p>Source: Ploton, P., Mortier, F., Réjou-Méchain, M., Barbier, N., Picard, N., Rossi, V., … &amp; Pélissier, R. (2020). Spatial validation reveals poor predictive performance of large-scale ecological mapping models. Nature communications, 11(1), 1-11.</p>
+<section id="minkowski-distance" class="slide level2">
+<h2>Minkowski distance</h2>
+<p><span class="math display">\[d_{Lq}(\textbf{X}_T, \textbf{Y}_T) = [\sum_{t=1}^T(X_t, Y_t)^q]^{(\frac{1}{q})}\]</span></p>
+<p>When <span class="math inline">\(q=1\)</span> - Manhattan distance</p>
+<p>When <span class="math inline">\(q=2\)</span> - Euclidean distance</p>
+<ul>
+<li><p>Observations are treated as independent. (<span class="math inline">\(d_{Lq}\)</span> is invariant to permutation over time)</p></li>
+<li><p>Very sensitive to time scaling</p></li>
+</ul>
 </section>
+<section id="frechet-distance" class="slide level2">
+<h2>Frechet distance</h2>
+<p>Source: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf</p>
+
+<img data-src="fr.png" class="r-stretch"></section>
 <section id="section-1" class="slide level2">
 <h2></h2>
+<p><img data-src="fr.png"> Source: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf</p>
+</section>
+<section id="frechet-distance-1" class="slide level2">
+<h2>Frechet distance</h2>
+<p>The standard Fréchet distance is the minimum leash length required for the person to walk the dog without backtracking.</p>
+<ul>
+<li><p>Account the ordering of the observations</p></li>
+<li><p>Can be computed on series of different lengths</p></li>
+</ul>
+</section>
+<section id="dynamic-time-warping-distance-dtw" class="slide level2">
+<h2>Dynamic time warping distance (DTW)</h2>
+<p>https://www.youtube.com/watch?v=ERKDHZyZDwA</p>
+</section>
+<section id="correlation-based-distance" class="slide level2">
+<h2>Correlation-based distance</h2>
+<p>Pearson’s correlation between <span class="math inline">\(\textbf{X_T}\)</span> and <span class="math inline">\(\textbf{Y_T}\)</span>: <span class="math inline">\(Cor(\textbf{X}_T, \textbf{Y}_T)\)</span></p>
+<p><span class="math display">\[d_{cor1}= \sqrt{2(1-Cor(\textbf{X}_T, \textbf{Y}_T))}\]</span></p>
+<p><span class="math display">\[d_{cor2}= \left (\left (\frac{1-Cor(\textbf{X}_T, \textbf{Y}_T)}{1+Cor(\textbf{X}_T, \textbf{Y}_T)} \right )^{\beta} \right )^{\frac{1}{2}}\]</span></p>
+<p>where <span class="math inline">\(\beta \geq 0\)</span>.</p>
+</section>
+<section id="autocorrelation-based-distance" class="slide level2">
+<h2>Autocorrelation-based distance</h2>
+<p>Distance is based on estimated autocorrelation function.</p>
+<p>Case 1: Uniform weight</p>
+<p><span class="math display">\[d(\textbf{X}_T, \textbf{Y}_T) = \sqrt{\sum_{i=1}^L(\hat{\rho}_{i, X}-\hat{\rho}_{i, Y})^2}\]</span></p>
+<p>Case 2: Geometric weights decaying with autocorrelation lag</p>
+<p><span class="math display">\[d(\textbf{X}_T, \textbf{Y}_T) = \sqrt{\sum_{i=1}^Lw(1-w)^i(\hat{\rho}_{i, X}-\hat{\rho}_{i, Y})^2}\]</span></p>
 
-
-<img data-src="scv.png" class="r-stretch"><div class="footer footer-default">
+<div class="footer footer-default">
 
 </div>
 </section></section>

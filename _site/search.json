@@ -2013,7 +2013,7 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/time_series/Week8.html#prediction-accuracy-measures-cost-functions",
@@ -2147,5 +2147,82 @@
     "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
     "section": "Case 2",
     "text": "Case 2\n\nSource: Ploton, P., Mortier, F., Réjou-Méchain, M., Barbier, N., Picard, N., Rossi, V., … & Pélissier, R. (2020). Spatial validation reveals poor predictive performance of large-scale ecological mapping models. Nature communications, 11(1), 1-11."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#case-1-unbalanced-data",
+    "href": "posts/time_series/Week8.html#case-1-unbalanced-data",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Case 1: Unbalanced data",
+    "text": "Case 1: Unbalanced data"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#what-is-time-series-clustering",
+    "href": "posts/time_series/week8b.html#what-is-time-series-clustering",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "What is time series clustering?",
+    "text": "What is time series clustering?\n\nGroup similar time series\nWhat we meant by similar?\n\nsimilar profiles\nsimilar features\nsame best forecasting models\nsimilar data generating process\n\nBefore clustering think what is the purpose of grouping?"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section",
+    "href": "posts/time_series/week8b.html#section",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "",
+    "text": "Source: Montero, P., & Vilar, J. A. (2015). TSclust: An R package for time series clustering. Journal of Statistical Software, 62, 1-43."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#time-series-clustering",
+    "href": "posts/time_series/week8b.html#time-series-clustering",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Time Series Clustering",
+    "text": "Time Series Clustering\n\nModel-free approaches\nModel-based approaches\nComplexity-based approaches\nPrediction-based approaches"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#minkowski-distance",
+    "href": "posts/time_series/week8b.html#minkowski-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Minkowski distance",
+    "text": "Minkowski distance\n\\[d_{Lq}(\\textbf{X}_T, \\textbf{Y}_T) = [\\sum_{t=1}^T(X_t, Y_t)^q]^{(\\frac{1}{q})}\\]\nWhen \\(q=1\\) - Manhattan distance\nWhen \\(q=2\\) - Euclidean distance\n\nObservations are treated as independent. (\\(d_{Lq}\\) is invariant to permutation over time)\nVery sensitive to time scaling"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#frechet-distance",
+    "href": "posts/time_series/week8b.html#frechet-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Frechet distance",
+    "text": "Frechet distance\nSource: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-1",
+    "href": "posts/time_series/week8b.html#section-1",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "",
+    "text": "Source: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#frechet-distance-1",
+    "href": "posts/time_series/week8b.html#frechet-distance-1",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Frechet distance",
+    "text": "Frechet distance\nThe standard Fréchet distance is the minimum leash length required for the person to walk the dog without backtracking.\n\nAccount the ordering of the observations\nCan be computed on series of different lengths"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#dynamic-time-warping-distance-dtw",
+    "href": "posts/time_series/week8b.html#dynamic-time-warping-distance-dtw",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Dynamic time warping distance (DTW)",
+    "text": "Dynamic time warping distance (DTW)\nhttps://www.youtube.com/watch?v=ERKDHZyZDwA"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#correlation-based-distance",
+    "href": "posts/time_series/week8b.html#correlation-based-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Correlation-based distance",
+    "text": "Correlation-based distance\nPearson’s correlation between \\(\\textbf{X_T}\\) and \\(\\textbf{Y_T}\\): \\(Cor(\\textbf{X}_T, \\textbf{Y}_T)\\)\n\\[d_{cor1}= \\sqrt{2(1-Cor(\\textbf{X}_T, \\textbf{Y}_T))}\\]\n\\[d_{cor2}= \\left (\\left (\\frac{1-Cor(\\textbf{X}_T, \\textbf{Y}_T)}{1+Cor(\\textbf{X}_T, \\textbf{Y}_T)} \\right )^{\\beta} \\right )^{\\frac{1}{2}}\\]\nwhere \\(\\beta \\geq 0\\)."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#autocorrelation-based-distance",
+    "href": "posts/time_series/week8b.html#autocorrelation-based-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Autocorrelation-based distance",
+    "text": "Autocorrelation-based distance\nDistance is based on estimated autocorrelation function.\nCase 1: Uniform weight\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^L(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]\nCase 2: Geometric weights decaying with autocorrelation lag\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^Lw(1-w)^i(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]"
   }
 ]

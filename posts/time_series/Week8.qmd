@@ -130,7 +130,7 @@ Source: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and
 
 Source: Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera‐Arroita, G., ... & Dormann, C. F. (2017). Cross‐validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40(8), 913-929
 
-## Case 1
+## Case 1: Unbalanced data
 
 ![](space_cv.png)
 
