@@ -595,6 +595,244 @@
     "text": "Source\nhttps://coderzcolumn.com/tutorials/data-science/maps-using-plotnine-choropleth-scatter-bubble-maps"
   },
   {
+    "objectID": "posts/time_series/Week8.html#prediction-accuracy-measures-cost-functions",
+    "href": "posts/time_series/Week8.html#prediction-accuracy-measures-cost-functions",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Prediction accuracy measures (cost functions)",
+    "text": "Prediction accuracy measures (cost functions)\nMean Error\n\\[ME = \\frac{1}{n}\\sum_{i=1}^n e_i\\]\n\nError can be both negative and positive. So they can cancel each other during the summation."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#mean-absolute-error-l1-loss",
+    "href": "posts/time_series/Week8.html#mean-absolute-error-l1-loss",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Absolute Error (L1 loss)",
+    "text": "Mean Absolute Error (L1 loss)\n\\[MAE = \\frac{1}{n}\\sum_{i=1}^n |e_i|\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#mean-squared-error-l2-loss",
+    "href": "posts/time_series/Week8.html#mean-squared-error-l2-loss",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Squared Error (L2 loss)",
+    "text": "Mean Squared Error (L2 loss)\n\\[MSE = \\frac{1}{n}\\sum_{i=1}^n e^2_i\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#mean-percentage-error",
+    "href": "posts/time_series/Week8.html#mean-percentage-error",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Percentage Error",
+    "text": "Mean Percentage Error\n\\[MPE = \\frac{1}{n}\\sum_{i=1}^n \\frac{e_i}{y_i}\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#mean-absolute-percentage-error",
+    "href": "posts/time_series/Week8.html#mean-absolute-percentage-error",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Absolute Percentage Error",
+    "text": "Mean Absolute Percentage Error\n\\[MAPE = \\frac{1}{n}\\sum_{i=1}^n |\\frac{e_i}{y_i}|\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#root-mean-squared-error",
+    "href": "posts/time_series/Week8.html#root-mean-squared-error",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Root Mean Squared Error",
+    "text": "Root Mean Squared Error\n\\[RMSE = \\sqrt{\\frac{1}{n}\\sum_{i=1}^n e^2_i}\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#visualizaion-of-error-distribution",
+    "href": "posts/time_series/Week8.html#visualizaion-of-error-distribution",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Visualizaion of error distribution",
+    "text": "Visualizaion of error distribution\nGraphical representations reveal more than metrics alone."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#accuracy-measures-on-training-set-vs-test-set",
+    "href": "posts/time_series/Week8.html#accuracy-measures-on-training-set-vs-test-set",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Accuracy Measures on Training Set vs Test Set",
+    "text": "Accuracy Measures on Training Set vs Test Set\nAccuracy measure on training set: Tells about the model fit\nAccuracy measure on test set: Model ability to predict new data"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#evaluate-classifier-against-benchmarks",
+    "href": "posts/time_series/Week8.html#evaluate-classifier-against-benchmarks",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Evaluate Classifier Against Benchmarks",
+    "text": "Evaluate Classifier Against Benchmarks\nNaive approach: approach relies soley on \\(Y\\)\nOutcome: Numeric\nNaive Benchmark: Average (\\(\\bar{Y}\\))"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#time-series-cross-validation",
+    "href": "posts/time_series/Week8.html#time-series-cross-validation",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Time series cross-validation",
+    "text": "Time series cross-validation\n\nImage credit: Professor Rob Hyndman"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#loocv",
+    "href": "posts/time_series/Week8.html#loocv",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "LOOCV",
+    "text": "LOOCV\n\nBlue - Training set\nOrange - Test set\nNot good for time series data. Why?"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#evaluation-on-a-rolling-forecasting-origin",
+    "href": "posts/time_series/Week8.html#evaluation-on-a-rolling-forecasting-origin",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Evaluation on a rolling forecasting origin",
+    "text": "Evaluation on a rolling forecasting origin\n\nThere are a series of test sets, each consisting of a single observation.\nThe corresponding training set consists only of observations that occurred prior to the observation that forms the test set."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#section",
+    "href": "posts/time_series/Week8.html#section",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "",
+    "text": "Training set - blue, Test set - red\nThe forecast accuracy is computed by averaging over the test sets.\nSource: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#multi-step-ahead-forecast",
+    "href": "posts/time_series/Week8.html#multi-step-ahead-forecast",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Multi-step ahead forecast",
+    "text": "Multi-step ahead forecast\n\nTraining set - blue, Test set - red\nSource: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#cross-validation-in-space",
+    "href": "posts/time_series/Week8.html#cross-validation-in-space",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Cross-validation in Space",
+    "text": "Cross-validation in Space\n\nSource: Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera‐Arroita, G., … & Dormann, C. F. (2017). Cross‐validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40(8), 913-929"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#case-1-unbalanced-data",
+    "href": "posts/time_series/Week8.html#case-1-unbalanced-data",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Case 1: Unbalanced data",
+    "text": "Case 1: Unbalanced data"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#case-2",
+    "href": "posts/time_series/Week8.html#case-2",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Case 2",
+    "text": "Case 2\n\nSource: Ploton, P., Mortier, F., Réjou-Méchain, M., Barbier, N., Picard, N., Rossi, V., … & Pélissier, R. (2020). Spatial validation reveals poor predictive performance of large-scale ecological mapping models. Nature communications, 11(1), 1-11."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#what-is-time-series-clustering",
+    "href": "posts/time_series/week8b.html#what-is-time-series-clustering",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "What is time series clustering?",
+    "text": "What is time series clustering?\n\nGroup similar time series\nWhat we meant by similar?\n\nsimilar profiles\nsimilar features\nsame best forecasting models\nsimilar data generating process\n\nBefore clustering think what is the purpose of grouping?"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section",
+    "href": "posts/time_series/week8b.html#section",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "",
+    "text": "Source: Montero, P., & Vilar, J. A. (2015). TSclust: An R package for time series clustering. Journal of Statistical Software, 62, 1-43."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#time-series-clustering",
+    "href": "posts/time_series/week8b.html#time-series-clustering",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Time Series Clustering",
+    "text": "Time Series Clustering\n\nModel-free approaches\nModel-based approaches\nComplexity-based approaches\nPrediction-based approaches"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#minkowski-distance",
+    "href": "posts/time_series/week8b.html#minkowski-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Minkowski distance",
+    "text": "Minkowski distance\n\\[d_{Lq}(\\textbf{X}_T, \\textbf{Y}_T) = [\\sum_{t=1}^T(X_t, Y_t)^q]^{(\\frac{1}{q})}\\]\nWhen \\(q=1\\) - Manhattan distance\nWhen \\(q=2\\) - Euclidean distance\n\nObservations are treated as independent. (\\(d_{Lq}\\) is invariant to permutation over time)\nVery sensitive to time scaling"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#frechet-distance",
+    "href": "posts/time_series/week8b.html#frechet-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Frechet distance",
+    "text": "Frechet distance\nSource: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-1",
+    "href": "posts/time_series/week8b.html#section-1",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "",
+    "text": "Source: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#frechet-distance-1",
+    "href": "posts/time_series/week8b.html#frechet-distance-1",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Frechet distance",
+    "text": "Frechet distance\nThe standard Fréchet distance is the minimum leash length required for the person to walk the dog without backtracking.\n\nAccount the ordering of the observations\nCan be computed on series of different lengths"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#dynamic-time-warping-distance-dtw",
+    "href": "posts/time_series/week8b.html#dynamic-time-warping-distance-dtw",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Dynamic time warping distance (DTW)",
+    "text": "Dynamic time warping distance (DTW)\nhttps://www.youtube.com/watch?v=ERKDHZyZDwA"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#correlation-based-distance",
+    "href": "posts/time_series/week8b.html#correlation-based-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Correlation-based distance",
+    "text": "Correlation-based distance\nPearson’s correlation between \\(\\textbf{X_T}\\) and \\(\\textbf{Y_T}\\): \\(Cor(\\textbf{X}_T, \\textbf{Y}_T)\\)\n\\[d_{cor1}= \\sqrt{2(1-Cor(\\textbf{X}_T, \\textbf{Y}_T))}\\]\n\\[d_{cor2}= \\left (\\left (\\frac{1-Cor(\\textbf{X}_T, \\textbf{Y}_T)}{1+Cor(\\textbf{X}_T, \\textbf{Y}_T)} \\right )^{\\beta} \\right )^{\\frac{1}{2}}\\]\nwhere \\(\\beta \\geq 0\\)."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#autocorrelation-based-distance",
+    "href": "posts/time_series/week8b.html#autocorrelation-based-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Autocorrelation-based distance",
+    "text": "Autocorrelation-based distance\nDistance is based on estimated autocorrelation function.\nCase 1: Uniform weight\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^L(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]\nCase 2: Geometric weights decaying with autocorrelation lag\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^Lw(1-w)^i(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#periodogram-based-distance",
+    "href": "posts/time_series/week8b.html#periodogram-based-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Periodogram-based distance",
+    "text": "Periodogram-based distance\nA periodogram is used to identify the dominant periods (or frequencies) of a time series.\n\nEuclidean distance between the periodogram ordinates (Gives more weight to the shape of the curve)\nEuclidean distance between the normalized periodogram ordinates (Consider the scale)\n\nReading: https://online.stat.psu.edu/stat510/lesson/6/6.1"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#other-model-free-measures",
+    "href": "posts/time_series/week8b.html#other-model-free-measures",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Other model-free measures",
+    "text": "Other model-free measures\n\nDissimilarity measures based on nonparametric spectral estimators\nDissimilarity measure based on wavelet transformation\nDissimilarity measure based on the symbolicrepresentation SAX"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#piccolo-distance",
+    "href": "posts/time_series/week8b.html#piccolo-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Piccolo distance",
+    "text": "Piccolo distance\n\nInvertible ARIMA processes\nEuclidean distance between the \\(AR(\\infty)\\)\n\nIn-class explanations."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#invertible-condition",
+    "href": "posts/time_series/week8b.html#invertible-condition",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Invertible condition",
+    "text": "Invertible condition\nBackshift notation: \n\\[BX_t=X_{t-1}\\] ARMA(p, q)\n\\[x_t= c+ \\phi_1x_{t-1}+\\phi_2x_{t-2}+...+\\phi_px_{t-p} + \\theta_1\\epsilon_{t-1}+\\theta_2\\epsilon _{t-2}+...+\\theta_q \\epsilon_{t-q}+\\epsilon_t,\\]\n\\[x_t= c+ \\phi_1Bx_{t}+\\phi_2B^2x_{t}+...+\\phi_pB^px_{t} + \\theta_1B\\epsilon_{t}+\\theta_2B^2\\epsilon _{t}+...+\\theta_q B^q\\epsilon_{t}+\\epsilon_t,\\] \\[x_t - \\phi_1Bx_{t}-\\phi_2B^2x_{t}-...-\\phi_pB^px_{t} = c + \\theta_1B\\epsilon_{t}+\\theta_2B^2\\epsilon _{t}+...+\\theta_q B^q\\epsilon_{t}+\\epsilon_t,\\]\n\\[\\Phi(B)x_t = c+\\Theta(B)\\epsilon_t\\]"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-2",
+    "href": "posts/time_series/week8b.html#section-2",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "",
+    "text": "\\[\\Phi(B)x_t = c+\\Theta(B)\\epsilon_t\\]\n\\[\\Phi(B) = 1-\\phi_1B-\\phi_2B^2-...-\\phi_pB^p\\]\n\\[\\Theta(B)= 1+\\theta_1B+\\theta_2B^2 _{t}+...+\\theta_q B^q\\]\nThis process is called invertible if the modulus of all the roots of \\(\\Theta(B)=0\\) are greater than one."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#demo",
+    "href": "posts/time_series/week8b.html#demo",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Demo",
+    "text": "Demo\nhttps://github.com/thiyangt/AR-infinite-coefficients/blob/master/ARinfinite-code.md"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#maharaj-distance",
+    "href": "posts/time_series/week8b.html#maharaj-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Maharaj distance",
+    "text": "Maharaj distance\n\nFor the class of invertible and stationary ARMA processes\nBased on hypotheses testing to determine whether or not two time series have significantly different generating processes\nTwo dissimilarity measures: one is based on test statistics, other one is based on the associated p-value"
+  },
+  {
     "objectID": "posts/time_series/index.html",
     "href": "posts/time_series/index.html",
     "title": "Reading Materials",
@@ -2016,262 +2254,24 @@
     "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/time_series/Week8.html#prediction-accuracy-measures-cost-functions",
-    "href": "posts/time_series/Week8.html#prediction-accuracy-measures-cost-functions",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Prediction accuracy measures (cost functions)",
-    "text": "Prediction accuracy measures (cost functions)\nMean Error\n\\[ME = \\frac{1}{n}\\sum_{i=1}^n e_i\\]\n\nError can be both negative and positive. So they can cancel each other during the summation."
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#evaluate-classifier-against-benchmark",
-    "href": "posts/time_series/Week8.html#evaluate-classifier-against-benchmark",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Evaluate Classifier Against Benchmark",
-    "text": "Evaluate Classifier Against Benchmark\nNaive approach: approach relies soley on \\(Y\\)\nOutcome: Numeric\nNaive Benchmark: Average (\\(\\bar{Y}\\))"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#mean-absolute-error-l1-loss",
-    "href": "posts/time_series/Week8.html#mean-absolute-error-l1-loss",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Mean Absolute Error (L1 loss)",
-    "text": "Mean Absolute Error (L1 loss)\n\\[MAE = \\frac{1}{n}\\sum_{i=1}^n |e_i|\\]"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#mean-squared-error-l2-loss",
-    "href": "posts/time_series/Week8.html#mean-squared-error-l2-loss",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Mean Squared Error (L2 loss)",
-    "text": "Mean Squared Error (L2 loss)\n\\[MSE = \\frac{1}{n}\\sum_{i=1}^n e^2_i\\]"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#mean-percentage-error",
-    "href": "posts/time_series/Week8.html#mean-percentage-error",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Mean Percentage Error",
-    "text": "Mean Percentage Error\n\\[MPE = \\frac{1}{n}\\sum_{i=1}^n \\frac{e_i}{y_i}\\]"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#mean-absolute-percentage-error",
-    "href": "posts/time_series/Week8.html#mean-absolute-percentage-error",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Mean Absolute Percentage Error",
-    "text": "Mean Absolute Percentage Error\n\\[MAPE = \\frac{1}{n}\\sum_{i=1}^n |\\frac{e_i}{y_i}|\\]"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#root-mean-squared-error",
-    "href": "posts/time_series/Week8.html#root-mean-squared-error",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Root Mean Squared Error",
-    "text": "Root Mean Squared Error\n\\[RMSE = \\sqrt{\\frac{1}{n}\\sum_{i=1}^n e^2_i}\\]"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#visualizaion-of-error-distribution",
-    "href": "posts/time_series/Week8.html#visualizaion-of-error-distribution",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Visualizaion of error distribution",
-    "text": "Visualizaion of error distribution\nGraphical representations reveal more than metrics alone."
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#accuracy-measures-on-training-set-vs-test-set",
-    "href": "posts/time_series/Week8.html#accuracy-measures-on-training-set-vs-test-set",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Accuracy Measures on Training Set vs Test Set",
-    "text": "Accuracy Measures on Training Set vs Test Set\nAccuracy measure on training set: Tells about the model fit\nAccuracy measure on test set: Model ability to predict new data"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#evaluate-classifier-against-benchmarks",
-    "href": "posts/time_series/Week8.html#evaluate-classifier-against-benchmarks",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Evaluate Classifier Against Benchmarks",
-    "text": "Evaluate Classifier Against Benchmarks\nNaive approach: approach relies soley on \\(Y\\)\nOutcome: Numeric\nNaive Benchmark: Average (\\(\\bar{Y}\\))"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#evaluation-on-a-rolling-forecasting-origin",
-    "href": "posts/time_series/Week8.html#evaluation-on-a-rolling-forecasting-origin",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Evaluation on a rolling forecasting origin",
-    "text": "Evaluation on a rolling forecasting origin\n\nThere are a series of test sets, each consisting of a single observation.\nThe corresponding training set consists only of observations that occurred prior to the observation that forms the test set."
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#section",
-    "href": "posts/time_series/Week8.html#section",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "",
-    "text": "Training set - blue, Test set - red\nThe forecast accuracy is computed by averaging over the test sets.\nSource: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts."
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#multi-step-ahead-forecast",
-    "href": "posts/time_series/Week8.html#multi-step-ahead-forecast",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Multi-step ahead forecast",
-    "text": "Multi-step ahead forecast\n\nTraining set - blue, Test set - red\nSource: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts."
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#time-series-cross-validation",
-    "href": "posts/time_series/Week8.html#time-series-cross-validation",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Time series cross-validation",
-    "text": "Time series cross-validation\n\nImage credit: Professor Rob Hyndman"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#loocv",
-    "href": "posts/time_series/Week8.html#loocv",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "LOOCV",
-    "text": "LOOCV\n\nBlue - Training set\nOrange - Test set\nNot good for time series data. Why?"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#section-1",
-    "href": "posts/time_series/Week8.html#section-1",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "",
-    "text": "Training set - blue, Test set - red\nThe forecast accuracy is computed by averaging over the test sets.\nSource: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts."
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#cross-validation-in-space",
-    "href": "posts/time_series/Week8.html#cross-validation-in-space",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Cross-validation in Space",
-    "text": "Cross-validation in Space\n\nSource: Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera‐Arroita, G., … & Dormann, C. F. (2017). Cross‐validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40(8), 913-929"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#case-1",
-    "href": "posts/time_series/Week8.html#case-1",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Case 1",
-    "text": "Case 1"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#case-2",
-    "href": "posts/time_series/Week8.html#case-2",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Case 2",
-    "text": "Case 2\n\nSource: Ploton, P., Mortier, F., Réjou-Méchain, M., Barbier, N., Picard, N., Rossi, V., … & Pélissier, R. (2020). Spatial validation reveals poor predictive performance of large-scale ecological mapping models. Nature communications, 11(1), 1-11."
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#case-1-unbalanced-data",
-    "href": "posts/time_series/Week8.html#case-1-unbalanced-data",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Case 1: Unbalanced data",
-    "text": "Case 1: Unbalanced data"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#what-is-time-series-clustering",
-    "href": "posts/time_series/week8b.html#what-is-time-series-clustering",
+    "objectID": "posts/time_series/week8b.html#data",
+    "href": "posts/time_series/week8b.html#data",
     "title": "Week 8b: Time Series Clustering",
-    "section": "What is time series clustering?",
-    "text": "What is time series clustering?\n\nGroup similar time series\nWhat we meant by similar?\n\nsimilar profiles\nsimilar features\nsame best forecasting models\nsimilar data generating process\n\nBefore clustering think what is the purpose of grouping?"
+    "section": "Data",
+    "text": "Data\n\ndf = pd.read_csv(\"AirPassengers.csv\", index_col=0)\ndf.index = pd.to_datetime(df.index)\ny = df[\"#Passengers\"]\ny.name = \"n_passengers\"\n\ny.plot(title=\"Airline passengers\");"
   },
   {
-    "objectID": "posts/time_series/week8b.html#section",
-    "href": "posts/time_series/week8b.html#section",
+    "objectID": "posts/time_series/week8b.html#section-4",
+    "href": "posts/time_series/week8b.html#section-4",
     "title": "Week 8b: Time Series Clustering",
     "section": "",
-    "text": "Source: Montero, P., & Vilar, J. A. (2015). TSclust: An R package for time series clustering. Journal of Statistical Software, 62, 1-43."
+    "text": "seasonal_decomp = seasonal_decompose(y, model=\"additive\")\nseasonal_decomp.plot();"
   },
   {
-    "objectID": "posts/time_series/week8b.html#time-series-clustering",
-    "href": "posts/time_series/week8b.html#time-series-clustering",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Time Series Clustering",
-    "text": "Time Series Clustering\n\nModel-free approaches\nModel-based approaches\nComplexity-based approaches\nPrediction-based approaches"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#minkowski-distance",
-    "href": "posts/time_series/week8b.html#minkowski-distance",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Minkowski distance",
-    "text": "Minkowski distance\n\\[d_{Lq}(\\textbf{X}_T, \\textbf{Y}_T) = [\\sum_{t=1}^T(X_t, Y_t)^q]^{(\\frac{1}{q})}\\]\nWhen \\(q=1\\) - Manhattan distance\nWhen \\(q=2\\) - Euclidean distance\n\nObservations are treated as independent. (\\(d_{Lq}\\) is invariant to permutation over time)\nVery sensitive to time scaling"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#frechet-distance",
-    "href": "posts/time_series/week8b.html#frechet-distance",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Frechet distance",
-    "text": "Frechet distance\nSource: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#section-1",
-    "href": "posts/time_series/week8b.html#section-1",
+    "objectID": "posts/time_series/week8b.html#section-5",
+    "href": "posts/time_series/week8b.html#section-5",
     "title": "Week 8b: Time Series Clustering",
     "section": "",
-    "text": "Source: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#frechet-distance-1",
-    "href": "posts/time_series/week8b.html#frechet-distance-1",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Frechet distance",
-    "text": "Frechet distance\nThe standard Fréchet distance is the minimum leash length required for the person to walk the dog without backtracking.\n\nAccount the ordering of the observations\nCan be computed on series of different lengths"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#dynamic-time-warping-distance-dtw",
-    "href": "posts/time_series/week8b.html#dynamic-time-warping-distance-dtw",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Dynamic time warping distance (DTW)",
-    "text": "Dynamic time warping distance (DTW)\nhttps://www.youtube.com/watch?v=ERKDHZyZDwA"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#correlation-based-distance",
-    "href": "posts/time_series/week8b.html#correlation-based-distance",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Correlation-based distance",
-    "text": "Correlation-based distance\nPearson’s correlation between \\(\\textbf{X_T}\\) and \\(\\textbf{Y_T}\\): \\(Cor(\\textbf{X}_T, \\textbf{Y}_T)\\)\n\\[d_{cor1}= \\sqrt{2(1-Cor(\\textbf{X}_T, \\textbf{Y}_T))}\\]\n\\[d_{cor2}= \\left (\\left (\\frac{1-Cor(\\textbf{X}_T, \\textbf{Y}_T)}{1+Cor(\\textbf{X}_T, \\textbf{Y}_T)} \\right )^{\\beta} \\right )^{\\frac{1}{2}}\\]\nwhere \\(\\beta \\geq 0\\)."
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#autocorrelation-based-distance",
-    "href": "posts/time_series/week8b.html#autocorrelation-based-distance",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Autocorrelation-based distance",
-    "text": "Autocorrelation-based distance\nDistance is based on estimated autocorrelation function.\nCase 1: Uniform weight\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^L(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]\nCase 2: Geometric weights decaying with autocorrelation lag\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^Lw(1-w)^i(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#periodogram-based-distance",
-    "href": "posts/time_series/week8b.html#periodogram-based-distance",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Periodogram-based distance",
-    "text": "Periodogram-based distance\nA periodogram is used to identify the dominant periods (or frequencies) of a time series.\n\nEuclidean distance between the periodogram ordinates (Gives more weight to the shape of the curve)\nEuclidean distance between the normalized periodogram ordinates (Consider the scale)\n\nReading: https://online.stat.psu.edu/stat510/lesson/6/6.1"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#other-model-free-measures",
-    "href": "posts/time_series/week8b.html#other-model-free-measures",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Other model-free measures",
-    "text": "Other model-free measures\n\nDissimilarity measures based on nonparametric spectral estimators\nDissimilarity measure based on wavelet transformation\nDissimilarity measure based on the symbolicrepresentation SAX"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#piccolo-distance",
-    "href": "posts/time_series/week8b.html#piccolo-distance",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Piccolo distance",
-    "text": "Piccolo distance\n\nInvertible ARIMA processes\nEuclidean distance between the \\(AR(\\infty)\\)\n\nIn-class explanations."
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#maharaj-distance",
-    "href": "posts/time_series/week8b.html#maharaj-distance",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Maharaj distance",
-    "text": "Maharaj distance\n\nFor the class of invertible and stationary ARMA processes\nBased on hypotheses testing to determine whether or not two time series have significantly different generating processes\nTwo dissimilarity measures: one is based on test statistics, other one is based on the associated p-value"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#invertible-condition",
-    "href": "posts/time_series/week8b.html#invertible-condition",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Invertible condition",
-    "text": "Invertible condition\nBackshift notation: \n\\[BX_t=X_{t-1}\\] ARMA(p, q)\n\\[x_t= c+ \\phi_1x_{t-1}+\\phi_2x_{t-2}+...+\\phi_px_{t-p} + \\theta_1\\epsilon_{t-1}+\\theta_2\\epsilon _{t-2}+...+\\theta_q \\epsilon_{t-q}+\\epsilon_t,\\]\n\\[x_t= c+ \\phi_1Bx_{t}+\\phi_2B^2x_{t}+...+\\phi_pB^px_{t} + \\theta_1B\\epsilon_{t}+\\theta_2B^2\\epsilon _{t}+...+\\theta_q B^q\\epsilon_{t}+\\epsilon_t,\\] \\[x_t - \\phi_1Bx_{t}-\\phi_2B^2x_{t}-...-\\phi_pB^px_{t} = c + \\theta_1B\\epsilon_{t}+\\theta_2B^2\\epsilon _{t}+...+\\theta_q B^q\\epsilon_{t}+\\epsilon_t,\\]\n\\[\\Phi(B)x_t = c+\\Theta(B)\\epsilon_t\\]"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#section-2",
-    "href": "posts/time_series/week8b.html#section-2",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "",
-    "text": "\\[\\Phi(B)x_t = c+\\Theta(B)\\epsilon_t\\]\n\\[\\Phi(B) = 1-\\phi_1B-\\phi_2B^2-...-\\phi_pB^p\\]\n\\[\\Theta(B)= 1+\\theta_1B+\\theta_2B^2 _{t}+...+\\theta_q B^q\\]\nThis process is called invertible if the modulus of all the roots of \\(\\Theta(B)=0\\) are greater than one."
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#demo",
-    "href": "posts/time_series/week8b.html#demo",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Demo",
-    "text": "Demo\nhttps://github.com/thiyangt/AR-infinite-coefficients/blob/master/ARinfinite-code.md"
+    "text": "seasonal_decomp = seasonal_decompose(y, model=\"multiplicative\")\nseasonal_decomp.plot();"
   }
 ]

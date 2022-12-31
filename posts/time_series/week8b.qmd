@@ -3,7 +3,8 @@ title: "Week 8b: Time Series Clustering"
 format:
   revealjs:
     slide-number: true
-    show-slide-number: all 
+    show-slide-number: all
+jupyter: python3 
 ---
 
 ## What is time series clustering?
@@ -180,6 +181,54 @@ Link to slides: https://thiyangt.github.io/whyR2021keynote/#1
 
 
 **tsfeatures package in Python:** https://pypi.org/project/tsfeatures/
+
+#
+
+```{python}
+#| echo: true
+
+import pandas as pd
+import numpy as np
+from statsmodels.tsa.seasonal import seasonal_decompose
+
+import matplotlib.pyplot as plt
+
+```
+
+## Data
+
+```{python}
+#| echo: true
+df = pd.read_csv("AirPassengers.csv", index_col=0)
+df.index = pd.to_datetime(df.index)
+y = df["#Passengers"]
+y.name = "n_passengers"
+
+y.plot(title="Airline passengers");
+```
+
+##
+
+```{python}
+#| echo: true
+seasonal_decomp = seasonal_decompose(y, model="additive")
+seasonal_decomp.plot();
+```
+
+##
+
+
+```{python}
+#| echo: true
+seasonal_decomp = seasonal_decompose(y, model="multiplicative")
+seasonal_decomp.plot();
+```
+
+#
+
+![](admul.png)
+
+Additive and multiplicative seasonality – can you identify them correctly? https://kourentzes.com/forecasting/2014/11/09/additive-and-multiplicative-seasonality/
 
 # Complexity-based approaches
 
