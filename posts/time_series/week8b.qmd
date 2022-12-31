@@ -7,6 +7,12 @@ format:
 jupyter: python3 
 ---
 
+## Is the following series dissimilar or similar?
+
+
+![](dtw1.png)
+
+
 ## What is time series clustering?
 
 
@@ -78,7 +84,9 @@ The standard Fréchet distance is the minimum leash length required for the pers
 
 ## Dynamic time warping distance (DTW)
 
-https://www.youtube.com/watch?v=ERKDHZyZDwA 
+\url{https://www.youtube.com/watch?v=ERKDHZyZDwA}
+
+![](dtw2.png)
 
 ## Correlation-based distance
 
