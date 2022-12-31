@@ -637,6 +637,13 @@
     "text": "Root Mean Squared Error\n\\[RMSE = \\sqrt{\\frac{1}{n}\\sum_{i=1}^n e^2_i}\\]"
   },
   {
+    "objectID": "posts/time_series/Week8.html#mean-absolute-scaled-error",
+    "href": "posts/time_series/Week8.html#mean-absolute-scaled-error",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Absolute Scaled Error",
+    "text": "Mean Absolute Scaled Error\nIn-class discussion\nhttps://robjhyndman.com/papers/mase.pdf"
+  },
+  {
     "objectID": "posts/time_series/Week8.html#visualizaion-of-error-distribution",
     "href": "posts/time_series/Week8.html#visualizaion-of-error-distribution",
     "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
@@ -2287,12 +2294,5 @@
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
     "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/time_series/Week8.html#mean-absolute-scaled-error",
-    "href": "posts/time_series/Week8.html#mean-absolute-scaled-error",
-    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
-    "section": "Mean Absolute Scaled Error",
-    "text": "Mean Absolute Scaled Error\nIn-class discussion\nhttps://robjhyndman.com/papers/mase.pdf"
   }
 ]
