@@ -2224,5 +2224,54 @@
     "title": "Week 8b: Time Series Clustering",
     "section": "Autocorrelation-based distance",
     "text": "Autocorrelation-based distance\nDistance is based on estimated autocorrelation function.\nCase 1: Uniform weight\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^L(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]\nCase 2: Geometric weights decaying with autocorrelation lag\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^Lw(1-w)^i(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#periodogram-based-distance",
+    "href": "posts/time_series/week8b.html#periodogram-based-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Periodogram-based distance",
+    "text": "Periodogram-based distance\nA periodogram is used to identify the dominant periods (or frequencies) of a time series.\n\nEuclidean distance between the periodogram ordinates (Gives more weight to the shape of the curve)\nEuclidean distance between the normalized periodogram ordinates (Consider the scale)\n\nReading: https://online.stat.psu.edu/stat510/lesson/6/6.1"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#other-model-free-measures",
+    "href": "posts/time_series/week8b.html#other-model-free-measures",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Other model-free measures",
+    "text": "Other model-free measures\n\nDissimilarity measures based on nonparametric spectral estimators\nDissimilarity measure based on wavelet transformation\nDissimilarity measure based on the symbolicrepresentation SAX"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#piccolo-distance",
+    "href": "posts/time_series/week8b.html#piccolo-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Piccolo distance",
+    "text": "Piccolo distance\n\nInvertible ARIMA processes\nEuclidean distance between the \\(AR(\\infty)\\)\n\nIn-class explanations."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#maharaj-distance",
+    "href": "posts/time_series/week8b.html#maharaj-distance",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Maharaj distance",
+    "text": "Maharaj distance\n\nFor the class of invertible and stationary ARMA processes\nBased on hypotheses testing to determine whether or not two time series have significantly different generating processes\nTwo dissimilarity measures: one is based on test statistics, other one is based on the associated p-value"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#invertible-condition",
+    "href": "posts/time_series/week8b.html#invertible-condition",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Invertible condition",
+    "text": "Invertible condition\nBackshift notation: \n\\[BX_t=X_{t-1}\\] ARMA(p, q)\n\\[x_t= c+ \\phi_1x_{t-1}+\\phi_2x_{t-2}+...+\\phi_px_{t-p} + \\theta_1\\epsilon_{t-1}+\\theta_2\\epsilon _{t-2}+...+\\theta_q \\epsilon_{t-q}+\\epsilon_t,\\]\n\\[x_t= c+ \\phi_1Bx_{t}+\\phi_2B^2x_{t}+...+\\phi_pB^px_{t} + \\theta_1B\\epsilon_{t}+\\theta_2B^2\\epsilon _{t}+...+\\theta_q B^q\\epsilon_{t}+\\epsilon_t,\\] \\[x_t - \\phi_1Bx_{t}-\\phi_2B^2x_{t}-...-\\phi_pB^px_{t} = c + \\theta_1B\\epsilon_{t}+\\theta_2B^2\\epsilon _{t}+...+\\theta_q B^q\\epsilon_{t}+\\epsilon_t,\\]\n\\[\\Phi(B)x_t = c+\\Theta(B)\\epsilon_t\\]"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-2",
+    "href": "posts/time_series/week8b.html#section-2",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "",
+    "text": "\\[\\Phi(B)x_t = c+\\Theta(B)\\epsilon_t\\]\n\\[\\Phi(B) = 1-\\phi_1B-\\phi_2B^2-...-\\phi_pB^p\\]\n\\[\\Theta(B)= 1+\\theta_1B+\\theta_2B^2 _{t}+...+\\theta_q B^q\\]\nThis process is called invertible if the modulus of all the roots of \\(\\Theta(B)=0\\) are greater than one."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#demo",
+    "href": "posts/time_series/week8b.html#demo",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Demo",
+    "text": "Demo\nhttps://github.com/thiyangt/AR-infinite-coefficients/blob/master/ARinfinite-code.md"
   }
 ]

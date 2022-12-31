@@ -407,11 +407,87 @@
 <p><span class="math display">\[d(\textbf{X}_T, \textbf{Y}_T) = \sqrt{\sum_{i=1}^L(\hat{\rho}_{i, X}-\hat{\rho}_{i, Y})^2}\]</span></p>
 <p>Case 2: Geometric weights decaying with autocorrelation lag</p>
 <p><span class="math display">\[d(\textbf{X}_T, \textbf{Y}_T) = \sqrt{\sum_{i=1}^Lw(1-w)^i(\hat{\rho}_{i, X}-\hat{\rho}_{i, Y})^2}\]</span></p>
+</section>
+<section id="periodogram-based-distance" class="slide level2">
+<h2>Periodogram-based distance</h2>
+<p>A periodogram is used to identify the dominant periods (or frequencies) of a time series.</p>
+<ul>
+<li><p>Euclidean distance between the periodogram ordinates (Gives more weight to the shape of the curve)</p></li>
+<li><p>Euclidean distance between the normalized periodogram ordinates (Consider the scale)</p></li>
+</ul>
+<p>Reading: https://online.stat.psu.edu/stat510/lesson/6/6.1</p>
+</section>
+<section id="other-model-free-measures" class="slide level2">
+<h2>Other model-free measures</h2>
+<ul>
+<li><p>Dissimilarity measures based on nonparametric spectral estimators</p></li>
+<li><p>Dissimilarity measure based on wavelet transformation</p></li>
+<li><p>Dissimilarity measure based on the symbolicrepresentation SAX</p></li>
+</ul>
+</section></section>
+<section>
+<section id="model-based-approaches" class="title-slide slide level1 center">
+<h1>Model-based approaches</h1>
+
+</section>
+<section id="piccolo-distance" class="slide level2">
+<h2>Piccolo distance</h2>
+<ul>
+<li><p>Invertible ARIMA processes</p></li>
+<li><p>Euclidean distance between the <span class="math inline">\(AR(\infty)\)</span></p></li>
+</ul>
+<p>In-class explanations.</p>
+</section>
+<section id="invertible-condition" class="slide level2">
+<h2>Invertible condition</h2>
+<p><strong>Backshift notation: </strong></p>
+<p><span class="math display">\[BX_t=X_{t-1}\]</span> ARMA(p, q)</p>
+<p><span class="math display">\[x_t= c+ \phi_1x_{t-1}+\phi_2x_{t-2}+...+\phi_px_{t-p} + \theta_1\epsilon_{t-1}+\theta_2\epsilon _{t-2}+...+\theta_q \epsilon_{t-q}+\epsilon_t,\]</span></p>
+<p><span class="math display">\[x_t= c+ \phi_1Bx_{t}+\phi_2B^2x_{t}+...+\phi_pB^px_{t} + \theta_1B\epsilon_{t}+\theta_2B^2\epsilon _{t}+...+\theta_q B^q\epsilon_{t}+\epsilon_t,\]</span> <span class="math display">\[x_t - \phi_1Bx_{t}-\phi_2B^2x_{t}-...-\phi_pB^px_{t} = c + \theta_1B\epsilon_{t}+\theta_2B^2\epsilon _{t}+...+\theta_q B^q\epsilon_{t}+\epsilon_t,\]</span></p>
+<p><span class="math display">\[\Phi(B)x_t = c+\Theta(B)\epsilon_t\]</span></p>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><span class="math display">\[\Phi(B)x_t = c+\Theta(B)\epsilon_t\]</span></p>
+<p><span class="math display">\[\Phi(B) = 1-\phi_1B-\phi_2B^2-...-\phi_pB^p\]</span></p>
+<p><span class="math display">\[\Theta(B)= 1+\theta_1B+\theta_2B^2 _{t}+...+\theta_q B^q\]</span></p>
+<p>This process is called invertible if the modulus of all the roots of <span class="math inline">\(\Theta(B)=0\)</span> are greater than one.</p>
+</section>
+<section id="demo" class="slide level2">
+<h2>Demo</h2>
+<p>https://github.com/thiyangt/AR-infinite-coefficients/blob/master/ARinfinite-code.md</p>
+</section>
+<section id="maharaj-distance" class="slide level2">
+<h2>Maharaj distance</h2>
+<ul>
+<li><p>For the class of invertible and stationary ARMA processes</p></li>
+<li><p>Based on hypotheses testing to determine whether or not two time series have significantly different generating processes</p>
+<p>Two dissimilarity measures: one is based on test statistics, other one is based on the associated p-value</p></li>
+</ul>
+</section></section>
+<section id="prediction-based-approaches" class="title-slide slide level1 center">
+<h1>Prediction-based approaches</h1>
+<p>Two time series are similar if their forecasts at s specific future time are close.</p>
+</section>
+
+<section id="feature-based-time-series-clustering" class="title-slide slide level1 center">
+<h1>Feature-based time series clustering</h1>
+<p>Link to slides: https://thiyangt.github.io/whyR2021keynote/#1</p>
+<p><strong>tsfeatures package in Python:</strong> https://pypi.org/project/tsfeatures/</p>
+</section>
+
+<section id="complexity-based-approaches" class="title-slide slide level1 center">
+<h1>Complexity-based approaches</h1>
+<ul>
+<li><p>Compression-based dissimilarity measures</p></li>
+<li><p>Permutation distribution clustering</p></li>
+<li><p>Complexity-invariant dissimilarity measure</p></li>
+</ul>
 
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

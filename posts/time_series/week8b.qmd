@@ -133,6 +133,35 @@ Reading: https://online.stat.psu.edu/stat510/lesson/6/6.1
 
 In-class explanations.
 
+## Invertible condition
+
+**Backshift notation: **
+
+$$BX_t=X_{t-1}$$
+ARMA(p, q)
+
+$$x_t= c+ \phi_1x_{t-1}+\phi_2x_{t-2}+...+\phi_px_{t-p} + \theta_1\epsilon_{t-1}+\theta_2\epsilon _{t-2}+...+\theta_q \epsilon_{t-q}+\epsilon_t,$$
+
+$$x_t= c+ \phi_1Bx_{t}+\phi_2B^2x_{t}+...+\phi_pB^px_{t} + \theta_1B\epsilon_{t}+\theta_2B^2\epsilon _{t}+...+\theta_q B^q\epsilon_{t}+\epsilon_t,$$
+$$x_t - \phi_1Bx_{t}-\phi_2B^2x_{t}-...-\phi_pB^px_{t} = c + \theta_1B\epsilon_{t}+\theta_2B^2\epsilon _{t}+...+\theta_q B^q\epsilon_{t}+\epsilon_t,$$
+
+$$\Phi(B)x_t = c+\Theta(B)\epsilon_t$$
+
+
+##
+
+$$\Phi(B)x_t = c+\Theta(B)\epsilon_t$$
+
+$$\Phi(B) = 1-\phi_1B-\phi_2B^2-...-\phi_pB^p$$
+
+$$\Theta(B)= 1+\theta_1B+\theta_2B^2 _{t}+...+\theta_q B^q$$
+
+This process is called invertible if the modulus of all the roots of $\Theta(B)=0$ are greater than one.
+
+## Demo
+
+https://github.com/thiyangt/AR-infinite-coefficients/blob/master/ARinfinite-code.md
+
 ## Maharaj distance
 
 - For the class of invertible and stationary ARMA processes
@@ -149,6 +178,13 @@ Two time series are similar if their forecasts at s specific future time are clo
 
 Link to slides: https://thiyangt.github.io/whyR2021keynote/#1
 
+
+**tsfeatures package in Python:** https://pypi.org/project/tsfeatures/
+
 # Complexity-based approaches
 
-1
+- Compression-based dissimilarity measures
+
+- Permutation distribution clustering
+
+- Complexity-invariant dissimilarity measure
