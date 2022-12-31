@@ -230,6 +230,12 @@ seasonal_decomp.plot();
 
 Additive and multiplicative seasonality – can you identify them correctly? https://kourentzes.com/forecasting/2014/11/09/additive-and-multiplicative-seasonality/
 
+## Time series features
+
+Talagala, T. S., Hyndman, R. J., & Athanasopoulos, G. (2018). Meta-learning how to forecast time series. Monash Econometrics and Business Statistics Working Papers, 6(18), 16.
+
+https://www.monash.edu/business/ebs/research/publications/ebs/wp06-2018.pdf
+
 # Complexity-based approaches
 
 - Compression-based dissimilarity measures

@@ -2273,5 +2273,12 @@
     "title": "Week 8b: Time Series Clustering",
     "section": "",
     "text": "seasonal_decomp = seasonal_decompose(y, model=\"multiplicative\")\nseasonal_decomp.plot();"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#time-series-features",
+    "href": "posts/time_series/week8b.html#time-series-features",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Time series features",
+    "text": "Time series features\nTalagala, T. S., Hyndman, R. J., & Athanasopoulos, G. (2018). Meta-learning how to forecast time series. Monash Econometrics and Business Statistics Working Papers, 6(18), 16.\nhttps://www.monash.edu/business/ebs/research/publications/ebs/wp06-2018.pdf"
   }
 ]
