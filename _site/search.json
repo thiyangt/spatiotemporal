@@ -714,6 +714,13 @@
     "text": "Case 2\n\nSource: Ploton, P., Mortier, F., Réjou-Méchain, M., Barbier, N., Picard, N., Rossi, V., … & Pélissier, R. (2020). Spatial validation reveals poor predictive performance of large-scale ecological mapping models. Nature communications, 11(1), 1-11."
   },
   {
+    "objectID": "posts/time_series/week8b.html#is-the-following-series-dissimilar-or-similar",
+    "href": "posts/time_series/week8b.html#is-the-following-series-dissimilar-or-similar",
+    "title": "Week 8b: Time Series Clustering",
+    "section": "Is the following series dissimilar or similar?",
+    "text": "Is the following series dissimilar or similar?"
+  },
+  {
     "objectID": "posts/time_series/week8b.html#what-is-time-series-clustering",
     "href": "posts/time_series/week8b.html#what-is-time-series-clustering",
     "title": "Week 8b: Time Series Clustering",
@@ -2280,12 +2287,5 @@
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
     "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/time_series/week8b.html#is-the-following-series-dissimilar-or-similar",
-    "href": "posts/time_series/week8b.html#is-the-following-series-dissimilar-or-similar",
-    "title": "Week 8b: Time Series Clustering",
-    "section": "Is the following series dissimilar or similar?",
-    "text": "Is the following series dissimilar or similar?"
   }
 ]
