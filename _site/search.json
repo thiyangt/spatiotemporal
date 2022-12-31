@@ -2013,6 +2013,139 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#prediction-accuracy-measures-cost-functions",
+    "href": "posts/time_series/Week8.html#prediction-accuracy-measures-cost-functions",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Prediction accuracy measures (cost functions)",
+    "text": "Prediction accuracy measures (cost functions)\nMean Error\n\\[ME = \\frac{1}{n}\\sum_{i=1}^n e_i\\]\n\nError can be both negative and positive. So they can cancel each other during the summation."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#evaluate-classifier-against-benchmark",
+    "href": "posts/time_series/Week8.html#evaluate-classifier-against-benchmark",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Evaluate Classifier Against Benchmark",
+    "text": "Evaluate Classifier Against Benchmark\nNaive approach: approach relies soley on \\(Y\\)\nOutcome: Numeric\nNaive Benchmark: Average (\\(\\bar{Y}\\))"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#mean-absolute-error-l1-loss",
+    "href": "posts/time_series/Week8.html#mean-absolute-error-l1-loss",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Absolute Error (L1 loss)",
+    "text": "Mean Absolute Error (L1 loss)\n\\[MAE = \\frac{1}{n}\\sum_{i=1}^n |e_i|\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#mean-squared-error-l2-loss",
+    "href": "posts/time_series/Week8.html#mean-squared-error-l2-loss",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Squared Error (L2 loss)",
+    "text": "Mean Squared Error (L2 loss)\n\\[MSE = \\frac{1}{n}\\sum_{i=1}^n e^2_i\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#mean-percentage-error",
+    "href": "posts/time_series/Week8.html#mean-percentage-error",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Percentage Error",
+    "text": "Mean Percentage Error\n\\[MPE = \\frac{1}{n}\\sum_{i=1}^n \\frac{e_i}{y_i}\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#mean-absolute-percentage-error",
+    "href": "posts/time_series/Week8.html#mean-absolute-percentage-error",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Mean Absolute Percentage Error",
+    "text": "Mean Absolute Percentage Error\n\\[MAPE = \\frac{1}{n}\\sum_{i=1}^n |\\frac{e_i}{y_i}|\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#root-mean-squared-error",
+    "href": "posts/time_series/Week8.html#root-mean-squared-error",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Root Mean Squared Error",
+    "text": "Root Mean Squared Error\n\\[RMSE = \\sqrt{\\frac{1}{n}\\sum_{i=1}^n e^2_i}\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#visualizaion-of-error-distribution",
+    "href": "posts/time_series/Week8.html#visualizaion-of-error-distribution",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Visualizaion of error distribution",
+    "text": "Visualizaion of error distribution\nGraphical representations reveal more than metrics alone."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#accuracy-measures-on-training-set-vs-test-set",
+    "href": "posts/time_series/Week8.html#accuracy-measures-on-training-set-vs-test-set",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Accuracy Measures on Training Set vs Test Set",
+    "text": "Accuracy Measures on Training Set vs Test Set\nAccuracy measure on training set: Tells about the model fit\nAccuracy measure on test set: Model ability to predict new data"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#evaluate-classifier-against-benchmarks",
+    "href": "posts/time_series/Week8.html#evaluate-classifier-against-benchmarks",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Evaluate Classifier Against Benchmarks",
+    "text": "Evaluate Classifier Against Benchmarks\nNaive approach: approach relies soley on \\(Y\\)\nOutcome: Numeric\nNaive Benchmark: Average (\\(\\bar{Y}\\))"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#evaluation-on-a-rolling-forecasting-origin",
+    "href": "posts/time_series/Week8.html#evaluation-on-a-rolling-forecasting-origin",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Evaluation on a rolling forecasting origin",
+    "text": "Evaluation on a rolling forecasting origin\n\nThere are a series of test sets, each consisting of a single observation.\nThe corresponding training set consists only of observations that occurred prior to the observation that forms the test set."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#section",
+    "href": "posts/time_series/Week8.html#section",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "",
+    "text": "Training set - blue, Test set - red\nThe forecast accuracy is computed by averaging over the test sets.\nSource: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#multi-step-ahead-forecast",
+    "href": "posts/time_series/Week8.html#multi-step-ahead-forecast",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Multi-step ahead forecast",
+    "text": "Multi-step ahead forecast\n\nTraining set - blue, Test set - red\nSource: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#time-series-cross-validation",
+    "href": "posts/time_series/Week8.html#time-series-cross-validation",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Time series cross-validation",
+    "text": "Time series cross-validation\n\nImage credit: Professor Rob Hyndman"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#loocv",
+    "href": "posts/time_series/Week8.html#loocv",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "LOOCV",
+    "text": "LOOCV\n\nBlue - Training set\nOrange - Test set\nNot good for time series data. Why?"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#section-1",
+    "href": "posts/time_series/Week8.html#section-1",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "",
+    "text": "Training set - blue, Test set - red\nThe forecast accuracy is computed by averaging over the test sets.\nSource: Hyndman, R. J., & Athanasopoulos, G. (2018). Forecasting: principles and practice. OTexts."
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#cross-validation-in-space",
+    "href": "posts/time_series/Week8.html#cross-validation-in-space",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Cross-validation in Space",
+    "text": "Cross-validation in Space\n\nSource: Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera‐Arroita, G., … & Dormann, C. F. (2017). Cross‐validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40(8), 913-929"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#case-1",
+    "href": "posts/time_series/Week8.html#case-1",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Case 1",
+    "text": "Case 1"
+  },
+  {
+    "objectID": "posts/time_series/Week8.html#case-2",
+    "href": "posts/time_series/Week8.html#case-2",
+    "title": "Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures",
+    "section": "Case 2",
+    "text": "Case 2\n\nSource: Ploton, P., Mortier, F., Réjou-Méchain, M., Barbier, N., Picard, N., Rossi, V., … & Pélissier, R. (2020). Spatial validation reveals poor predictive performance of large-scale ecological mapping models. Nature communications, 11(1), 1-11."
   }
 ]
