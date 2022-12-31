@@ -84,7 +84,9 @@ The standard Fréchet distance is the minimum leash length required for the pers
 
 ## Dynamic time warping distance (DTW)
 
-\url{https://www.youtube.com/watch?v=ERKDHZyZDwA}
+[https://www.youtube.com/watch?v=ERKDHZyZDwA](https://www.youtube.com/watch?v=ERKDHZyZDwA){preview-link="true"}
+
+
 
 ![](dtw2.png)
 

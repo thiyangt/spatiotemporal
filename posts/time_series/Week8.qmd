@@ -56,6 +56,12 @@ $$MAPE = \frac{1}{n}\sum_{i=1}^n |\frac{e_i}{y_i}|$$
 
 $$RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n e^2_i}$$
 
+## Mean Absolute Scaled Error
+
+In-class discussion
+
+[https://robjhyndman.com/papers/mase.pdf](https://robjhyndman.com/papers/mase.pdf){preview-link="true"}
+
 
 ## Visualizaion of error distribution
 
