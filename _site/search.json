@@ -2293,6 +2293,83 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 9: Variogram\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#spatial-continuity",
+    "href": "posts/time_series/week9.html#spatial-continuity",
+    "title": "Week 9: Variogram",
+    "section": "Spatial continuity",
+    "text": "Spatial continuity\nCorrelation between values over distance.\n\nSource: https://github.com/GeostatsGuy"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#variogram",
+    "href": "posts/time_series/week9.html#variogram",
+    "title": "Week 9: Variogram",
+    "section": "Variogram",
+    "text": "Variogram\n\nA statistic to quantify spatial continuity\n\n\\[\\hat{\\gamma}(h) = \\frac{1}{2(N_h)}\\sum_{\\alpha=1}^{N(h)}(z(u_\\alpha)-z(u_\\alpha + h))^2\\]"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#in-class-explanation",
+    "href": "posts/time_series/week9.html#in-class-explanation",
+    "title": "Week 9: Variogram",
+    "section": "In-class explanation",
+    "text": "In-class explanation\n\\[\\hat{\\gamma}(h) = \\frac{1}{2(N_h)}\\sum_{\\alpha=1}^{N(h)}(z(u_\\alpha)-z(u_\\alpha + h))^2\\]"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#h-scatterplot",
+    "href": "posts/time_series/week9.html#h-scatterplot",
+    "title": "Week 9: Variogram",
+    "section": "“h” scatterplot",
+    "text": "“h” scatterplot\nx- axis: \\(Z_{u_\\alpha}\\)\ny-axis: \\(Z_{u_{\\alpha}+h}\\)\n Which values are constant over separation?\nHow things are correlated in space?\nimage source:https://juliaearth.github.io/GeoStats.jl/v0.6/plotting.html"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#variogram-vs-semivariogram",
+    "href": "posts/time_series/week9.html#variogram-vs-semivariogram",
+    "title": "Week 9: Variogram",
+    "section": "Variogram vs Semivariogram",
+    "text": "Variogram vs Semivariogram\nSemivariogram\n\\[\\hat{\\gamma}(h) = \\frac{1}{2(N_h)}\\sum_{\\alpha=1}^{N(h)}(z(u_\\alpha)-z(u_\\alpha + h))^2\\]\nVariogram: If you remove 1/2\n\nBy putting 1/2 we get the following equation works\n\n\\[C_x(h) =\\sigma^2_x-\\gamma_x(h)\\]"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#section",
+    "href": "posts/time_series/week9.html#section",
+    "title": "Week 9: Variogram",
+    "section": "",
+    "text": "image source: https://sakai.unc.edu/access/content/group/2842013b-58f5-4453-aa8d-3e01bacbfc3d/public/Ecol562_Spring2012/docs/lectures/lecture31.htm"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#section-1",
+    "href": "posts/time_series/week9.html#section-1",
+    "title": "Week 9: Variogram",
+    "section": "",
+    "text": "\\[C_x(h) =\\sigma^2_x-\\gamma_x(h)\\]\n\\(C_x(h)\\): Covariance function\n\\(\\sigma^2_x\\): sill\n\\(\\gamma_x(h)\\): variogram value at the \\(h\\) lag vector"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#section-2",
+    "href": "posts/time_series/week9.html#section-2",
+    "title": "Week 9: Variogram",
+    "section": "",
+    "text": "Furthermore,\n\\[\\rho_x(h)=\\frac{C_x(h)}{\\sigma^2_x}\\]\n\\(\\rho_x(h)\\): measure of similarity over distance for which its valueis equal to tge h-scatterplot correlation coefficient."
+  },
+  {
+    "objectID": "posts/time_series/week9.html#variogram-calculation",
+    "href": "posts/time_series/week9.html#variogram-calculation",
+    "title": "Week 9: Variogram",
+    "section": "Variogram calculation",
+    "text": "Variogram calculation\nDataset: https://github.com/GeostatsGuy/GeoDataSets/blob/master/1D_Porosity.csv"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#section-3",
+    "href": "posts/time_series/week9.html#section-3",
+    "title": "Week 9: Variogram",
+    "section": "",
+    "text": "source: https://www.aspexit.com/fundamental-assumptions-of-the-variogram-second-order-stationarity-intrinsic-stationarity-what-is-this-all-about/"
+  },
+  {
+    "objectID": "posts/time_series/week9.html#in-class-variogram-observations",
+    "href": "posts/time_series/week9.html#in-class-variogram-observations",
+    "title": "Week 9: Variogram",
+    "section": "In-class: Variogram observations",
+    "text": "In-class: Variogram observations"
   }
 ]
