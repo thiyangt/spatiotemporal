@@ -1,0 +1,22 @@
+---
+title: "Practicals"
+author: ""
+date: "2022-11-05"
+categories: [news]
+---
+
+## Time series plots
+
+https://github.com/thiyangt/helloPython/blob/master/6_timeseries.ipynb
+
+## Shampoo sales data
+
+https://github.com/thiyangt/helloPython/blob/master/ShampooData.ipynb
+
+## Time series feature calculation
+
+https://github.com/thiyangt/helloPython/blob/master/Time%20Series%20Features.ipynb
+
+
+
+
