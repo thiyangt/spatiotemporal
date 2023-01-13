@@ -88,6 +88,8 @@ source: https://www.aspexit.com/fundamental-assumptions-of-the-variogram-second-
 
 ![](img4.png)
 
+source: https://www.researchgate.net/publication/316878381_The_nugget_effect
+
 ## In-class: Variogram observations
 
 ![](img6.png)
