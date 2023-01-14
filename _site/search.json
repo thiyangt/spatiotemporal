@@ -805,6 +805,13 @@
     "text": "source: https://www.aspexit.com/fundamental-assumptions-of-the-variogram-second-order-stationarity-intrinsic-stationarity-what-is-this-all-about/"
   },
   {
+    "objectID": "posts/time_series/week9.html#section-4",
+    "href": "posts/time_series/week9.html#section-4",
+    "title": "Week 9: Variogram",
+    "section": "",
+    "text": "source: https://www.researchgate.net/publication/316878381_The_nugget_effect"
+  },
+  {
     "objectID": "posts/time_series/week9.html#in-class-variogram-observations",
     "href": "posts/time_series/week9.html#in-class-variogram-observations",
     "title": "Week 9: Variogram",
@@ -1981,6 +1988,244 @@
     "text": "1 Coordinate Reference System (CRS)\nA coordinate reference system (CRS) refers to the way in which spatial data that represent the earth’s surface (which is round / 3 dimensional) are flattened so that you can “Draw” them on a 2-dimensional surface.\nSource: here\n\n\n2 Maps of the United States in Different CRS\n\nsource: https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/intro-to-coordinate-reference-systems/#::text=(500%20MB)-,Intro%20to%20Coordinate%20Reference%20Systems,on%20a%202%2Ddimensional%20surface.\n\n\n3 Human head projections using different CRS\n\nsource: https://www.earthdatascience.org/courses/earth-analytics/spatial-data-r/intro-to-coordinate-reference-systems/#::text=(500%20MB)-,Intro%20to%20Coordinate%20Reference%20Systems,on%20a%202%2Ddimensional%20surface.\n\n\n4 Coordinate system\nThis system consists of an X and a Y value located within a 2 (or more) - dimensional space.\n\n\n\n5 Globe to Plane\nWhat do we want to plot?\nGlobe - 3D Space\nWhere do we plot?\nComputer screen or paper - 2D Space\nTo define the location of objects on the Earth, which is round, we need a coordinate system that adapts to the Earth’s shape.\n\n\n6 Components of CRS\n\nCoordinate system: X, Y grid to define a point located in space\nHorizontal and vertical units\n\n\n\n7 Why multiple CRS?\nTo optimize to best represent the\n\nshape and/or\nscale / distance and/or\narea\n\n\n\n8 Why CRS is important?\nSource: click here\n\n\n9 Common spatial data formats\n\nCSV\nShapefiles\nGeoJSON\n\n\n\n10 Shapefiles\nComprised of several different files, which have the same filename but different extensions.\n.shp file contains the geometries;\n.prj file contains the projection information;\n.dbf file contains additional data associated with the geometries (There may be other files as well)."
   },
   {
+    "objectID": "posts/time_series/week10.html#variogram-and-h-scatter-plots",
+    "href": "posts/time_series/week10.html#variogram-and-h-scatter-plots",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Variogram and h-scatter plots",
+    "text": "Variogram and h-scatter plots\n\nsource: here\nMark h-scatter plots with positive correlation, no correlation, negative correlation"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#reason-for-variogram-calculation-kriging",
+    "href": "posts/time_series/week10.html#reason-for-variogram-calculation-kriging",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Reason for variogram calculation: Kriging",
+    "text": "Reason for variogram calculation: Kriging\n\nImage source: Pellicone, G., Caloiero, T., Modica, G., & Guagliardi, I. (2018). Application of several spatial interpolation techniques to monthly rainfall data in the Calabria region (southern Italy). International Journal of Climatology, 38(9), 3651-3666."
+  },
+  {
+    "objectID": "posts/time_series/week10.html#lets-go-back-to-the-porosity-example",
+    "href": "posts/time_series/week10.html#lets-go-back-to-the-porosity-example",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Let’s go back to the Porosity example",
+    "text": "Let’s go back to the Porosity example\nData:https://github.com/GeostatsGuy/GeoDataSets/blob/master/1D_Porosity.csv"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section",
+    "href": "posts/time_series/week10.html#section",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "import pandas as pd\ndata = pd.read_csv('1D_Porosity.csv')\ndata\n\n\n\n\n\n  \n    \n      \n      Depth\n      Nporosity\n    \n  \n  \n    \n      0\n      0.25\n      -1.37\n    \n    \n      1\n      0.50\n      -2.08\n    \n    \n      2\n      0.75\n      -1.67\n    \n    \n      3\n      1.00\n      -1.16\n    \n    \n      4\n      1.25\n      -0.24\n    \n    \n      5\n      1.50\n      -0.36\n    \n    \n      6\n      1.75\n      0.44\n    \n    \n      7\n      2.00\n      0.36\n    \n    \n      8\n      2.25\n      -0.02\n    \n    \n      9\n      2.50\n      -0.63\n    \n    \n      10\n      2.75\n      -1.26\n    \n    \n      11\n      3.00\n      -1.03\n    \n    \n      12\n      3.25\n      0.88\n    \n    \n      13\n      3.50\n      1.51\n    \n    \n      14\n      3.75\n      1.37\n    \n    \n      15\n      4.00\n      0.81\n    \n    \n      16\n      4.25\n      1.21\n    \n    \n      17\n      4.50\n      0.24\n    \n    \n      18\n      4.75\n      0.99\n    \n    \n      19\n      5.00\n      0.49\n    \n    \n      20\n      5.25\n      0.34\n    \n    \n      21\n      5.50\n      0.07\n    \n    \n      22\n      5.75\n      -0.26\n    \n    \n      23\n      6.00\n      -0.41\n    \n    \n      24\n      6.25\n      -0.14\n    \n    \n      25\n      6.50\n      -1.44\n    \n    \n      26\n      6.75\n      -0.75\n    \n    \n      27\n      7.00\n      -0.78\n    \n    \n      28\n      7.25\n      -0.85\n    \n    \n      29\n      7.50\n      -0.92\n    \n    \n      30\n      7.75\n      -0.66\n    \n    \n      31\n      8.00\n      0.47\n    \n    \n      32\n      8.25\n      0.85\n    \n    \n      33\n      8.50\n      0.95\n    \n    \n      34\n      8.75\n      2.35\n    \n    \n      35\n      9.00\n      0.69\n    \n    \n      36\n      9.25\n      1.31\n    \n    \n      37\n      9.50\n      0.66\n    \n    \n      38\n      9.75\n      0.72\n    \n    \n      39\n      10.00\n      0.21"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-1",
+    "href": "posts/time_series/week10.html#section-1",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "data.head()\n\n\n\n\n\n  \n    \n      \n      Depth\n      Nporosity\n    \n  \n  \n    \n      0\n      0.25\n      -1.37\n    \n    \n      1\n      0.50\n      -2.08\n    \n    \n      2\n      0.75\n      -1.67\n    \n    \n      3\n      1.00\n      -1.16\n    \n    \n      4\n      1.25\n      -0.24"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-2",
+    "href": "posts/time_series/week10.html#section-2",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "data.tail()\n\n\n\n\n\n  \n    \n      \n      Depth\n      Nporosity\n    \n  \n  \n    \n      35\n      9.00\n      0.69\n    \n    \n      36\n      9.25\n      1.31\n    \n    \n      37\n      9.50\n      0.66\n    \n    \n      38\n      9.75\n      0.72\n    \n    \n      39\n      10.00\n      0.21"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-3",
+    "href": "posts/time_series/week10.html#section-3",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "data.describe()\n\n\n\n\n\n  \n    \n      \n      Depth\n      Nporosity\n    \n  \n  \n    \n      count\n      40.000000\n      40.000000\n    \n    \n      mean\n      5.125000\n      0.022250\n    \n    \n      std\n      2.922613\n      0.992111\n    \n    \n      min\n      0.250000\n      -2.080000\n    \n    \n      25%\n      2.687500\n      -0.757500\n    \n    \n      50%\n      5.125000\n      0.140000\n    \n    \n      75%\n      7.562500\n      0.742500\n    \n    \n      max\n      10.000000\n      2.350000"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-4",
+    "href": "posts/time_series/week10.html#section-4",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "import plotnine \nfrom plotnine import *\nggplot(data, aes(x=\"Depth\", y=\"Nporosity\"))+geom_line() + geom_point()\n\n\n<ggplot: (288689448)>"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#variogram-ploting-with-skgstat",
+    "href": "posts/time_series/week10.html#variogram-ploting-with-skgstat",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "variogram ploting with skgstat",
+    "text": "variogram ploting with skgstat\n\n#pip install scikit-gstat\nimport skgstat as skg\nV = skg.Variogram(data['Depth'], data['Nporosity'])\nV.plot()"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#increase-the-number-of-lags",
+    "href": "posts/time_series/week10.html#increase-the-number-of-lags",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Increase the number of lags",
+    "text": "Increase the number of lags\n\nV.maxlag = 25\nV.n_lags = 25\nV.plot()"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-5",
+    "href": "posts/time_series/week10.html#section-5",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "The data set includes 40 observations, consequently we can increase the number of lag classes.\n\nV.maxlag = 40\nV.n_lags = 40\nV.plot()"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#to-iluustrate-the-other-parameters-in-the-skg.variogram",
+    "href": "posts/time_series/week10.html#to-iluustrate-the-other-parameters-in-the-skg.variogram",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "To iluustrate the other parameters in the skg.Variogram",
+    "text": "To iluustrate the other parameters in the skg.Variogram\n\nV = skg.Variogram(data['Depth'], data['Nporosity'],\n              normalize = False, model = \"spherical\", use_nugget = True,\n              n_lags=40, maxlag=40)\nV.plot()"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#for-more-details",
+    "href": "posts/time_series/week10.html#for-more-details",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "For more details",
+    "text": "For more details\nhttps://scikit-gstat.readthedocs.io/en/latest/reference/variogram.html"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#calculating-experimental-variograms",
+    "href": "posts/time_series/week10.html#calculating-experimental-variograms",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Calculating Experimental Variograms",
+    "text": "Calculating Experimental Variograms\n\nSource: here"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-6",
+    "href": "posts/time_series/week10.html#section-6",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "source: Vega, A. N. (1995). Geostatistical Analysis Applied to Mine Waste Characterization and Remediation (Doctoral dissertation, Colorado School of Mines)."
+  },
+  {
+    "objectID": "posts/time_series/week10.html#in-class-search-template",
+    "href": "posts/time_series/week10.html#in-class-search-template",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "In-class: search template",
+    "text": "In-class: search template"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#in-class-seach-template-scan-across-all-possible-locations",
+    "href": "posts/time_series/week10.html#in-class-seach-template-scan-across-all-possible-locations",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "In-class: seach template (scan across all possible locations)",
+    "text": "In-class: seach template (scan across all possible locations)"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#choosing-the-directions-choice-of-azimuth-directionality",
+    "href": "posts/time_series/week10.html#choosing-the-directions-choice-of-azimuth-directionality",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Choosing the directions (Choice of Azimuth (Directionality))",
+    "text": "Choosing the directions (Choice of Azimuth (Directionality))\n\nSource: here"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#how-do-we-find-what-directions-you-should-calculate-the-variogram",
+    "href": "posts/time_series/week10.html#how-do-we-find-what-directions-you-should-calculate-the-variogram",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "How do we find what directions you should calculate the variogram?",
+    "text": "How do we find what directions you should calculate the variogram?\n\nExplore data\nCombining knowledge of geologists\nAzimuth angle in degrees clockwise from north"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-7",
+    "href": "posts/time_series/week10.html#section-7",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "Source: Trevisani, S., Cavalli, M., & Marchi, L. (2009). Variogram maps from LiDAR data as fingerprints of surface morphology on scree slopes. Natural Hazards and Earth System Sciences, 9(1), 129-133."
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-8",
+    "href": "posts/time_series/week10.html#section-8",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "Relationship between the variogram map and directional variograms. a) variogram 7 map of elevation data with profiles of directional variograms; b) directional variogram 8 calculated along the direction of maximum continuity, (dashed line in a); c) directional 9 variogram calculated along the direction of minimum continuity (continuous line in a)"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#guidance-for-paprameter-setting-when-calculating-variograms",
+    "href": "posts/time_series/week10.html#guidance-for-paprameter-setting-when-calculating-variograms",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Guidance for Paprameter Setting when Calculating Variograms",
+    "text": "Guidance for Paprameter Setting when Calculating Variograms\n\nLag separation: coincide with minimum data spacing\nLag tolerance - 1/2 lag separation distance\nThe variogram is only valid for a distance one-half of the field size."
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-9",
+    "href": "posts/time_series/week10.html#section-9",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "Directly taken from https://www.youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ."
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-10",
+    "href": "posts/time_series/week10.html#section-10",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "Isotropic: independent of the direction of measurement ##\n\nSource: https://geostatisticslessons.com/lessons/variogramanisotropy"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#in-class",
+    "href": "posts/time_series/week10.html#in-class",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "In-class",
+    "text": "In-class\nVariogram calculation in major and minor directions"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#python-tutorials",
+    "href": "posts/time_series/week10.html#python-tutorials",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Python tutorials",
+    "text": "Python tutorials\nTute 1\nTute 2\nTute 3"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#variogram-interpretations",
+    "href": "posts/time_series/week10.html#variogram-interpretations",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Variogram Interpretations",
+    "text": "Variogram Interpretations\n\nSource: https://www.researchgate.net/post/How-can-I-estimate-the-major-axis-and-ratio-values-from-directional-variogram-for-modeling-anisotropy"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#geometric-ansotropy",
+    "href": "posts/time_series/week10.html#geometric-ansotropy",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Geometric Ansotropy",
+    "text": "Geometric Ansotropy"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#other-pattersn",
+    "href": "posts/time_series/week10.html#other-pattersn",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Other pattersn",
+    "text": "Other pattersn\n\nCyclic\nTrend\nZonal Anisotropy"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-11",
+    "href": "posts/time_series/week10.html#section-11",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "Source:https://www.researchgate.net/publication/341763241_Spatio-temporal_analysis_of_rainfall_extremes_in_the_flood-prone_Nagavali_and_Vamsadhara_Basins_in_eastern_India/figures?lo=1"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-12",
+    "href": "posts/time_series/week10.html#section-12",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "Source:https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/joc.6405"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#section-13",
+    "href": "posts/time_series/week10.html#section-13",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "",
+    "text": "https://esurf.copernicus.org/articles/9/845/2021/"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#variogram-modelling",
+    "href": "posts/time_series/week10.html#variogram-modelling",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Variogram modelling",
+    "text": "Variogram modelling"
+  },
+  {
+    "objectID": "posts/time_series/week10.html#python-tutorial",
+    "href": "posts/time_series/week10.html#python-tutorial",
+    "title": "Week 10: Variogram calculation and modelling",
+    "section": "Python tutorial",
+    "text": "Python tutorial\nTute 3"
+  },
+  {
     "objectID": "posts/quarto/1_intro.html#section-3",
     "href": "posts/quarto/1_intro.html#section-3",
     "title": "Week 1A: Data Visualization: Grammar of Graphics",
@@ -2394,262 +2639,10 @@
     "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 9: Variogram\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 10: Variogram calculation and modelling\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nPracticals\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/time_series/week9.html#section-4",
-    "href": "posts/time_series/week9.html#section-4",
-    "title": "Week 9: Variogram",
-    "section": "",
-    "text": "source: https://www.researchgate.net/publication/316878381_The_nugget_effect"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#variogram",
-    "href": "posts/time_series/week10.html#variogram",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Variogram",
-    "text": "Variogram\n\nsource: here"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#reason-for-variogram-calculation",
-    "href": "posts/time_series/week10.html#reason-for-variogram-calculation",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Reason for variogram calculation",
-    "text": "Reason for variogram calculation\n\nSource:Pellicone, G., Caloiero, T., Modica, G., & Guagliardi, I. (2018). Application of several spatial interpolation techniques to monthly rainfall data in the Calabria region (southern Italy). International Journal of Climatology, 38(9), 3651-3666."
-  },
-  {
-    "objectID": "posts/time_series/week10.html#variogram-and-h-scatter-plots",
-    "href": "posts/time_series/week10.html#variogram-and-h-scatter-plots",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Variogram and h-scatter plots",
-    "text": "Variogram and h-scatter plots\n\nsource: here\nMark h-scatter plots with positive correlation, no correlation, negative correlation"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#reason-for-variogram-calculation-kriging",
-    "href": "posts/time_series/week10.html#reason-for-variogram-calculation-kriging",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Reason for variogram calculation: Kriging",
-    "text": "Reason for variogram calculation: Kriging\n\nImage source: Pellicone, G., Caloiero, T., Modica, G., & Guagliardi, I. (2018). Application of several spatial interpolation techniques to monthly rainfall data in the Calabria region (southern Italy). International Journal of Climatology, 38(9), 3651-3666."
-  },
-  {
-    "objectID": "posts/time_series/week10.html#lets-go-back-to-the-porosity-example",
-    "href": "posts/time_series/week10.html#lets-go-back-to-the-porosity-example",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Let’s go back to the Porosity example",
-    "text": "Let’s go back to the Porosity example\nData:https://github.com/GeostatsGuy/GeoDataSets/blob/master/1D_Porosity.csv"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-1",
-    "href": "posts/time_series/week10.html#section-1",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "data.head()\n\n\n\n\n\n  \n    \n      \n      Depth\n      Nporosity\n    \n  \n  \n    \n      0\n      0.25\n      -1.37\n    \n    \n      1\n      0.50\n      -2.08\n    \n    \n      2\n      0.75\n      -1.67\n    \n    \n      3\n      1.00\n      -1.16\n    \n    \n      4\n      1.25\n      -0.24"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section",
-    "href": "posts/time_series/week10.html#section",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "import pandas as pd\ndata = pd.read_csv('1D_Porosity.csv')\ndata\n\n\n\n\n\n  \n    \n      \n      Depth\n      Nporosity\n    \n  \n  \n    \n      0\n      0.25\n      -1.37\n    \n    \n      1\n      0.50\n      -2.08\n    \n    \n      2\n      0.75\n      -1.67\n    \n    \n      3\n      1.00\n      -1.16\n    \n    \n      4\n      1.25\n      -0.24\n    \n    \n      5\n      1.50\n      -0.36\n    \n    \n      6\n      1.75\n      0.44\n    \n    \n      7\n      2.00\n      0.36\n    \n    \n      8\n      2.25\n      -0.02\n    \n    \n      9\n      2.50\n      -0.63\n    \n    \n      10\n      2.75\n      -1.26\n    \n    \n      11\n      3.00\n      -1.03\n    \n    \n      12\n      3.25\n      0.88\n    \n    \n      13\n      3.50\n      1.51\n    \n    \n      14\n      3.75\n      1.37\n    \n    \n      15\n      4.00\n      0.81\n    \n    \n      16\n      4.25\n      1.21\n    \n    \n      17\n      4.50\n      0.24\n    \n    \n      18\n      4.75\n      0.99\n    \n    \n      19\n      5.00\n      0.49\n    \n    \n      20\n      5.25\n      0.34\n    \n    \n      21\n      5.50\n      0.07\n    \n    \n      22\n      5.75\n      -0.26\n    \n    \n      23\n      6.00\n      -0.41\n    \n    \n      24\n      6.25\n      -0.14\n    \n    \n      25\n      6.50\n      -1.44\n    \n    \n      26\n      6.75\n      -0.75\n    \n    \n      27\n      7.00\n      -0.78\n    \n    \n      28\n      7.25\n      -0.85\n    \n    \n      29\n      7.50\n      -0.92\n    \n    \n      30\n      7.75\n      -0.66\n    \n    \n      31\n      8.00\n      0.47\n    \n    \n      32\n      8.25\n      0.85\n    \n    \n      33\n      8.50\n      0.95\n    \n    \n      34\n      8.75\n      2.35\n    \n    \n      35\n      9.00\n      0.69\n    \n    \n      36\n      9.25\n      1.31\n    \n    \n      37\n      9.50\n      0.66\n    \n    \n      38\n      9.75\n      0.72\n    \n    \n      39\n      10.00\n      0.21"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-2",
-    "href": "posts/time_series/week10.html#section-2",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "data.tail()\n\n\n\n\n\n  \n    \n      \n      Depth\n      Nporosity\n    \n  \n  \n    \n      35\n      9.00\n      0.69\n    \n    \n      36\n      9.25\n      1.31\n    \n    \n      37\n      9.50\n      0.66\n    \n    \n      38\n      9.75\n      0.72\n    \n    \n      39\n      10.00\n      0.21"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-3",
-    "href": "posts/time_series/week10.html#section-3",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "data.describe()\n\n\n\n\n\n  \n    \n      \n      Depth\n      Nporosity\n    \n  \n  \n    \n      count\n      40.000000\n      40.000000\n    \n    \n      mean\n      5.125000\n      0.022250\n    \n    \n      std\n      2.922613\n      0.992111\n    \n    \n      min\n      0.250000\n      -2.080000\n    \n    \n      25%\n      2.687500\n      -0.757500\n    \n    \n      50%\n      5.125000\n      0.140000\n    \n    \n      75%\n      7.562500\n      0.742500\n    \n    \n      max\n      10.000000\n      2.350000"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-4",
-    "href": "posts/time_series/week10.html#section-4",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "import plotnine \nfrom plotnine import *\nggplot(data, aes(x=\"Depth\", y=\"Nporosity\"))+geom_line() + geom_point()\n\n\n<ggplot: (288689448)>"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-5",
-    "href": "posts/time_series/week10.html#section-5",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "The data set includes 40 observations, consequently we can increase the number of lag classes.\n\nV.maxlag = 40\nV.n_lags = 40\nV.plot()"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-6",
-    "href": "posts/time_series/week10.html#section-6",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "source: Vega, A. N. (1995). Geostatistical Analysis Applied to Mine Waste Characterization and Remediation (Doctoral dissertation, Colorado School of Mines)."
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-7",
-    "href": "posts/time_series/week10.html#section-7",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "Source: Trevisani, S., Cavalli, M., & Marchi, L. (2009). Variogram maps from LiDAR data as fingerprints of surface morphology on scree slopes. Natural Hazards and Earth System Sciences, 9(1), 129-133."
-  },
-  {
-    "objectID": "posts/time_series/week10.html#variogram-ploting-with-skgstat",
-    "href": "posts/time_series/week10.html#variogram-ploting-with-skgstat",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "variogram ploting with skgstat",
-    "text": "variogram ploting with skgstat\n\n#pip install scikit-gstat\nimport skgstat as skg\nV = skg.Variogram(data['Depth'], data['Nporosity'])\nV.plot()"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#increase-the-number-of-lags",
-    "href": "posts/time_series/week10.html#increase-the-number-of-lags",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Increase the number of lags",
-    "text": "Increase the number of lags\n\nV.maxlag = 25\nV.n_lags = 25\nV.plot()"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#calculating-experimental-variograms",
-    "href": "posts/time_series/week10.html#calculating-experimental-variograms",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Calculating Experimental Variograms",
-    "text": "Calculating Experimental Variograms\n\nSource: here"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#in-class-search-template",
-    "href": "posts/time_series/week10.html#in-class-search-template",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "In-class: search template",
-    "text": "In-class: search template"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#in-class-seach-template-scan-across-all-possible-locations",
-    "href": "posts/time_series/week10.html#in-class-seach-template-scan-across-all-possible-locations",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "In-class: seach template (scan across all possible locations)",
-    "text": "In-class: seach template (scan across all possible locations)"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#choosing-the-directions-choice-of-azimuth-directionality",
-    "href": "posts/time_series/week10.html#choosing-the-directions-choice-of-azimuth-directionality",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Choosing the directions (Choice of Azimuth (Directionality))",
-    "text": "Choosing the directions (Choice of Azimuth (Directionality))\n\nSource: here"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#how-do-we-find-what-directions-you-should-calculate-the-variogram",
-    "href": "posts/time_series/week10.html#how-do-we-find-what-directions-you-should-calculate-the-variogram",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "How do we find what directions you should calculate the variogram?",
-    "text": "How do we find what directions you should calculate the variogram?\n\nExplore data\nCombining knowledge of geologists\nAzimuth angle in degrees clockwise from north"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-8",
-    "href": "posts/time_series/week10.html#section-8",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "Relationship between the variogram map and directional variograms. a) variogram 7 map of elevation data with profiles of directional variograms; b) directional variogram 8 calculated along the direction of maximum continuity, (dashed line in a); c) directional 9 variogram calculated along the direction of minimum continuity (continuous line in a)"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#guidance-for-paprameter-setting-when-calculating-variograms",
-    "href": "posts/time_series/week10.html#guidance-for-paprameter-setting-when-calculating-variograms",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Guidance for Paprameter Setting when Calculating Variograms",
-    "text": "Guidance for Paprameter Setting when Calculating Variograms\n\nLag separation: coincide with minimum data spacing\nLag tolerance - 1/2 lag separation distance\nThe variogram is only valid for a distance one-half of the field size."
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-9",
-    "href": "posts/time_series/week10.html#section-9",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "Directly taken from https://www.youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ."
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-10",
-    "href": "posts/time_series/week10.html#section-10",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "Isotropic: independent of the direction of measurement ##\n\nSource: https://geostatisticslessons.com/lessons/variogramanisotropy"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#to-iluustrate-the-other-parameters-in-the-skg.variogram",
-    "href": "posts/time_series/week10.html#to-iluustrate-the-other-parameters-in-the-skg.variogram",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "To iluustrate the other parameters in the skg.Variogram",
-    "text": "To iluustrate the other parameters in the skg.Variogram\n\nV = skg.Variogram(data['Depth'], data['Nporosity'],\n              normalize = False, model = \"spherical\", use_nugget = True,\n              n_lags=40, maxlag=40)\nV.plot()"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#in-class",
-    "href": "posts/time_series/week10.html#in-class",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "In-class",
-    "text": "In-class\nVariogram calculation in major and minor directions"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#python-tutorial",
-    "href": "posts/time_series/week10.html#python-tutorial",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Python tutorial",
-    "text": "Python tutorial\nTute 3"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#for-more-details",
-    "href": "posts/time_series/week10.html#for-more-details",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "For more details",
-    "text": "For more details\nhttps://scikit-gstat.readthedocs.io/en/latest/reference/variogram.html"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#variogram-interpretations",
-    "href": "posts/time_series/week10.html#variogram-interpretations",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Variogram Interpretations",
-    "text": "Variogram Interpretations\n\nSource: https://www.researchgate.net/post/How-can-I-estimate-the-major-axis-and-ratio-values-from-directional-variogram-for-modeling-anisotropy"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#geometric-ansotropy",
-    "href": "posts/time_series/week10.html#geometric-ansotropy",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Geometric Ansotropy",
-    "text": "Geometric Ansotropy"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#other-pattersn",
-    "href": "posts/time_series/week10.html#other-pattersn",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Other pattersn",
-    "text": "Other pattersn\n\nCyclic\nTrend\nZonal Anisotropy"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#python-tutorials",
-    "href": "posts/time_series/week10.html#python-tutorials",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Python tutorials",
-    "text": "Python tutorials\nTute 1\nTute 2\nTute 3"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-11",
-    "href": "posts/time_series/week10.html#section-11",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "Source:https://www.researchgate.net/publication/341763241_Spatio-temporal_analysis_of_rainfall_extremes_in_the_flood-prone_Nagavali_and_Vamsadhara_Basins_in_eastern_India/figures?lo=1"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-12",
-    "href": "posts/time_series/week10.html#section-12",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "Source:https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/joc.6405"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#section-13",
-    "href": "posts/time_series/week10.html#section-13",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "",
-    "text": "https://esurf.copernicus.org/articles/9/845/2021/"
-  },
-  {
-    "objectID": "posts/time_series/week10.html#variogram-modelling",
-    "href": "posts/time_series/week10.html#variogram-modelling",
-    "title": "Week 10: Variogram calculation and modelling",
-    "section": "Variogram modelling",
-    "text": "Variogram modelling"
+    "objectID": "posts/lab/index.html#calendar-plot",
+    "href": "posts/lab/index.html#calendar-plot",
+    "title": "Practicals",
+    "section": "Calendar plot",
+    "text": "Calendar plot\nData simulation: https://github.com/thiyangt/helloPython/blob/master/calendarplot-question.ipynb\nTask: Visualize data"
   }
 ]

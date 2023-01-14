@@ -18,5 +18,9 @@ https://github.com/thiyangt/helloPython/blob/master/ShampooData.ipynb
 https://github.com/thiyangt/helloPython/blob/master/Time%20Series%20Features.ipynb
 
 
+## Calendar plot
 
+Data simulation: https://github.com/thiyangt/helloPython/blob/master/calendarplot-question.ipynb
+
+Task: Visualize data
 
