@@ -77,7 +77,7 @@ In other words the statistical properties of the time series (mean, variance, au
 
 ## Strict stationarity of a time series
 
-A time series ${X_t\}$ is called weekly stationary if the random vector $[X_1, X_2..., X_n]$ and $[X_{1+h}, X_{2+h}..., X_{n+h}]$ have the same joint distribution for all integers $(h)$ and $(n > 0)$.
+A time series $\{X_t\}$ is called weekly stationary if the random vector $[X_1, X_2..., X_n]$ and $[X_{1+h}, X_{2+h}..., X_{n+h}]$ have the same joint distribution for all integers $(h)$ and $(n > 0)$.
 
 # Simple time series models
 
@@ -180,12 +180,13 @@ where $(m)$ is the number of seasons. For monthly, $(m=12)$, for quarterly $(m=4
 For monthly series
 
 $$\nabla_{12}X_t=X_t-X_{t-12}$$
+
 ##
 
 Twice-differenced series
 
 $$\nabla^2_{12}X_t=\nabla_{12}X_t-\nabla_{12}X_{t-1}$$
-$$\nabla_{12}X_t-\nabla_{12}X_{t-1}=(X_t-X_{t-12})-(X_{t-1}-X_{t-13}$$
+$$\nabla_{12}X_t-\nabla_{12}X_{t-1}=(X_t-X_{t-12})-(X_{t-1}-X_{t-13})$$
 If seasonality is strong, the seasonal differencing should be done first.
 
 # Linear filter model
@@ -233,7 +234,7 @@ Hence,
 
 $$\psi(B)=(1-\phi_1 B)^{-1}=\sum_{j=0}^{\infty}\phi_1^jB^j$$
 
-If $(\phi_1| &lt; 1,)$ the $(AR(1))$ process is stationary.
+If $(\phi_1| < 1,)$ the $(AR(1))$ process is stationary.
 
 This is equivalent to saying the roots of $(1-\phi_1B=0)$ must lie outside the unit circle.
 
@@ -241,7 +242,7 @@ This is equivalent to saying the roots of $(1-\phi_1B=0)$ must lie outside the u
 
 $$a+ar+ar^2+ar^3+...=\frac{a}{1-r}$$
 
-for $(|r|&lt;1.)$
+for $(|r| < 1.)$
 
 ## AR(1) process
 
@@ -249,7 +250,7 @@ $$x_t=c+\phi_1x_{t-1}+\epsilon_t,$$
 
 - when $\phi_1=0$ - equivalent to white noise process
 
-- when $\phi_1=0$ and $c=0$ - random walk
+- when $\phi_1=1$ and $c=0$ - random walk
 
 - when $\phi_1=1$ and $c \neq 0$ - random walk with drift
 
