@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.253">
 
-  <title>Spatio-Temporal Data Analysis - Week 11: Kriging</title>
+  <title>Spatio-Temporal Data Analysis - Week 11: Spatial Kriging/ Spatio-temporal Kriging</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,7 +390,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 11: Kriging</h1>
+  <h1 class="title">Week 11: Spatial Kriging/ Spatio-temporal Kriging</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -588,7 +588,7 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <span id="cb5-2"><a href="#cb5-2"></a>art <span class="op">=</span> ax.scatter(coords[:, <span class="dv">0</span>], coords[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, c<span class="op">=</span>vals.flatten(), cmap<span class="op">=</span><span class="st">'plasma'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>plt.colorbar(art)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display column-margin" data-execution_count="5">
-<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x1481a9eb0&gt;</code></pre>
+<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x141c08160&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display column-margin">
 <p><img data-src="Week11_files/figure-revealjs/cell-6-output-2.png" width="717" height="707"></p>
@@ -602,7 +602,7 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <span id="cb7-2"><a href="#cb7-2"></a> <span class="op">+</span> geom_point())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>&lt;ggplot: (346097405)&gt;</code></pre>
+<pre><code>&lt;ggplot: (339429648)&gt;</code></pre>
 </div>
 </div>
 <img data-src="Week11_files/figure-revealjs/cell-7-output-1.png" class="r-stretch"></section>
@@ -620,26 +620,60 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <section id="kriging" class="title-slide slide level1 center">
 <h1>Kriging</h1>
 <p><span class="math display">\[Z(x) = \mu + \epsilon(x)\]</span></p>
-<p><strong>Ordinary kriging:</strong> <span class="math inline">\(\mu\)</span> is an unkown constant</p>
+<p><strong>Ordinary kriging:</strong> <span class="math inline">\(\mu\)</span> is an unkown constant (prediction based on coordinates)</p>
 <p><strong>Simple kriging:</strong> <span class="math inline">\(\mu\)</span> is a known constant</p>
-<p><strong>Universal kriging:</strong> <span class="math inline">\(\mu(s)\)</span> is some deterministic function</p>
+<p><strong>Universal kriging:</strong> <span class="math inline">\(\mu(s)\)</span> is some deterministic function - prediction based on coordinates and additional regressors (elevation)</p>
 </section>
 
-<section id="variogram-modelling-1" class="title-slide slide level1 center">
-<h1>Variogram modelling</h1>
-<p>Kriging</p>
+<section>
+<section id="variogram-modelling-and-kriging" class="title-slide slide level1 center">
+<h1>Variogram modelling and Kriging</h1>
 <p>https://scikit-gstat.readthedocs.io/en/latest/auto_examples/tutorial_01_getting_started.html</p>
 </section>
+<section id="spatio-temporal-modelling" class="slide level2">
+<h2>Spatio-temporal Modelling</h2>
+<p>Monthly averages for some environmental parameter in Germany (Gräler, 2012)</p>
 
+<img data-src="figsp.png" class="r-stretch"></section>
+<section id="spatio-temporal-approaches" class="slide level2">
+<h2>Spatio-temporal approaches</h2>
+<ul>
+<li><p><strong>Slice-wise:</strong> The easiest adoption is to do interpolation per slice fitting a variogram model for each time slice</p></li>
+<li><p><strong>Pooled:</strong> The variogram is fitted based on all spatio-temporal data and is used to predict each time slice separately with the same model</p></li>
+</ul>
+<p><strong>Evolving</strong> models mix the both extremes such that the variogram model adopts to the daily situation (e.g.&nbsp;in terms of overall variability, the sill) but range and the nugget/sill ratio depend on larger data samples.</p>
+</section>
+<section id="spatio-temporal-variogram" class="slide level2">
+<h2>Spatio-temporal variogram</h2>
+<p>Let spatio-temporal random field be the <span class="math inline">\(Z(s, t)\)</span>. Then,</p>
+<p><span class="math display">\[\gamma(h, u)=E[Z(s, t) - Z(s+h, t+u)]^2\]</span></p>
+<p>At any location <span class="math inline">\((s, t)\)</span> and empirical version</p>
+<p><span class="math display">\[\hat{\gamma}(h, u)=\frac{1}{2|N_{h, u}|}\sum_{{(i, j)} \in N_{h, u}}(Z(s_i, t_i)-Z(s_j, t_j))^2\]</span></p>
+</section>
+<section id="spatio-temporal-with-machine-learning-models" class="slide level2">
+<h2>Spatio-temporal with Machine Learning Models</h2>
+<ul>
+<li><p>Feature selection and feature extraction</p></li>
+<li><p>Use of dimension reduction techniques</p></li>
+<li><p>Deep neural networks</p></li>
+<li><p>Machine learning algorithms</p></li>
+<li><p>Meta-learning methods (learning-to-learn)</p></li>
+</ul>
+</section></section>
+<section>
 <section id="resources" class="title-slide slide level1 center">
 <h1>Resources</h1>
 <p>SciKit-GStat 1.0: a SciPy-flavored geostatistical variogram estimation toolbox written in Python</p>
 <p>Link: https://gmd.copernicus.org/articles/15/2505/2022/gmd-15-2505-2022.pdf</p>
+</section>
+<section id="acknowledgement" class="slide level2">
+<h2>Acknowledgement</h2>
+<p>Oliver, M. A., &amp; Webster, R. (2014). A tutorial guide to geostatistics: Computing and modelling variograms and kriging. Catena, 113, 56-69.</p>
 
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

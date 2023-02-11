@@ -9,4 +9,13 @@ categories: [news]
 
 Visualize the tourism dataset. The dataset is available [here](https://thiyanga-spatiotemporal.netlify.app/posts/data/)
 
+## Linear Time Series Analysis and Its Applications
+
+[Note](tst1.pdf)
+
+## Additional Reading
+
+[Introduction to Geostatistics - OSFhttps://osf.io › download
+PDF
+by A Bárdossy](note.pdf)
 

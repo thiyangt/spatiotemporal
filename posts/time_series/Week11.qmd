@@ -1,5 +1,5 @@
 ---
-title: "Week 11: Kriging"
+title: "Week 11: Spatial Kriging/ Spatio-temporal Kriging"
 format:
   revealjs:
     slide-number: true
@@ -215,21 +215,64 @@ Source: https://scikit-gstat.readthedocs.io/en/latest/auto_examples/tutorial_03_
 
 $$Z(x) = \mu + \epsilon(x)$$
 
-**Ordinary kriging:** $\mu$ is an unkown constant
+**Ordinary kriging:** $\mu$ is an unkown constant (prediction based on coordinates)
 
 **Simple kriging:** $\mu$ is a known constant
 
-**Universal kriging:** $\mu(s)$ is some deterministic function
+**Universal kriging:** $\mu(s)$ is some deterministic function - prediction based on coordinates and
+additional regressors (elevation)
 
 
 
-
-# Variogram modelling
-
-Kriging
+# Variogram modelling and Kriging
 
 
 https://scikit-gstat.readthedocs.io/en/latest/auto_examples/tutorial_01_getting_started.html
+
+
+## Spatio-temporal Modelling
+
+Monthly averages for some environmental parameter in Germany (Gräler, 2012)
+
+![](figsp.png)
+
+## Spatio-temporal approaches
+
+- **Slice-wise:** The easiest adoption is to do interpolation per
+slice fitting a variogram model for each time
+slice
+
+- **Pooled:** The variogram is fitted based on all
+spatio-temporal data and is used to predict
+each time slice separately with the same model
+
+**Evolving** models mix the both extremes such that the
+variogram model adopts to the daily situation
+(e.g. in terms of overall variability, the sill) but
+range and the nugget/sill ratio depend on
+larger data samples.
+
+## Spatio-temporal variogram
+
+Let spatio-temporal random field be the $Z(s, t)$. Then,
+
+$$\gamma(h, u)=E[Z(s, t) - Z(s+h, t+u)]^2$$
+
+At any location $(s, t)$ and empirical version
+
+$$\hat{\gamma}(h, u)=\frac{1}{2|N_{h, u}|}\sum_{{(i, j)} \in N_{h, u}}(Z(s_i, t_i)-Z(s_j, t_j))^2$$
+
+## Spatio-temporal with Machine Learning Models
+
+- Feature selection and feature extraction
+
+- Use of dimension reduction techniques
+
+- Deep neural networks
+
+- Machine learning algorithms
+
+- Meta-learning methods (learning-to-learn)
 
 # Resources
 
@@ -237,3 +280,8 @@ SciKit-GStat 1.0: a SciPy-flavored geostatistical variogram
 estimation toolbox written in Python
 
 Link: https://gmd.copernicus.org/articles/15/2505/2022/gmd-15-2505-2022.pdf
+
+
+## Acknowledgement
+
+Oliver, M. A., & Webster, R. (2014). A tutorial guide to geostatistics: Computing and modelling variograms and kriging. Catena, 113, 56-69.
