@@ -2650,6 +2650,104 @@
     "href": "blog.html",
     "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
     "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 9: Variogram\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 10: Variogram calculation and modelling\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nPracticals\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 9: Variogram\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 8b: Time Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 6: Spatial data analysis: Introduction to kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5C: Coordinate Reference System\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11: Kriging\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 10: Variogram calculation and modelling\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nPracticals\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#random-process",
+    "href": "posts/time_series/Week11.html#random-process",
+    "title": "Week 11: Kriging",
+    "section": "Random process",
+    "text": "Random process\n\nThe value of a property at any place \\(x\\), is denoted by \\(z(x)\\). The \\(z(x)\\) is one of an infinity of values of a random variable \\(Z(x)\\) at that place. We call it a ‘realization’ of the process.\nThe set of random values at all such places, again infinite in number, in a region is a random process, and also denoted \\(Z(x)\\).\nThe random variable is spatially correlated at some scale."
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#stationarity",
+    "href": "posts/time_series/Week11.html#stationarity",
+    "title": "Week 11: Kriging",
+    "section": "Stationarity",
+    "text": "Stationarity\nThe notion of stationarity underpins geostatistics and allows us to assume that there is the same degree of variation from place to place.\nWe can represent the random process by the model\n\\[Z(x) = \\mu + \\epsilon(x)\\]\nwhere \\(\\mu\\) is the mean of the process and \\(\\epsilon(x)\\) is a random quantity with a mean of zero and a covariance, \\(C(\\textbf{h})\\), given by\n\\[C(\\textbf{h}) = E[\\epsilon(x)\\epsilon(x+\\textbf{h})]\\]\nwhich is equivalent to\n\\[\n\\begin{aligned}\nC(h) &= E[(Z(x)-\\mu)(Z(x+h)-\\mu)] \\\\\n&= E[Z(x)Z(x+h)-\\mu^2]\n\\end{aligned}\n\\]\nIn these equations \\(h\\) is the separation between samples in both distance and direction; \\(Z(x)\\) and \\(Z(x + h)\\) are the values of \\(Z\\) at places \\(x\\) and \\(x + h\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#section",
+    "href": "posts/time_series/Week11.html#section",
+    "title": "Week 11: Kriging",
+    "section": "",
+    "text": "Under a weaker assumption of intrinsic stationarity in which the expected differences are zero, i.e. \\(E[Z(x) − Z(x + h)] = 0\\).\nThen,\n\\[\n\\begin{aligned}\n\\gamma(\\textbf{h}) &= \\frac{1}{2}var[z(x)-z(x+h)]\\\\ &= \\frac{1}{2}E[\\{Z(x) - Z(x+\\textbf{h})\\}^2]\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#covariance-function-and-correlogram",
+    "href": "posts/time_series/Week11.html#covariance-function-and-correlogram",
+    "title": "Week 11: Kriging",
+    "section": "Covariance function and correlogram",
+    "text": "Covariance function and correlogram\n\\[\\gamma(\\textbf{h}) = C(0) - C(\\textbf{h})\\]\nCorrelogram\n\\[\\rho(\\textbf{h})= \\frac{C(\\textbf{h})}{\\sigma^2}\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#computing-and-modelling-variograms",
+    "href": "posts/time_series/Week11.html#computing-and-modelling-variograms",
+    "title": "Week 11: Kriging",
+    "section": "Computing and modelling variograms",
+    "text": "Computing and modelling variograms\n\nPlot the experimental variogram.\nChoose several models that appear to have the right shape and fit each in turn by weighted least squares (Cressie, 1985; McBratney andWebster, 1986) in an accredited program.\nPlot the fitted models on the graph of the experimental variogram and assess whether the fit looks reasonable.\nIf all plausible models seem to fit well, choose the one with the smallest residual sum of squares (RSS) or smallest mean square."
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#factors-affect-the-reliability-of-the-experimental-variogram",
+    "href": "posts/time_series/Week11.html#factors-affect-the-reliability-of-the-experimental-variogram",
+    "title": "Week 11: Kriging",
+    "section": "Factors affect the reliability of the experimental variogram",
+    "text": "Factors affect the reliability of the experimental variogram\n\nSize of sample\nLag interval and bin width\nMarginal distribution of the data\nAnisotropy\nTrend"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#cross-validation-provides-a-means-of-choosing-among-plausiblemodels-for-variograms",
+    "href": "posts/time_series/Week11.html#cross-validation-provides-a-means-of-choosing-among-plausiblemodels-for-variograms",
+    "title": "Week 11: Kriging",
+    "section": "cross-validation provides a means of choosing among plausiblemodels for variograms",
+    "text": "cross-validation provides a means of choosing among plausiblemodels for variograms\n\nEach and every one of the \\(N\\) data points is omitted in turn fromthe set of data and its value there is predicted by ordinary punctual kriging with the proposed model.\nThree statistics are then calculated; they are the mean error (ME), themean squared error (MSE) and themean squared deviation ratio (MSDR)"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#section-1",
+    "href": "posts/time_series/Week11.html#section-1",
+    "title": "Week 11: Kriging",
+    "section": "",
+    "text": "One might be able to improve a fit in the above sense by elaborating themodel. Any combination of the simple valid models is itself valid. The Akaike information criterion, the AIC (Akaike, 1973), may help to answer. The aim is to minimize it (Webster and McBratney, 1989; Webster and Oliver, 2007)."
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#example-data",
+    "href": "posts/time_series/Week11.html#example-data",
+    "title": "Week 11: Kriging",
+    "section": "Example: Data",
+    "text": "Example: Data\n\nmeuse dataset contains measurements for concentrations of different elements, over an area in the Netherlands."
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#load-data",
+    "href": "posts/time_series/Week11.html#load-data",
+    "title": "Week 11: Kriging",
+    "section": "Load data",
+    "text": "Load data\n\nsrc = skg.data.meuse()\nprint(src.get('origin'))\n\ncoords, vals = src.get('sample')\n# make a nice table\ndf = pd.DataFrame({'x': coords[:, 0], 'y': coords[:, 1], 'lead': vals.flatten()})\ndf.head()\n\nSample dataset of real measurements of heavy metal pollutions\n    in the topsoil on a 15x15 meter plot along the river Meuse.\n    The data is distributed along with the R-package sp.\n    IMPORTANT: If you use this data, cite Pebesma and Bivand (2005)\n    and Bivand et al (2013):\n\n      Pebesma EJ, Bivand RS (2005). “Classes and methods for spatial\n      data in R.” R News, 5(2), 9–13. https://CRAN.R-project.org/doc/Rnews/.\n\n      Bivand RS, Pebesma E, Gomez-Rubio V (2013). Applied spatial data\n      analysis with R, Second edition. Springer, NY. https://asdar-book.org/.\n\n    \n\n\n\n\n\n\n  \n    \n      \n      x\n      y\n      lead\n    \n  \n  \n    \n      0\n      181072\n      333611\n      299\n    \n    \n      1\n      181025\n      333558\n      277\n    \n    \n      2\n      181165\n      333537\n      199\n    \n    \n      3\n      181298\n      333484\n      116\n    \n    \n      4\n      181307\n      333330\n      117"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#section-2",
+    "href": "posts/time_series/Week11.html#section-2",
+    "title": "Week 11: Kriging",
+    "section": "",
+    "text": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport plotnine\nimport skgstat as skg\nfrom pprint import pprint\nfrom plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap\nimport warnings\nwarnings.filterwarnings(\"ignore\")"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#variogram-modelling",
+    "href": "posts/time_series/Week11.html#variogram-modelling",
+    "title": "Week 11: Kriging",
+    "section": "Variogram modelling",
+    "text": "Variogram modelling\nVisit\nhttps://scikit-gstat.readthedocs.io/en/latest/auto_examples/tutorial_01_getting_started.html"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#variogram-modelling-1",
+    "href": "posts/time_series/Week11.html#variogram-modelling-1",
+    "title": "Week 11: Kriging",
+    "section": "Variogram modelling",
+    "text": "Variogram modelling\nVisit\nhttps://scikit-gstat.readthedocs.io/en/latest/auto_examples/tutorial_01_getting_started.html"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#section-3",
+    "href": "posts/time_series/Week11.html#section-3",
+    "title": "Week 11: Kriging",
+    "section": "",
+    "text": "Plotting the x and y coordinates and visually inspect how the z spread out.\n\nfig, ax = plt.subplots(1, 1, figsize=(9, 9))\nart = ax.scatter(coords[:, 0], coords[:, 1], s=50, c=vals.flatten(), cmap='plasma')\nplt.colorbar(art)\n\n<matplotlib.colorbar.Colorbar at 0x1406e6d30>"
   }
 ]
