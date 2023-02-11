@@ -231,3 +231,9 @@ Kriging
 
 https://scikit-gstat.readthedocs.io/en/latest/auto_examples/tutorial_01_getting_started.html
 
+# Resources
+
+SciKit-GStat 1.0: a SciPy-flavored geostatistical variogram
+estimation toolbox written in Python
+
+Link: https://gmd.copernicus.org/articles/15/2505/2022/gmd-15-2505-2022.pdf

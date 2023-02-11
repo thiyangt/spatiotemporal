@@ -2755,6 +2755,6 @@
     "href": "posts/time_series/Week11.html#section-4",
     "title": "Week 11: Kriging",
     "section": "",
-    "text": "Plotting the x and y coordinates and visually inspect how the z spread out.\n\nfig, ax = plt.subplots(1, 1, figsize=(9, 9))\nart = ax.scatter(coords[:, 0], coords[:, 1], s=50, c=vals.flatten(), cmap='plasma')\nplt.colorbar(art)\n\n<matplotlib.colorbar.Colorbar at 0x107eabb50>"
+    "text": "Plotting the x and y coordinates and visually inspect how the z spread out.\n\nfig, ax = plt.subplots(1, 1, figsize=(9, 9))\nart = ax.scatter(coords[:, 0], coords[:, 1], s=50, c=vals.flatten(), cmap='plasma')\nplt.colorbar(art)\n\n<matplotlib.colorbar.Colorbar at 0x1481a9eb0>"
   }
 ]
