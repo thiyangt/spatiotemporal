@@ -496,8 +496,7 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <span id="cb2-3"><a href="#cb2-3"></a></span>
 <span id="cb2-4"><a href="#cb2-4"></a>coords, vals <span class="op">=</span> src.get(<span class="st">'sample'</span>)</span>
 <span id="cb2-5"><a href="#cb2-5"></a><span class="co"># make a nice table</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: coords[:, <span class="dv">0</span>], <span class="st">'y'</span>: coords[:, <span class="dv">1</span>], <span class="st">'lead'</span>: vals.flatten()})</span>
-<span id="cb2-7"><a href="#cb2-7"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: coords[:, <span class="dv">0</span>], <span class="st">'y'</span>: coords[:, <span class="dv">1</span>], <span class="st">'lead'</span>: vals.flatten()})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample dataset of real measurements of heavy metal pollutions
     in the topsoil on a 15x15 meter plot along the river Meuse.
@@ -513,7 +512,13 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 
     </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="cell fig-column-margin" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
 
 <div>
 <style scoped="">
@@ -575,32 +580,32 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 </div>
 </div>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 <p>Plotting the x and y coordinates and visually inspect how the z spread out.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">9</span>))</span>
-<span id="cb4-2"><a href="#cb4-2"></a>art <span class="op">=</span> ax.scatter(coords[:, <span class="dv">0</span>], coords[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, c<span class="op">=</span>vals.flatten(), cmap<span class="op">=</span><span class="st">'plasma'</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>plt.colorbar(art)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-margin" data-execution_count="15">
-<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x1406e6d30&gt;</code></pre>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">9</span>))</span>
+<span id="cb5-2"><a href="#cb5-2"></a>art <span class="op">=</span> ax.scatter(coords[:, <span class="dv">0</span>], coords[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, c<span class="op">=</span>vals.flatten(), cmap<span class="op">=</span><span class="st">'plasma'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>plt.colorbar(art)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-margin" data-execution_count="41">
+<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x107eabb50&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display column-margin">
-<p><img data-src="Week11_files/figure-revealjs/cell-5-output-2.png" width="717" height="707"></p>
+<p><img data-src="Week11_files/figure-revealjs/cell-6-output-2.png" width="717" height="707"></p>
 </div>
 </div>
 </section>
-<section id="section-4" class="title-slide slide level1 center">
+<section id="section-5" class="title-slide slide level1 center">
 <h1></h1>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>(ggplot(df, aes(<span class="st">'x'</span>, <span class="st">'y'</span>, color<span class="op">=</span><span class="st">'lead'</span>))</span>
-<span id="cb6-2"><a href="#cb6-2"></a> <span class="op">+</span> geom_point())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>(ggplot(df, aes(<span class="st">'x'</span>, <span class="st">'y'</span>, color<span class="op">=</span><span class="st">'lead'</span>))</span>
+<span id="cb7-2"><a href="#cb7-2"></a> <span class="op">+</span> geom_point())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>&lt;ggplot: (288518750)&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>&lt;ggplot: (288509949)&gt;</code></pre>
 </div>
 </div>
-<img data-src="Week11_files/figure-revealjs/cell-6-output-1.png" class="r-stretch"></section>
+<img data-src="Week11_files/figure-revealjs/cell-7-output-1.png" class="r-stretch"></section>
 
 <section id="variogram-modelling" class="title-slide slide level1 center">
 <h1>Variogram modelling</h1>

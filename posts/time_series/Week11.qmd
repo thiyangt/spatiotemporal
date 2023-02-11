@@ -162,7 +162,16 @@ print(src.get('origin'))
 coords, vals = src.get('sample')
 # make a nice table
 df = pd.DataFrame({'x': coords[:, 0], 'y': coords[:, 1], 'lead': vals.flatten()})
+
+```
+
+##
+
+```{python}
+#| fig-column: margin
+#| echo: true
 df.head()
+
 ```
 
 ##

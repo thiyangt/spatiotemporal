@@ -2720,7 +2720,7 @@
     "href": "posts/time_series/Week11.html#load-data",
     "title": "Week 11: Kriging",
     "section": "Load data",
-    "text": "Load data\n\nsrc = skg.data.meuse()\nprint(src.get('origin'))\n\ncoords, vals = src.get('sample')\n# make a nice table\ndf = pd.DataFrame({'x': coords[:, 0], 'y': coords[:, 1], 'lead': vals.flatten()})\ndf.head()\n\nSample dataset of real measurements of heavy metal pollutions\n    in the topsoil on a 15x15 meter plot along the river Meuse.\n    The data is distributed along with the R-package sp.\n    IMPORTANT: If you use this data, cite Pebesma and Bivand (2005)\n    and Bivand et al (2013):\n\n      Pebesma EJ, Bivand RS (2005). “Classes and methods for spatial\n      data in R.” R News, 5(2), 9–13. https://CRAN.R-project.org/doc/Rnews/.\n\n      Bivand RS, Pebesma E, Gomez-Rubio V (2013). Applied spatial data\n      analysis with R, Second edition. Springer, NY. https://asdar-book.org/.\n\n    \n\n\n\n\n\n\n  \n    \n      \n      x\n      y\n      lead\n    \n  \n  \n    \n      0\n      181072\n      333611\n      299\n    \n    \n      1\n      181025\n      333558\n      277\n    \n    \n      2\n      181165\n      333537\n      199\n    \n    \n      3\n      181298\n      333484\n      116\n    \n    \n      4\n      181307\n      333330\n      117"
+    "text": "Load data\n\nsrc = skg.data.meuse()\nprint(src.get('origin'))\n\ncoords, vals = src.get('sample')\n# make a nice table\ndf = pd.DataFrame({'x': coords[:, 0], 'y': coords[:, 1], 'lead': vals.flatten()})\n\nSample dataset of real measurements of heavy metal pollutions\n    in the topsoil on a 15x15 meter plot along the river Meuse.\n    The data is distributed along with the R-package sp.\n    IMPORTANT: If you use this data, cite Pebesma and Bivand (2005)\n    and Bivand et al (2013):\n\n      Pebesma EJ, Bivand RS (2005). “Classes and methods for spatial\n      data in R.” R News, 5(2), 9–13. https://CRAN.R-project.org/doc/Rnews/.\n\n      Bivand RS, Pebesma E, Gomez-Rubio V (2013). Applied spatial data\n      analysis with R, Second edition. Springer, NY. https://asdar-book.org/."
   },
   {
     "objectID": "posts/time_series/Week11.html#section-2",
@@ -2748,6 +2748,13 @@
     "href": "posts/time_series/Week11.html#section-3",
     "title": "Week 11: Kriging",
     "section": "",
-    "text": "Plotting the x and y coordinates and visually inspect how the z spread out.\n\nfig, ax = plt.subplots(1, 1, figsize=(9, 9))\nart = ax.scatter(coords[:, 0], coords[:, 1], s=50, c=vals.flatten(), cmap='plasma')\nplt.colorbar(art)\n\n<matplotlib.colorbar.Colorbar at 0x1406e6d30>"
+    "text": "df.head()\n\n\n\n\n\n  \n    \n      \n      x\n      y\n      lead\n    \n  \n  \n    \n      0\n      181072\n      333611\n      299\n    \n    \n      1\n      181025\n      333558\n      277\n    \n    \n      2\n      181165\n      333537\n      199\n    \n    \n      3\n      181298\n      333484\n      116\n    \n    \n      4\n      181307\n      333330\n      117"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#section-4",
+    "href": "posts/time_series/Week11.html#section-4",
+    "title": "Week 11: Kriging",
+    "section": "",
+    "text": "Plotting the x and y coordinates and visually inspect how the z spread out.\n\nfig, ax = plt.subplots(1, 1, figsize=(9, 9))\nart = ax.scatter(coords[:, 0], coords[:, 1], s=50, c=vals.flatten(), cmap='plasma')\nplt.colorbar(art)\n\n<matplotlib.colorbar.Colorbar at 0x107eabb50>"
   }
 ]
