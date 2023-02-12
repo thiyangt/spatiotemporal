@@ -588,7 +588,7 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <span id="cb5-2"><a href="#cb5-2"></a>art <span class="op">=</span> ax.scatter(coords[:, <span class="dv">0</span>], coords[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, c<span class="op">=</span>vals.flatten(), cmap<span class="op">=</span><span class="st">'plasma'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>plt.colorbar(art)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display column-margin" data-execution_count="5">
-<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x141c08160&gt;</code></pre>
+<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x13e852670&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display column-margin">
 <p><img data-src="Week11_files/figure-revealjs/cell-6-output-2.png" width="717" height="707"></p>
@@ -602,7 +602,7 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <span id="cb7-2"><a href="#cb7-2"></a> <span class="op">+</span> geom_point())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>&lt;ggplot: (339429648)&gt;</code></pre>
+<pre><code>&lt;ggplot: (336099581)&gt;</code></pre>
 </div>
 </div>
 <img data-src="Week11_files/figure-revealjs/cell-7-output-1.png" class="r-stretch"></section>
@@ -658,6 +658,25 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <li><p>Deep neural networks</p></li>
 <li><p>Machine learning algorithms</p></li>
 <li><p>Meta-learning methods (learning-to-learn)</p></li>
+</ul>
+</section>
+<section id="problem-with-machine-learning-models" class="slide level2">
+<h2>Problem with Machine Learning models</h2>
+<ul>
+<li>ignore the spatial locations of the observations and hence overlook any spatial autocorrelation in the data not accounted for by the covariates.</li>
+</ul>
+</section>
+<section id="create-geographical-covariates" class="slide level2">
+<h2>Create geographical covariates</h2>
+<p>“Everything is related to everything else, but near things are more related than distant things.”</p>
+<p>“The key to making RF applicable to spatial statistics problems, therefore, lies also in preparing geographical (spatial) measures of proximity and connectivity between observations, so that spatial autocorrelation can be accounted for.”</p>
+<p>Source: https://soilmapper.org/soilmapping-using-mla.html#a-generic-framework-for-spatial-prediction-using-random-forest</p>
+</section>
+<section id="geographical-covariates" class="slide level2">
+<h2>Geographical covariates</h2>
+<ul>
+<li><p>Geographical coordinates (i.e., easting and northing).</p></li>
+<li><p>Euclidean distances to reference points in the study area. For example, distance to the center and edges of the study area, etc (T Behrens et al.&nbsp;2018).</p></li>
 </ul>
 </section></section>
 <section>

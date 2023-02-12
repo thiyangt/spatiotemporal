@@ -274,6 +274,26 @@ $$\hat{\gamma}(h, u)=\frac{1}{2|N_{h, u}|}\sum_{{(i, j)} \in N_{h, u}}(Z(s_i, t_
 
 - Meta-learning methods (learning-to-learn)
 
+## Problem with Machine Learning models
+
+- ignore the spatial locations of the observations and hence overlook any spatial autocorrelation in the data not accounted for by the covariates.
+
+## Create geographical covariates
+
+"Everything is related to everything else, but near things are more related than distant things."
+
+"The key to making RF applicable to spatial statistics problems, therefore, lies also in preparing geographical (spatial) measures of proximity and connectivity between observations, so that spatial autocorrelation can be accounted for. "
+
+Source: https://soilmapper.org/soilmapping-using-mla.html#a-generic-framework-for-spatial-prediction-using-random-forest
+
+## Geographical covariates
+
+- Geographical coordinates  (i.e., easting and northing).
+
+- Euclidean distances to reference points in the study area. For example, distance to the center and edges of the study area, etc (T Behrens et al. 2018).
+
+
+
 # Resources
 
 SciKit-GStat 1.0: a SciPy-flavored geostatistical variogram

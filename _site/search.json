@@ -2755,7 +2755,7 @@
     "href": "posts/time_series/Week11.html#section-4",
     "title": "Week 11: Spatial Kriging/ Spatio-temporal Kriging",
     "section": "",
-    "text": "Plotting the x and y coordinates and visually inspect how the z spread out.\n\nfig, ax = plt.subplots(1, 1, figsize=(9, 9))\nart = ax.scatter(coords[:, 0], coords[:, 1], s=50, c=vals.flatten(), cmap='plasma')\nplt.colorbar(art)\n\n<matplotlib.colorbar.Colorbar at 0x141c08160>"
+    "text": "Plotting the x and y coordinates and visually inspect how the z spread out.\n\nfig, ax = plt.subplots(1, 1, figsize=(9, 9))\nart = ax.scatter(coords[:, 0], coords[:, 1], s=50, c=vals.flatten(), cmap='plasma')\nplt.colorbar(art)\n\n<matplotlib.colorbar.Colorbar at 0x13e852670>"
   },
   {
     "objectID": "posts/time_series/Week11.html#spatio-temporal-modelling",
@@ -2805,5 +2805,26 @@
     "title": "Take-home tasks",
     "section": "Additional Reading",
     "text": "Additional Reading\nIntroduction to Geostatistics - OSFhttps://osf.io › download PDF by A Bárdossy"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#problem-with-machine-learning-models",
+    "href": "posts/time_series/Week11.html#problem-with-machine-learning-models",
+    "title": "Week 11: Spatial Kriging/ Spatio-temporal Kriging",
+    "section": "Problem with Machine Learning models",
+    "text": "Problem with Machine Learning models\n\nignore the spatial locations of the observations and hence overlook any spatial autocorrelation in the data not accounted for by the covariates."
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#create-geographical-covariates",
+    "href": "posts/time_series/Week11.html#create-geographical-covariates",
+    "title": "Week 11: Spatial Kriging/ Spatio-temporal Kriging",
+    "section": "Create geographical covariates",
+    "text": "Create geographical covariates\n“Everything is related to everything else, but near things are more related than distant things.”\n“The key to making RF applicable to spatial statistics problems, therefore, lies also in preparing geographical (spatial) measures of proximity and connectivity between observations, so that spatial autocorrelation can be accounted for.”\nSource: https://soilmapper.org/soilmapping-using-mla.html#a-generic-framework-for-spatial-prediction-using-random-forest"
+  },
+  {
+    "objectID": "posts/time_series/Week11.html#geographical-covariates",
+    "href": "posts/time_series/Week11.html#geographical-covariates",
+    "title": "Week 11: Spatial Kriging/ Spatio-temporal Kriging",
+    "section": "Geographical covariates",
+    "text": "Geographical covariates\n\nGeographical coordinates (i.e., easting and northing).\nEuclidean distances to reference points in the study area. For example, distance to the center and edges of the study area, etc (T Behrens et al. 2018)."
   }
 ]
