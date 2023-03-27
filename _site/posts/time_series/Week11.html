@@ -412,6 +412,9 @@
 <p>where <span class="math inline">\(\mu\)</span> is the mean of the process and <span class="math inline">\(\epsilon(x)\)</span> is a random quantity with a mean of zero and a covariance, <span class="math inline">\(C(\textbf{h})\)</span>, given by</p>
 <p><span class="math display">\[C(\textbf{h}) = E[\epsilon(x)\epsilon(x+\textbf{h})]\]</span></p>
 <p>which is equivalent to</p>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 <p><span class="math display">\[
 \begin{aligned}
 C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
@@ -420,7 +423,7 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 \]</span></p>
 <p>In these equations <span class="math inline">\(h\)</span> is the separation between samples in both distance and direction; <span class="math inline">\(Z(x)\)</span> and <span class="math inline">\(Z(x + h)\)</span> are the values of <span class="math inline">\(Z\)</span> at places <span class="math inline">\(x\)</span> and <span class="math inline">\(x + h\)</span>.</p>
 </section>
-<section id="section" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <p>Under a weaker assumption of intrinsic stationarity in which the expected differences are zero, i.e.&nbsp;<span class="math inline">\(E[Z(x) − Z(x + h)] = 0\)</span>.</p>
 <p>Then,</p>
@@ -445,7 +448,7 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <li><p>If all plausible models seem to fit well, choose the one with the smallest residual sum of squares (RSS) or smallest mean square.</p></li>
 </ol>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section-2" class="slide level2">
 <h2></h2>
 <ol start="5" type="1">
 <li>One might be able to improve a fit in the above sense by elaborating themodel. Any combination of the simple valid models is itself valid. The Akaike information criterion, the AIC (Akaike, 1973), may help to answer. The aim is to minimize it (Webster and McBratney, 1989; Webster and Oliver, 2007).</li>
@@ -474,7 +477,7 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 <li><code>meuse</code> dataset contains measurements for concentrations of different elements, over an area in the Netherlands.</li>
 </ul>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-3" class="slide level2">
 <h2></h2>
 <div class="cell fig-column-margin" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -514,11 +517,11 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 </div>
 </div>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 <div class="cell fig-column-margin" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="10">
 
 <div>
 <style scoped="">
@@ -580,29 +583,29 @@ C(h) &amp;= E[(Z(x)-\mu)(Z(x+h)-\mu)] \\
 </div>
 </div>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2></h2>
 <p>Plotting the x and y coordinates and visually inspect how the z spread out.</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">9</span>))</span>
 <span id="cb5-2"><a href="#cb5-2"></a>art <span class="op">=</span> ax.scatter(coords[:, <span class="dv">0</span>], coords[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, c<span class="op">=</span>vals.flatten(), cmap<span class="op">=</span><span class="st">'plasma'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>plt.colorbar(art)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-margin" data-execution_count="5">
-<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x13e852670&gt;</code></pre>
+<div class="cell-output cell-output-display column-margin" data-execution_count="11">
+<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x14ad30850&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display column-margin">
 <p><img data-src="Week11_files/figure-revealjs/cell-6-output-2.png" width="717" height="707"></p>
 </div>
 </div>
 </section>
-<section id="section-5" class="title-slide slide level1 center">
+<section id="section-6" class="title-slide slide level1 center">
 <h1></h1>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>(ggplot(df, aes(<span class="st">'x'</span>, <span class="st">'y'</span>, color<span class="op">=</span><span class="st">'lead'</span>))</span>
 <span id="cb7-2"><a href="#cb7-2"></a> <span class="op">+</span> geom_point())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>&lt;ggplot: (336099581)&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>&lt;ggplot: (286613486)&gt;</code></pre>
 </div>
 </div>
 <img data-src="Week11_files/figure-revealjs/cell-7-output-1.png" class="r-stretch"></section>

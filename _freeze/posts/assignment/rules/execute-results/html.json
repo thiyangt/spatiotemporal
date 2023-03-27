@@ -1,0 +1,14 @@
+{
+  "hash": "6183684ba8d9c080e97196e87bc430f6",
+  "result": {
+    "markdown": "---\noutput: pdf_document\n---\n\n\n\n\n\n\n- The final submission date for the assignment is 2nd April 2023. Any submissions received after this date will not be accepted.\n\n\n- Late submissions will not be accepted, except for cases of documented medical or personal emergencies. Students are expected to contact the instructor as soon as possible in case of such an event.\n\n- It is the student's responsibility to ensure that the submission is complete, correct, and accessible to the instructor.\n\n- The instructor reserves the right to penalize any student who fails to adhere to the submission rules or who engages in academic dishonesty.\n\n\n- Students are encouraged to contact the instructor if they have any questions or concerns about the submission rules or the assignment itself.\n\n\n- It is the student's responsibility to manage their time effectively to ensure that they have enough time to complete the assignment within the given timeframe. This includes allocating enough time to research, plan, and write the assignment, as well as allowing for unexpected circumstances or delays. It is important for students to plan their workload and prioritize their assignments to ensure that they are able to complete them on time and to the best of their ability.\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

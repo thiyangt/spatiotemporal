@@ -46,7 +46,11 @@ mean of zero and a covariance, $C(\textbf{h})$, given by
 
 $$C(\textbf{h}) = E[\epsilon(x)\epsilon(x+\textbf{h})]$$
 
+
+
 which is equivalent to
+
+##
 
 $$
 \begin{aligned}

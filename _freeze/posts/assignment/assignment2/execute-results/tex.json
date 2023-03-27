@@ -1,0 +1,10 @@
+{
+  "hash": "efd12e1ad1f23d8ad3af50da9e85dc59",
+  "result": {
+    "markdown": "---\nformat: pdf\n---\n\n## DSA 554 3.0 Spatio-temporal Data Analysis\n\n**Assignment 2:** 10 marks\n\n**Assignment description explained:** 12 February 2023 (During the in-class lecture)\n\n**Assignment due date:** 2 April 2023\n\nThis assignment is based on `meuse` dataset. The `meuse` dataset  contains measurements for concentrations of different elements, over an area in the Netherlands.\n\nFollow the codes in the link below to download the meuse dataset:\n\n\\url{https://thiyanga-spatiotemporal.netlify.app/posts/time_series/week11#/load-data}\n\nWe discussed how to use the Kriging approach to interpolate values for meuse data during the lecture. \n\nThe associated tutorial is given here:\n\n\\url{https://scikit-gstat.readthedocs.io/en/latest/auto_examples/tutorial_01_getting_started.html#sphx-glr-auto-examples-tutorial-01-getting-started-py}\n\nIn the assignment, I want you to use a machine learning model to interpolate the values for the meuse data and compare your results against the Kriging approach.\n\nHelp:\n\nYou may need to think of suitable features before training the machine learning model.\n\n**Your final submission should include the following:**\n\n- Brief description of the methodology\n\n- Analysis codes, results, and interpretations\n\n- Comparison between kriging and machine learning results\n\n- Conclusions\n\nPlease document your analysis in a Jupyter notebook and submit it via LMS.\n\n",
+    "supporting": [
+      "assignment2_files"
+    ],
+    "filters": []
+  }
+}

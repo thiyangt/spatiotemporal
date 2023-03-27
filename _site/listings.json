@@ -2,6 +2,9 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/rules.pdf",
+      "/posts/assignment/rules.html",
+      "/posts/assignment/assignment2.pdf",
       "/posts/time_series/file1.html",
       "/posts/time_series/Week4b.html",
       "/posts/time_series/Week8.html",
