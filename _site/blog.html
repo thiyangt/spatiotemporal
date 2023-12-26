@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.253">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -57,7 +57,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script>
@@ -90,6 +91,7 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
@@ -106,27 +108,29 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Spatio-Temporal Data Analysis</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page">
+    <a class="nav-link active" href="./blog.html" rel="" target="" aria-current="page">
  <span class="menu-text">Course materials</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/thiyangt"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/thiyangt" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/home"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/home" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -153,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(22)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(4)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(4)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -166,82 +170,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1676688945269" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1668790751810" data-listing-reading-time-sort="4">
 <div class="thumbnail">
-<a href="./posts/rules.pdf">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/rules.pdf"></a></p>
-</div>
-<div class="body">
-<a href="./posts/rules.pdf">
-<h3 class="no-anchor listing-title">
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/rules.pdf"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1676689117131" data-listing-reading-time-sort="0.99">
-<div class="thumbnail">
-<a href="./posts/assignment/rules.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/assignment/rules.html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/assignment/rules.html">
-<h3 class="no-anchor listing-title">
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-The final submission date for the assignment is 2nd April 2023. Any submissions received after this date will not be accepted.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/assignment/rules.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1676689197621" data-listing-reading-time-sort="0.75">
-<div class="thumbnail">
-<a href="./posts/assignment/assignment2.pdf">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/assignment/assignment2.pdf"></a></p>
-</div>
-<div class="body">
-<a href="./posts/assignment/assignment2.pdf">
-<h3 class="no-anchor listing-title">
-DSA 554 3.0 Spatio-temporal Data Analysis
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/assignment/assignment2.pdf"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1668790751810" data-listing-reading-time-sort="3.535">
-<div class="thumbnail">
-<p><a href="./posts/time_series/file1.html"> <img src="./posts/time_series/time/trend.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/time_series/file1.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/time_series/file1.html">
@@ -260,101 +191,9 @@ Week 1B: Time Series: Objects in Python and Visualization
 <a href="./posts/time_series/file1.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1670018091116" data-listing-reading-time-sort="6.8">
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1674194293180" data-listing-reading-time-sort="4">
 <div class="thumbnail">
-<a href="./posts/time_series/Week4b.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/time_series/Week4b.html"></a></p>
-</div>
-<div class="body">
-<a href="./posts/time_series/Week4b.html">
-<h3 class="no-anchor listing-title">
-Week 5B: Maps using Plotnine (Choropleth, Scatter, and Bubble Maps)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/time_series/Week4b.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1672465458309" data-listing-reading-time-sort="1.695">
-<div class="thumbnail">
-<p><a href="./posts/time_series/Week8.html"> <img src="./posts/time_series/crossvalidation.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/time_series/Week8.html">
-<h3 class="no-anchor listing-title">
-Week 8: Accuracy Measures and Cross-validation Strategies for Data with Temporal and/ or Spatial Structures
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/time_series/Week8.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1673643394118" data-listing-reading-time-sort="0.485">
-<div class="thumbnail">
-<p><a href="./posts/time_series/week9.html"> <img src="./posts/time_series/img1.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/time_series/week9.html">
-<h3 class="no-anchor listing-title">
-Week 9: Variogram
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/time_series/week9.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1672465358562" data-listing-reading-time-sort="2.685">
-<div class="thumbnail">
-<p><a href="./posts/time_series/week8b.html"> <img src="./posts/time_series/dtw1.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/time_series/week8b.html">
-<h3 class="no-anchor listing-title">
-Week 8b: Time Series Clustering
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/time_series/week8b.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1674194293180" data-listing-reading-time-sort="3.6">
-<div class="thumbnail">
-<a href="./posts/time_series/Week2.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/time_series/Week2.html"></a></p>
+<p><a href="./posts/time_series/Week2.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/time_series/Week2.html">
@@ -373,13 +212,9 @@ Week 2: Time Series Forecasting
 <a href="./posts/time_series/Week2.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1670018086877" data-listing-reading-time-sort="10.3">
+<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1670018086877" data-listing-reading-time-sort="11">
 <div class="thumbnail">
-<a href="./posts/time_series/Week3.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/time_series/Week3.html"></a></p>
+<p><a href="./posts/time_series/Week3.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/time_series/Week3.html">
@@ -398,34 +233,9 @@ Week 3-4: AR/ MA/ ARMA/ ARIMA
 <a href="./posts/time_series/Week3.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-listing-file-modified-sort="1670630627918" data-listing-reading-time-sort="5.305">
+<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1670018050134" data-listing-reading-time-sort="3">
 <div class="thumbnail">
-<p><a href="./posts/time_series/Week6.html"> <img src="./posts/time_series/dist_diff_plot.webp" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/time_series/Week6.html">
-<h3 class="no-anchor listing-title">
-Week 6: Spatial data analysis: Introduction to kriging
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/time_series/Week6.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-listing-file-modified-sort="1670018050134" data-listing-reading-time-sort="2.8">
-<div class="thumbnail">
-<a href="./posts/time_series/Week4.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/time_series/Week4.html"></a></p>
+<p><a href="./posts/time_series/Week4.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/time_series/Week4.html">
@@ -444,72 +254,9 @@ Week 5A: AutoARIMA
 <a href="./posts/time_series/Week4.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-listing-file-modified-sort="1670023987747" data-listing-reading-time-sort="1.085">
+<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1668790751666" data-listing-reading-time-sort="4">
 <div class="thumbnail">
-<p><a href="./posts/time_series/week5.html"> <img src="./posts/time_series/us.jpeg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/time_series/week5.html">
-<h3 class="no-anchor listing-title">
-Week 5C: Coordinate Reference System
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-A coordinate reference system (CRS)…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/time_series/week5.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-listing-file-modified-sort="1676162915909" data-listing-reading-time-sort="4.285">
-<div class="thumbnail">
-<p><a href="./posts/time_series/Week11.html"> <img src="./posts/time_series/figsp.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/time_series/Week11.html">
-<h3 class="no-anchor listing-title">
-Week 11: Spatial Kriging/ Spatio-temporal Kriging
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/time_series/Week11.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-listing-file-modified-sort="1673653039077" data-listing-reading-time-sort="2.075">
-<div class="thumbnail">
-<p><a href="./posts/time_series/week10.html"> <img src="./posts/time_series/basic_variogram.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/time_series/week10.html">
-<h3 class="no-anchor listing-title">
-Week 10: Variogram calculation and modelling
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/time_series/week10.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-listing-file-modified-sort="1668790751666" data-listing-reading-time-sort="3.95">
-<div class="thumbnail">
-<p><a href="./posts/quarto/1_intro.html"> <img src="./posts/quarto/s1.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/quarto/1_intro.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/quarto/1_intro.html">
@@ -528,13 +275,9 @@ Week 1A: Data Visualization: Grammar of Graphics
 <a href="./posts/quarto/1_intro.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-listing-file-modified-sort="1668790751742" data-listing-reading-time-sort="0.18">
+<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1668790751742" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<a href="./posts/quarto/index.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/quarto/index.html"></a></p>
+<p><a href="./posts/quarto/index.html"> <p class="card-img-top"><img src="posts/quarto/index_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
 <div class="body">
 <a href="./posts/quarto/index.html">
@@ -553,13 +296,9 @@ Read here
 <a href="./posts/quarto/index.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-listing-file-modified-sort="1668790751545" data-listing-reading-time-sort="0.685">
+<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1668790751545" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<a href="./posts/data/index.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/data/index.html"></a></p>
+<p><a href="./posts/data/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/data/index.html">
@@ -578,13 +317,9 @@ AirPassengers.csv
 <a href="./posts/data/index.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="news" data-listing-date-sort="1667586600000" data-listing-file-modified-sort="1673654874485" data-listing-reading-time-sort="0.07">
+<div class="quarto-post image-right" data-index="7" data-categories="news" data-listing-date-sort="1667586600000" data-listing-file-modified-sort="1673654874485" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<a href="./posts/lab/index.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/lab/index.html"></a></p>
+<p><a href="./posts/lab/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/lab/index.html">
@@ -614,13 +349,9 @@ Nov 5, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="news" data-listing-date-sort="1667586600000" data-listing-file-modified-sort="1676159761589" data-listing-reading-time-sort="0.13">
+<div class="quarto-post image-right" data-index="8" data-categories="news" data-listing-date-sort="1667586600000" data-listing-file-modified-sort="1676159761589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<a href="./posts/homework/index.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/homework/index.html"></a></p>
+<p><a href="./posts/homework/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/homework/index.html">
@@ -650,9 +381,9 @@ Nov 5, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="news" data-listing-date-sort="1667327400000" data-listing-file-modified-sort="1668790751848" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-right" data-index="9" data-categories="news" data-listing-date-sort="1667327400000" data-listing-file-modified-sort="1668790751848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./posts/welcome/index.html"> <img src="./posts/welcome/co.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/welcome/index.html"> <p class="card-img-top"><img src="posts/welcome/co.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
 <div class="body">
 <a href="./posts/welcome/index.html">
@@ -682,13 +413,9 @@ Nov 2, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="news" data-listing-date-sort="1667327400000" data-listing-file-modified-sort="1668790751810" data-listing-reading-time-sort="0.22">
+<div class="quarto-post image-right" data-index="10" data-categories="news" data-listing-date-sort="1667327400000" data-listing-file-modified-sort="1668790751810" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<a href="./posts/time_series/index.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/time_series/index.html"></a></p>
+<p><a href="./posts/time_series/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./posts/time_series/index.html">
@@ -750,9 +477,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -817,6 +558,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
