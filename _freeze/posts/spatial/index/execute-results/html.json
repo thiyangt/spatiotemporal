@@ -1,0 +1,11 @@
+{
+  "hash": "09ac9946671a8fd448f4b1c5c1900184",
+  "result": {
+    "markdown": "---\ntitle: Spatial Statistics\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n# Lecture slides\n\n[Spatial Statistics: Lecture 1](spatial_analysis.pdf)\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -1,0 +1,14 @@
+---
+title: "Spatial Statistics"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+jupyter: python3
+---
+
+# Lecture slides
+
+[Spatial Statistics: Lecture 1](spatial_analysis.pdf)
+

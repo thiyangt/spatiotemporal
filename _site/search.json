@@ -1,404 +1,5 @@
 [
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
-    "section": "",
-    "text": "Week 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nDatasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nPracticals\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n  \n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/data/index.html",
-    "href": "posts/data/index.html",
-    "title": "Datasets",
-    "section": "",
-    "text": "1 Dataset 1\nAirPassengers.csv\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960\n\n\n2 Dataset 2\ntourism.csv\nAustralian domestic overnight trips\nDescription\nA dataset containing the quarterly overnight trips from 1998 Q1 to 2016 Q4 across Australia.\nThe dataset contains 23,408 rows and 5 variables:\nVariable description\n\nQuarter: Year quarter (index)\n\n\nRegion: The tourism regions are formed through the aggregation of Statistical Local Areas (SLAs) which are defined by the various State and Territory tourism authorities according to their research and marketing needs\n\n\nState: States and territories of Australia\n\n\nPurpose: Stopover purpose of visit: “Holiday”, “Visiting friends and relatives”,“Business”, “Other reason”\n\n\nTrips: Overnight trips in thousands\n\nReference\nWang, E, D Cook, and RJ Hyndman (2020). A new tidy data structure to support exploration and modeling of temporal data, Journal of Computational and Graphical Statistics, 29:3, 466-478, doi:10.1080/10618600.2019.1695624."
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#section-3",
-    "href": "posts/quarto/1_intro.html#section-3",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "",
-    "text": "click here"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#grammar",
-    "href": "posts/quarto/1_intro.html#grammar",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Grammar",
-    "text": "Grammar\n\n\n\nEnglish\n\nNouns\nArticle\nAdjective\nVerb\nAdverb\nProposition\n\n\n\nGraphics"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#grammar---example",
-    "href": "posts/quarto/1_intro.html#grammar---example",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Grammar - Example",
-    "text": "Grammar - Example\n\n\nEnglish\nThe little monkey hangs confidently by a branch.\n\nGraphics\n\n\n\n\n\n&lt;ggplot: (383084815)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#grammar---example-1",
-    "href": "posts/quarto/1_intro.html#grammar---example-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Grammar - Example",
-    "text": "Grammar - Example\n\n\nEnglish\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch\n\nGraphics"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#graphics---grammar-components",
-    "href": "posts/quarto/1_intro.html#graphics---grammar-components",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Graphics - Grammar components",
-    "text": "Graphics - Grammar components\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (383478448)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#geom_line",
-    "href": "posts/quarto/1_intro.html#geom_line",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "geom_line",
-    "text": "geom_line\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (-9223372036471287173)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#geom_point",
-    "href": "posts/quarto/1_intro.html#geom_point",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "geom_point",
-    "text": "geom_point\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (-9223372036470940265)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_point() # line plot\n    + labs(x='date', y='median duration of unemployment, in week')\n)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data",
-    "href": "posts/quarto/1_intro.html#data",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data",
-    "text": "Data\nDate: data to be plotted"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#packages",
-    "href": "posts/quarto/1_intro.html#packages",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Packages",
-    "text": "Packages\n\nimport pandas as pd\nimport plotnine\n\nfrom plotnine import *\nfrom plotnine.data import *"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics",
-    "href": "posts/quarto/1_intro.html#dataset-economics",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n\n\n\ndate\npce\npop\npsavert\nuempmed\nunemploy\n\n\n\n\n0\n1967-07-01\n507.4\n198712\n12.5\n4.5\n2944\n\n\n1\n1967-08-01\n510.5\n198911\n12.5\n4.7\n2945\n\n\n2\n1967-09-01\n516.3\n199113\n11.7\n4.6\n2958"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics-1",
-    "href": "posts/quarto/1_intro.html#dataset-economics-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 574 entries, 0 to 573\nData columns (total 6 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(2)\nmemory usage: 27.0 KB"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics-2",
-    "href": "posts/quarto/1_intro.html#dataset-economics-2",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics['year'] = economics['date'].dt.year\neconomics['month'] = economics['date'].dt.month"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics-3",
-    "href": "posts/quarto/1_intro.html#dataset-economics-3",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-economics-4",
-    "href": "posts/quarto/1_intro.html#dataset-economics-4",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Dataset: economics",
-    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n\n\n\ndate\npce\npop\npsavert\nuempmed\nunemploy\nyear\nmonth\n\n\n\n\n0\n1967-07-01\n507.4\n198712\n12.5\n4.5\n2944\n1967\n7\n\n\n1\n1967-08-01\n510.5\n198911\n12.5\n4.7\n2945\n1967\n8\n\n\n2\n1967-09-01\n516.3\n199113\n11.7\n4.6\n2958\n1967\n9"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data",
-    "href": "posts/quarto/1_intro.html#tidy-data",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Tidy data",
-    "text": "Tidy data\n\n\nEvery column is a variable.\nEvery row is an observation.\nEvery cell is a single value."
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data---example",
-    "href": "posts/quarto/1_intro.html#tidy-data---example",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Tidy data - Example",
-    "text": "Tidy data - Example"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data---example-1",
-    "href": "posts/quarto/1_intro.html#tidy-data---example-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Tidy data - Example",
-    "text": "Tidy data - Example"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data---example-2",
-    "href": "posts/quarto/1_intro.html#tidy-data---example-2",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Tidy data - Example",
-    "text": "Tidy data - Example"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#tidy-data---example-3",
-    "href": "posts/quarto/1_intro.html#tidy-data---example-3",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Tidy data - Example",
-    "text": "Tidy data - Example"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-1",
-    "href": "posts/quarto/1_intro.html#data-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data",
-    "text": "Data\n\nggplot(data=economics)\n\n\n&lt;ggplot: (383844195)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
-    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Aesthetics: mapping variables",
-    "text": "Aesthetics: mapping variables"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
-    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Aesthetics: mapping variables",
-    "text": "Aesthetics: mapping variables\nAesthetic means “something you can see”.\n\nposition (i.e., on the x and y axes)\ncolor (“outside” color)\nfill (“inside” color)\nshape (of points)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetic-position",
-    "href": "posts/quarto/1_intro.html#aesthetic-position",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Aesthetic: position",
-    "text": "Aesthetic: position\n\nfrom plotnine.data import mtcars\n\nggplot(mtcars, aes('wt', 'mpg')) + geom_point()\n\n\n&lt;ggplot: (-9223372036470736247)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetic-color",
-    "href": "posts/quarto/1_intro.html#aesthetic-color",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Aesthetic: color",
-    "text": "Aesthetic: color\n\nggplot(mtcars, aes('wt', 'mpg', color='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (383119922)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetic-shape",
-    "href": "posts/quarto/1_intro.html#aesthetic-shape",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Aesthetic: shape",
-    "text": "Aesthetic: shape\n\nggplot(mtcars, aes('wt', 'mpg', shape='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (384289123)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#aesthetic-size",
-    "href": "posts/quarto/1_intro.html#aesthetic-size",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Aesthetic: size",
-    "text": "Aesthetic: size\n\nggplot(mtcars, aes('wt', 'mpg', size='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (-9223372036470265845)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics",
-    "href": "posts/quarto/1_intro.html#data-aesthetics",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(economics, aes(x='date', y='uempmed'))\n\n\n&lt;ggplot: (-9223372036470514358)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#geometrics",
-    "href": "posts/quarto/1_intro.html#geometrics",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Geometrics",
-    "text": "Geometrics\nActual marks we put on a plot"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point()\n\n\n&lt;ggplot: (-9223372036469989302)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(alpha=0.5)\n\n\n&lt;ggplot: (-9223372036469942633)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(size=0.3)\n\n\n&lt;ggplot: (-9223372036469989246)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line()\n\n\n&lt;ggplot: (-9223372036469721351)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3)\n\n\n&lt;ggplot: (-9223372036469621511)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics",
-    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour=\"blue\")\n\n\n&lt;ggplot: (-9223372036469501724)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#geoms",
-    "href": "posts/quarto/1_intro.html#geoms",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Geoms",
-    "text": "Geoms\n\nsource: https://nbisweden.github.io/RaukR-2019/ggplot/presentation/ggplot_presentation.html#17"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset",
-    "href": "posts/quarto/1_intro.html#dataset",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Dataset",
-    "text": "Dataset\n\nmpg\n\n\n\n\n\n\n\n\nmanufacturer\nmodel\ndispl\nyear\ncyl\ntrans\ndrv\ncty\nhwy\nfl\nclass\n\n\n\n\n0\naudi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n\n\n1\naudi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n\n\n2\naudi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n\n\n3\naudi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n\n\n4\naudi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n229\nvolkswagen\npassat\n2.0\n2008\n4\nauto(s6)\nf\n19\n28\np\nmidsize\n\n\n230\nvolkswagen\npassat\n2.0\n2008\n4\nmanual(m6)\nf\n21\n29\np\nmidsize\n\n\n231\nvolkswagen\npassat\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\nmidsize\n\n\n232\nvolkswagen\npassat\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\nmidsize\n\n\n233\nvolkswagen\npassat\n3.6\n2008\n6\nauto(s6)\nf\n17\n26\np\nmidsize\n\n\n\n\n234 rows × 11 columns"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#dataset-variable-types",
-    "href": "posts/quarto/1_intro.html#dataset-variable-types",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Dataset: variable types",
-    "text": "Dataset: variable types\n\nmpg.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 234 entries, 0 to 233\nData columns (total 11 columns):\n #   Column        Non-Null Count  Dtype   \n---  ------        --------------  -----   \n 0   manufacturer  234 non-null    category\n 1   model         234 non-null    category\n 2   displ         234 non-null    float64 \n 3   year          234 non-null    int64   \n 4   cyl           234 non-null    int64   \n 5   trans         234 non-null    category\n 6   drv           234 non-null    category\n 7   cty           234 non-null    int64   \n 8   hwy           234 non-null    int64   \n 9   fl            234 non-null    category\n 10  class         234 non-null    category\ndtypes: category(6), float64(1), int64(4)\nmemory usage: 14.0 KB"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-2",
-    "href": "posts/quarto/1_intro.html#data-2",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data",
-    "text": "Data\n\nggplot(mpg)\n\n\n&lt;ggplot: (385284458)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n&lt;ggplot: (385284528)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-2",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-2",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics",
-    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n&lt;ggplot: (385505775)&gt;\n\n\ndispl - a car’s engine size, in litres.\nhwy - a car’s fuel efficiency on the highway, in miles per gallon (mpg)"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geom",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geom",
-    "text": "Data + Aesthetics + Geom\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point()\n\n\n&lt;ggplot: (385599443)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#facets-small-multiples",
-    "href": "posts/quarto/1_intro.html#facets-small-multiples",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Facets: small multiples",
-    "text": "Facets: small multiples\nSubplots that each display one subset of the data."
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geom + Facets",
-    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)\n\n\n&lt;ggplot: (-9223372036469377946)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geom + Facets",
-    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2) \n\n\n&lt;ggplot: (383391510)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#statistics",
-    "href": "posts/quarto/1_intro.html#statistics",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Statistics",
-    "text": "Statistics"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geom + Facets + Statistics",
-    "text": "Data + Aesthetics + Geom + Facets + Statistics\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\")\n\n\n&lt;ggplot: (385913671)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#coordinate",
-    "href": "posts/quarto/1_intro.html#coordinate",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Coordinate",
-    "text": "Coordinate"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate",
-    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\") + coord_flip()\n\n\n&lt;ggplot: (385251876)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#theme",
-    "href": "posts/quarto/1_intro.html#theme",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Theme",
-    "text": "Theme"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme",
-    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\") + coord_flip() + theme_dark()\n\n\n&lt;ggplot: (383847323)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#scale",
-    "href": "posts/quarto/1_intro.html#scale",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Scale",
-    "text": "Scale"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() \n\n\n&lt;ggplot: (383875883)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_brewer()\n\n\n&lt;ggplot: (383894269)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
-    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Data + Aesthetics + Geometrics + Scale",
-    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_manual(values=['blue', 'red', 'green'])\n\n\n&lt;ggplot: (-9223372036468854114)&gt;"
-  },
-  {
-    "objectID": "posts/quarto/1_intro.html#your-turn",
-    "href": "posts/quarto/1_intro.html#your-turn",
-    "title": "Week 1A: Data Visualization: Grammar of Graphics",
-    "section": "Your Turn",
-    "text": "Your Turn\nVisualize AirPassengers dataset.\nDataset: available at https://thiyanga-spatiotemporal.netlify.app/posts/data/"
-  },
-  {
     "objectID": "posts/time_series/Week3.html#acf",
     "href": "posts/time_series/Week3.html#acf",
     "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
@@ -889,6 +490,398 @@
     "text": "Forecasting: Principles and Practice (2nd ed) by Rob J Hyndman and George Athanasopoulos\nForecasting: theory and practice\nThis written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field."
   },
   {
+    "objectID": "posts/spatial/index.html",
+    "href": "posts/spatial/index.html",
+    "title": "Spatial Statistics",
+    "section": "",
+    "text": "1 Lecture slides\nSpatial Statistics: Lecture 1"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section-3",
+    "href": "posts/quarto/1_intro.html#section-3",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "",
+    "text": "click here"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar",
+    "href": "posts/quarto/1_intro.html#grammar",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Grammar",
+    "text": "Grammar\n\n\n\nEnglish\n\nNouns\nArticle\nAdjective\nVerb\nAdverb\nProposition\n\n\n\nGraphics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar---example",
+    "href": "posts/quarto/1_intro.html#grammar---example",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Grammar - Example",
+    "text": "Grammar - Example\n\n\nEnglish\nThe little monkey hangs confidently by a branch.\n\nGraphics\n\n\n\n\n\n&lt;ggplot: (383084815)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar---example-1",
+    "href": "posts/quarto/1_intro.html#grammar---example-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Grammar - Example",
+    "text": "Grammar - Example\n\n\nEnglish\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch\n\nGraphics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#graphics---grammar-components",
+    "href": "posts/quarto/1_intro.html#graphics---grammar-components",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Graphics - Grammar components",
+    "text": "Graphics - Grammar components\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (383478448)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geom_line",
+    "href": "posts/quarto/1_intro.html#geom_line",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "geom_line",
+    "text": "geom_line\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (-9223372036471287173)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geom_point",
+    "href": "posts/quarto/1_intro.html#geom_point",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "geom_point",
+    "text": "geom_point\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (-9223372036470940265)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_point() # line plot\n    + labs(x='date', y='median duration of unemployment, in week')\n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data",
+    "href": "posts/quarto/1_intro.html#data",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\nDate: data to be plotted"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#packages",
+    "href": "posts/quarto/1_intro.html#packages",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Packages",
+    "text": "Packages\n\nimport pandas as pd\nimport plotnine\n\nfrom plotnine import *\nfrom plotnine.data import *"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics",
+    "href": "posts/quarto/1_intro.html#dataset-economics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n\n\n\ndate\npce\npop\npsavert\nuempmed\nunemploy\n\n\n\n\n0\n1967-07-01\n507.4\n198712\n12.5\n4.5\n2944\n\n\n1\n1967-08-01\n510.5\n198911\n12.5\n4.7\n2945\n\n\n2\n1967-09-01\n516.3\n199113\n11.7\n4.6\n2958"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-1",
+    "href": "posts/quarto/1_intro.html#dataset-economics-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 574 entries, 0 to 573\nData columns (total 6 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(2)\nmemory usage: 27.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-2",
+    "href": "posts/quarto/1_intro.html#dataset-economics-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics['year'] = economics['date'].dt.year\neconomics['month'] = economics['date'].dt.month"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-3",
+    "href": "posts/quarto/1_intro.html#dataset-economics-3",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-4",
+    "href": "posts/quarto/1_intro.html#dataset-economics-4",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n\n\n\ndate\npce\npop\npsavert\nuempmed\nunemploy\nyear\nmonth\n\n\n\n\n0\n1967-07-01\n507.4\n198712\n12.5\n4.5\n2944\n1967\n7\n\n\n1\n1967-08-01\n510.5\n198911\n12.5\n4.7\n2945\n1967\n8\n\n\n2\n1967-09-01\n516.3\n199113\n11.7\n4.6\n2958\n1967\n9"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data",
+    "href": "posts/quarto/1_intro.html#tidy-data",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data",
+    "text": "Tidy data\n\n\nEvery column is a variable.\nEvery row is an observation.\nEvery cell is a single value."
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example",
+    "href": "posts/quarto/1_intro.html#tidy-data---example",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-1",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-2",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-3",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-3",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-1",
+    "href": "posts/quarto/1_intro.html#data-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\n\nggplot(data=economics)\n\n\n&lt;ggplot: (383844195)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
+    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetics: mapping variables",
+    "text": "Aesthetics: mapping variables"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
+    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetics: mapping variables",
+    "text": "Aesthetics: mapping variables\nAesthetic means “something you can see”.\n\nposition (i.e., on the x and y axes)\ncolor (“outside” color)\nfill (“inside” color)\nshape (of points)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-position",
+    "href": "posts/quarto/1_intro.html#aesthetic-position",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: position",
+    "text": "Aesthetic: position\n\nfrom plotnine.data import mtcars\n\nggplot(mtcars, aes('wt', 'mpg')) + geom_point()\n\n\n&lt;ggplot: (-9223372036470736247)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-color",
+    "href": "posts/quarto/1_intro.html#aesthetic-color",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: color",
+    "text": "Aesthetic: color\n\nggplot(mtcars, aes('wt', 'mpg', color='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (383119922)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-shape",
+    "href": "posts/quarto/1_intro.html#aesthetic-shape",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: shape",
+    "text": "Aesthetic: shape\n\nggplot(mtcars, aes('wt', 'mpg', shape='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (384289123)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-size",
+    "href": "posts/quarto/1_intro.html#aesthetic-size",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: size",
+    "text": "Aesthetic: size\n\nggplot(mtcars, aes('wt', 'mpg', size='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (-9223372036470265845)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(economics, aes(x='date', y='uempmed'))\n\n\n&lt;ggplot: (-9223372036470514358)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geometrics",
+    "href": "posts/quarto/1_intro.html#geometrics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Geometrics",
+    "text": "Geometrics\nActual marks we put on a plot"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point()\n\n\n&lt;ggplot: (-9223372036469989302)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(alpha=0.5)\n\n\n&lt;ggplot: (-9223372036469942633)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(size=0.3)\n\n\n&lt;ggplot: (-9223372036469989246)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line()\n\n\n&lt;ggplot: (-9223372036469721351)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3)\n\n\n&lt;ggplot: (-9223372036469621511)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour=\"blue\")\n\n\n&lt;ggplot: (-9223372036469501724)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geoms",
+    "href": "posts/quarto/1_intro.html#geoms",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Geoms",
+    "text": "Geoms\n\nsource: https://nbisweden.github.io/RaukR-2019/ggplot/presentation/ggplot_presentation.html#17"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset",
+    "href": "posts/quarto/1_intro.html#dataset",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset",
+    "text": "Dataset\n\nmpg\n\n\n\n\n\n\n\n\nmanufacturer\nmodel\ndispl\nyear\ncyl\ntrans\ndrv\ncty\nhwy\nfl\nclass\n\n\n\n\n0\naudi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n\n\n1\naudi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n\n\n2\naudi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n\n\n3\naudi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n\n\n4\naudi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n229\nvolkswagen\npassat\n2.0\n2008\n4\nauto(s6)\nf\n19\n28\np\nmidsize\n\n\n230\nvolkswagen\npassat\n2.0\n2008\n4\nmanual(m6)\nf\n21\n29\np\nmidsize\n\n\n231\nvolkswagen\npassat\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\nmidsize\n\n\n232\nvolkswagen\npassat\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\nmidsize\n\n\n233\nvolkswagen\npassat\n3.6\n2008\n6\nauto(s6)\nf\n17\n26\np\nmidsize\n\n\n\n\n234 rows × 11 columns"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-variable-types",
+    "href": "posts/quarto/1_intro.html#dataset-variable-types",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: variable types",
+    "text": "Dataset: variable types\n\nmpg.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 234 entries, 0 to 233\nData columns (total 11 columns):\n #   Column        Non-Null Count  Dtype   \n---  ------        --------------  -----   \n 0   manufacturer  234 non-null    category\n 1   model         234 non-null    category\n 2   displ         234 non-null    float64 \n 3   year          234 non-null    int64   \n 4   cyl           234 non-null    int64   \n 5   trans         234 non-null    category\n 6   drv           234 non-null    category\n 7   cty           234 non-null    int64   \n 8   hwy           234 non-null    int64   \n 9   fl            234 non-null    category\n 10  class         234 non-null    category\ndtypes: category(6), float64(1), int64(4)\nmemory usage: 14.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-2",
+    "href": "posts/quarto/1_intro.html#data-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\n\nggplot(mpg)\n\n\n&lt;ggplot: (385284458)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n&lt;ggplot: (385284528)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n&lt;ggplot: (385505775)&gt;\n\n\ndispl - a car’s engine size, in litres.\nhwy - a car’s fuel efficiency on the highway, in miles per gallon (mpg)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom",
+    "text": "Data + Aesthetics + Geom\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point()\n\n\n&lt;ggplot: (385599443)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#facets-small-multiples",
+    "href": "posts/quarto/1_intro.html#facets-small-multiples",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Facets: small multiples",
+    "text": "Facets: small multiples\nSubplots that each display one subset of the data."
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets",
+    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)\n\n\n&lt;ggplot: (-9223372036469377946)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets",
+    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2) \n\n\n&lt;ggplot: (383391510)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#statistics",
+    "href": "posts/quarto/1_intro.html#statistics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Statistics",
+    "text": "Statistics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets + Statistics",
+    "text": "Data + Aesthetics + Geom + Facets + Statistics\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\")\n\n\n&lt;ggplot: (385913671)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#coordinate",
+    "href": "posts/quarto/1_intro.html#coordinate",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Coordinate",
+    "text": "Coordinate"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate",
+    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\") + coord_flip()\n\n\n&lt;ggplot: (385251876)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#theme",
+    "href": "posts/quarto/1_intro.html#theme",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Theme",
+    "text": "Theme"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme",
+    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\") + coord_flip() + theme_dark()\n\n\n&lt;ggplot: (383847323)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#scale",
+    "href": "posts/quarto/1_intro.html#scale",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Scale",
+    "text": "Scale"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() \n\n\n&lt;ggplot: (383875883)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_brewer()\n\n\n&lt;ggplot: (383894269)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_manual(values=['blue', 'red', 'green'])\n\n\n&lt;ggplot: (-9223372036468854114)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#your-turn",
+    "href": "posts/quarto/1_intro.html#your-turn",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Your Turn",
+    "text": "Your Turn\nVisualize AirPassengers dataset.\nDataset: available at https://thiyanga-spatiotemporal.netlify.app/posts/data/"
+  },
+  {
     "objectID": "posts/homework/index.html",
     "href": "posts/homework/index.html",
     "title": "Take-home tasks",
@@ -915,6 +908,27 @@
     "title": "Take-home tasks",
     "section": "Additional Reading",
     "text": "Additional Reading\nIntroduction to Geostatistics - OSFhttps://osf.io › download PDF by A Bárdossy"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DSA 554 3.0 Spatio-temporal Data Analysis",
+    "section": "",
+    "text": "DSA 554 3.0 Spatio-temporal Data Analysis is offered under MSc in Data Science (DS) and Artificial Intelligence (AI).\nThe MSc in DS and AI at USJ was designed in partnership with the Erasmus+ DS and AI consortium, a group of 15 European and Asian organizations with the mission of bringing European-standard advanced education to Asia."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
+    "section": "",
+    "text": "Datasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nSpatial Statistics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nPracticals\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/data/index.html",
+    "href": "posts/data/index.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "1 Dataset 1\nAirPassengers.csv\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960\n\n\n2 Dataset 2\ntourism.csv\nAustralian domestic overnight trips\nDescription\nA dataset containing the quarterly overnight trips from 1998 Q1 to 2016 Q4 across Australia.\nThe dataset contains 23,408 rows and 5 variables:\nVariable description\n\nQuarter: Year quarter (index)\n\n\nRegion: The tourism regions are formed through the aggregation of Statistical Local Areas (SLAs) which are defined by the various State and Territory tourism authorities according to their research and marketing needs\n\n\nState: States and territories of Australia\n\n\nPurpose: Stopover purpose of visit: “Holiday”, “Visiting friends and relatives”,“Business”, “Other reason”\n\n\nTrips: Overnight trips in thousands\n\nReference\nWang, E, D Cook, and RJ Hyndman (2020). A new tidy data structure to support exploration and modeling of temporal data, Journal of Computational and Graphical Statistics, 29:3, 466-478, doi:10.1080/10618600.2019.1695624."
   },
   {
     "objectID": "posts/lab/index.html",
@@ -950,6 +964,20 @@
     "title": "Practicals",
     "section": "Calendar plot",
     "text": "Calendar plot\nData simulation: https://github.com/thiyangt/helloPython/blob/master/calendarplot-question.ipynb\nTask: Visualize data"
+  },
+  {
+    "objectID": "posts/quarto/index.html",
+    "href": "posts/quarto/index.html",
+    "title": "About this Blog",
+    "section": "",
+    "text": "Read here"
+  },
+  {
+    "objectID": "posts/quarto/index.html#what-is-quarto",
+    "href": "posts/quarto/index.html#what-is-quarto",
+    "title": "About this Blog",
+    "section": "",
+    "text": "Read here"
   },
   {
     "objectID": "posts/time_series/file1.html#time-series",
@@ -1608,26 +1636,5 @@
     "title": "Week 5A: AutoARIMA",
     "section": "",
     "text": "Step 3: Select the model with the smallest AICc from step 2. This becomes the current model.\nStep 4: Consider up to 13 variations on the current model:\n\nVary one of \\(p, q, P\\) and \\(Q\\) from the current model by \\(\\pm 1\\).\n\\(p, q\\) both vary from the current model by \\(\\pm 1\\).\n\\(P, Q\\) both vary from the current model by \\(\\pm 1\\).\nInclude or exclude the constant term from the current model. Repeat step 4 until no lower AICc can be found."
-  },
-  {
-    "objectID": "posts/quarto/index.html",
-    "href": "posts/quarto/index.html",
-    "title": "About this Blog",
-    "section": "",
-    "text": "Read here"
-  },
-  {
-    "objectID": "posts/quarto/index.html#what-is-quarto",
-    "href": "posts/quarto/index.html#what-is-quarto",
-    "title": "About this Blog",
-    "section": "",
-    "text": "Read here"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DSA 554 3.0 Spatio-temporal Data Analysis",
-    "section": "",
-    "text": "DSA 554 3.0 Spatio-temporal Data Analysis is offered under MSc in Data Science (DS) and Artificial Intelligence (AI).\nThe MSc in DS and AI at USJ was designed in partnership with the Erasmus+ DS and AI consortium, a group of 15 European and Asian organizations with the mission of bringing European-standard advanced education to Asia."
   }
 ]
