@@ -1,0 +1,17 @@
+---
+title: "Time Series Analysis"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+jupyter: python3
+---
+
+# Lecture Notes
+
+[Linear Time Series Analysis and Its
+Applications](TS1_2024.pdf)
+
+
+

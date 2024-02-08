@@ -1,0 +1,11 @@
+{
+  "hash": "8fde0e23d7c0c99337c0e9e5364fb6d5",
+  "result": {
+    "markdown": "---\ntitle: Time Series Analysis\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n# Lecture Notes\n\n[Linear Time Series Analysis and Its\nApplications](TS1_2024.pdf)\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

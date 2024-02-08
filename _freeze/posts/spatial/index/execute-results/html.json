@@ -1,7 +1,7 @@
 {
-  "hash": "09ac9946671a8fd448f4b1c5c1900184",
+  "hash": "f0444627e6b389d5f62a42cf608d8535",
   "result": {
-    "markdown": "---\ntitle: Spatial Statistics\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n# Lecture slides\n\n[Spatial Statistics: Lecture 1](spatial_analysis.pdf)\n\n",
+    "markdown": "---\ntitle: Spatial Statistics\nformat:\n  html:\n    theme: default\n    toc: true\n    number-sections: true\n---\n\n# Lecture slides\n\n[Spatial Statistics: Lecture 1](spatial_analysis.pdf)\n\n# Dataset 1\n\nhttps://github.com/GeostatsGuy/GeoDataSets/blob/master/1D_Porosity.xlsx\n\n\n# R script file\n\n[Spatial Data Visualisation - R Script file](spatial_data_analysis.R)\n\n",
     "supporting": [
       "index_files"
     ],

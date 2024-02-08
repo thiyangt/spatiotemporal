@@ -12,3 +12,11 @@ jupyter: python3
 
 [Spatial Statistics: Lecture 1](spatial_analysis.pdf)
 
+# Dataset 1
+
+https://github.com/GeostatsGuy/GeoDataSets/blob/master/1D_Porosity.xlsx
+
+
+# R script file
+
+[Spatial Data Visualisation - R Script file](spatial_data_analysis.R)
