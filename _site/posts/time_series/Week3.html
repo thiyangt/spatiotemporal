@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.450">
+
+  <title>Spatio-Temporal Data Analysis - Week 3-4: AR/ MA/ ARMA/ ARIMA</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 3-4: AR/ MA/ ARMA/ ARIMA</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section>
+<section id="recap-stationarity" class="title-slide slide level1 center">
+<h1>Recap: Stationarity</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>mean <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>std <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb1-6"><a href="#cb1-6"></a>num_samples <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>samples <span class="op">=</span> numpy.random.normal(mean, std, size<span class="op">=</span>num_samples)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>plt.plot(samples)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-margin">
+<p><img data-src="Week3_files/figure-revealjs/cell-2-output-1.png" width="792" height="411"></p>
+</div>
+</div>
+</section>
+<section id="acf" class="slide level2">
+<h2>ACF</h2>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img data-src="Week3_files/figure-revealjs/cell-3-output-1.png" width="813" height="431"></p>
+</div>
+</div>
+<p>White noise implies stationarity. Stationarity does not imply white noise.</p>
+</section>
+<section id="non-stationary-time-series" class="slide level2">
+<h2>Non-Stationary Time Series</h2>
+<p><strong>1. Deterministic trend</strong></p>
+<p><span class="math display">\[Y_t  = f(t) + \epsilon_t\]</span></p>
+<p>where <span class="math inline">\(\epsilon_t \sim iid(0, \sigma^2)\)</span>, <span class="math inline">\(t = 1, 2, ...T\)</span></p>
+<p>Mean of the process is time dependent, but the variance of the process is constant.</p>
+<p>A trend is deterministic if it is a nonrandom function of time.</p>
+</section>
+<section id="non-stationary-time-series-cont." class="slide level2">
+<h2>Non-Stationary Time Series (cont.)</h2>
+<p><strong>2. Random walk</strong></p>
+<p><span class="math display">\[Y_t = Y_{t-1} + \epsilon_t\]</span></p>
+<ul>
+<li><p>Random walk has a stochastic trend.</p></li>
+<li><p>Model behind naive method.</p></li>
+</ul>
+<p>A trend is said to be stochastic if it is a random function of time.</p>
+</section>
+<section id="non-stationary-time-series-cont.-1" class="slide level2">
+<h2>Non-Stationary Time Series (cont.)</h2>
+<p><strong>3. Random walk with drift</strong></p>
+<p><span class="math display">\[Y_t = \alpha+  Y_{t-1} + \epsilon_t\]</span></p>
+<ul>
+<li><p>Random walk with drift has a stochastic trend and a deterministic trend.</p></li>
+<li><p>Model behind drift method.</p></li>
+</ul>
+</section>
+<section id="random-walk" class="slide level2">
+<h2>Random walk</h2>
+<p><span class="math display">\[
+\begin{aligned}
+  Y_t &amp;= Y_{t-1} + \epsilon_t \\
+     Y_1    &amp;= Y_0 + \epsilon_1 \\
+         Y_2 &amp;=  Y_1 + \epsilon_2=Y_0 + \epsilon_1 + \epsilon_2\\
+          Y_3 &amp;=  Y_2 + \epsilon_3=Y_0 + \epsilon_1 + \epsilon_2 +\epsilon_3\\
+          .   \\
+          Y_t &amp;=Y_{t-1} + \epsilon_t=Y_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 +...+ \epsilon_t = Y_0 + \sum_{i=1}^{t} \epsilon_t
+\end{aligned}
+\]</span></p>
+<p>Mean: <span class="math inline">\(E(Y_t) = Y_0\)</span>.</p>
+<p>Variance: <span class="math inline">\(Var(Y_t)=t \sigma^2\)</span>.</p>
+</section>
+<section id="random-walk-with-drift" class="slide level2">
+<h2>Random walk with drift</h2>
+<p><span class="math display">\[
+\begin{aligned}
+  Y_t &amp;= Y_{t-1} + \epsilon_t \\
+     Y_1    &amp;= \alpha+Y_0 + \epsilon_1 \\
+         Y_2 &amp;= \alpha+ Y_1 + \epsilon_2=2 \alpha+Y_0 + \epsilon_1 + \epsilon_2\\
+          Y_3 &amp;= \alpha+ Y_2 + \epsilon_3= 3 \alpha+ Y_0 + \epsilon_1 + \epsilon_2 +\epsilon_3\\
+          .   \\
+          Y_t &amp;= \alpha+Y_{t-1} + \epsilon_t= t \alpha+ Y_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 +...+ \epsilon_t \\
+          Y_t &amp;= t \alpha + Y_0 + \sum_{i=1}^{t} \epsilon_t
+\end{aligned}
+\]</span></p>
+</section>
+<section id="random-walk-with-drift-cont." class="slide level2">
+<h2>Random walk with drift (cont.)</h2>
+<p>It has a <em>deterministic trend</em> <span class="math inline">\((Y_0 + t \alpha)\)</span> and a <em>stochastic trend</em> <span class="math inline">\(\sum_{i=1}^{t} \epsilon_t\)</span>.</p>
+<p>Mean: <span class="math inline">\(E(Y_t) = Y_0 + t\alpha\)</span></p>
+<p>Variance: <span class="math inline">\(Var(Y_t) = t\sigma^2\)</span>.</p>
+<p>There is a trend in both mean and variance.</p>
+</section>
+<section id="common-trend-removal-de-trending-procedures" class="slide level2">
+<h2>Common trend removal (de-trending) procedures</h2>
+<ol type="1">
+<li><p>Deterministic trend: Time-trend regression</p>
+<p>The trend can be removed by fitting a deterministic polynomial time trend. The residual series after removing the trend will give us the de-trended series.</p></li>
+<li><p>Stochastic trend: Differencing</p>
+<p>The process is also known as a <strong>Difference-stationary process</strong>.</p></li>
+</ol>
+</section></section>
+<section>
+<section id="notation-id" class="title-slide slide level1 center">
+<h1>Notation: I(d)</h1>
+<p>Integrated to order <span class="math inline">\(d\)</span>: Series can be made stationary by differencing <span class="math inline">\(d\)</span> times.</p>
+<ul>
+<li>Known as <span class="math inline">\(I(d)\)</span> process.</li>
+</ul>
+<p><strong>Question: </strong> Show that random walk process is an <span class="math inline">\(I(1)\)</span> process.</p>
+<p>The random walk process is called a unit root process. (If one of the roots turns out to be one, then the process is called unit root process.)</p>
+</section>
+<section id="random-walk-1" class="slide level2">
+<h2>Random walk</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2"></a>rw <span class="op">=</span> np.cumsum(samples)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>plt.plot(rw)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img data-src="Week3_files/figure-revealjs/cell-4-output-1.png" width="789" height="411"></p>
+</div>
+</div>
+</section>
+<section id="random-walk---acf" class="slide level2">
+<h2>Random walk - ACF</h2>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<p><img data-src="Week3_files/figure-revealjs/cell-5-output-1.png" width="813" height="431"></p>
+</div>
+</div>
+</section>
+<section id="difference-series" class="slide level2">
+<h2>Difference series</h2>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Values</th>
+<th data-quarto-table-cell-role="th">Lag 1</th>
+<th data-quarto-table-cell-role="th">Lag 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.203587</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.290288</td>
+<td>0.086700</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.334784</td>
+<td>-0.955504</td>
+<td>-1.042204</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-0.036386</td>
+<td>-0.371170</td>
+<td>0.584334</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-1.152387</td>
+<td>-1.116001</td>
+<td>-0.744831</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">95</td>
+<td>10.696335</td>
+<td>-0.277457</td>
+<td>-0.910943</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">96</td>
+<td>11.466986</td>
+<td>0.770650</td>
+<td>1.048107</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">97</td>
+<td>11.923566</td>
+<td>0.456580</td>
+<td>-0.314070</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">98</td>
+<td>11.149137</td>
+<td>-0.774429</td>
+<td>-1.231009</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">99</td>
+<td>11.190200</td>
+<td>0.041062</td>
+<td>0.815491</td>
+</tr>
+</tbody>
+</table>
+
+<p>100 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-lag-1-series" class="slide level2">
+<h2>Plot Lag 1 series</h2>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<p><img data-src="Week3_files/figure-revealjs/cell-7-output-1.png" width="792" height="411"></p>
+</div>
+</div>
+</section>
+<section id="acf-lag-1-series" class="slide level2">
+<h2>ACF Lag 1 series</h2>
+<div class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<p><img data-src="Week3_files/figure-revealjs/cell-8-output-1.png" width="813" height="431"></p>
+</div>
+</div>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example 2</h2>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf, plot_pacf</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-4"><a href="#cb3-4"></a>plt.rcParams.update({<span class="st">'figure.figsize'</span>:(<span class="dv">9</span>,<span class="dv">7</span>), <span class="st">'figure.dpi'</span>:<span class="dv">120</span>})</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Import data</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'wwwusage.csv'</span>, names<span class="op">=</span>[<span class="st">'value'</span>], header<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># Original Series</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].plot(df.value)<span class="op">;</span> axes[<span class="dv">0</span>, <span class="dv">0</span>].set_title(<span class="st">'Original Series'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>plot_acf(df.value, ax<span class="op">=</span>axes[<span class="dv">0</span>, <span class="dv">1</span>], lags<span class="op">=</span>np.arange(<span class="bu">len</span>(df)))</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co"># 1st Differencing</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].plot(df.value.diff())<span class="op">;</span> axes[<span class="dv">1</span>, <span class="dv">0</span>].set_title(<span class="st">'1st Order Differencing'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16"></a>plot_acf(df.value.diff().dropna(), ax<span class="op">=</span>axes[<span class="dv">1</span>, <span class="dv">1</span>], lags<span class="op">=</span>np.arange(<span class="bu">len</span>(df) <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb3-17"><a href="#cb3-17"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+<img data-src="Week3_files/figure-revealjs/cell-10-output-1.png" class="r-stretch"></section>
+<section id="nd-order-differencing" class="slide level2">
+<h2>2nd order differencing</h2>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>plot_acf(df.value.diff().diff().dropna())</span>
+<span id="cb4-2"><a href="#cb4-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-11-output-1.png" class="r-stretch"></section>
+<section id="variance-stabilization" class="slide level2">
+<h2>Variance stabilization</h2>
+<p>Eg:</p>
+<ul>
+<li><p>Square root: <span class="math inline">\(W_t = \sqrt{Y_t}\)</span></p></li>
+<li><p>Logarithm: <span class="math inline">\(W_t = log({Y_t})\)</span></p>
+<ul>
+<li><p>This very useful.</p></li>
+<li><p>Interpretable: Changes in a log value are <strong>relative (percent) changes on the original sclae</strong>.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="monthly-airline-passenger-numbers-1949-1960" class="slide level2">
+<h2>Monthly Airline Passenger Numbers 1949-1960</h2>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>airpassenger <span class="op">=</span> pd.read_csv(<span class="st">'AirPassengers.csv'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="im">import</span> plotnine</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>airpassenger[<span class="st">'Month'</span>]<span class="op">=</span> pd.to_datetime(airpassenger[<span class="st">'Month'</span>])</span>
+<span id="cb5-6"><a href="#cb5-6"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'#Passengers'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>&lt;ggplot: (331734342)&gt;</code></pre>
+</div>
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-12-output-1.png" class="r-stretch"></section>
+<section id="monthly-airline-passenger-numbers-1949-1960---log" class="slide level2">
+<h2>Monthly Airline Passenger Numbers 1949-1960 - log</h2>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2"></a>airpassenger[<span class="st">'naturallog'</span>] <span class="op">=</span> np.log(airpassenger[<span class="st">'#Passengers'</span>]) </span>
+<span id="cb7-3"><a href="#cb7-3"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'naturallog'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>&lt;ggplot: (331805001)&gt;</code></pre>
+</div>
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-13-output-1.png" class="r-stretch"></section>
+<section id="box-cox-transformation" class="slide level2">
+<h2>Box-Cox transformation</h2>
+<p><span class="math display">\[
+  w_t=\begin{cases}
+    log(y_t), &amp; \text{if $\lambda=0$} \newline
+    (Y_t^\lambda - 1)/ \lambda, &amp; \text{otherwise}.
+  \end{cases}
+\]</span></p>
+<p>Different values of <span class="math inline">\(\lambda\)</span> gives you different transformations.</p>
+<ul>
+<li><p><span class="math inline">\(\lambda=1\)</span>: No <strong>substantive</strong> transformation</p></li>
+<li><p><span class="math inline">\(\lambda = \frac{1}{2}\)</span>: Square root plus linear transformation</p></li>
+<li><p><span class="math inline">\(\lambda=0\)</span>: Natural logarithm</p></li>
+<li><p><span class="math inline">\(\lambda = -1\)</span>: Inverse plus 1</p></li>
+</ul>
+<p>Balance the seasonal fluctuations and random variation across the series.</p>
+</section>
+<section id="box-cox-transformation-1" class="slide level2">
+<h2>Box-Cox transformation</h2>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># import modules</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb9-4"><a href="#cb9-4"></a> </span>
+<span id="cb9-5"><a href="#cb9-5"></a>y2,fitted_lambda <span class="op">=</span> stats.boxcox(airpassenger[<span class="st">'#Passengers'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="box-cox-transformation-exploring-the-output" class="slide level2">
+<h2>Box-Cox transformation: Exploring the output</h2>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>fitted_lambda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>0.14802265137037945</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>y2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>array([ 6.82749005,  6.93282224,  7.16189151,  7.11461078,  6.98378687,
+        7.20826542,  7.39959794,  7.39959794,  7.22352834,  6.94993188,
+        6.67930112,  6.93282224,  6.88074148,  7.0663838 ,  7.29843847,
+        7.20826542,  7.05009066,  7.41371485,  7.69297755,  7.69297755,
+        7.53726005,  7.17744836,  6.86312389,  7.28363955,  7.35675408,
+        7.42775127,  7.791663  ,  7.6033268 ,  7.71801394,  7.791663  ,
+        8.03379957,  8.03379957,  7.86322651,  7.59025293,  7.3711186 ,
+        7.64214252,  7.70552693,  7.81574285,  7.96693012,  7.82769741,
+        7.85143867,  8.23478523,  8.35415797,  8.46833738,  8.14152446,
+        7.94424651,  7.71801394,  7.97819691,  8.00058286,  8.00058286,
+        8.41186604,  8.40233549,  8.34441554,  8.47763304,  8.66568618,
+        8.73398286,  8.42136224,  8.16254066,  7.81574285,  8.05570781,
+        8.08822445,  7.90983871,  8.40233549,  8.32482145,  8.39277032,
+        8.66568618,  8.97573698,  8.90544371,  8.62209995,  8.34441554,
+        8.0774311 ,  8.34441554,  8.46833738,  8.38317027,  8.69150146,
+        8.70857469,  8.71707079,  9.07418456,  9.41661628,  9.30252389,
+        9.05177744,  8.75078932,  8.42136224,  8.78409104,  8.83328615,
+        8.77580407,  9.08902184,  9.0592668 ,  9.0964106 ,  9.48162515,
+        9.72179099,  9.67415098,  9.35679401,  9.00640692,  8.72554012,
+        9.00640692,  9.07418456,  8.96801544,  9.36350433,  9.30936559,
+        9.35679401,  9.77445522, 10.01359054, 10.02424732,  9.66813973,
+        9.30252389,  8.9987716 ,  9.22613489,  9.25415593,  9.0964106 ,
+        9.40343224,  9.30936559,  9.41003199,  9.84886109, 10.14918625,
+       10.21968352,  9.66813973,  9.38353935,  9.03673716,  9.23316669,
+        9.390186  ,  9.26806127,  9.68014959,  9.61958794,  9.76283534,
+       10.05072014, 10.426264  , 10.4768849 , 10.00289463,  9.68613564,
+        9.40343224,  9.67415098,  9.74531682,  9.58881702,  9.75700771,
+        9.99215929, 10.05072014, 10.36531089, 10.75145254, 10.68404894,
+       10.23457308,  9.99215929,  9.58262264,  9.83186035])</code></pre>
+</div>
+</div>
+</section>
+<section id="armap-q-model" class="slide level2">
+<h2>ARMA(p, q) model</h2>
+<p><span class="math display">\[Y_t=c+\phi_1Y_{t-1}+...+\phi_p Y_{t-p}+ \theta_1\epsilon_{t-1}+...+\theta_q\epsilon_{t-q}+\epsilon_t\]</span></p>
+<ul>
+<li><p>These are stationary models.</p></li>
+<li><p>They are only suitable for <strong>stationary series</strong>.</p></li>
+</ul>
+</section>
+<section id="arimap-d-q-model" class="slide level2">
+<h2>ARIMA(p, d, q) model</h2>
+<p>Differencing –&gt; ARMA</p>
+<p><strong>Step 1: Differencing</strong></p>
+<p><span class="math display">\[Y'_t = (1-B)^dY_t\]</span></p>
+<p><strong>Step 2: ARMA</strong></p>
+<p><span class="math display">\[Y'_t=c+\phi_1Y'_{t-1}+...+\phi_p Y'_{t-p}+ \theta_1\epsilon_{t-1}+...+\theta_q\epsilon_{t-q}+\epsilon_t\]</span></p>
+</section></section>
+<section>
+<section id="step-1-plot-data" class="title-slide slide level1 center">
+<h1>Step 1: Plot data</h1>
+<ol type="1">
+<li><p>Detect unusual observations in the data</p></li>
+<li><p>Detect non-stationarity by visual inspections of plots</p></li>
+</ol>
+<p>Stationary series:</p>
+<ul>
+<li><p>has a constant mean value and fluctuates around the mean.</p></li>
+<li><p>constant variance.</p></li>
+<li><p>no pattern predictable in the long-term.</p></li>
+</ul>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-17-output-2.png" class="r-stretch"></section>
+<section id="step-2-split-time-series-into-training-and-test" class="slide level2">
+<h2>Step 2: Split time series into training and test</h2>
+<p>Specify the forecast horizon</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="im">from</span> sktime.forecasting.base <span class="im">import</span> ForecastingHorizon</span>
+<span id="cb15-4"><a href="#cb15-4"></a>fh <span class="op">=</span> ForecastingHorizon(</span>
+<span id="cb15-5"><a href="#cb15-5"></a>    pd.PeriodIndex(pd.date_range(<span class="st">"1960-01"</span>, periods<span class="op">=</span><span class="dv">12</span>, freq<span class="op">=</span><span class="st">"M"</span>)), is_relative<span class="op">=</span><span class="va">False</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>)</span>
+<span id="cb15-7"><a href="#cb15-7"></a>fh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>ForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',
+             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],
+            dtype='period[M]', is_relative=False)</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-training-and-test-series" class="slide level2">
+<h2>Plot training and test series</h2>
+<div class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-19-output-2.png" class="r-stretch"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<ol type="1">
+<li><p>Need transformations?</p></li>
+<li><p>Need differencing?</p></li>
+</ol>
+</section>
+<section id="step-3-apply-transformations" class="slide level2">
+<h2>Step 3: Apply transformations</h2>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2"></a>y_train.naturallog <span class="op">=</span> np.log(y_train) </span>
+<span id="cb18-3"><a href="#cb18-3"></a>plot_series(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-20-output-2.png" class="r-stretch"></section>
+<section id="step-4-take-difference-series" class="slide level2">
+<h2>Step 4: Take difference series</h2>
+<p><strong>Identifying non-stationarity by looking at plots</strong></p>
+<ul>
+<li><p>Time series plot</p></li>
+<li><p>The ACF of stationary data drops to zero relatively quickly.</p></li>
+<li><p>The ACF of non-stationary data decreases slowly.</p></li>
+<li><p>For non-stationary data, the value of <span class="math inline">\(r_1\)</span> is often large and positive.</p></li>
+</ul>
+</section>
+<section id="non-seasonal-differencing-and-seasonal-differencing" class="slide level2">
+<h2>Non-seasonal differencing and seasonal differencing</h2>
+<p><strong>Non seasonal first-order differencing:</strong> <span class="math inline">\(Y'_t=Y_t - Y_{t-1}\)</span></p>
+<!--Miss one observation-->
+<p><strong>Non seasonal second-order differencing:</strong> <span class="math inline">\(Y''_t=Y'_t - Y'_{t-1}\)</span></p>
+<!--Miss two observations-->
+<p><strong>Seasonal differencing:</strong> <span class="math inline">\(Y_t - Y_{t-m}\)</span></p>
+<!--To get rid from prominent seasonal components. -->
+<ul>
+<li>For monthly, <span class="math inline">\(m=12\)</span>, for quarterly, <span class="math inline">\(m=4\)</span>.</li>
+</ul>
+<!--We will loosefirst 12 observations-->
+<ul>
+<li>Seasonally differenced series will have <span class="math inline">\(T-m\)</span> observations. <!--Usually we do not consider differencing more than twice. --></li>
+</ul>
+<blockquote>
+<p>There are times differencing once is not enough. However, in practice,it is almost never necessary to go beyond second-order differencing. <!--Even the second-order differencing is very rare.--></p>
+</blockquote>
+</section>
+<section id="acf-of-log-transformation-series" class="slide level2">
+<h2>ACF of log-transformation series</h2>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>plot_acf(y_train.naturallog, lags<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<p><img data-src="Week3_files/figure-revealjs/cell-21-output-1.png"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img data-src="Week3_files/figure-revealjs/cell-21-output-2.png"></p>
+</div>
+</div>
+</section>
+<section id="take-seasonal-difference-series" class="slide level2">
+<h2>Take seasonal difference series</h2>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>y_train.naturallog.diff12 <span class="op">=</span> y_train.naturallog.diff(<span class="dv">12</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>y_train.naturallog.diff12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>1949-01         NaN
+1949-02         NaN
+1949-03         NaN
+1949-04         NaN
+1949-05         NaN
+             ...   
+1959-08    0.101591
+1959-09    0.136312
+1959-10    0.125491
+1959-11    0.155072
+1959-12    0.183804
+Freq: M, Name: Number of airline passengers, Length: 132, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="take-seasonal-difference-series-cont." class="slide level2">
+<h2>Take seasonal difference series (cont.)</h2>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>y_train.naturallog.diff12.head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>1949-01         NaN
+1949-02         NaN
+1949-03         NaN
+1949-04         NaN
+1949-05         NaN
+1949-06         NaN
+1949-07         NaN
+1949-08         NaN
+1949-09         NaN
+1949-10         NaN
+1949-11         NaN
+1949-12         NaN
+1950-01    0.026433
+1950-02    0.065597
+1950-03    0.065958
+1950-04    0.045462
+1950-05    0.032523
+1950-06    0.098672
+1950-07    0.138586
+1950-08    0.138586
+Freq: M, Name: Number of airline passengers, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="acf---difflogdata-12" class="slide level2">
+<h2>ACF - diff(log(data), 12)</h2>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>plot_acf(y_train.naturallog.diff12.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-24-output-1.png" class="r-stretch"></section>
+<section id="acf---first-differencing-on-difflogdata-12" class="slide level2">
+<h2>ACF - First differencing on diff(log(data), 12)</h2>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>y_train.naturallog.diff12.diff <span class="op">=</span> y_train.naturallog.diff12.diff()</span>
+<span id="cb26-2"><a href="#cb26-2"></a>plot_acf(y_train.naturallog.diff12.diff.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-25-output-1.png" class="r-stretch"></section>
+<section id="pacf---first-differencing-on-difflogdata-12" class="slide level2">
+<h2>PACF - First differencing on diff(log(data), 12)</h2>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>plot_pacf(y_train.naturallog.diff12.diff.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-26-output-1.png" class="r-stretch"></section>
+<section id="testing-for-nonstationarity-for-the-presence-of-unit-roots" class="slide level2">
+<h2>Testing for nonstationarity for the presence of unit roots</h2>
+<ul>
+<li><p>Dickey and Fuller (DF) test</p></li>
+<li><p>Augmented DF test</p></li>
+<li><p>Phillips and Perron (PP) nonparametric test</p></li>
+<li><p>Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test</p></li>
+</ul>
+</section>
+<section id="kpss-test" class="slide level2">
+<h2>KPSS test</h2>
+<p>H0: Series is level or trend stationary.</p>
+<p>H1: Series is not stationary.</p>
+</section>
+<section id="kpss-test-1" class="slide level2">
+<h2>KPSS test</h2>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> kpss</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="kw">def</span> kpss_test(series, <span class="op">**</span>kw):    </span>
+<span id="cb28-3"><a href="#cb28-3"></a>    statistic, p_value, n_lags, critical_values <span class="op">=</span> kpss(series, <span class="op">**</span>kw)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>    <span class="co"># Format Output</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>    <span class="bu">print</span>(<span class="ss">f'KPSS Statistic: </span><span class="sc">{</span>statistic<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb28-6"><a href="#cb28-6"></a>    <span class="bu">print</span>(<span class="ss">f'p-value: </span><span class="sc">{</span>p_value<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb28-7"><a href="#cb28-7"></a>    <span class="bu">print</span>(<span class="ss">f'num lags: </span><span class="sc">{</span>n_lags<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb28-8"><a href="#cb28-8"></a>    <span class="bu">print</span>(<span class="st">'Critial Values:'</span>)</span>
+<span id="cb28-9"><a href="#cb28-9"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> critical_values.items():</span>
+<span id="cb28-10"><a href="#cb28-10"></a>        <span class="bu">print</span>(<span class="ss">f'   </span><span class="sc">{</span>key<span class="sc">}</span><span class="ss"> : </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb28-11"><a href="#cb28-11"></a>    <span class="bu">print</span>(<span class="ss">f'Result: The series is </span><span class="sc">{</span><span class="st">"not "</span> <span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">""</span><span class="sc">}</span><span class="ss">stationary'</span>)</span>
+<span id="cb28-12"><a href="#cb28-12"></a></span>
+<span id="cb28-13"><a href="#cb28-13"></a>kpss_test(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 1.9204939010623039
+p-value: 0.01
+num lags: 6
+Critial Values:
+   10% : 0.347
+   5% : 0.463
+   2.5% : 0.574
+   1% : 0.739
+Result: The series is not stationary</code></pre>
+</div>
+</div>
+</section>
+<section id="kpss-test-2" class="slide level2">
+<h2>KPSS test</h2>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>kpss_test(y_train.naturallog.diff12.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 0.29885781439314946
+p-value: 0.1
+num lags: 5
+Critial Values:
+   10% : 0.347
+   5% : 0.463
+   2.5% : 0.574
+   1% : 0.739
+Result: The series is stationary</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>kpss_test(y_train.naturallog.diff12.diff.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 0.0509726778456186
+p-value: 0.1
+num lags: 2
+Critial Values:
+   10% : 0.347
+   5% : 0.463
+   2.5% : 0.574
+   1% : 0.739
+Result: The series is stationary</code></pre>
+</div>
+</div>
+</section>
+<section id="kpss-test-3" class="slide level2">
+<h2>KPSS test</h2>
+<ul>
+<li><p>KPSS test may not necessarily reject the null hypothesis (that the series is level or trend stationary) even if a series is steadily increasing or decreasing.</p></li>
+<li><p>The word ‘deterministic’ implies the slope of the trend in the series does not change permanently. That is, even if the series goes through a shock, it tends to regain its original path.</p></li>
+</ul>
+<p>source: https://www.machinelearningplus.com/time-series/kpss-test-for-stationarity/</p>
+</section>
+<section id="kpss-test-4" class="slide level2">
+<h2>KPSS test</h2>
+<ul>
+<li><p>By default, it tests for stationarity around a ‘mean’ only.</p></li>
+<li><p>To turn ON the stationarity testing around a trend, you need to explicitly pass the regression=‘ct’ parameter to the kpss</p></li>
+</ul>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>kpss_test(y_train.naturallog.diff12.dropna(), regression<span class="op">=</span><span class="st">'ct'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 0.0760056301424143
+p-value: 0.1
+num lags: 5
+Critial Values:
+   10% : 0.119
+   5% : 0.146
+   2.5% : 0.176
+   1% : 0.216
+Result: The series is stationary</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>kpss_test(y_train.naturallog.diff12.diff.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 0.0509726778456186
+p-value: 0.1
+num lags: 2
+Critial Values:
+   10% : 0.347
+   5% : 0.463
+   2.5% : 0.574
+   1% : 0.739
+Result: The series is stationary</code></pre>
+</div>
+</div>
+</section>
+<section id="adf-test" class="slide level2">
+<h2>ADF test</h2>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller</span>
+<span id="cb38-2"><a href="#cb38-2"></a></span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="kw">def</span> adf_test(series):</span>
+<span id="cb38-4"><a href="#cb38-4"></a>    result <span class="op">=</span> adfuller(series, autolag<span class="op">=</span><span class="st">'AIC'</span>)</span>
+<span id="cb38-5"><a href="#cb38-5"></a>    <span class="bu">print</span>(<span class="ss">f'ADF Statistic: </span><span class="sc">{</span>result[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb38-6"><a href="#cb38-6"></a>    <span class="bu">print</span>(<span class="ss">f'p-value: </span><span class="sc">{</span>result[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb38-7"><a href="#cb38-7"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> result[<span class="dv">4</span>].items():</span>
+<span id="cb38-8"><a href="#cb38-8"></a>        <span class="bu">print</span>(<span class="st">'Critial Values:'</span>)</span>
+<span id="cb38-9"><a href="#cb38-9"></a>        <span class="bu">print</span>(<span class="ss">f'   </span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb38-10"><a href="#cb38-10"></a></span>
+<span id="cb38-11"><a href="#cb38-11"></a>series <span class="op">=</span> df.loc[:, <span class="st">'value'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>H0: Series is not stationary</p>
+<p>H1: Series is stationary</p>
+</section>
+<section id="adf-test-1" class="slide level2">
+<h2>ADF test</h2>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>adf_test(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ADF Statistic: -1.3176112021439967
+p-value: 0.6210771494355872
+Critial Values:
+   1%, -3.4870216863700767
+Critial Values:
+   5%, -2.8863625166643136
+Critial Values:
+   10%, -2.580009026141913</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>adf_test(y_train.naturallog.diff12.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ADF Statistic: -2.5844902417566793
+p-value: 0.09624537566648711
+Critial Values:
+   1%, -3.492995948509562
+Critial Values:
+   5%, -2.888954648057252
+Critial Values:
+   10%, -2.58139291903223</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>adf_test(y_train.naturallog.diff12.diff.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ADF Statistic: -4.08727195454389
+p-value: 0.0010165214009067135
+Critial Values:
+   1%, -3.4936021509366793
+Critial Values:
+   5%, -2.8892174239808703
+Critial Values:
+   10%, -2.58153320754717</code></pre>
+</div>
+</div>
+</section>
+<section id="kpss-vs-adf-test" class="slide level2">
+<h2>KPSS vs ADF test</h2>
+<p>If a series is stationary according to the KPSS test by setting regression=‘ct’ and is not stationary according to the ADF test, it means the series is stationary around a deterministic trend.</p>
+<p>Further reading:</p>
+<p>Kwiatkowski, D.; Phillips, P. C. B.; Schmidt, P.; Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. Journal of Econometrics, 54 (1-3): 159-178.</p>
+</section></section>
+<section>
+<section id="step-5-examine-the-acfpacf-to-identify-a-suitable-model" class="title-slide slide level1 center">
+<h1>Step 5: Examine the ACF/PACF to identify a suitable model</h1>
+
+</section>
+<section id="arp" class="slide level2">
+<h2>AR(p)</h2>
+<ul>
+<li><p>ACF dies out in an exponential or damped sine-wave manner.</p></li>
+<li><p>there is a significant spike at lag <span class="math inline">\(p\)</span> in PACF, but none beyond <span class="math inline">\(p\)</span>.</p></li>
+</ul>
+</section>
+<section id="maq" class="slide level2">
+<h2>MA(q)</h2>
+<ul>
+<li><p>ACF has all zero spikes beyond the <span class="math inline">\(q^{th}\)</span> spike.</p></li>
+<li><p>PACF dies out in an exponential or damped sine-wave manner.</p></li>
+</ul>
+</section>
+<section id="seasonal-components" class="slide level2">
+<h2>Seasonal components</h2>
+<ul>
+<li>The seasonal part of an AR or MA model will be seen in the seasonal lags of the PACF and ACF.</li>
+</ul>
+</section>
+<section id="arima00000112-will-show" class="slide level2">
+<h2>ARIMA(0,0,0)(0,0,1)12 will show</h2>
+<ul>
+<li><p>a spike at lag 12 in the ACF but no other significant spikes.</p></li>
+<li><p>The PACF will show exponential decay in the seasonal lags 12, 24, 36, . . . .</p></li>
+</ul>
+</section>
+<section id="arima00010012-will-show" class="slide level2">
+<h2>ARIMA(0,0,0)(1,0,0)12 will show</h2>
+<ul>
+<li><p>exponential decay in the seasonal lags of the ACF.</p></li>
+<li><p>a single significant spike at lag 12 in the PACF.</p></li>
+</ul>
+</section>
+<section id="step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont." class="slide level2">
+<h2>Step 5: Examine the ACF/PACF to identify a suitable model (cont.)</h2>
+<ul>
+<li><p><span class="math inline">\(d=1\)</span> and <span class="math inline">\(D=1\)</span> (from step 4)</p></li>
+<li><p>Significant spike at lag 1 in ACF suggests non-seasonal MA(1) component.</p></li>
+<li><p>Significant spike at lag 12 in ACF suggests seasonal MA(1) component.</p></li>
+<li><p>Initial candidate model: <span class="math inline">\(ARIMA(0,1,1)(0,1,1)_{12}\)</span>.</p></li>
+<li><p>By analogous logic applied to the PACF, we could also have started with <span class="math inline">\(ARIMA(1,1,0)(1,1,0)_{12}\)</span>.</p></li>
+</ul>
+</section>
+<section id="models" class="slide level2">
+<h2>Models</h2>
+<p><strong>Initial model:</strong></p>
+<p><span class="math inline">\(ARIMA(0,1,1)(0,1,1)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(1,1,0)(1,1,0)_{12}\)</span></p>
+<p><strong>Try some variations of the initial model:</strong></p>
+<p><span class="math inline">\(ARIMA(0,1,1)(1,1,1)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(1,1,1)(1,1,0)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(1,1,1)(1,1,1)_{12}\)</span></p>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><strong>Try some variations</strong></p>
+<p>Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.</p>
+<p><span class="math inline">\(ARIMA(3,1,1)(1,1,1)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(1,1,3)(1,1,1)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(3,1,3)(1,1,1)_{12}\)</span></p>
+</section>
+<section id="fitting-arima-models" class="slide level2">
+<h2>Fitting ARIMA models</h2>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="im">from</span> sktime.forecasting.arima <span class="im">import</span> ARIMA</span>
+<span id="cb45-2"><a href="#cb45-2"></a>forecaster1 <span class="op">=</span> ARIMA(  </span>
+<span id="cb45-3"><a href="#cb45-3"></a>    order<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb45-4"><a href="#cb45-4"></a>    seasonal_order<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">12</span>),</span>
+<span id="cb45-5"><a href="#cb45-5"></a>    suppress_warnings<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb45-6"><a href="#cb45-6"></a>forecaster1.fit(y_train.naturallog)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">ARIMA</label><div class="sk-toggleable__content"><pre>ARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)</pre></div></div></div></div></div>
+</div>
+</div>
+</section>
+<section id="step-6-check-residual-series" class="slide level2">
+<h2>Step 6: Check residual series</h2>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>fhtrain <span class="op">=</span> ForecastingHorizon(</span>
+<span id="cb46-2"><a href="#cb46-2"></a>    pd.PeriodIndex(pd.period_range(start<span class="op">=</span><span class="st">'1949-01'</span>, end<span class="op">=</span><span class="st">'1959-12'</span>, freq<span class="op">=</span><span class="st">'M'</span>)), is_relative<span class="op">=</span><span class="va">False</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a>)</span>
+<span id="cb46-4"><a href="#cb46-4"></a>fhtrain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>ForecastingHorizon(['1949-01', '1949-02', '1949-03', '1949-04', '1949-05', '1949-06',
+             '1949-07', '1949-08', '1949-09', '1949-10',
+             ...
+             '1959-03', '1959-04', '1959-05', '1959-06', '1959-07', '1959-08',
+             '1959-09', '1959-10', '1959-11', '1959-12'],
+            dtype='period[M]', length=132, is_relative=False)</code></pre>
+</div>
+</div>
+</section>
+<section id="obtain-predictions-for-the-training-period" class="slide level2">
+<h2>Obtain predictions for the training period</h2>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>y_pred_train <span class="op">=</span> forecaster1.predict(fhtrain)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>y_pred_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>1949-01         NaN
+1949-02    4.718760
+1949-03    4.770946
+1949-04    4.883063
+1949-05    4.860073
+             ...   
+1959-08    6.310106
+1959-09    6.138659
+1959-10    6.004945
+1959-11    5.869054
+1959-12    5.974289
+Freq: M, Length: 132, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="obtain-residual-series" class="slide level2">
+<h2>Obtain residual series</h2>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>residual <span class="op">=</span> y_train.naturallog <span class="op">-</span> y_pred_train</span>
+<span id="cb50-2"><a href="#cb50-2"></a>residual</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>1949-01         NaN
+1949-02    0.051925
+1949-03    0.111856
+1949-04   -0.023251
+1949-05   -0.064283
+             ...   
+1959-08    0.016043
+1959-09   -0.000931
+1959-10    0.003868
+1959-11    0.022590
+1959-12    0.029598
+Freq: M, Length: 132, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-residuals" class="slide level2">
+<h2>Plot residuals</h2>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>plot_series(residual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;, &lt;AxesSubplot: &gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-40-output-2.png" class="r-stretch"></section>
+<section id="plot-residuals-cont." class="slide level2">
+<h2>Plot residuals (cont.)</h2>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>plot_acf(residual.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<p><img data-src="Week3_files/figure-revealjs/cell-41-output-1.png"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img data-src="Week3_files/figure-revealjs/cell-41-output-2.png"></p>
+</div>
+</div>
+</section>
+<section id="plot-residuals-cont.-1" class="slide level2">
+<h2>Plot residuals (cont.)</h2>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb55-3"><a href="#cb55-3"></a>plt.hist(residual)</span>
+<span id="cb55-4"><a href="#cb55-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-42-output-1.png" class="r-stretch"><p>Your turn: remove the outlier and draw the histogram</p>
+</section>
+<section id="ljung-box-test" class="slide level2">
+<h2>Ljung-Box Test</h2>
+<p>H0: Residuals are not serially correlated.</p>
+<p>H1: Residuals are serially correlated.</p>
+<div class="cell" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="41">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">lb_stat</th>
+<th data-quarto-table-cell-role="th">lb_pvalue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>3.984776</td>
+<td>0.999955</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="step-7-generate-forecasts" class="slide level2">
+<h2>Step 7: Generate forecasts</h2>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>y_pred_1 <span class="op">=</span> forecaster1.predict(fh)</span>
+<span id="cb56-2"><a href="#cb56-2"></a>y_pred_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>1960-01    6.037478
+1960-02    5.982107
+1960-03    6.133707
+1960-04    6.102795
+1960-05    6.154218
+1960-06    6.301004
+1960-07    6.437653
+1960-08    6.461717
+1960-09    6.257650
+1960-10    6.134112
+1960-11    6.003672
+1960-12    6.103036
+Freq: M, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="back-transformation" class="slide level2">
+<h2>Back transformation</h2>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>y_pred_1.exp <span class="op">=</span> np.exp(y_pred_1)</span>
+<span id="cb58-2"><a href="#cb58-2"></a>y_pred_1.exp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>1960-01    418.835520
+1960-02    396.274338
+1960-03    461.142677
+1960-04    447.105543
+1960-05    470.698677
+1960-06    545.118980
+1960-07    624.938414
+1960-08    640.159214
+1960-09    521.990600
+1960-10    461.329316
+1960-11    404.912933
+1960-12    447.213408
+Freq: M, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-training-test-and-forecasts" class="slide level2">
+<h2>Plot training, test, and forecasts</h2>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>plot_series(y_train, y_test, y_pred_1.exp, labels<span class="op">=</span>[<span class="st">"y_train"</span>, <span class="st">"y_test"</span>, <span class="st">"y_forecast"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="Week3_files/figure-revealjs/cell-46-output-2.png" class="r-stretch"></section>
+<section id="evaluation" class="slide level2">
+<h2>Evaluation</h2>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="im">from</span> sktime.performance_metrics.forecasting <span class="im">import</span> <span class="op">\</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>    mean_absolute_percentage_error</span>
+<span id="cb62-3"><a href="#cb62-3"></a>mean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>0.027756916452706674</code></pre>
+</div>
+</div>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your Turn</h2>
+<p>Fit other variants of ARIMA models and identify the best ARIMA model for the series.</p>
+</section>
+<section id="modelling-steps" class="slide level2">
+<h2>Modelling steps</h2>
+<ol type="1">
+<li><p>Plot the data.</p></li>
+<li><p>If necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.</p></li>
+<li><p>If the data are non-stationary, take first differences of the data until the data are stationary.</p></li>
+<li><p>Examine the ACF/PACF to identify a suitable model.</p></li>
+<li><p>Try your chosen model(s), and use the AICc to search for a better model.</p></li>
+</ol>
+</section>
+<section id="modelling-steps-cont." class="slide level2">
+<h2>Modelling steps (cont.)</h2>
+<ol start="6" type="1">
+<li><p>Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.</p></li>
+<li><p>Once the residuals look like white noise, calculate forecasts.</p></li>
+</ol>
+<p>Source: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos</p>
+
+<div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

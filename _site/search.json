@@ -1,0 +1,1801 @@
+[
+  {
+    "objectID": "posts/time_series/Week4.html#modelling-steps",
+    "href": "posts/time_series/Week4.html#modelling-steps",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Modelling steps",
+    "text": "Modelling steps\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\n\n3. If the data are non-stationary, take first differences of the data until the data are stationary.\n4. Examine the ACF/PACF to identify a suitable model.\n5. Try your chosen model(s), and use the AICc to search for a better model."
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#modelling-steps-cont.",
+    "href": "posts/time_series/Week4.html#modelling-steps-cont.",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Modelling steps (cont.)",
+    "text": "Modelling steps (cont.)\n\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts."
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#modelling-steps-autoarima",
+    "href": "posts/time_series/Week4.html#modelling-steps-autoarima",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Modelling steps: AutoARIMA",
+    "text": "Modelling steps: AutoARIMA\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\nUse AutoARIMA to select a model.\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts."
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#modeling-with-python",
+    "href": "posts/time_series/Week4.html#modeling-with-python",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Modeling with Python",
+    "text": "Modeling with Python\n\nfrom sktime import *\nfrom sktime.datasets import load_airline\nfrom sktime.utils.plotting import plot_series\ny = load_airline()\nplot_series(y)\n\n(&lt;Figure size 1536x384 with 1 Axes&gt;,\n &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#your-turn",
+    "href": "posts/time_series/Week4.html#your-turn",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Your turn",
+    "text": "Your turn\nTake other important visualizations"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#define-forecast-horizon",
+    "href": "posts/time_series/Week4.html#define-forecast-horizon",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Define forecast horizon",
+    "text": "Define forecast horizon\n\nimport numpy as np\nimport pandas as pd\nfrom sktime.forecasting.base import ForecastingHorizon\nfh = ForecastingHorizon(\n    pd.PeriodIndex(pd.date_range(\"1960-01\", periods=12, freq=\"M\")), is_relative=False\n)\nfh\n\nForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',\n             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],\n            dtype='period[M]', is_relative=False)"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#split-data-into-training-and-test",
+    "href": "posts/time_series/Week4.html#split-data-into-training-and-test",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Split data into training and test",
+    "text": "Split data into training and test\n\nfrom sktime.forecasting.model_selection import temporal_train_test_split\ny_train, y_test = temporal_train_test_split(y, fh=fh)"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#define-forecaster-with-sktime",
+    "href": "posts/time_series/Week4.html#define-forecaster-with-sktime",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Define forecaster with sktime",
+    "text": "Define forecaster with sktime\n\nfrom sktime.forecasting.statsforecast import StatsForecastAutoARIMA\nimport numpy as np\nforecaster = StatsForecastAutoARIMA(  \n    sp=12,  max_p=2, max_q=2\n)\ny_train.naturallog = np.log(y_train)\nforecaster.fit(y_train.naturallog)\n\nStatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.StatsForecastAutoARIMAStatsForecastAutoARIMA(max_p=2, max_q=2, sp=12)\n\n\nsp: Number of observations per unit of time.\nHelp: https://www.sktime.org/en/stable/api_reference/auto_generated/sktime.forecasting.statsforecast.StatsForecastAutoARIMA.html"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#your-turn-1",
+    "href": "posts/time_series/Week4.html#your-turn-1",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Your turn",
+    "text": "Your turn\nPreferm residual analysis"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#obtain-predictions-for-the-training-period",
+    "href": "posts/time_series/Week4.html#obtain-predictions-for-the-training-period",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Obtain predictions for the training period",
+    "text": "Obtain predictions for the training period\n\ny_pred = forecaster.predict(fh)\ny_pred \n\n1960-01    6.038882\n1960-02    5.989590\n1960-03    6.146032\n1960-04    6.119674\n1960-05    6.159455\n1960-06    6.304701\n1960-07    6.432675\n1960-08    6.444805\n1960-09    6.266803\n1960-10    6.136178\n1960-11    6.007715\n1960-12    6.114486\nFreq: M, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#prediction-intervals",
+    "href": "posts/time_series/Week4.html#prediction-intervals",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Prediction intervals",
+    "text": "Prediction intervals\n\ncoverage = 0.9\ny_pred_ints = forecaster.predict_interval(coverage=coverage)\ny_pred_ints\n\n\n\n\n\n\n\n\nCoverage\n\n\n\n0.9\n\n\n\nlower\nupper\n\n\n\n\n1960-01\n5.978520\n6.099244\n\n\n1960-02\n5.916820\n6.062361\n\n\n1960-03\n6.062679\n6.229384\n\n\n1960-04\n6.026940\n6.212408\n\n\n1960-05\n6.058205\n6.260705\n\n\n1960-06\n6.195598\n6.413804\n\n\n1960-07\n6.316247\n6.549103\n\n\n1960-08\n6.321487\n6.568124\n\n\n1960-09\n6.136959\n6.396648\n\n\n1960-10\n6.000121\n6.272235\n\n\n1960-11\n5.865717\n6.149713\n\n\n1960-12\n5.966786\n6.262187"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#plotting-values",
+    "href": "posts/time_series/Week4.html#plotting-values",
+    "title": "Week 5A: AutoARIMA",
+    "section": "Plotting values",
+    "text": "Plotting values\n\ny_test.naturallog = np.log(y_test)\nfrom sktime.utils import plotting\n\n# also requires predictions\ny_pred = forecaster.predict()\n\nfig, ax = plotting.plot_series(y_train.naturallog, y_pred, labels=[\"y\", \"y_pred\"])\nax.fill_between(\n    ax.get_lines()[-1].get_xdata(),\n    y_pred_ints[\"Coverage\"][coverage][\"lower\"],\n    y_pred_ints[\"Coverage\"][coverage][\"upper\"],\n    alpha=0.2,\n    color=ax.get_lines()[-1].get_c(),\n    label=f\"{coverage}% prediction intervals\",\n)\nax.legend();"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#what-is-happening-under-the-hood-of-autoarima",
+    "href": "posts/time_series/Week4.html#what-is-happening-under-the-hood-of-autoarima",
+    "title": "Week 5A: AutoARIMA",
+    "section": "What is happening under the hood of AutoARIMA?",
+    "text": "What is happening under the hood of AutoARIMA?\nStep 1: Select the number of differences d and D via unit root tests and strength of seasonality measure.\nStep 2: Try four possible models to start with:"
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#section-1",
+    "href": "posts/time_series/Week4.html#section-1",
+    "title": "Week 5A: AutoARIMA",
+    "section": "",
+    "text": "\\(ARIMA(2, d, 2)\\) if \\(m = 1\\) and \\(ARIMA(2, d, 2)(1, D, 1)_m\\) if \\(m &gt; 1\\).\n\\(ARIMA(0, d, 0)\\) if \\(m = 1\\) and \\(ARIMA(0, d, 0)(0, D, 0)_m\\) if \\(m &gt; 1\\).\n\\(ARIMA(1, d, 0)\\) if \\(m = 1\\) and \\(ARIMA(1, d, 0)(1, D, 0)_m\\) if \\(m &gt; 1\\).\n\\(ARIMA(0, d, 1)\\) if \\(m = 1\\) and \\(ARIMA(0, d, 1)(0, D, 1)_m\\) if \\(m &gt; 1\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week4.html#section-2",
+    "href": "posts/time_series/Week4.html#section-2",
+    "title": "Week 5A: AutoARIMA",
+    "section": "",
+    "text": "Step 3: Select the model with the smallest AICc from step 2. This becomes the current model.\nStep 4: Consider up to 13 variations on the current model:\n\nVary one of \\(p, q, P\\) and \\(Q\\) from the current model by \\(\\pm 1\\).\n\\(p, q\\) both vary from the current model by \\(\\pm 1\\).\n\\(P, Q\\) both vary from the current model by \\(\\pm 1\\).\nInclude or exclude the constant term from the current model. Repeat step 4 until no lower AICc can be found."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#sktime-unified-python-library-for-time-series-machine-learning",
+    "href": "posts/time_series/Week2.html#sktime-unified-python-library-for-time-series-machine-learning",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "sktime: Unified Python library for time series machine learning",
+    "text": "sktime: Unified Python library for time series machine learning\nInstalling sktime from PyPI\nTo install sktime with core dependencies, excluding soft dependencies, via pip type:\npip install sktime\nTo install sktime with maximum dependencies, including soft dependencies, install with the all_extras modifier:\npip install sktime[all_extras]\nExtracted from:\nhttps://www.sktime.org/en/stable/installation.html"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#probabilistic-time-series-model",
+    "href": "posts/time_series/Week2.html#probabilistic-time-series-model",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Probabilistic time series model",
+    "text": "Probabilistic time series model\nLet \\({X_1, X_2, ...}\\) be a sequence of random variables. Then the joint distribution of the random vector \\(([X_1, X_2, ..., X_n])\\) is\n\\[P[X_1 \\le x_1, X_2 \\le x_2, ..., X_n \\le x_n]\\]\nwhere \\(-\\infty &lt; x_1, ..., x_n &lt; \\infty\\) and \\((n = 1, 2, ...)\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#mean-function",
+    "href": "posts/time_series/Week2.html#mean-function",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Mean function",
+    "text": "Mean function\nThe mean function of \\({X_t}\\) is\n\\[\\mu_X(t)=E(X_t).\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#covariance-function",
+    "href": "posts/time_series/Week2.html#covariance-function",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Covariance function",
+    "text": "Covariance function\nThe covariance function of \\({X_t}\\) is\n\\[\\gamma_X(r, s)=Cov(X_r, X_s)=E[(X_r-\\mu_X(r))(X_s-\\mu_X(s))]\\]\nfor all integers \\((r)\\) and \\((s)\\).\nThe covariance function of \\({X_t}\\) at lag \\((h)\\) is defined by \\[\\gamma_X(h):=\\gamma_X(h, 0)=\\gamma(t+h, t)=Cov(X_{t+h}, X_t).\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#autocovariance-function",
+    "href": "posts/time_series/Week2.html#autocovariance-function",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Autocovariance function",
+    "text": "Autocovariance function\nThe auto covariance function of \\({X_t}\\) at lag \\((h)\\) is\n\\[\\gamma_X(h)=Cov(X_{t+h}, X_t).\\] Autocorrelation function\nThe autocorrelation function of \\({X_t}\\) at lag \\((h)\\) is\n\\[\\rho_X(h)=\\frac{\\gamma_X(h)}{\\gamma_X(0)}=Cor(X_{t+h}, X_t).\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#weekly-stationary",
+    "href": "posts/time_series/Week2.html#weekly-stationary",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Weekly stationary",
+    "text": "Weekly stationary\nA time series \\({X_t}\\) is called weekly stationary if\n\n\\(\\mu_X(t)\\) is independent of \\(t\\).\n\\(\\gamma_X(t+h, t)\\)` is independent of \\((t)\\) for each \\((h)\\).\n\nIn other words the statistical properties of the time series (mean, variance, autocorrelation, etc.) do not depend on the time at which the series is observed, that is no trend or seasonality. However, a time series with cyclic behaviour (but with no trend or seasonality) is stationary."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#strict-stationarity-of-a-time-series",
+    "href": "posts/time_series/Week2.html#strict-stationarity-of-a-time-series",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Strict stationarity of a time series",
+    "text": "Strict stationarity of a time series\nA time series \\(\\{X_t\\}\\) is called weekly stationary if the random vector \\([X_1, X_2..., X_n]\\) and \\([X_{1+h}, X_{2+h}..., X_{n+h}]\\) have the same joint distribution for all integers \\((h)\\) and \\((n &gt; 0)\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#iid-noise",
+    "href": "posts/time_series/Week2.html#iid-noise",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "1. iid noise",
+    "text": "1. iid noise\n\nno trend or seasonal component\nobservations are independent and identically distributed (iid) random variables with zero mean.\nNotation: \\({X_t} \\sim IID(0, \\sigma^2)\\)\nplays an important role as a building block for more complicated time series."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#section",
+    "href": "posts/time_series/Week2.html#section",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "",
+    "text": "import numpy\nimport matplotlib.pyplot as plt\n\nmean = 0\nstd = 1 \nnum_samples = 1000\nsamples = numpy.random.normal(mean, std, size=num_samples)\nsamples\n\narray([ 2.14145624e-01,  1.08921814e-01, -5.11987567e-01, -1.32186374e+00,\n        1.09789903e+00,  2.93297923e-01, -6.34363715e-01, -6.28762591e-01,\n       -5.64648110e-01, -1.68209070e+00,  1.41439281e+00, -1.11721795e+00,\n       -9.22642781e-02, -6.30185036e-02, -2.18193430e+00, -7.70824476e-01,\n        8.82166875e-02, -3.27811259e-01,  8.31132141e-01,  1.08099115e+00,\n        4.60191765e-01, -1.28953308e-01,  7.04403399e-01,  3.61355409e-01,\n       -3.89070439e-01, -8.56271407e-01, -8.87844968e-01,  2.20909912e-01,\n       -2.33305110e-01,  1.00441521e+00,  1.79524597e+00,  7.49544794e-01,\n        1.40201904e+00,  2.10113766e-01,  1.51214183e-01,  1.91841212e+00,\n       -1.30684658e+00, -4.47171105e-01, -4.01838766e-01,  7.62403960e-01,\n       -6.97385364e-01,  4.73001040e-01, -1.98080096e+00, -1.89375384e-01,\n        2.99582476e-01,  6.15237566e-01,  3.87802417e-01,  1.14541042e+00,\n        3.67713406e-01,  1.06750905e+00,  1.17741884e+00, -2.57156703e-01,\n       -6.69413738e-01, -1.16652875e+00, -1.13729193e+00, -1.99347313e+00,\n       -6.55448002e-01,  7.23559807e-01, -9.47080669e-01, -4.14025583e-01,\n       -2.25526111e-01, -5.26183890e-01,  1.17769754e+00, -7.57991355e-01,\n        1.07746573e+00, -1.60706269e+00, -1.65753029e+00, -1.30611705e+00,\n       -6.62137173e-01,  7.21671210e-01, -2.56074108e-01,  3.91699280e-03,\n        3.55385620e-01, -9.11462239e-01, -6.78663832e-01,  1.04026877e+00,\n       -7.98926445e-02, -1.44173175e+00, -2.07586921e+00,  1.40533466e+00,\n        1.38456053e-01, -3.83668269e-01,  1.65457521e-01,  1.09938583e+00,\n       -3.87825866e-01,  1.10740363e+00, -1.07398779e+00,  3.82215603e-01,\n        6.70685336e-04, -1.21018276e+00, -4.40313833e-01,  6.21440922e-01,\n       -1.33086133e+00,  4.78559134e-01, -5.78023220e-03,  4.56562068e-01,\n       -1.52449178e+00,  2.87515621e-02,  1.14212588e+00, -4.07441371e-01,\n       -1.65367052e+00,  8.48812543e-02, -8.17389117e-01,  1.66251862e+00,\n        4.24593134e-01, -5.02015419e-02, -2.04106409e-01,  5.01700271e-01,\n       -5.61835871e-02, -6.60649233e-01, -1.12194305e+00,  1.44851734e+00,\n        1.33086583e-01,  1.00772800e+00, -1.51104696e+00,  9.34566430e-01,\n       -1.93479864e+00,  1.02666543e+00,  8.79010229e-01,  1.85358951e-01,\n       -4.61297000e-01, -5.52581836e-01,  8.63892306e-01, -1.21424542e+00,\n       -5.09829519e-01,  8.81153738e-01, -9.57550040e-01, -4.77108038e-01,\n       -1.33679262e+00,  5.29430827e-01, -1.04993058e+00,  1.40356176e+00,\n        2.13241066e+00,  4.52256220e-01,  1.32986932e+00, -6.26108311e-01,\n        1.71025106e+00, -4.09161850e-01,  4.50057282e-01, -4.57590330e-01,\n       -5.98032900e-01, -2.54161274e-01, -4.59919994e-01, -1.29074388e+00,\n        4.32305388e-01, -3.66276253e-02, -5.91664269e-01, -7.02631090e-01,\n       -1.34736800e+00, -1.06046142e+00,  7.66828216e-01,  4.83794470e-03,\n       -2.35186897e-01,  1.40078681e+00,  3.73325101e-01,  2.49623812e-01,\n        2.15320258e+00,  1.06798441e+00, -1.10852383e+00, -9.30411967e-01,\n        9.03708629e-01, -3.39028265e-01, -5.70280940e-01, -7.63270306e-01,\n        1.26838573e+00, -1.07192294e+00, -8.25899580e-01, -4.17665588e-01,\n        4.09097508e-01, -1.62890688e+00, -2.38903557e-02,  8.17125714e-01,\n       -3.53250654e-01,  8.74173184e-02, -1.96027360e+00, -3.63783657e-01,\n       -1.77808913e+00, -5.39454390e-01, -1.60110554e+00, -3.72157076e-01,\n        4.38914315e-01, -1.29904413e+00, -5.81971753e-01,  2.18264902e-01,\n       -1.19900886e-01, -5.71571215e-01,  1.02972079e+00, -2.68560258e-01,\n       -2.19223619e-01, -1.16976575e+00, -2.29519398e-01,  3.52760174e-01,\n       -1.21245416e+00,  1.03410259e-01,  5.41393988e-02, -3.32707934e-01,\n        9.02516937e-01,  4.72269008e-02,  7.69413254e-01,  4.90800018e-01,\n       -7.13459071e-01, -1.51977738e-01,  3.04049492e-01, -2.73267720e-01,\n       -5.77151701e-02, -5.96169308e-01, -1.19297597e+00, -4.20747209e-01,\n       -1.92672752e-01,  2.20431462e-02,  1.40145901e+00, -1.60920604e-01,\n        1.38273214e+00, -5.92526653e-01,  2.14122564e-01, -1.23302258e+00,\n       -2.03624131e+00,  3.22286746e-01, -7.57108758e-01, -1.14915781e-01,\n        9.45944409e-01,  9.37264674e-01,  3.70469974e-01,  4.08118869e-03,\n       -1.24450117e+00, -1.31906211e+00, -4.56922516e-01,  1.13242281e+00,\n       -1.37416472e+00, -1.05099141e+00, -5.73708659e-01,  3.96414230e-02,\n       -1.51796221e+00, -1.59095251e+00, -1.81960535e+00, -6.65500228e-01,\n        9.94888262e-02, -2.10574183e-01,  5.55617277e-01,  2.15586690e+00,\n       -2.10506962e+00,  2.00110072e+00,  9.42773885e-01, -8.08627833e-01,\n        1.55133565e+00,  2.44616308e-01,  6.01864642e-01,  9.10453727e-01,\n        2.90188748e-01, -2.08787793e+00, -1.08091884e+00,  1.79563636e+00,\n        1.43572422e+00,  9.64302422e-02,  1.66519679e+00, -5.80873609e-01,\n       -1.75594544e+00,  1.06891993e+00,  3.44186405e-01,  9.38568401e-01,\n        2.68194801e+00, -7.22255234e-01,  1.12844964e+00, -1.47252802e+00,\n        1.35129058e-02, -8.10032907e-01, -9.04204948e-01, -1.35643199e+00,\n       -2.00799783e-02, -3.11000492e-01,  1.31205007e+00, -1.95734062e-01,\n       -1.91774712e-01,  1.55276757e+00, -1.84010689e-01,  1.36817631e-01,\n        7.69003423e-01, -1.18069001e+00, -8.66809723e-01, -1.50164871e+00,\n        1.05377609e+00,  2.66856883e-01,  3.77589123e-02,  2.60507723e-01,\n       -2.47293329e-01, -3.49013899e-01,  7.03065270e-01, -9.01681386e-01,\n       -3.45762694e-01, -2.23219755e-01,  9.11776595e-01,  5.59904020e-01,\n        2.64120074e-01, -2.68006104e-01, -2.53480938e-01, -7.31962949e-01,\n       -8.95921306e-01,  4.52615936e-01, -1.43271545e+00,  1.84809940e+00,\n        2.39114998e-01,  1.60510742e-01, -8.91969283e-01, -1.08758341e+00,\n        1.20563631e+00, -5.87115082e-01, -8.20190274e-01, -5.11063450e-01,\n        2.18095671e-01, -2.34334969e-01, -5.40524303e-01,  1.07919892e+00,\n       -1.89868830e-01, -6.78778693e-01,  4.80019020e-01, -1.87096461e+00,\n       -1.50088438e+00, -5.36756251e-01,  1.00207566e+00, -2.84002024e+00,\n       -1.92651316e+00, -7.63462133e-01, -1.46865078e+00,  9.68167224e-01,\n        7.75448634e-01, -1.29403220e+00, -2.58678386e+00, -5.30352540e-01,\n        5.91010898e-01,  8.44290192e-01, -3.27243070e-01,  1.13906041e+00,\n        9.98349981e-01, -2.26853414e-02,  7.14408069e-01, -1.07143169e+00,\n       -7.51824697e-01,  4.98055404e-02,  8.22179917e-03, -2.71967549e-01,\n       -1.30392750e+00, -6.96976305e-02,  2.51959267e-01,  6.70740621e-01,\n        1.46866086e+00,  6.02708080e-01, -1.19023754e+00,  1.89194722e-01,\n       -6.19358519e-01,  4.39810561e-01,  1.91071875e+00,  2.80034976e-01,\n        1.99370982e-02,  6.85563534e-01,  1.24371184e+00, -1.14202372e+00,\n       -1.28618121e+00,  1.10951777e+00, -1.10199568e-01,  3.84412452e-01,\n       -6.77353933e-01,  7.03340634e-01,  4.36671902e-01,  2.73264863e-01,\n        2.63521113e-01,  2.50188363e-01, -2.97902680e-01,  1.61509739e-01,\n       -1.13622727e+00, -1.16685182e+00, -1.10997964e+00,  6.49837619e-01,\n        4.52671839e-01,  1.30486836e+00, -1.25098609e+00, -5.79584716e-01,\n       -1.97991077e-01, -1.61087900e+00,  4.65085523e-01,  4.42396743e-01,\n        1.03627600e+00, -1.58138050e+00,  1.54173142e-01,  9.27878363e-02,\n        4.74035659e-01, -3.81493100e-01, -6.62789911e-02,  8.70793906e-01,\n        3.44620545e-01,  1.25119067e+00,  6.53150990e-01,  5.82816202e-01,\n        2.58107688e-01,  2.10709973e+00,  2.16594982e+00,  8.21949484e-03,\n        3.29069522e-01, -5.08818577e-02,  1.51071793e+00, -8.33699352e-01,\n       -2.63363887e-02, -2.29420367e+00,  1.07354582e+00, -1.54072722e+00,\n        1.29769504e-02, -4.75216610e-01, -4.07533223e-01, -1.33336699e+00,\n       -3.69594769e-02,  3.34242196e-01, -5.63508384e-01, -3.27034433e-01,\n       -8.01226710e-01, -2.66648968e-01, -3.63916290e-01,  1.23960180e+00,\n       -3.52672587e-01,  1.87830112e-01, -9.83218282e-02, -2.76943384e-01,\n       -5.10308195e-02, -1.00705717e+00,  2.94158830e-01, -1.31579310e+00,\n        1.26751542e+00, -2.43084705e-01, -3.42056914e-01, -5.99990071e-01,\n       -6.28413001e-01, -1.58479167e-01, -1.28198651e+00, -2.40344621e-01,\n        4.08137972e-01,  1.10898240e+00, -8.10195080e-01, -7.22431107e-01,\n        2.02743615e+00,  1.60752351e+00, -1.46185441e-01, -1.29754596e+00,\n        1.05810501e+00, -1.13384571e+00,  2.50523515e-01, -1.56148889e-01,\n       -2.98176569e-01, -2.25779636e-01,  3.21927801e-01,  1.38364461e+00,\n       -4.17915765e-04,  2.97547369e-01, -6.24622538e-01,  6.19865878e-01,\n       -1.44911289e+00,  4.16640480e-01, -4.47099660e-02,  1.42966255e+00,\n       -5.91808496e-01,  4.65178494e-01, -1.68192926e+00, -3.02829919e-02,\n       -4.98443926e-01, -1.21420817e+00, -8.68684599e-03, -8.80267989e-01,\n        1.33330238e+00, -1.93061610e+00,  1.59402555e-01,  6.27355273e-01,\n        1.42023591e+00, -7.45813335e-01, -4.46806135e-01,  8.57264131e-01,\n       -9.00623471e-01, -1.06124246e-01, -3.09440122e-01,  7.02753356e-01,\n       -1.52539398e+00,  5.96717408e-01, -1.08263690e+00,  1.00064008e+00,\n        3.17506045e-01,  5.20622371e-01, -1.55161825e+00, -2.46259214e-01,\n        1.43615885e+00,  1.35343547e+00, -1.20921549e+00, -4.38549790e-01,\n        3.48067042e-01,  3.66908218e-01,  8.52868197e-01, -6.81667511e-01,\n       -4.74152568e-01,  8.57776584e-01,  1.74490711e+00,  2.75361917e-01,\n       -6.06357676e-01,  1.55277051e+00,  2.24751643e-01, -5.10344365e-01,\n        7.15929132e-02,  1.46133596e+00,  3.96468829e-01,  4.59840685e-01,\n       -7.24378830e-02,  8.90649886e-01, -3.09058672e-01, -1.53690506e+00,\n        8.42183198e-02, -4.93467712e-02,  1.52082567e+00, -4.45203268e-01,\n        1.19237783e+00, -7.55652988e-01, -3.13654919e-01, -9.92084016e-01,\n        4.60293400e-01, -6.01391855e-01, -1.13531971e+00, -5.53440486e-01,\n        9.92809119e-01, -8.65292460e-02, -1.17163194e+00, -2.89359888e+00,\n        9.93695407e-01, -5.16788466e-01, -6.27660718e-02, -1.78521997e+00,\n       -6.87589688e-01,  1.99328524e+00, -3.74922963e-01,  1.37005100e+00,\n        5.03010478e-01, -4.15159248e-01, -1.94114164e+00, -2.19040997e-01,\n       -7.57500404e-01, -4.94731332e-01,  2.71196536e-02, -4.24699056e-01,\n        4.10072207e-01,  6.96861284e-01, -1.61651206e-01,  1.71676988e-01,\n        4.05112542e-01,  1.24637175e+00,  6.68964638e-01,  2.45635538e-01,\n       -7.58980617e-01,  3.56229509e-03,  1.31595589e+00,  1.89437990e-01,\n        2.47709010e-01, -5.32416684e-01,  1.31497905e+00,  8.33487109e-01,\n       -6.20731285e-01,  1.28355051e-01, -1.72391432e+00, -1.78712130e+00,\n       -1.63005421e+00, -1.02198887e+00, -5.32942431e-01,  1.44171284e+00,\n       -4.82106499e-01, -9.01642794e-01, -1.01489436e+00, -3.43602990e-01,\n        1.24446125e-01, -6.61831954e-01, -5.16450034e-02, -5.11185296e-01,\n       -1.95776409e-01,  6.83291704e-01,  3.96852740e-01, -2.16193360e-01,\n        1.47995485e+00, -5.26936352e-01, -2.00040486e-01, -1.34708128e+00,\n        1.62940641e-01,  3.28064211e-01, -2.48068602e+00,  2.64188636e-01,\n       -5.86392180e-01, -5.51301695e-01,  1.56078086e-01, -4.03049343e-01,\n       -1.88641899e-01,  3.50758773e-01,  8.07052952e-01,  1.37399364e-01,\n        1.07588769e+00, -8.35328442e-01,  3.69638153e-01, -9.70562260e-01,\n       -1.06687010e+00, -9.88392664e-01, -6.32515897e-01,  1.72127292e+00,\n        2.14858845e-01,  3.57550783e-01, -4.05970949e-01,  9.39954279e-01,\n       -3.29744512e-01,  4.47827318e-01, -1.25227783e-01, -1.03803594e+00,\n        2.85412891e-01,  1.67353180e-01,  4.99621679e-02, -1.69594716e-01,\n       -6.15795829e-01,  1.17132031e+00,  1.68817729e+00, -1.14969479e-01,\n        3.30014458e-01, -6.18759957e-01, -1.93347418e+00, -1.36062818e+00,\n       -9.85459945e-01, -2.13212208e+00, -8.36902303e-01, -7.74322765e-01,\n        6.96882367e-01, -9.17188342e-01, -2.80708446e+00,  4.43475313e-01,\n        7.67671907e-01,  2.94820795e+00, -1.96608453e+00,  1.70904733e-01,\n       -1.09351279e+00, -8.28134275e-01, -4.83674571e-01, -1.21016899e+00,\n        2.80064374e-01, -4.47234613e-01, -1.16814527e+00,  3.59404597e-01,\n       -6.82811560e-01, -1.50726764e+00,  3.56850915e-01, -4.11264767e-01,\n       -1.52700398e+00,  1.79495223e-01,  8.96378733e-01, -5.47325116e-01,\n        1.50869582e-01,  1.10027700e+00, -5.93008908e-02, -1.07236087e+00,\n       -1.01751681e+00,  2.16355771e-01,  1.48166165e+00, -1.62002259e+00,\n        1.55703098e+00,  6.51991949e-01,  2.60384671e-01, -2.01923890e+00,\n       -4.46918337e-01, -5.87247865e-01, -2.57776288e-01, -2.15517373e+00,\n       -9.92965092e-01,  1.10642181e+00, -1.02426678e+00, -3.40955298e-01,\n       -6.57366288e-03,  1.02869176e+00,  1.18393949e+00,  3.98307644e-01,\n       -4.14604733e-01, -9.14314946e-01, -1.87119093e+00, -1.81012731e+00,\n       -6.82030442e-01, -6.02324915e-01, -1.41871700e+00, -7.30294132e-01,\n       -9.09395770e-01, -1.87842393e+00,  1.28280157e+00, -1.09548808e+00,\n        5.06335012e-01, -1.17709031e+00, -5.51488576e-01,  3.57939675e-01,\n       -2.73318947e-01, -8.85718306e-01,  6.99264801e-01, -6.95838223e-02,\n        1.05381517e+00, -1.86333957e+00,  1.22955148e+00, -2.76772619e+00,\n        3.00113822e-01, -2.35719357e-01, -1.16255653e+00, -7.90067199e-02,\n        6.94288661e-01,  1.76494776e+00,  7.90035509e-02,  1.16708112e+00,\n        4.20752622e-01,  1.18679528e+00,  3.78908772e-01, -9.31616427e-01,\n       -7.48236388e-01,  3.96374667e-01, -9.37187901e-01,  4.15277078e-01,\n       -3.08107595e-01, -6.20771363e-01,  1.07298088e+00, -3.14959597e-01,\n       -8.62924083e-01,  2.37308290e+00,  2.52199019e+00,  1.98896483e-01,\n       -1.83186566e+00, -4.50825630e-01,  3.12575182e-01,  7.18939929e-01,\n        1.95713912e-01,  5.90008339e-01,  8.34384609e-01,  1.15434508e+00,\n       -8.61232041e-01,  1.39396643e-01,  4.54116679e-01, -2.37078020e-01,\n       -4.25195131e-01,  5.14473133e-01, -8.66106796e-01,  7.70334642e-01,\n        7.78192340e-01, -1.59952117e+00,  1.55514420e+00, -4.48232857e-01,\n       -3.82311411e-01, -6.49425047e-01, -1.29301527e+00,  2.63216023e-01,\n       -1.73307911e-01, -2.29347965e+00,  8.68007631e-01, -3.58490539e-01,\n       -1.71280970e-02,  1.23707122e+00, -7.19158228e-01, -2.76601620e-01,\n       -2.71152178e-01, -8.46982708e-01, -4.71652155e-01, -2.66382632e-01,\n       -1.65065662e+00, -5.64137706e-01, -5.55674976e-01, -5.76521850e-01,\n        4.18976534e-01, -4.29328942e-01,  3.24367814e-01,  7.96844216e-01,\n        4.24202924e-01, -4.57870301e-01, -9.68070962e-01, -1.92319221e-01,\n       -1.33264410e-01,  6.45665026e-01, -8.44762390e-02,  4.28293745e-01,\n       -4.93675687e-01,  5.73891943e-01,  1.27893054e+00,  2.61916650e-01,\n       -1.00117712e+00,  1.14963225e+00, -1.07356603e-01, -9.44272528e-02,\n        1.44009953e+00, -8.53448241e-01,  7.41644271e-01, -9.55636743e-01,\n        1.24033257e+00,  4.72853193e-01,  4.98377536e-01,  6.48176835e-01,\n       -1.13664092e+00, -1.11173740e+00,  1.69433582e+00,  2.04927352e-01,\n        1.72095944e+00,  1.13945412e-01, -2.78121635e-01,  1.22706658e+00,\n       -1.36817292e+00,  9.33952760e-01,  1.03611573e+00,  4.52544530e-01,\n       -8.46152509e-01,  1.89238280e-01,  1.32263775e-01, -1.16838274e-01,\n        4.23124704e-01,  1.35231474e+00,  9.40102233e-02,  9.08133098e-01,\n        2.90065192e-01,  1.53488635e+00, -2.20453781e+00,  1.20616522e-01,\n       -9.05656892e-02, -2.20621691e-01, -1.35394151e+00, -1.27601202e+00,\n       -1.60734550e-01, -1.00313335e+00,  2.18691344e+00,  1.66095188e+00,\n        3.77950530e-01, -4.56302845e-01,  1.19378929e+00, -1.25954250e-01,\n        3.99999645e-01,  7.91662917e-01,  2.21377152e+00, -2.04238729e+00,\n       -1.68488302e+00, -1.04185646e+00,  1.51658457e+00, -1.32667548e+00,\n        6.97498279e-01, -1.26664192e+00,  1.93908469e-01,  6.59680112e-01,\n       -4.14294087e-01,  2.25837075e-01,  1.98223410e-01,  1.02932162e+00,\n        1.48326159e-01,  6.90296301e-01, -9.10967536e-01, -1.92673815e-01,\n       -6.04407779e-03, -2.61148821e-01, -1.14869105e+00,  4.73430223e-01,\n        1.50235114e+00, -7.35833936e-01, -1.58051030e-02, -1.03311560e+00,\n       -3.26033239e-01, -1.50657787e-01, -8.35836665e-01, -9.39832181e-01,\n        7.81051321e-01, -1.12009602e-01,  3.18527123e-01, -8.42612416e-01,\n        7.74522928e-01, -8.24563491e-01,  2.54958320e+00,  7.26541176e-01,\n        4.05946240e-01, -1.88907649e-01, -6.37599513e-02, -4.67954304e-01,\n       -1.54052177e-01, -2.31679862e-01, -5.63158371e-01,  2.05224445e+00,\n        7.48625211e-01,  1.06974400e+00, -5.96465385e-01, -8.20185798e-01,\n        9.31041818e-02,  3.34880736e-01,  4.34889470e-02,  2.08715829e+00,\n       -8.98876070e-01, -5.77175378e-01,  5.76404209e-01, -1.72388778e+00,\n        1.72946230e-01,  1.06213858e+00,  1.13029845e+00, -5.54838400e-01,\n        5.07398009e-01,  7.83189070e-01, -2.58984527e+00, -7.41285566e-01,\n        3.85810353e-01,  6.02175909e-01, -6.38740438e-01,  1.10571702e+00,\n       -1.04512234e+00, -2.27408730e-01,  7.05587259e-01,  1.39424805e+00,\n       -4.87076202e-01, -3.73567559e-01,  8.25776099e-01,  1.39063112e-01,\n        1.23013207e+00,  2.97406116e-02,  1.57891994e-01,  2.49226179e-01,\n       -5.05316919e-01, -1.63364137e+00, -4.86372875e-01, -5.86138068e-02,\n       -6.03487956e-01, -2.64061368e-01, -8.63930994e-01, -3.33703660e-01,\n        1.10046688e-01, -1.35697059e+00, -1.93279827e-01, -9.64497754e-01,\n       -2.48391485e-01,  4.96065658e-01,  9.55104497e-01,  5.28932278e-01,\n        6.16309708e-01, -8.13521325e-01,  3.33279630e-01, -1.11479881e+00,\n       -8.47700645e-01,  1.93083510e+00,  5.34248293e-02, -4.67048721e-01,\n        7.21030869e-01,  5.67722619e-01,  2.05686946e+00,  1.16570443e+00,\n       -1.20059026e+00, -1.14212456e+00,  1.04585578e+00, -8.75412941e-01,\n       -7.69671239e-01, -4.53009975e-01, -2.50954291e-01, -1.03670388e+00,\n       -1.69391283e+00, -1.29476905e+00, -2.26797416e-01, -3.66970971e-01,\n        8.22377032e-01, -5.29721112e-01, -6.39290797e-01, -9.64980099e-02,\n        5.46983862e-01,  2.75171650e-01, -3.57772515e-01, -4.35683706e-01,\n       -2.92249984e-02, -1.33860355e+00,  1.98365702e+00, -7.56165983e-01,\n       -2.70143522e-01,  1.41132311e+00, -3.43760776e-02,  5.38439827e-01,\n        1.28747088e+00,  9.91717313e-01,  8.50426205e-01,  6.19514753e-01,\n       -7.48254849e-01, -1.32225641e-01, -7.23713227e-01,  1.68613111e-01,\n       -1.70745791e-01, -5.10494895e-01,  3.71025850e-01, -1.92404784e-01,\n        1.55707243e+00, -2.00020793e-01, -2.34619401e-03, -6.43855709e-01,\n       -5.04503849e-01,  1.95837219e+00, -6.22930933e-01, -1.17479176e+00,\n       -1.03226847e+00, -1.19885526e+00,  1.28594537e+00, -3.50359473e-01,\n       -5.73690929e-01,  1.75236542e-01, -1.35735150e+00, -7.69537247e-01,\n       -2.28962196e+00,  9.56017608e-01, -1.35616423e+00,  8.60384702e-01,\n        3.16222550e-01, -7.96653231e-01,  2.05687308e+00,  1.09395349e+00])"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#white-noise",
+    "href": "posts/time_series/Week2.html#white-noise",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "2. White noise",
+    "text": "2. White noise\nIf \\({X_t}\\) is a sequence of uncorrelated random variables, each with zero mean and variance \\(\\sigma^2\\), then such a sequence is referred to as white noise.\nNote: Every \\((IID(0, \\sigma^2)\\) sequence is \\((WN(0, \\sigma^2)\\) but not conversely."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#random-walk",
+    "href": "posts/time_series/Week2.html#random-walk",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "3. Random walk",
+    "text": "3. Random walk\nA random walk process is obtained by cumulatively summing iid random variables. If \\({S_t, t=0, 1, 2, ...}\\) is a random walk process, then \\(S_0 =0\\)\n\\(S_1=0+X_1\\)\n\\(S_2=0+X_1+X_2\\)\n\\(...\\)\n\\(S_t=X_1+X_2+...+X_t.\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#question",
+    "href": "posts/time_series/Week2.html#question",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Question",
+    "text": "Question\nIs \\({S_t, t=0, 1, 2, ...}\\) a weak stationary process?"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#identifying-non-stationarity-in-the-mean",
+    "href": "posts/time_series/Week2.html#identifying-non-stationarity-in-the-mean",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Identifying non-stationarity in the mean",
+    "text": "Identifying non-stationarity in the mean\n\nUsing time series plot\nACF plot\n\nACF of stationary time series will drop to relatively quickly.\nThe ACF of non-stationary series decreases slowly.\nFor non-stationary series, the ACF at lag 1 is often large and positive."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#backshift-notation",
+    "href": "posts/time_series/Week2.html#backshift-notation",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Backshift notation:",
+    "text": "Backshift notation:\n\\[BX_t=X_{t-1}\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#ordinary-differencing",
+    "href": "posts/time_series/Week2.html#ordinary-differencing",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Ordinary differencing",
+    "text": "Ordinary differencing\nThe first-order differencing can be defined as\n\\[\\nabla X_t = X_t-X_{t-1}=X_t-BX_t=(1-B)X_t\\] where \\(\\nabla=1-B\\).\nThe second-order differencing\n\\[\\nabla^2X_t=\\nabla(\\nabla X_t)=\\nabla(X_t-X_{t-1})=\\nabla X_t - \\nabla X_{t-1}\\]\n\\[\\nabla X_t - \\nabla X_{t-1}=(X_t-X_{t-1})-(X_{t-1}-X_{t-2})\\] - In practice, we seldom need to go beyond second order differencing."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#seasonal-differencing",
+    "href": "posts/time_series/Week2.html#seasonal-differencing",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Seasonal differencing",
+    "text": "Seasonal differencing\n\ndifferencing between an observation and the corresponding observation from the previous year.\n\n\\[\\nabla_mX_t=X_t-X_{t-m}=(1-B^m)X_t\\] where \\((m)\\) is the number of seasons. For monthly, \\((m=12)\\), for quarterly \\((m=4)\\).\nFor monthly series\n\\[\\nabla_{12}X_t=X_t-X_{t-12}\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#section-2",
+    "href": "posts/time_series/Week2.html#section-2",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "",
+    "text": "Twice-differenced series\n\\[\\nabla^2_{12}X_t=\\nabla_{12}X_t-\\nabla_{12}X_{t-1}\\] \\[\\nabla_{12}X_t-\\nabla_{12}X_{t-1}=(X_t-X_{t-12})-(X_{t-1}-X_{t-13})\\] If seasonality is strong, the seasonal differencing should be done first."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#question-1",
+    "href": "posts/time_series/Week2.html#question-1",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Question",
+    "text": "Question\nShow that \\((AR(P)\\) is a linear filter with transfer function \\(\\phi^{-1}(B)\\), where \\((\\phi(B)=1-\\phi_1B-\\phi_2B^2-...-\\phi_pB^p.)\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#stationary-condition-for-arp",
+    "href": "posts/time_series/Week2.html#stationary-condition-for-arp",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Stationary condition for AR(P)",
+    "text": "Stationary condition for AR(P)\nThe roots of \\((\\phi(B)=0)\\) (characteristic equation) must lie outside the unit circle."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#stationarity-conditions-for-ar1",
+    "href": "posts/time_series/Week2.html#stationarity-conditions-for-ar1",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Stationarity Conditions for AR(1)",
+    "text": "Stationarity Conditions for AR(1)\nLet’s consider \\((AR(1))\\) process,\n\\[x_t=\\phi_1x_{t-1}+\\epsilon_t.\\]\nThen,\n\\[(1-\\phi_1 B)x_t=\\epsilon_t.\\]\nThis may be written as, \\[x_t=(1-\\phi_1 B)^{-1}\\epsilon_t=\\sum_{j=0}^{\\infty}\\phi_1^j\\epsilon_{t-j}.\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#section-3",
+    "href": "posts/time_series/Week2.html#section-3",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "",
+    "text": "Hence,\n\\[\\psi(B)=(1-\\phi_1 B)^{-1}=\\sum_{j=0}^{\\infty}\\phi_1^jB^j\\]\nIf \\((\\phi_1| &lt; 1,)\\) the \\((AR(1))\\) process is stationary.\nThis is equivalent to saying the roots of \\((1-\\phi_1B=0)\\) must lie outside the unit circle."
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#geometric-series",
+    "href": "posts/time_series/Week2.html#geometric-series",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "Geometric series",
+    "text": "Geometric series\n\\[a+ar+ar^2+ar^3+...=\\frac{a}{1-r}\\]\nfor \\((|r| &lt; 1.)\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#ar1-process",
+    "href": "posts/time_series/Week2.html#ar1-process",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "AR(1) process",
+    "text": "AR(1) process\n\\[x_t=c+\\phi_1x_{t-1}+\\epsilon_t,\\]\n\nwhen \\(\\phi_1=0\\) - equivalent to white noise process\nwhen \\(\\phi_1=1\\) and \\(c=0\\) - random walk\nwhen \\(\\phi_1=1\\) and \\(c \\neq 0\\) - random walk with drift\nwhen \\(\\phi_1 &lt; 0\\) - oscillates around the mean"
+  },
+  {
+    "objectID": "posts/time_series/Week2.html#section-4",
+    "href": "posts/time_series/Week2.html#section-4",
+    "title": "Week 2: Time Series Forecasting",
+    "section": "",
+    "text": "slides: https://tsforecasting-thiyanga.netlify.app/slides/timeseries2.html#27"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#time-series",
+    "href": "posts/time_series/file1.html#time-series",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Time Series",
+    "text": "Time Series\nA time series is a sequence of observations taken sequentially in time.\n\n\nCross-sectional data\n\n\n\n\n\n\n\n\n\nID\ncalories\n\n\n\n\n0\n1\n420\n\n\n1\n2\n380\n\n\n2\n3\n390\n\n\n\n\n\n\n\nObservations that come from different individuals or groups at a single point in time.\n\nTime series data\n\n\n\n\n\n\n\n\n\nYear\nSales\n\n\n\n\n0\n2019\n490\n\n\n1\n2020\n980\n\n\n2\n2021\n260\n\n\n\n\n\n\n\nA set of observations, along with some information about what times those observations were recorded."
+  },
+  {
+    "objectID": "posts/time_series/file1.html#datetime",
+    "href": "posts/time_series/file1.html#datetime",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "DateTime",
+    "text": "DateTime\n\n\nCross-sectional data\n\nimport pandas as pd\ndata = {\n  \"ID\": [1, 2, 3],\n  \"calories\": [420, 380, 390]\n  \n}\n\n#load data into a DataFrame object:\ndfc = pd.DataFrame(data)\ndfc\n\n\n\n\n\n\n\n\nID\ncalories\n\n\n\n\n0\n1\n420\n\n\n1\n2\n380\n\n\n2\n3\n390\n\n\n\n\n\n\n\n\nTime series data\n\ndata = {\n  \"Year\": [2019, 2020, 2021],\n  \"Sales\": [490, 980, 260]\n  \n}\n\n#load data into a DataFrame object:\ndft = pd.DataFrame(data)\ndft\n\n\n\n\n\n\n\n\nYear\nSales\n\n\n\n\n0\n2019\n490\n\n\n1\n2020\n980\n\n\n2\n2021\n260"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#datetime-1",
+    "href": "posts/time_series/file1.html#datetime-1",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "DateTime",
+    "text": "DateTime\n\n\nCross-sectional data\n\ndfc.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 2 columns):\n #   Column    Non-Null Count  Dtype\n---  ------    --------------  -----\n 0   ID        3 non-null      int64\n 1   calories  3 non-null      int64\ndtypes: int64(2)\nmemory usage: 176.0 bytes\n\n\n\nTime series data\n\ndft.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 2 columns):\n #   Column  Non-Null Count  Dtype\n---  ------  --------------  -----\n 0   Year    3 non-null      int64\n 1   Sales   3 non-null      int64\ndtypes: int64(2)\nmemory usage: 176.0 bytes"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#necessary-packages",
+    "href": "posts/time_series/file1.html#necessary-packages",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Necessary packages",
+    "text": "Necessary packages\n\nimport pandas as pd\nimport numpy as np\nimport datetime"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#read-airpassenger",
+    "href": "posts/time_series/file1.html#read-airpassenger",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Read AirPassenger",
+    "text": "Read AirPassenger\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nairpassenger\n\n\n\n\n\n\n\n\nMonth\n#Passengers\n\n\n\n\n0\n1949-01\n112\n\n\n1\n1949-02\n118\n\n\n2\n1949-03\n132\n\n\n3\n1949-04\n129\n\n\n4\n1949-05\n121\n\n\n...\n...\n...\n\n\n139\n1960-08\n606\n\n\n140\n1960-09\n508\n\n\n141\n1960-10\n461\n\n\n142\n1960-11\n390\n\n\n143\n1960-12\n432\n\n\n\n\n144 rows × 2 columns"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#airpassenger-dataset",
+    "href": "posts/time_series/file1.html#airpassenger-dataset",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "AirPassenger dataset",
+    "text": "AirPassenger dataset\n\nairpassenger.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 144 entries, 0 to 143\nData columns (total 2 columns):\n #   Column       Non-Null Count  Dtype \n---  ------       --------------  ----- \n 0   Month        144 non-null    object\n 1   #Passengers  144 non-null    int64 \ndtypes: int64(1), object(1)\nmemory usage: 2.4+ KB"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#data-visualization",
+    "href": "posts/time_series/file1.html#data-visualization",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nimport plotnine\nfrom plotnine import *\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n&lt;ggplot: (-9223372036479770161)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#convert-to-date-and-time",
+    "href": "posts/time_series/file1.html#convert-to-date-and-time",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Convert to Date and Time",
+    "text": "Convert to Date and Time\n\nfrom datetime import datetime\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nairpassenger.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 144 entries, 0 to 143\nData columns (total 2 columns):\n #   Column       Non-Null Count  Dtype         \n---  ------       --------------  -----         \n 0   Month        144 non-null    datetime64[ns]\n 1   #Passengers  144 non-null    int64         \ndtypes: datetime64[ns](1), int64(1)\nmemory usage: 2.4 KB"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#data-visualization-1",
+    "href": "posts/time_series/file1.html#data-visualization-1",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n&lt;ggplot: (-9223372036479774183)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#data-visualization-2",
+    "href": "posts/time_series/file1.html#data-visualization-2",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()+geom_point()\n\n\n&lt;ggplot: (-9223372036479770771)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#split-date-into-month-and-year",
+    "href": "posts/time_series/file1.html#split-date-into-month-and-year",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Split date into month and year",
+    "text": "Split date into month and year\n\nairpassenger['year'] = airpassenger['Month'].dt.year\nairpassenger['month'] = airpassenger['Month'].dt.month"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#split-date-into-month-and-year-cont.",
+    "href": "posts/time_series/file1.html#split-date-into-month-and-year-cont.",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Split date into month and year (cont.)",
+    "text": "Split date into month and year (cont.)\n\nairpassenger\n\n\n\n\n\n\n\n\nMonth\n#Passengers\nyear\nmonth\n\n\n\n\n0\n1949-01-01\n112\n1949\n1\n\n\n1\n1949-02-01\n118\n1949\n2\n\n\n2\n1949-03-01\n132\n1949\n3\n\n\n3\n1949-04-01\n129\n1949\n4\n\n\n4\n1949-05-01\n121\n1949\n5\n\n\n...\n...\n...\n...\n...\n\n\n139\n1960-08-01\n606\n1960\n8\n\n\n140\n1960-09-01\n508\n1960\n9\n\n\n141\n1960-10-01\n461\n1960\n10\n\n\n142\n1960-11-01\n390\n1960\n11\n\n\n143\n1960-12-01\n432\n1960\n12\n\n\n\n\n144 rows × 4 columns"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#time-series-patterns",
+    "href": "posts/time_series/file1.html#time-series-patterns",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Time Series Patterns",
+    "text": "Time Series Patterns\nTrend\nLong-term increase or decrease in the data.\nSeasonal\nA seasonal pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week). Seasonality is always of a fixed and known period. Hence, seasonal time series are sometimes called periodic time series.\nPeriod is unchanging and associated with some aspect of the calendar."
+  },
+  {
+    "objectID": "posts/time_series/file1.html#time-series-patterns-cont",
+    "href": "posts/time_series/file1.html#time-series-patterns-cont",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Time Series Patterns (cont)",
+    "text": "Time Series Patterns (cont)\nCyclic\nA cyclic pattern exists when data exhibit rises and falls that are not of fixed period. The duration of these fluctuations is usually of at least 2 years. In general,\nthe average length of cycles is longer than the length of a seasonal pattern.\nthe magnitude of cycles tends to be more variable than the magnitude of seasonal patterns"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#example-trend",
+    "href": "posts/time_series/file1.html#example-trend",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Example: trend",
+    "text": "Example: trend"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#example-seasonal",
+    "href": "posts/time_series/file1.html#example-seasonal",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Example: seasonal",
+    "text": "Example: seasonal"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#example-multiple-seasonality",
+    "href": "posts/time_series/file1.html#example-multiple-seasonality",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Example: multiple seasonality",
+    "text": "Example: multiple seasonality"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#example-trend-seasonal",
+    "href": "posts/time_series/file1.html#example-trend-seasonal",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Example: Trend + Seasonal",
+    "text": "Example: Trend + Seasonal"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#cyclic-1",
+    "href": "posts/time_series/file1.html#cyclic-1",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Cyclic",
+    "text": "Cyclic"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#cyclic-seasonal",
+    "href": "posts/time_series/file1.html#cyclic-seasonal",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Cyclic + Seasonal",
+    "text": "Cyclic + Seasonal"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
+    "href": "posts/time_series/file1.html#frequency-of-a-time-series-seasonal-periods",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Frequency of a time series: Seasonal periods",
+    "text": "Frequency of a time series: Seasonal periods"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots",
+    "href": "posts/time_series/file1.html#seasonal-plots",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='year'))+geom_point()\n\n\n&lt;ggplot: (-9223372036478791978)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-1",
+    "href": "posts/time_series/file1.html#seasonal-plots-1",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_point()\n\n\n&lt;ggplot: (-9223372036582484245)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-2",
+    "href": "posts/time_series/file1.html#seasonal-plots-2",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line()\n\n\n&lt;ggplot: (376120896)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-3",
+    "href": "posts/time_series/file1.html#seasonal-plots-3",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(year)'))+geom_line() + geom_point() \n\n\n&lt;ggplot: (-9223372036479294681)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-4",
+    "href": "posts/time_series/file1.html#seasonal-plots-4",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_boxplot() \n\n\n&lt;ggplot: (-9223372036479434317)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-5",
+    "href": "posts/time_series/file1.html#seasonal-plots-5",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot() \n\n\n&lt;ggplot: (-9223372036480369867)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#seasonal-plots-6",
+    "href": "posts/time_series/file1.html#seasonal-plots-6",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Seasonal plots",
+    "text": "Seasonal plots\n\nggplot(airpassenger, aes(x='month', y='#Passengers', color='factor(month)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n&lt;ggplot: (-9223372036477430072)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#yearly-variation",
+    "href": "posts/time_series/file1.html#yearly-variation",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Yearly variation",
+    "text": "Yearly variation\n\nggplot(airpassenger, aes(x='year', y='#Passengers', color='factor(year)'))+ geom_point()+ geom_boxplot(alpha=0.5) \n\n\n&lt;ggplot: (377342307)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---yearly",
+    "href": "posts/time_series/file1.html#index---yearly",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Yearly",
+    "text": "Index - Yearly\nMethod 1\n\nindex1 = pd.DatetimeIndex(['2012', '2013', '2014', '2015', '2016'])\ndata1 = pd.Series([123, 39, 78, 52, 110], index=index1)\ndata1\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\ndtype: int64"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---yearly-cont.",
+    "href": "posts/time_series/file1.html#index---yearly-cont.",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 2\nfreq='AS' for start of year\n\nindex2 = pd.date_range(\"2012\", periods=5, freq='AS')\nindex2\n\nDatetimeIndex(['2012-01-01', '2013-01-01', '2014-01-01', '2015-01-01',\n               '2016-01-01'],\n              dtype='datetime64[ns]', freq='AS-JAN')\n\n\n\ndata2 = pd.Series([123, 39, 78, 52, 110], index=index2)\ndata2\n\n2012-01-01    123\n2013-01-01     39\n2014-01-01     78\n2015-01-01     52\n2016-01-01    110\nFreq: AS-JAN, dtype: int64"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---yearly-cont.-1",
+    "href": "posts/time_series/file1.html#index---yearly-cont.-1",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 3\nfreq='A' end of year frequency\n\nindex3 = pd.date_range(\"2012\", periods=5, freq='A')\nindex3\n\nDatetimeIndex(['2012-12-31', '2013-12-31', '2014-12-31', '2015-12-31',\n               '2016-12-31'],\n              dtype='datetime64[ns]', freq='A-DEC')\n\n\n\ndata3 = pd.Series([123, 39, 78, 52, 110], index=index3)\ndata3\n\n2012-12-31    123\n2013-12-31     39\n2014-12-31     78\n2015-12-31     52\n2016-12-31    110\nFreq: A-DEC, dtype: int64"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---yearly-cont.-2",
+    "href": "posts/time_series/file1.html#index---yearly-cont.-2",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\nMethod 4\nAnnual indexing with arbitrary month\n\nindex4 = pd.date_range(\"2012\", periods=5, freq='AS-NOV')\nindex4\n\nDatetimeIndex(['2012-11-01', '2013-11-01', '2014-11-01', '2015-11-01',\n               '2016-11-01'],\n              dtype='datetime64[ns]', freq='AS-NOV')\n\n\n\ndata4 = pd.Series([123, 39, 78, 52, 110], index=index4)\ndata4\n\n2012-11-01    123\n2013-11-01     39\n2014-11-01     78\n2015-11-01     52\n2016-11-01    110\nFreq: AS-NOV, dtype: int64"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---yearly-cont.-3",
+    "href": "posts/time_series/file1.html#index---yearly-cont.-3",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Yearly (cont.)",
+    "text": "Index - Yearly (cont.)\n\nindex = pd.period_range('2012-01', periods=8, freq='A')\nindex\n\nPeriodIndex(['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'], dtype='period[A-DEC]', freq='A-DEC')"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---monthly",
+    "href": "posts/time_series/file1.html#index---monthly",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Monthly",
+    "text": "Index - Monthly\nMethod 1\n\nindex = pd.period_range('2022-01', periods=8, freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')\n\n\nMethod 2\n\nindex = pd.period_range(start='2022-01-01', end='2022-08-02', freq='M')\nindex\n\nPeriodIndex(['2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06',\n             '2022-07', '2022-08'],\n            dtype='period[M]', freq='M')"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---quarterly",
+    "href": "posts/time_series/file1.html#index---quarterly",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Quarterly",
+    "text": "Index - Quarterly\n\nindex = pd.period_range('2022-01', periods=8, freq='Q')\nindex\n\nPeriodIndex(['2022Q1', '2022Q2', '2022Q3', '2022Q4', '2023Q1', '2023Q2',\n             '2023Q3', '2023Q4'],\n            dtype='period[Q-DEC]', freq='Q-DEC')"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---daily",
+    "href": "posts/time_series/file1.html#index---daily",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Daily",
+    "text": "Index - Daily\n\nindex = pd.period_range('2022-01-01', periods=8, freq='D')\nindex\n\nPeriodIndex(['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04',\n             '2022-01-05', '2022-01-06', '2022-01-07', '2022-01-08'],\n            dtype='period[D]', freq='D')"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#index---hourly",
+    "href": "posts/time_series/file1.html#index---hourly",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Index - Hourly",
+    "text": "Index - Hourly\nRange of hourly timestamps\n\npd.period_range('2022-01', periods=8, freq='H')\n\nPeriodIndex(['2022-01-01 00:00', '2022-01-01 01:00', '2022-01-01 02:00',\n             '2022-01-01 03:00', '2022-01-01 04:00', '2022-01-01 05:00',\n             '2022-01-01 06:00', '2022-01-01 07:00'],\n            dtype='period[H]', freq='H')\n\n\n\npd.date_range('2022-01', periods=8, freq='H')\n\nDatetimeIndex(['2022-01-01 00:00:00', '2022-01-01 01:00:00',\n               '2022-01-01 02:00:00', '2022-01-01 03:00:00',\n               '2022-01-01 04:00:00', '2022-01-01 05:00:00',\n               '2022-01-01 06:00:00', '2022-01-01 07:00:00'],\n              dtype='datetime64[ns]', freq='H')\n\n\nSequence of durations increasing by an hour\n\npd.timedelta_range(0, periods=10, freq='H')\n\nTimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',\n                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',\n                '0 days 06:00:00', '0 days 07:00:00', '0 days 08:00:00',\n                '0 days 09:00:00'],\n               dtype='timedelta64[ns]', freq='H')"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#define-multiple-frequencies",
+    "href": "posts/time_series/file1.html#define-multiple-frequencies",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Define multiple frequencies",
+    "text": "Define multiple frequencies\n\nNext lesson"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#correlation",
+    "href": "posts/time_series/file1.html#correlation",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Correlation",
+    "text": "Correlation"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#autocorrelation",
+    "href": "posts/time_series/file1.html#autocorrelation",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Autocorrelation",
+    "text": "Autocorrelation"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf-plot",
+    "href": "posts/time_series/file1.html#acf-plot",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "ACF plot",
+    "text": "ACF plot\n\nimport pandas as pd\nfrom matplotlib import pyplot as plt\nfrom statsmodels.graphics.tsaplots import plot_acf\n# Select relevant data, index by Date\ndata = airpassenger[['Month', '#Passengers']].set_index(['Month'])\n# Calculate the ACF (via statsmodel)\ndata\n\n\n\n\n\n\n\n\n#Passengers\n\n\nMonth\n\n\n\n\n\n1949-01-01\n112\n\n\n1949-02-01\n118\n\n\n1949-03-01\n132\n\n\n1949-04-01\n129\n\n\n1949-05-01\n121\n\n\n...\n...\n\n\n1960-08-01\n606\n\n\n1960-09-01\n508\n\n\n1960-10-01\n461\n\n\n1960-11-01\n390\n\n\n1960-12-01\n432\n\n\n\n\n144 rows × 1 columns"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf-plot-1",
+    "href": "posts/time_series/file1.html#acf-plot-1",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "ACF plot",
+    "text": "ACF plot\n\ndata.info()\nplot_acf(data, lags=50)\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nDatetimeIndex: 144 entries, 1949-01-01 to 1960-12-01\nData columns (total 1 columns):\n #   Column       Non-Null Count  Dtype\n---  ------       --------------  -----\n 0   #Passengers  144 non-null    int64\ndtypes: int64(1)\nmemory usage: 2.2 KB"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf",
+    "href": "posts/time_series/file1.html#acf",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "ACF",
+    "text": "ACF"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf-1",
+    "href": "posts/time_series/file1.html#acf-1",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "ACF",
+    "text": "ACF"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf-2",
+    "href": "posts/time_series/file1.html#acf-2",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "ACF",
+    "text": "ACF"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf-3",
+    "href": "posts/time_series/file1.html#acf-3",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "ACF",
+    "text": "ACF"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#acf-4",
+    "href": "posts/time_series/file1.html#acf-4",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "ACF",
+    "text": "ACF\n ## Time series forecasting"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#training-and-test-set",
+    "href": "posts/time_series/file1.html#training-and-test-set",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Training and Test Set",
+    "text": "Training and Test Set"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#simple-time-series-forecasting-technique",
+    "href": "posts/time_series/file1.html#simple-time-series-forecasting-technique",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Simple time series forecasting technique",
+    "text": "Simple time series forecasting technique"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#simple-time-series-forecasting-technique-1",
+    "href": "posts/time_series/file1.html#simple-time-series-forecasting-technique-1",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Simple time series forecasting technique",
+    "text": "Simple time series forecasting technique"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#simple-time-series-forecasting-technique-2",
+    "href": "posts/time_series/file1.html#simple-time-series-forecasting-technique-2",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Simple time series forecasting technique",
+    "text": "Simple time series forecasting technique"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#simple-time-series-forecasting-technique-3",
+    "href": "posts/time_series/file1.html#simple-time-series-forecasting-technique-3",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Simple time series forecasting technique",
+    "text": "Simple time series forecasting technique"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#simple-time-series-forecasting-technique-4",
+    "href": "posts/time_series/file1.html#simple-time-series-forecasting-technique-4",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "Simple time series forecasting technique",
+    "text": "Simple time series forecasting technique"
+  },
+  {
+    "objectID": "posts/time_series/file1.html#references",
+    "href": "posts/time_series/file1.html#references",
+    "title": "Week 1B: Time Series: Objects in Python and Visualization",
+    "section": "References",
+    "text": "References\nhttps://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html"
+  },
+  {
+    "objectID": "posts/spatial/index.html",
+    "href": "posts/spatial/index.html",
+    "title": "Spatial Statistics",
+    "section": "",
+    "text": "1 Lecture slides\nSpatial Statistics: Lecture 1\n\n\n2 Dataset 1\nhttps://github.com/GeostatsGuy/GeoDataSets/blob/master/1D_Porosity.xlsx\n\n\n3 R script file\nSpatial Data Visualisation - R Script file"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#section-3",
+    "href": "posts/quarto/1_intro.html#section-3",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "",
+    "text": "click here"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar",
+    "href": "posts/quarto/1_intro.html#grammar",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Grammar",
+    "text": "Grammar\n\n\n\nEnglish\n\nNouns\nArticle\nAdjective\nVerb\nAdverb\nProposition\n\n\n\nGraphics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar---example",
+    "href": "posts/quarto/1_intro.html#grammar---example",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Grammar - Example",
+    "text": "Grammar - Example\n\n\nEnglish\nThe little monkey hangs confidently by a branch.\n\nGraphics\n\n\n\n\n\n&lt;ggplot: (383084815)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#grammar---example-1",
+    "href": "posts/quarto/1_intro.html#grammar---example-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Grammar - Example",
+    "text": "Grammar - Example\n\n\nEnglish\nArticle: The\nAdjective: little\nNoun: monkey\nVerb: hangs\nAdverb: Confidently\nProposition: by\nNoun: a branch\n\nGraphics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#graphics---grammar-components",
+    "href": "posts/quarto/1_intro.html#graphics---grammar-components",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Graphics - Grammar components",
+    "text": "Graphics - Grammar components\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (383478448)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geom_line",
+    "href": "posts/quarto/1_intro.html#geom_line",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "geom_line",
+    "text": "geom_line\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (-9223372036471287173)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_line() \n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geom_point",
+    "href": "posts/quarto/1_intro.html#geom_point",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "geom_point",
+    "text": "geom_point\n\nPlotCode\n\n\n\n\n\n\n\n&lt;ggplot: (-9223372036470940265)&gt;\n\n\n\n\n\nimport pandas as pd\nimport numpy as np\n\nfrom plotnine import *\nfrom plotnine.data import *\n\n%matplotlib inline\n(\n    ggplot(economics, aes(x='date', y='uempmed')) \n    + geom_point() # line plot\n    + labs(x='date', y='median duration of unemployment, in week')\n)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data",
+    "href": "posts/quarto/1_intro.html#data",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\nDate: data to be plotted"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#packages",
+    "href": "posts/quarto/1_intro.html#packages",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Packages",
+    "text": "Packages\n\nimport pandas as pd\nimport plotnine\n\nfrom plotnine import *\nfrom plotnine.data import *"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics",
+    "href": "posts/quarto/1_intro.html#dataset-economics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n\n\n\ndate\npce\npop\npsavert\nuempmed\nunemploy\n\n\n\n\n0\n1967-07-01\n507.4\n198712\n12.5\n4.5\n2944\n\n\n1\n1967-08-01\n510.5\n198911\n12.5\n4.7\n2945\n\n\n2\n1967-09-01\n516.3\n199113\n11.7\n4.6\n2958"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-1",
+    "href": "posts/quarto/1_intro.html#dataset-economics-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 574 entries, 0 to 573\nData columns (total 6 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(2)\nmemory usage: 27.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-2",
+    "href": "posts/quarto/1_intro.html#dataset-economics-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics['year'] = economics['date'].dt.year\neconomics['month'] = economics['date'].dt.month"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-3",
+    "href": "posts/quarto/1_intro.html#dataset-economics-3",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 574 entries, 0 to 573\nData columns (total 8 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \n 6   year      574 non-null    int64         \n 7   month     574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(4)\nmemory usage: 36.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-economics-4",
+    "href": "posts/quarto/1_intro.html#dataset-economics-4",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: economics",
+    "text": "Dataset: economics\n\neconomics.head(3)\n\n\n\n\n\n\n\n\ndate\npce\npop\npsavert\nuempmed\nunemploy\nyear\nmonth\n\n\n\n\n0\n1967-07-01\n507.4\n198712\n12.5\n4.5\n2944\n1967\n7\n\n\n1\n1967-08-01\n510.5\n198911\n12.5\n4.7\n2945\n1967\n8\n\n\n2\n1967-09-01\n516.3\n199113\n11.7\n4.6\n2958\n1967\n9"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data",
+    "href": "posts/quarto/1_intro.html#tidy-data",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data",
+    "text": "Tidy data\n\n\nEvery column is a variable.\nEvery row is an observation.\nEvery cell is a single value."
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example",
+    "href": "posts/quarto/1_intro.html#tidy-data---example",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-1",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-2",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#tidy-data---example-3",
+    "href": "posts/quarto/1_intro.html#tidy-data---example-3",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Tidy data - Example",
+    "text": "Tidy data - Example"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-1",
+    "href": "posts/quarto/1_intro.html#data-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\n\nggplot(data=economics)\n\n\n&lt;ggplot: (383844195)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
+    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetics: mapping variables",
+    "text": "Aesthetics: mapping variables"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
+    "href": "posts/quarto/1_intro.html#aesthetics-mapping-variables-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetics: mapping variables",
+    "text": "Aesthetics: mapping variables\nAesthetic means “something you can see”.\n\nposition (i.e., on the x and y axes)\ncolor (“outside” color)\nfill (“inside” color)\nshape (of points)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-position",
+    "href": "posts/quarto/1_intro.html#aesthetic-position",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: position",
+    "text": "Aesthetic: position\n\nfrom plotnine.data import mtcars\n\nggplot(mtcars, aes('wt', 'mpg')) + geom_point()\n\n\n&lt;ggplot: (-9223372036470736247)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-color",
+    "href": "posts/quarto/1_intro.html#aesthetic-color",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: color",
+    "text": "Aesthetic: color\n\nggplot(mtcars, aes('wt', 'mpg', color='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (383119922)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-shape",
+    "href": "posts/quarto/1_intro.html#aesthetic-shape",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: shape",
+    "text": "Aesthetic: shape\n\nggplot(mtcars, aes('wt', 'mpg', shape='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (384289123)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#aesthetic-size",
+    "href": "posts/quarto/1_intro.html#aesthetic-size",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Aesthetic: size",
+    "text": "Aesthetic: size\n\nggplot(mtcars, aes('wt', 'mpg', size='factor(cyl)')) + geom_point()\n\n\n&lt;ggplot: (-9223372036470265845)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(economics, aes(x='date', y='uempmed'))\n\n\n&lt;ggplot: (-9223372036470514358)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geometrics",
+    "href": "posts/quarto/1_intro.html#geometrics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Geometrics",
+    "text": "Geometrics\nActual marks we put on a plot"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point()\n\n\n&lt;ggplot: (-9223372036469989302)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(alpha=0.5)\n\n\n&lt;ggplot: (-9223372036469942633)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_point(size=0.3)\n\n\n&lt;ggplot: (-9223372036469989246)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-3",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line()\n\n\n&lt;ggplot: (-9223372036469721351)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-4",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3)\n\n\n&lt;ggplot: (-9223372036469621511)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-5",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics",
+    "text": "Data + Aesthetics + Geometrics\n\nggplot(economics, aes(x='date', y='uempmed')) + geom_line() + geom_point(size=0.3, colour=\"blue\")\n\n\n&lt;ggplot: (-9223372036469501724)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#geoms",
+    "href": "posts/quarto/1_intro.html#geoms",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Geoms",
+    "text": "Geoms\n\nsource: https://nbisweden.github.io/RaukR-2019/ggplot/presentation/ggplot_presentation.html#17"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset",
+    "href": "posts/quarto/1_intro.html#dataset",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset",
+    "text": "Dataset\n\nmpg\n\n\n\n\n\n\n\n\nmanufacturer\nmodel\ndispl\nyear\ncyl\ntrans\ndrv\ncty\nhwy\nfl\nclass\n\n\n\n\n0\naudi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n\n\n1\naudi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n\n\n2\naudi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n\n\n3\naudi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n\n\n4\naudi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n229\nvolkswagen\npassat\n2.0\n2008\n4\nauto(s6)\nf\n19\n28\np\nmidsize\n\n\n230\nvolkswagen\npassat\n2.0\n2008\n4\nmanual(m6)\nf\n21\n29\np\nmidsize\n\n\n231\nvolkswagen\npassat\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\nmidsize\n\n\n232\nvolkswagen\npassat\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\nmidsize\n\n\n233\nvolkswagen\npassat\n3.6\n2008\n6\nauto(s6)\nf\n17\n26\np\nmidsize\n\n\n\n\n234 rows × 11 columns"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#dataset-variable-types",
+    "href": "posts/quarto/1_intro.html#dataset-variable-types",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Dataset: variable types",
+    "text": "Dataset: variable types\n\nmpg.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 234 entries, 0 to 233\nData columns (total 11 columns):\n #   Column        Non-Null Count  Dtype   \n---  ------        --------------  -----   \n 0   manufacturer  234 non-null    category\n 1   model         234 non-null    category\n 2   displ         234 non-null    float64 \n 3   year          234 non-null    int64   \n 4   cyl           234 non-null    int64   \n 5   trans         234 non-null    category\n 6   drv           234 non-null    category\n 7   cty           234 non-null    int64   \n 8   hwy           234 non-null    int64   \n 9   fl            234 non-null    category\n 10  class         234 non-null    category\ndtypes: category(6), float64(1), int64(4)\nmemory usage: 14.0 KB"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-2",
+    "href": "posts/quarto/1_intro.html#data-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data",
+    "text": "Data\n\nggplot(mpg)\n\n\n&lt;ggplot: (385284458)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n&lt;ggplot: (385284528)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics",
+    "text": "Data + Aesthetics\n\nggplot(mpg, aes(x='displ', y='hwy'))\n\n\n&lt;ggplot: (385505775)&gt;\n\n\ndispl - a car’s engine size, in litres.\nhwy - a car’s fuel efficiency on the highway, in miles per gallon (mpg)"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom",
+    "text": "Data + Aesthetics + Geom\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point()\n\n\n&lt;ggplot: (385599443)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#facets-small-multiples",
+    "href": "posts/quarto/1_intro.html#facets-small-multiples",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Facets: small multiples",
+    "text": "Facets: small multiples\nSubplots that each display one subset of the data."
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets",
+    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)\n\n\n&lt;ggplot: (-9223372036469377946)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets",
+    "text": "Data + Aesthetics + Geom + Facets\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2) \n\n\n&lt;ggplot: (383391510)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#statistics",
+    "href": "posts/quarto/1_intro.html#statistics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Statistics",
+    "text": "Statistics"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geom-facets-statistics",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geom + Facets + Statistics",
+    "text": "Data + Aesthetics + Geom + Facets + Statistics\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\")\n\n\n&lt;ggplot: (385913671)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#coordinate",
+    "href": "posts/quarto/1_intro.html#coordinate",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Coordinate",
+    "text": "Coordinate"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate",
+    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\") + coord_flip()\n\n\n&lt;ggplot: (385251876)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#theme",
+    "href": "posts/quarto/1_intro.html#theme",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Theme",
+    "text": "Theme"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-facets-statistics-coordinate-theme",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme",
+    "text": "Data + Aesthetics + Geometrics + Facets + Statistics + Coordinate+ Theme\n\nggplot(mpg, aes(x='displ', y='hwy')) + geom_point() + facet_wrap(\"class\", nrow=2)+ stat_smooth(method = \"lm\") + coord_flip() + theme_dark()\n\n\n&lt;ggplot: (383847323)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#scale",
+    "href": "posts/quarto/1_intro.html#scale",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Scale",
+    "text": "Scale"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() \n\n\n&lt;ggplot: (383875883)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-1",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_brewer()\n\n\n&lt;ggplot: (383894269)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
+    "href": "posts/quarto/1_intro.html#data-aesthetics-geometrics-scale-2",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Data + Aesthetics + Geometrics + Scale",
+    "text": "Data + Aesthetics + Geometrics + Scale\n\nggplot(mpg, aes(x='displ', y='hwy', color='class')) + geom_point() + scale_color_manual(values=['blue', 'red', 'green'])\n\n\n&lt;ggplot: (-9223372036468854114)&gt;"
+  },
+  {
+    "objectID": "posts/quarto/1_intro.html#your-turn",
+    "href": "posts/quarto/1_intro.html#your-turn",
+    "title": "Week 1A: Data Visualization: Grammar of Graphics",
+    "section": "Your Turn",
+    "text": "Your Turn\nVisualize AirPassengers dataset.\nDataset: available at https://thiyanga-spatiotemporal.netlify.app/posts/data/"
+  },
+  {
+    "objectID": "posts/homework/index.html",
+    "href": "posts/homework/index.html",
+    "title": "Take-home tasks",
+    "section": "",
+    "text": "Visualize the tourism dataset. The dataset is available here"
+  },
+  {
+    "objectID": "posts/homework/index.html#week-1-05-nov-2022",
+    "href": "posts/homework/index.html#week-1-05-nov-2022",
+    "title": "Take-home tasks",
+    "section": "",
+    "text": "Visualize the tourism dataset. The dataset is available here"
+  },
+  {
+    "objectID": "posts/homework/index.html#linear-time-series-analysis-and-its-applications",
+    "href": "posts/homework/index.html#linear-time-series-analysis-and-its-applications",
+    "title": "Take-home tasks",
+    "section": "Linear Time Series Analysis and Its Applications",
+    "text": "Linear Time Series Analysis and Its Applications\nNote"
+  },
+  {
+    "objectID": "posts/homework/index.html#additional-reading",
+    "href": "posts/homework/index.html#additional-reading",
+    "title": "Take-home tasks",
+    "section": "Additional Reading",
+    "text": "Additional Reading\nIntroduction to Geostatistics - OSFhttps://osf.io › download PDF by A Bárdossy"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DSA 554 3.0 Spatio-temporal Data Analysis",
+    "section": "",
+    "text": "DSA 554 3.0 Spatio-temporal Data Analysis is offered under MSc in Data Science (DS) and Artificial Intelligence (AI).\nThe MSc in DS and AI at USJ was designed in partnership with the Erasmus+ DS and AI consortium, a group of 15 European and Asian organizations with the mission of bringing European-standard advanced education to Asia."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "MSc in Data Science And Artificial Intelligence: Course Materials",
+    "section": "",
+    "text": "Datasets\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1A: Data Visualization: Grammar of Graphics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nAbout this Blog\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nSpatial Statistics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nTime Series Analysis\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 1B: Time Series: Objects in Python and Visualization\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 2: Time Series Forecasting\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 3-4: AR/ MA/ ARMA/ ARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nWeek 5A: AutoARIMA\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nTime Series Clustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nTake-home tasks\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nPracticals\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\n\n\n\n\n  \n\n\n\n\nReading Materials\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\n  \n\n\n\n\nCourse outline\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/data/index.html",
+    "href": "posts/data/index.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "1 Dataset 1\nAirPassengers.csv\nThe AirPassenger dataset in R provides monthly totals of a US airline passengers, from 1949 to 1960\n\n\n2 Dataset 2\ntourism.csv\nAustralian domestic overnight trips\nDescription\nA dataset containing the quarterly overnight trips from 1998 Q1 to 2016 Q4 across Australia.\nThe dataset contains 23,408 rows and 5 variables:\nVariable description\n\nQuarter: Year quarter (index)\n\n\nRegion: The tourism regions are formed through the aggregation of Statistical Local Areas (SLAs) which are defined by the various State and Territory tourism authorities according to their research and marketing needs\n\n\nState: States and territories of Australia\n\n\nPurpose: Stopover purpose of visit: “Holiday”, “Visiting friends and relatives”,“Business”, “Other reason”\n\n\nTrips: Overnight trips in thousands\n\nReference\nWang, E, D Cook, and RJ Hyndman (2020). A new tidy data structure to support exploration and modeling of temporal data, Journal of Computational and Graphical Statistics, 29:3, 466-478, doi:10.1080/10618600.2019.1695624."
+  },
+  {
+    "objectID": "posts/lab/index.html",
+    "href": "posts/lab/index.html",
+    "title": "Practicals",
+    "section": "",
+    "text": "https://github.com/thiyangt/helloPython/blob/master/6_timeseries.ipynb"
+  },
+  {
+    "objectID": "posts/lab/index.html#time-series-plots",
+    "href": "posts/lab/index.html#time-series-plots",
+    "title": "Practicals",
+    "section": "",
+    "text": "https://github.com/thiyangt/helloPython/blob/master/6_timeseries.ipynb"
+  },
+  {
+    "objectID": "posts/lab/index.html#shampoo-sales-data",
+    "href": "posts/lab/index.html#shampoo-sales-data",
+    "title": "Practicals",
+    "section": "Shampoo sales data",
+    "text": "Shampoo sales data\nhttps://github.com/thiyangt/helloPython/blob/master/ShampooData.ipynb"
+  },
+  {
+    "objectID": "posts/lab/index.html#time-series-feature-calculation",
+    "href": "posts/lab/index.html#time-series-feature-calculation",
+    "title": "Practicals",
+    "section": "Time series feature calculation",
+    "text": "Time series feature calculation\nhttps://github.com/thiyangt/helloPython/blob/master/Time%20Series%20Features.ipynb"
+  },
+  {
+    "objectID": "posts/lab/index.html#calendar-plot",
+    "href": "posts/lab/index.html#calendar-plot",
+    "title": "Practicals",
+    "section": "Calendar plot",
+    "text": "Calendar plot\nData simulation: https://github.com/thiyangt/helloPython/blob/master/calendarplot-question.ipynb\nTask: Visualize data"
+  },
+  {
+    "objectID": "posts/quarto/index.html",
+    "href": "posts/quarto/index.html",
+    "title": "About this Blog",
+    "section": "",
+    "text": "Read here"
+  },
+  {
+    "objectID": "posts/quarto/index.html#what-is-quarto",
+    "href": "posts/quarto/index.html#what-is-quarto",
+    "title": "About this Blog",
+    "section": "",
+    "text": "Read here"
+  },
+  {
+    "objectID": "posts/timeseries/index.html",
+    "href": "posts/timeseries/index.html",
+    "title": "Time Series Analysis",
+    "section": "",
+    "text": "1 Lecture Notes\nLinear Time Series Analysis and Its Applications"
+  },
+  {
+    "objectID": "posts/time_series/index.html",
+    "href": "posts/time_series/index.html",
+    "title": "Reading Materials",
+    "section": "",
+    "text": "Forecasting: Principles and Practice (2nd ed) by Rob J Hyndman and George Athanasopoulos\nForecasting: theory and practice\nThis written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field."
+  },
+  {
+    "objectID": "posts/time_series/index.html#time-series-analysis",
+    "href": "posts/time_series/index.html#time-series-analysis",
+    "title": "Reading Materials",
+    "section": "",
+    "text": "Forecasting: Principles and Practice (2nd ed) by Rob J Hyndman and George Athanasopoulos\nForecasting: theory and practice\nThis written by 80 academics (including myself) and practitioners across 22 countries and offers an encyclopedic overview of the current state of the forecasting field."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf",
+    "href": "posts/time_series/Week3.html#acf",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF",
+    "text": "ACF\n\n\n\n\n\nWhite noise implies stationarity. Stationarity does not imply white noise."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#non-stationary-time-series",
+    "href": "posts/time_series/Week3.html#non-stationary-time-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Non-Stationary Time Series",
+    "text": "Non-Stationary Time Series\n1. Deterministic trend\n\\[Y_t  = f(t) + \\epsilon_t\\]\nwhere \\(\\epsilon_t \\sim iid(0, \\sigma^2)\\), \\(t = 1, 2, ...T\\)\nMean of the process is time dependent, but the variance of the process is constant.\nA trend is deterministic if it is a nonrandom function of time."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#non-stationary-time-series-cont.",
+    "href": "posts/time_series/Week3.html#non-stationary-time-series-cont.",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Non-Stationary Time Series (cont.)",
+    "text": "Non-Stationary Time Series (cont.)\n2. Random walk\n\\[Y_t = Y_{t-1} + \\epsilon_t\\]\n\nRandom walk has a stochastic trend.\nModel behind naive method.\n\nA trend is said to be stochastic if it is a random function of time."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#non-stationary-time-series-cont.-1",
+    "href": "posts/time_series/Week3.html#non-stationary-time-series-cont.-1",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Non-Stationary Time Series (cont.)",
+    "text": "Non-Stationary Time Series (cont.)\n3. Random walk with drift\n\\[Y_t = \\alpha+  Y_{t-1} + \\epsilon_t\\]\n\nRandom walk with drift has a stochastic trend and a deterministic trend.\nModel behind drift method."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk",
+    "href": "posts/time_series/Week3.html#random-walk",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk",
+    "text": "Random walk\n\\[\n\\begin{aligned}\n  Y_t &= Y_{t-1} + \\epsilon_t \\\\\n     Y_1    &= Y_0 + \\epsilon_1 \\\\\n         Y_2 &=  Y_1 + \\epsilon_2=Y_0 + \\epsilon_1 + \\epsilon_2\\\\\n          Y_3 &=  Y_2 + \\epsilon_3=Y_0 + \\epsilon_1 + \\epsilon_2 +\\epsilon_3\\\\\n          .   \\\\\n          Y_t &=Y_{t-1} + \\epsilon_t=Y_0 + \\epsilon_1 + \\epsilon_2 + \\epsilon_3 +...+ \\epsilon_t = Y_0 + \\sum_{i=1}^{t} \\epsilon_t\n\\end{aligned}\n\\]\nMean: \\(E(Y_t) = Y_0\\).\nVariance: \\(Var(Y_t)=t \\sigma^2\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk-with-drift",
+    "href": "posts/time_series/Week3.html#random-walk-with-drift",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk with drift",
+    "text": "Random walk with drift\n\\[\n\\begin{aligned}\n  Y_t &= Y_{t-1} + \\epsilon_t \\\\\n     Y_1    &= \\alpha+Y_0 + \\epsilon_1 \\\\\n         Y_2 &= \\alpha+ Y_1 + \\epsilon_2=2 \\alpha+Y_0 + \\epsilon_1 + \\epsilon_2\\\\\n          Y_3 &= \\alpha+ Y_2 + \\epsilon_3= 3 \\alpha+ Y_0 + \\epsilon_1 + \\epsilon_2 +\\epsilon_3\\\\\n          .   \\\\\n          Y_t &= \\alpha+Y_{t-1} + \\epsilon_t= t \\alpha+ Y_0 + \\epsilon_1 + \\epsilon_2 + \\epsilon_3 +...+ \\epsilon_t \\\\\n          Y_t &= t \\alpha + Y_0 + \\sum_{i=1}^{t} \\epsilon_t\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk-with-drift-cont.",
+    "href": "posts/time_series/Week3.html#random-walk-with-drift-cont.",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk with drift (cont.)",
+    "text": "Random walk with drift (cont.)\nIt has a deterministic trend \\((Y_0 + t \\alpha)\\) and a stochastic trend \\(\\sum_{i=1}^{t} \\epsilon_t\\).\nMean: \\(E(Y_t) = Y_0 + t\\alpha\\)\nVariance: \\(Var(Y_t) = t\\sigma^2\\).\nThere is a trend in both mean and variance."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#common-trend-removal-de-trending-procedures",
+    "href": "posts/time_series/Week3.html#common-trend-removal-de-trending-procedures",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Common trend removal (de-trending) procedures",
+    "text": "Common trend removal (de-trending) procedures\n\nDeterministic trend: Time-trend regression\nThe trend can be removed by fitting a deterministic polynomial time trend. The residual series after removing the trend will give us the de-trended series.\nStochastic trend: Differencing\nThe process is also known as a Difference-stationary process."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk-1",
+    "href": "posts/time_series/Week3.html#random-walk-1",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk",
+    "text": "Random walk\n\nimport numpy as np\nrw = np.cumsum(samples)\nplt.plot(rw)\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#random-walk---acf",
+    "href": "posts/time_series/Week3.html#random-walk---acf",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Random walk - ACF",
+    "text": "Random walk - ACF"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#difference-series",
+    "href": "posts/time_series/Week3.html#difference-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Difference series",
+    "text": "Difference series\n\n\n\n\n\n\n\n\n\nValues\nLag 1\nLag 2\n\n\n\n\n0\n1.203587\nNaN\nNaN\n\n\n1\n1.290288\n0.086700\nNaN\n\n\n2\n0.334784\n-0.955504\n-1.042204\n\n\n3\n-0.036386\n-0.371170\n0.584334\n\n\n4\n-1.152387\n-1.116001\n-0.744831\n\n\n...\n...\n...\n...\n\n\n95\n10.696335\n-0.277457\n-0.910943\n\n\n96\n11.466986\n0.770650\n1.048107\n\n\n97\n11.923566\n0.456580\n-0.314070\n\n\n98\n11.149137\n-0.774429\n-1.231009\n\n\n99\n11.190200\n0.041062\n0.815491\n\n\n\n\n100 rows × 3 columns"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-lag-1-series",
+    "href": "posts/time_series/Week3.html#plot-lag-1-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot Lag 1 series",
+    "text": "Plot Lag 1 series"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf-lag-1-series",
+    "href": "posts/time_series/Week3.html#acf-lag-1-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF Lag 1 series",
+    "text": "ACF Lag 1 series"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#example-2",
+    "href": "posts/time_series/Week3.html#example-2",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Example 2",
+    "text": "Example 2\n\nimport numpy as np, pandas as pd\nfrom statsmodels.graphics.tsaplots import plot_acf, plot_pacf\nimport matplotlib.pyplot as plt\nplt.rcParams.update({'figure.figsize':(9,7), 'figure.dpi':120})\n\n# Import data\ndf = pd.read_csv('wwwusage.csv', names=['value'], header=0)\n\n# Original Series\nfig, axes = plt.subplots(2, 2, sharex=True)\naxes[0, 0].plot(df.value); axes[0, 0].set_title('Original Series')\nplot_acf(df.value, ax=axes[0, 1], lags=np.arange(len(df)))\n\n# 1st Differencing\naxes[1, 0].plot(df.value.diff()); axes[1, 0].set_title('1st Order Differencing')\nplot_acf(df.value.diff().dropna(), ax=axes[1, 1], lags=np.arange(len(df) - 1))\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#nd-order-differencing",
+    "href": "posts/time_series/Week3.html#nd-order-differencing",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "2nd order differencing",
+    "text": "2nd order differencing\n\nplot_acf(df.value.diff().diff().dropna())\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#variance-stabilization",
+    "href": "posts/time_series/Week3.html#variance-stabilization",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Variance stabilization",
+    "text": "Variance stabilization\nEg:\n\nSquare root: \\(W_t = \\sqrt{Y_t}\\)\nLogarithm: \\(W_t = log({Y_t})\\)\n\nThis very useful.\nInterpretable: Changes in a log value are relative (percent) changes on the original sclae."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960",
+    "href": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Monthly Airline Passenger Numbers 1949-1960",
+    "text": "Monthly Airline Passenger Numbers 1949-1960\n\nairpassenger = pd.read_csv('AirPassengers.csv')\nfrom datetime import datetime\nimport plotnine\nfrom plotnine import *\nairpassenger['Month']= pd.to_datetime(airpassenger['Month'])\nggplot(airpassenger, aes(x='Month', y='#Passengers'))+geom_line()\n\n\n&lt;ggplot: (331734342)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960---log",
+    "href": "posts/time_series/Week3.html#monthly-airline-passenger-numbers-1949-1960---log",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Monthly Airline Passenger Numbers 1949-1960 - log",
+    "text": "Monthly Airline Passenger Numbers 1949-1960 - log\n\nimport numpy as np\nairpassenger['naturallog'] = np.log(airpassenger['#Passengers']) \nggplot(airpassenger, aes(x='Month', y='naturallog'))+geom_line()\n\n\n&lt;ggplot: (331805001)&gt;"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#box-cox-transformation",
+    "href": "posts/time_series/Week3.html#box-cox-transformation",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Box-Cox transformation",
+    "text": "Box-Cox transformation\n\\[\n  w_t=\\begin{cases}\n    log(y_t), & \\text{if $\\lambda=0$} \\newline\n    (Y_t^\\lambda - 1)/ \\lambda, & \\text{otherwise}.\n  \\end{cases}\n\\]\nDifferent values of \\(\\lambda\\) gives you different transformations.\n\n\\(\\lambda=1\\): No substantive transformation\n\\(\\lambda = \\frac{1}{2}\\): Square root plus linear transformation\n\\(\\lambda=0\\): Natural logarithm\n\\(\\lambda = -1\\): Inverse plus 1\n\nBalance the seasonal fluctuations and random variation across the series."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#box-cox-transformation-1",
+    "href": "posts/time_series/Week3.html#box-cox-transformation-1",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Box-Cox transformation",
+    "text": "Box-Cox transformation\n\n# import modules\nimport numpy as np\nfrom scipy import stats\n \ny2,fitted_lambda = stats.boxcox(airpassenger['#Passengers'])"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#box-cox-transformation-exploring-the-output",
+    "href": "posts/time_series/Week3.html#box-cox-transformation-exploring-the-output",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Box-Cox transformation: Exploring the output",
+    "text": "Box-Cox transformation: Exploring the output\n\nfitted_lambda\n\n0.14802265137037945\n\n\n\ny2\n\narray([ 6.82749005,  6.93282224,  7.16189151,  7.11461078,  6.98378687,\n        7.20826542,  7.39959794,  7.39959794,  7.22352834,  6.94993188,\n        6.67930112,  6.93282224,  6.88074148,  7.0663838 ,  7.29843847,\n        7.20826542,  7.05009066,  7.41371485,  7.69297755,  7.69297755,\n        7.53726005,  7.17744836,  6.86312389,  7.28363955,  7.35675408,\n        7.42775127,  7.791663  ,  7.6033268 ,  7.71801394,  7.791663  ,\n        8.03379957,  8.03379957,  7.86322651,  7.59025293,  7.3711186 ,\n        7.64214252,  7.70552693,  7.81574285,  7.96693012,  7.82769741,\n        7.85143867,  8.23478523,  8.35415797,  8.46833738,  8.14152446,\n        7.94424651,  7.71801394,  7.97819691,  8.00058286,  8.00058286,\n        8.41186604,  8.40233549,  8.34441554,  8.47763304,  8.66568618,\n        8.73398286,  8.42136224,  8.16254066,  7.81574285,  8.05570781,\n        8.08822445,  7.90983871,  8.40233549,  8.32482145,  8.39277032,\n        8.66568618,  8.97573698,  8.90544371,  8.62209995,  8.34441554,\n        8.0774311 ,  8.34441554,  8.46833738,  8.38317027,  8.69150146,\n        8.70857469,  8.71707079,  9.07418456,  9.41661628,  9.30252389,\n        9.05177744,  8.75078932,  8.42136224,  8.78409104,  8.83328615,\n        8.77580407,  9.08902184,  9.0592668 ,  9.0964106 ,  9.48162515,\n        9.72179099,  9.67415098,  9.35679401,  9.00640692,  8.72554012,\n        9.00640692,  9.07418456,  8.96801544,  9.36350433,  9.30936559,\n        9.35679401,  9.77445522, 10.01359054, 10.02424732,  9.66813973,\n        9.30252389,  8.9987716 ,  9.22613489,  9.25415593,  9.0964106 ,\n        9.40343224,  9.30936559,  9.41003199,  9.84886109, 10.14918625,\n       10.21968352,  9.66813973,  9.38353935,  9.03673716,  9.23316669,\n        9.390186  ,  9.26806127,  9.68014959,  9.61958794,  9.76283534,\n       10.05072014, 10.426264  , 10.4768849 , 10.00289463,  9.68613564,\n        9.40343224,  9.67415098,  9.74531682,  9.58881702,  9.75700771,\n        9.99215929, 10.05072014, 10.36531089, 10.75145254, 10.68404894,\n       10.23457308,  9.99215929,  9.58262264,  9.83186035])"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#armap-q-model",
+    "href": "posts/time_series/Week3.html#armap-q-model",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ARMA(p, q) model",
+    "text": "ARMA(p, q) model\n\\[Y_t=c+\\phi_1Y_{t-1}+...+\\phi_p Y_{t-p}+ \\theta_1\\epsilon_{t-1}+...+\\theta_q\\epsilon_{t-q}+\\epsilon_t\\]\n\nThese are stationary models.\nThey are only suitable for stationary series."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#arimap-d-q-model",
+    "href": "posts/time_series/Week3.html#arimap-d-q-model",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ARIMA(p, d, q) model",
+    "text": "ARIMA(p, d, q) model\nDifferencing –&gt; ARMA\nStep 1: Differencing\n\\[Y'_t = (1-B)^dY_t\\]\nStep 2: ARMA\n\\[Y'_t=c+\\phi_1Y'_{t-1}+...+\\phi_p Y'_{t-p}+ \\theta_1\\epsilon_{t-1}+...+\\theta_q\\epsilon_{t-q}+\\epsilon_t\\]"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#section-1",
+    "href": "posts/time_series/Week3.html#section-1",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "(&lt;Figure size 1920x480 with 1 Axes&gt;,\n &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-2-split-time-series-into-training-and-test",
+    "href": "posts/time_series/Week3.html#step-2-split-time-series-into-training-and-test",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 2: Split time series into training and test",
+    "text": "Step 2: Split time series into training and test\nSpecify the forecast horizon\n\nimport numpy as np\nimport pandas as pd\nfrom sktime.forecasting.base import ForecastingHorizon\nfh = ForecastingHorizon(\n    pd.PeriodIndex(pd.date_range(\"1960-01\", periods=12, freq=\"M\")), is_relative=False\n)\nfh\n\nForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',\n             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],\n            dtype='period[M]', is_relative=False)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-training-and-test-series",
+    "href": "posts/time_series/Week3.html#plot-training-and-test-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot training and test series",
+    "text": "Plot training and test series\n\n\n(&lt;Figure size 1920x480 with 1 Axes&gt;,\n &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#section-2",
+    "href": "posts/time_series/Week3.html#section-2",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "Need transformations?\nNeed differencing?"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-3-apply-transformations",
+    "href": "posts/time_series/Week3.html#step-3-apply-transformations",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 3: Apply transformations",
+    "text": "Step 3: Apply transformations\n\nimport numpy as np\ny_train.naturallog = np.log(y_train) \nplot_series(y_train.naturallog)\n\n(&lt;Figure size 1920x480 with 1 Axes&gt;,\n &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-4-take-difference-series",
+    "href": "posts/time_series/Week3.html#step-4-take-difference-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 4: Take difference series",
+    "text": "Step 4: Take difference series\nIdentifying non-stationarity by looking at plots\n\nTime series plot\nThe ACF of stationary data drops to zero relatively quickly.\nThe ACF of non-stationary data decreases slowly.\nFor non-stationary data, the value of \\(r_1\\) is often large and positive."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#non-seasonal-differencing-and-seasonal-differencing",
+    "href": "posts/time_series/Week3.html#non-seasonal-differencing-and-seasonal-differencing",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Non-seasonal differencing and seasonal differencing",
+    "text": "Non-seasonal differencing and seasonal differencing\nNon seasonal first-order differencing: \\(Y'_t=Y_t - Y_{t-1}\\)\n\nNon seasonal second-order differencing: \\(Y''_t=Y'_t - Y'_{t-1}\\)\n\nSeasonal differencing: \\(Y_t - Y_{t-m}\\)\n\n\nFor monthly, \\(m=12\\), for quarterly, \\(m=4\\).\n\n\n\nSeasonally differenced series will have \\(T-m\\) observations. \n\n\nThere are times differencing once is not enough. However, in practice,it is almost never necessary to go beyond second-order differencing."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf-of-log-transformation-series",
+    "href": "posts/time_series/Week3.html#acf-of-log-transformation-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF of log-transformation series",
+    "text": "ACF of log-transformation series\n\nplot_acf(y_train.naturallog, lags=50)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#take-seasonal-difference-series",
+    "href": "posts/time_series/Week3.html#take-seasonal-difference-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Take seasonal difference series",
+    "text": "Take seasonal difference series\n\ny_train.naturallog.diff12 = y_train.naturallog.diff(12)\ny_train.naturallog.diff12\n\n1949-01         NaN\n1949-02         NaN\n1949-03         NaN\n1949-04         NaN\n1949-05         NaN\n             ...   \n1959-08    0.101591\n1959-09    0.136312\n1959-10    0.125491\n1959-11    0.155072\n1959-12    0.183804\nFreq: M, Name: Number of airline passengers, Length: 132, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#take-seasonal-difference-series-cont.",
+    "href": "posts/time_series/Week3.html#take-seasonal-difference-series-cont.",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Take seasonal difference series (cont.)",
+    "text": "Take seasonal difference series (cont.)\n\ny_train.naturallog.diff12.head(20)\n\n1949-01         NaN\n1949-02         NaN\n1949-03         NaN\n1949-04         NaN\n1949-05         NaN\n1949-06         NaN\n1949-07         NaN\n1949-08         NaN\n1949-09         NaN\n1949-10         NaN\n1949-11         NaN\n1949-12         NaN\n1950-01    0.026433\n1950-02    0.065597\n1950-03    0.065958\n1950-04    0.045462\n1950-05    0.032523\n1950-06    0.098672\n1950-07    0.138586\n1950-08    0.138586\nFreq: M, Name: Number of airline passengers, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf---difflogdata-12",
+    "href": "posts/time_series/Week3.html#acf---difflogdata-12",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF - diff(log(data), 12)",
+    "text": "ACF - diff(log(data), 12)\n\nplot_acf(y_train.naturallog.diff12.dropna(), lags=50)\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#acf---first-differencing-on-difflogdata-12",
+    "href": "posts/time_series/Week3.html#acf---first-differencing-on-difflogdata-12",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ACF - First differencing on diff(log(data), 12)",
+    "text": "ACF - First differencing on diff(log(data), 12)\n\ny_train.naturallog.diff12.diff = y_train.naturallog.diff12.diff()\nplot_acf(y_train.naturallog.diff12.diff.dropna(), lags=50)\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#pacf---first-differencing-on-difflogdata-12",
+    "href": "posts/time_series/Week3.html#pacf---first-differencing-on-difflogdata-12",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "PACF - First differencing on diff(log(data), 12)",
+    "text": "PACF - First differencing on diff(log(data), 12)\n\nplot_pacf(y_train.naturallog.diff12.diff.dropna(), lags=50)\nplt.show()"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#testing-for-nonstationarity-for-the-presence-of-unit-roots",
+    "href": "posts/time_series/Week3.html#testing-for-nonstationarity-for-the-presence-of-unit-roots",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Testing for nonstationarity for the presence of unit roots",
+    "text": "Testing for nonstationarity for the presence of unit roots\n\nDickey and Fuller (DF) test\nAugmented DF test\nPhillips and Perron (PP) nonparametric test\nKwiatkowski-Phillips-Schmidt-Shin (KPSS) test"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test",
+    "href": "posts/time_series/Week3.html#kpss-test",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\nH0: Series is level or trend stationary.\nH1: Series is not stationary."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-1",
+    "href": "posts/time_series/Week3.html#kpss-test-1",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nfrom statsmodels.tsa.stattools import kpss\ndef kpss_test(series, **kw):    \n    statistic, p_value, n_lags, critical_values = kpss(series, **kw)\n    # Format Output\n    print(f'KPSS Statistic: {statistic}')\n    print(f'p-value: {p_value}')\n    print(f'num lags: {n_lags}')\n    print('Critial Values:')\n    for key, value in critical_values.items():\n        print(f'   {key} : {value}')\n    print(f'Result: The series is {\"not \" if p_value &lt; 0.05 else \"\"}stationary')\n\nkpss_test(y_train.naturallog)\n\nKPSS Statistic: 1.9204939010623039\np-value: 0.01\nnum lags: 6\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is not stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-2",
+    "href": "posts/time_series/Week3.html#kpss-test-2",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nkpss_test(y_train.naturallog.diff12.dropna())\n\nKPSS Statistic: 0.29885781439314946\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-3",
+    "href": "posts/time_series/Week3.html#kpss-test-3",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nKPSS test may not necessarily reject the null hypothesis (that the series is level or trend stationary) even if a series is steadily increasing or decreasing.\nThe word ‘deterministic’ implies the slope of the trend in the series does not change permanently. That is, even if the series goes through a shock, it tends to regain its original path.\n\nsource: https://www.machinelearningplus.com/time-series/kpss-test-for-stationarity/"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-test-4",
+    "href": "posts/time_series/Week3.html#kpss-test-4",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS test",
+    "text": "KPSS test\n\nBy default, it tests for stationarity around a ‘mean’ only.\nTo turn ON the stationarity testing around a trend, you need to explicitly pass the regression=‘ct’ parameter to the kpss\n\n\nkpss_test(y_train.naturallog.diff12.dropna(), regression='ct')\n\nKPSS Statistic: 0.0760056301424143\np-value: 0.1\nnum lags: 5\nCritial Values:\n   10% : 0.119\n   5% : 0.146\n   2.5% : 0.176\n   1% : 0.216\nResult: The series is stationary\n\n\n\nkpss_test(y_train.naturallog.diff12.diff.dropna())\n\nKPSS Statistic: 0.0509726778456186\np-value: 0.1\nnum lags: 2\nCritial Values:\n   10% : 0.347\n   5% : 0.463\n   2.5% : 0.574\n   1% : 0.739\nResult: The series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#adf-test",
+    "href": "posts/time_series/Week3.html#adf-test",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ADF test",
+    "text": "ADF test\n\nfrom statsmodels.tsa.stattools import adfuller\n\ndef adf_test(series):\n    result = adfuller(series, autolag='AIC')\n    print(f'ADF Statistic: {result[0]}')\n    print(f'p-value: {result[1]}')\n    for key, value in result[4].items():\n        print('Critial Values:')\n        print(f'   {key}, {value}')\n\nseries = df.loc[:, 'value'].values\n\nH0: Series is not stationary\nH1: Series is stationary"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#adf-test-1",
+    "href": "posts/time_series/Week3.html#adf-test-1",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ADF test",
+    "text": "ADF test\n\nadf_test(y_train.naturallog)\n\nADF Statistic: -1.3176112021439967\np-value: 0.6210771494355872\nCritial Values:\n   1%, -3.4870216863700767\nCritial Values:\n   5%, -2.8863625166643136\nCritial Values:\n   10%, -2.580009026141913\n\n\n\nadf_test(y_train.naturallog.diff12.dropna())\n\nADF Statistic: -2.5844902417566793\np-value: 0.09624537566648711\nCritial Values:\n   1%, -3.492995948509562\nCritial Values:\n   5%, -2.888954648057252\nCritial Values:\n   10%, -2.58139291903223\n\n\n\nadf_test(y_train.naturallog.diff12.diff.dropna())\n\nADF Statistic: -4.08727195454389\np-value: 0.0010165214009067135\nCritial Values:\n   1%, -3.4936021509366793\nCritial Values:\n   5%, -2.8892174239808703\nCritial Values:\n   10%, -2.58153320754717"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#kpss-vs-adf-test",
+    "href": "posts/time_series/Week3.html#kpss-vs-adf-test",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "KPSS vs ADF test",
+    "text": "KPSS vs ADF test\nIf a series is stationary according to the KPSS test by setting regression=‘ct’ and is not stationary according to the ADF test, it means the series is stationary around a deterministic trend.\nFurther reading:\nKwiatkowski, D.; Phillips, P. C. B.; Schmidt, P.; Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. Journal of Econometrics, 54 (1-3): 159-178."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#arp",
+    "href": "posts/time_series/Week3.html#arp",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "AR(p)",
+    "text": "AR(p)\n\nACF dies out in an exponential or damped sine-wave manner.\nthere is a significant spike at lag \\(p\\) in PACF, but none beyond \\(p\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#maq",
+    "href": "posts/time_series/Week3.html#maq",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "MA(q)",
+    "text": "MA(q)\n\nACF has all zero spikes beyond the \\(q^{th}\\) spike.\nPACF dies out in an exponential or damped sine-wave manner."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#seasonal-components",
+    "href": "posts/time_series/Week3.html#seasonal-components",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Seasonal components",
+    "text": "Seasonal components\n\nThe seasonal part of an AR or MA model will be seen in the seasonal lags of the PACF and ACF."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#arima00000112-will-show",
+    "href": "posts/time_series/Week3.html#arima00000112-will-show",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ARIMA(0,0,0)(0,0,1)12 will show",
+    "text": "ARIMA(0,0,0)(0,0,1)12 will show\n\na spike at lag 12 in the ACF but no other significant spikes.\nThe PACF will show exponential decay in the seasonal lags 12, 24, 36, . . . ."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#arima00010012-will-show",
+    "href": "posts/time_series/Week3.html#arima00010012-will-show",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "ARIMA(0,0,0)(1,0,0)12 will show",
+    "text": "ARIMA(0,0,0)(1,0,0)12 will show\n\nexponential decay in the seasonal lags of the ACF.\na single significant spike at lag 12 in the PACF."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
+    "href": "posts/time_series/Week3.html#step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont.",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 5: Examine the ACF/PACF to identify a suitable model (cont.)",
+    "text": "Step 5: Examine the ACF/PACF to identify a suitable model (cont.)\n\n\\(d=1\\) and \\(D=1\\) (from step 4)\nSignificant spike at lag 1 in ACF suggests non-seasonal MA(1) component.\nSignificant spike at lag 12 in ACF suggests seasonal MA(1) component.\nInitial candidate model: \\(ARIMA(0,1,1)(0,1,1)_{12}\\).\nBy analogous logic applied to the PACF, we could also have started with \\(ARIMA(1,1,0)(1,1,0)_{12}\\)."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#models",
+    "href": "posts/time_series/Week3.html#models",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Models",
+    "text": "Models\nInitial model:\n\\(ARIMA(0,1,1)(0,1,1)_{12}\\)\n\\(ARIMA(1,1,0)(1,1,0)_{12}\\)\nTry some variations of the initial model:\n\\(ARIMA(0,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,1)(1,1,0)_{12}\\)\n\\(ARIMA(1,1,1)(1,1,1)_{12}\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#section-3",
+    "href": "posts/time_series/Week3.html#section-3",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "",
+    "text": "Try some variations\nBoth the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.\n\\(ARIMA(3,1,1)(1,1,1)_{12}\\)\n\\(ARIMA(1,1,3)(1,1,1)_{12}\\)\n\\(ARIMA(3,1,3)(1,1,1)_{12}\\)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#fitting-arima-models",
+    "href": "posts/time_series/Week3.html#fitting-arima-models",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Fitting ARIMA models",
+    "text": "Fitting ARIMA models\n\nfrom sktime.forecasting.arima import ARIMA\nforecaster1 = ARIMA(  \n    order=(1, 1, 0),\n    seasonal_order=(1, 1, 0, 12),\n    suppress_warnings=True)\nforecaster1.fit(y_train.naturallog)    \n\nARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.ARIMAARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-6-check-residual-series",
+    "href": "posts/time_series/Week3.html#step-6-check-residual-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 6: Check residual series",
+    "text": "Step 6: Check residual series\n\nfhtrain = ForecastingHorizon(\n    pd.PeriodIndex(pd.period_range(start='1949-01', end='1959-12', freq='M')), is_relative=False\n)\nfhtrain\n\nForecastingHorizon(['1949-01', '1949-02', '1949-03', '1949-04', '1949-05', '1949-06',\n             '1949-07', '1949-08', '1949-09', '1949-10',\n             ...\n             '1959-03', '1959-04', '1959-05', '1959-06', '1959-07', '1959-08',\n             '1959-09', '1959-10', '1959-11', '1959-12'],\n            dtype='period[M]', length=132, is_relative=False)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
+    "href": "posts/time_series/Week3.html#obtain-predictions-for-the-training-period",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Obtain predictions for the training period",
+    "text": "Obtain predictions for the training period\n\ny_pred_train = forecaster1.predict(fhtrain)\ny_pred_train\n\n1949-01         NaN\n1949-02    4.718760\n1949-03    4.770946\n1949-04    4.883063\n1949-05    4.860073\n             ...   \n1959-08    6.310106\n1959-09    6.138659\n1959-10    6.004945\n1959-11    5.869054\n1959-12    5.974289\nFreq: M, Length: 132, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#obtain-residual-series",
+    "href": "posts/time_series/Week3.html#obtain-residual-series",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Obtain residual series",
+    "text": "Obtain residual series\n\nresidual = y_train.naturallog - y_pred_train\nresidual\n\n1949-01         NaN\n1949-02    0.051925\n1949-03    0.111856\n1949-04   -0.023251\n1949-05   -0.064283\n             ...   \n1959-08    0.016043\n1959-09   -0.000931\n1959-10    0.003868\n1959-11    0.022590\n1959-12    0.029598\nFreq: M, Length: 132, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-residuals",
+    "href": "posts/time_series/Week3.html#plot-residuals",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot residuals",
+    "text": "Plot residuals\n\nplot_series(residual)\n\n(&lt;Figure size 1920x480 with 1 Axes&gt;, &lt;AxesSubplot: &gt;)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-residuals-cont.",
+    "href": "posts/time_series/Week3.html#plot-residuals-cont.",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot residuals (cont.)",
+    "text": "Plot residuals (cont.)\n\nplot_acf(residual.dropna(), lags=50)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-residuals-cont.-1",
+    "href": "posts/time_series/Week3.html#plot-residuals-cont.-1",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot residuals (cont.)",
+    "text": "Plot residuals (cont.)\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nplt.hist(residual)\nplt.show()\n\n\nYour turn: remove the outlier and draw the histogram"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#ljung-box-test",
+    "href": "posts/time_series/Week3.html#ljung-box-test",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Ljung-Box Test",
+    "text": "Ljung-Box Test\nH0: Residuals are not serially correlated.\nH1: Residuals are serially correlated.\n\n\n\n\n\n\n\n\n\nlb_stat\nlb_pvalue\n\n\n\n\n20\n3.984776\n0.999955"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#step-7-generate-forecasts",
+    "href": "posts/time_series/Week3.html#step-7-generate-forecasts",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Step 7: Generate forecasts",
+    "text": "Step 7: Generate forecasts\n\ny_pred_1 = forecaster1.predict(fh)\ny_pred_1\n\n1960-01    6.037478\n1960-02    5.982107\n1960-03    6.133707\n1960-04    6.102795\n1960-05    6.154218\n1960-06    6.301004\n1960-07    6.437653\n1960-08    6.461717\n1960-09    6.257650\n1960-10    6.134112\n1960-11    6.003672\n1960-12    6.103036\nFreq: M, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#back-transformation",
+    "href": "posts/time_series/Week3.html#back-transformation",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Back transformation",
+    "text": "Back transformation\n\ny_pred_1.exp = np.exp(y_pred_1)\ny_pred_1.exp\n\n1960-01    418.835520\n1960-02    396.274338\n1960-03    461.142677\n1960-04    447.105543\n1960-05    470.698677\n1960-06    545.118980\n1960-07    624.938414\n1960-08    640.159214\n1960-09    521.990600\n1960-10    461.329316\n1960-11    404.912933\n1960-12    447.213408\nFreq: M, dtype: float64"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#plot-training-test-and-forecasts",
+    "href": "posts/time_series/Week3.html#plot-training-test-and-forecasts",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Plot training, test, and forecasts",
+    "text": "Plot training, test, and forecasts\n\nplot_series(y_train, y_test, y_pred_1.exp, labels=[\"y_train\", \"y_test\", \"y_forecast\"])\n\n(&lt;Figure size 1920x480 with 1 Axes&gt;,\n &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#evaluation",
+    "href": "posts/time_series/Week3.html#evaluation",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Evaluation",
+    "text": "Evaluation\n\nfrom sktime.performance_metrics.forecasting import \\\n    mean_absolute_percentage_error\nmean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric=False)\n\n0.027756916452706674"
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#your-turn",
+    "href": "posts/time_series/Week3.html#your-turn",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Your Turn",
+    "text": "Your Turn\nFit other variants of ARIMA models and identify the best ARIMA model for the series."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#modelling-steps",
+    "href": "posts/time_series/Week3.html#modelling-steps",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Modelling steps",
+    "text": "Modelling steps\n\nPlot the data.\nIf necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.\nIf the data are non-stationary, take first differences of the data until the data are stationary.\nExamine the ACF/PACF to identify a suitable model.\nTry your chosen model(s), and use the AICc to search for a better model."
+  },
+  {
+    "objectID": "posts/time_series/Week3.html#modelling-steps-cont.",
+    "href": "posts/time_series/Week3.html#modelling-steps-cont.",
+    "title": "Week 3-4: AR/ MA/ ARMA/ ARIMA",
+    "section": "Modelling steps (cont.)",
+    "text": "Modelling steps (cont.)\n\nCheck the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.\nOnce the residuals look like white noise, calculate forecasts.\n\nSource: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#is-the-following-series-dissimilar-or-similar",
+    "href": "posts/time_series/week8b.html#is-the-following-series-dissimilar-or-similar",
+    "title": "Time Series Clustering",
+    "section": "Is the following series dissimilar or similar?",
+    "text": "Is the following series dissimilar or similar?"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#what-is-time-series-clustering",
+    "href": "posts/time_series/week8b.html#what-is-time-series-clustering",
+    "title": "Time Series Clustering",
+    "section": "What is time series clustering?",
+    "text": "What is time series clustering?\n\nGroup similar time series\nWhat we meant by similar?\n\nsimilar profiles\nsimilar features\nsame best forecasting models\nsimilar data generating process\n\nBefore clustering think what is the purpose of grouping?"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section",
+    "href": "posts/time_series/week8b.html#section",
+    "title": "Time Series Clustering",
+    "section": "",
+    "text": "Source: Montero, P., & Vilar, J. A. (2015). TSclust: An R package for time series clustering. Journal of Statistical Software, 62, 1-43."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#time-series-clustering",
+    "href": "posts/time_series/week8b.html#time-series-clustering",
+    "title": "Time Series Clustering",
+    "section": "Time Series Clustering",
+    "text": "Time Series Clustering\n\nModel-free approaches\nModel-based approaches\nComplexity-based approaches\nPrediction-based approaches"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#minkowski-distance",
+    "href": "posts/time_series/week8b.html#minkowski-distance",
+    "title": "Time Series Clustering",
+    "section": "Minkowski distance",
+    "text": "Minkowski distance\n\\[d_{Lq}(\\textbf{X}_T, \\textbf{Y}_T) = [\\sum_{t=1}^T(X_t, Y_t)^q]^{(\\frac{1}{q})}\\]\nWhen \\(q=1\\) - Manhattan distance\nWhen \\(q=2\\) - Euclidean distance\n\nObservations are treated as independent. (\\(d_{Lq}\\) is invariant to permutation over time)\nVery sensitive to time scaling"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#frechet-distance",
+    "href": "posts/time_series/week8b.html#frechet-distance",
+    "title": "Time Series Clustering",
+    "section": "Frechet distance",
+    "text": "Frechet distance\nSource: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-1",
+    "href": "posts/time_series/week8b.html#section-1",
+    "title": "Time Series Clustering",
+    "section": "",
+    "text": "Source: https://pure.tue.nl/ws/portalfiles/portal/93882810/Thesis_Tom_van_Diggelen.pdf"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#frechet-distance-1",
+    "href": "posts/time_series/week8b.html#frechet-distance-1",
+    "title": "Time Series Clustering",
+    "section": "Frechet distance",
+    "text": "Frechet distance\nThe standard Fréchet distance is the minimum leash length required for the person to walk the dog without backtracking.\n\nAccount the ordering of the observations\nCan be computed on series of different lengths"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#dynamic-time-warping-distance-dtw",
+    "href": "posts/time_series/week8b.html#dynamic-time-warping-distance-dtw",
+    "title": "Time Series Clustering",
+    "section": "Dynamic time warping distance (DTW)",
+    "text": "Dynamic time warping distance (DTW)\nhttps://www.youtube.com/watch?v=ERKDHZyZDwA"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#correlation-based-distance",
+    "href": "posts/time_series/week8b.html#correlation-based-distance",
+    "title": "Time Series Clustering",
+    "section": "Correlation-based distance",
+    "text": "Correlation-based distance\nPearson’s correlation between \\(\\textbf{X_T}\\) and \\(\\textbf{Y_T}\\): \\(Cor(\\textbf{X}_T, \\textbf{Y}_T)\\)\n\\[d_{cor1}= \\sqrt{2(1-Cor(\\textbf{X}_T, \\textbf{Y}_T))}\\]\n\\[d_{cor2}= \\left (\\left (\\frac{1-Cor(\\textbf{X}_T, \\textbf{Y}_T)}{1+Cor(\\textbf{X}_T, \\textbf{Y}_T)} \\right )^{\\beta} \\right )^{\\frac{1}{2}}\\]\nwhere \\(\\beta \\geq 0\\)."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#autocorrelation-based-distance",
+    "href": "posts/time_series/week8b.html#autocorrelation-based-distance",
+    "title": "Time Series Clustering",
+    "section": "Autocorrelation-based distance",
+    "text": "Autocorrelation-based distance\nDistance is based on estimated autocorrelation function.\nCase 1: Uniform weight\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^L(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]\nCase 2: Geometric weights decaying with autocorrelation lag\n\\[d(\\textbf{X}_T, \\textbf{Y}_T) = \\sqrt{\\sum_{i=1}^Lw(1-w)^i(\\hat{\\rho}_{i, X}-\\hat{\\rho}_{i, Y})^2}\\]"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#periodogram-based-distance",
+    "href": "posts/time_series/week8b.html#periodogram-based-distance",
+    "title": "Time Series Clustering",
+    "section": "Periodogram-based distance",
+    "text": "Periodogram-based distance\nA periodogram is used to identify the dominant periods (or frequencies) of a time series.\n\nEuclidean distance between the periodogram ordinates (Gives more weight to the shape of the curve)\nEuclidean distance between the normalized periodogram ordinates (Consider the scale)\n\nReading: https://online.stat.psu.edu/stat510/lesson/6/6.1"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#other-model-free-measures",
+    "href": "posts/time_series/week8b.html#other-model-free-measures",
+    "title": "Time Series Clustering",
+    "section": "Other model-free measures",
+    "text": "Other model-free measures\n\nDissimilarity measures based on nonparametric spectral estimators\nDissimilarity measure based on wavelet transformation\nDissimilarity measure based on the symbolicrepresentation SAX"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#piccolo-distance",
+    "href": "posts/time_series/week8b.html#piccolo-distance",
+    "title": "Time Series Clustering",
+    "section": "Piccolo distance",
+    "text": "Piccolo distance\n\nInvertible ARIMA processes\nEuclidean distance between the \\(AR(\\infty)\\)\n\nIn-class explanations."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#invertible-condition",
+    "href": "posts/time_series/week8b.html#invertible-condition",
+    "title": "Time Series Clustering",
+    "section": "Invertible condition",
+    "text": "Invertible condition\nBackshift notation: \n\\[BX_t=X_{t-1}\\] ARMA(p, q)\n\\[x_t= c+ \\phi_1x_{t-1}+\\phi_2x_{t-2}+...+\\phi_px_{t-p} + \\theta_1\\epsilon_{t-1}+\\theta_2\\epsilon _{t-2}+...+\\theta_q \\epsilon_{t-q}+\\epsilon_t,\\]\n\\[x_t= c+ \\phi_1Bx_{t}+\\phi_2B^2x_{t}+...+\\phi_pB^px_{t} + \\theta_1B\\epsilon_{t}+\\theta_2B^2\\epsilon _{t}+...+\\theta_q B^q\\epsilon_{t}+\\epsilon_t,\\] \\[x_t - \\phi_1Bx_{t}-\\phi_2B^2x_{t}-...-\\phi_pB^px_{t} = c + \\theta_1B\\epsilon_{t}+\\theta_2B^2\\epsilon _{t}+...+\\theta_q B^q\\epsilon_{t}+\\epsilon_t,\\]\n\\[\\Phi(B)x_t = c+\\Theta(B)\\epsilon_t\\]"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-2",
+    "href": "posts/time_series/week8b.html#section-2",
+    "title": "Time Series Clustering",
+    "section": "",
+    "text": "\\[\\Phi(B)x_t = c+\\Theta(B)\\epsilon_t\\]\n\\[\\Phi(B) = 1-\\phi_1B-\\phi_2B^2-...-\\phi_pB^p\\]\n\\[\\Theta(B)= 1+\\theta_1B+\\theta_2B^2 _{t}+...+\\theta_q B^q\\]\nThis process is called invertible if the modulus of all the roots of \\(\\Theta(B)=0\\) are greater than one."
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#demo",
+    "href": "posts/time_series/week8b.html#demo",
+    "title": "Time Series Clustering",
+    "section": "Demo",
+    "text": "Demo\nhttps://github.com/thiyangt/AR-infinite-coefficients/blob/master/ARinfinite-code.md"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#maharaj-distance",
+    "href": "posts/time_series/week8b.html#maharaj-distance",
+    "title": "Time Series Clustering",
+    "section": "Maharaj distance",
+    "text": "Maharaj distance\n\nFor the class of invertible and stationary ARMA processes\nBased on hypotheses testing to determine whether or not two time series have significantly different generating processes\nTwo dissimilarity measures: one is based on test statistics, other one is based on the associated p-value"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#data",
+    "href": "posts/time_series/week8b.html#data",
+    "title": "Time Series Clustering",
+    "section": "Data",
+    "text": "Data\n\ndf = pd.read_csv(\"AirPassengers.csv\", index_col=0)\ndf.index = pd.to_datetime(df.index)\ny = df[\"#Passengers\"]\ny.name = \"n_passengers\"\n\ny.plot(title=\"Airline passengers\");"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-4",
+    "href": "posts/time_series/week8b.html#section-4",
+    "title": "Time Series Clustering",
+    "section": "",
+    "text": "seasonal_decomp = seasonal_decompose(y, model=\"additive\")\nseasonal_decomp.plot();"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#section-5",
+    "href": "posts/time_series/week8b.html#section-5",
+    "title": "Time Series Clustering",
+    "section": "",
+    "text": "seasonal_decomp = seasonal_decompose(y, model=\"multiplicative\")\nseasonal_decomp.plot();"
+  },
+  {
+    "objectID": "posts/time_series/week8b.html#time-series-features",
+    "href": "posts/time_series/week8b.html#time-series-features",
+    "title": "Time Series Clustering",
+    "section": "Time series features",
+    "text": "Time series features\nTalagala, T. S., Hyndman, R. J., & Athanasopoulos, G. (2018). Meta-learning how to forecast time series. Monash Econometrics and Business Statistics Working Papers, 6(18), 16.\nhttps://www.monash.edu/business/ebs/research/publications/ebs/wp06-2018.pdf"
+  }
+]

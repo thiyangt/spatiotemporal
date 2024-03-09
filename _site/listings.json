@@ -1,0 +1,21 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/data/index.html",
+      "/posts/quarto/1_intro.html",
+      "/posts/quarto/index.html",
+      "/posts/spatial/index.html",
+      "/posts/timeseries/index.html",
+      "/posts/time_series/file1.html",
+      "/posts/time_series/Week2.html",
+      "/posts/time_series/Week3.html",
+      "/posts/time_series/Week4.html",
+      "/posts/time_series/week8b.html",
+      "/posts/homework/index.html",
+      "/posts/lab/index.html",
+      "/posts/time_series/index.html",
+      "/posts/welcome/index.html"
+    ]
+  }
+]
